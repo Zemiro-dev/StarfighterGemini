@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://da4ta4o721exf"]
+[gd_scene load_steps=40 format=3 uid="uid://da4ta4o721exf"]
 
 [ext_resource type="Texture2D" uid="uid://bbq0js4b3j7xu" path="res://assets/shapes/circle_blue_2tone_large.png" id="1_44sa8"]
 [ext_resource type="Shader" uid="uid://cfiansss2vfpv" path="res://shaders/starfield_1.gdshader" id="1_sxhbq"]
@@ -16,7 +16,11 @@
 [ext_resource type="Texture2D" uid="uid://xtisnn3t5jr2" path="res://assets/player/core.png" id="12_lo56x"]
 [ext_resource type="Texture2D" uid="uid://c7dvlc535fux2" path="res://actors/player/resources/player_gradient_low.tres" id="13_sxhbq"]
 [ext_resource type="Texture2D" uid="uid://083ymv6ej1vl" path="res://assets/player/cannon.png" id="14_x6moa"]
+[ext_resource type="Material" uid="uid://dv0177xqfognf" path="res://actors/enemies/resources/asteroid_beast_shader_material.tres" id="17_k1c70"]
 [ext_resource type="Texture2D" uid="uid://xvkw0xhun03e" path="res://assets/enemies/asteroid_beast/asteroid_beast_shell.png" id="17_x6moa"]
+[ext_resource type="Texture2D" uid="uid://bsem521pm0ryh" path="res://assets/enemies/asteroid_beast/asteroid_beast_stalk_lower.png" id="19_fdpbo"]
+[ext_resource type="Texture2D" uid="uid://bv3pj4ag8p0e6" path="res://assets/enemies/asteroid_beast/asteroid_beast_stalk_cap.png" id="20_0cob0"]
+[ext_resource type="Shader" uid="uid://b1v8l4mn65t1e" path="res://shaders/wibbly.gdshader" id="21_fdpbo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8o1ke"]
 shader = ExtResource("1_sxhbq")
@@ -105,27 +109,27 @@ shader_parameter/gradient_texture_low = ExtResource("13_sxhbq")
 shader_parameter/gradient_texture_high = ExtResource("12_iodkf")
 shader_parameter/progress = 0.15
 
-[sub_resource type="Gradient" id="Gradient_x6moa"]
-offsets = PackedFloat32Array(0, 0.970588)
-colors = PackedColorArray(2, 0.537, 0.784, 1, 0.431373, 0.145098, 0.580392, 1)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sc1s7"]
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_6ptfx"]
-gradient = SubResource("Gradient_x6moa")
-use_hdr = true
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h7hsv"]
+seamless = true
+noise = SubResource("FastNoiseLite_sc1s7")
 
-[sub_resource type="Gradient" id="Gradient_8o1ke"]
-offsets = PackedFloat32Array(0, 0.970588)
-colors = PackedColorArray(0.984314, 0.537255, 0.784314, 1, 0.431373, 0.145098, 0.580392, 1)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cbtnv"]
+fractal_type = 2
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_k1c70"]
-gradient = SubResource("Gradient_8o1ke")
-use_hdr = true
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3w1rm"]
+noise = SubResource("FastNoiseLite_cbtnv")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0cob0"]
-shader = ExtResource("11_27gb1")
-shader_parameter/gradient_texture_low = SubResource("GradientTexture1D_k1c70")
-shader_parameter/gradient_texture_high = SubResource("GradientTexture1D_6ptfx")
-shader_parameter/progress = 0.8
+shader = ExtResource("21_fdpbo")
+shader_parameter/noise1 = SubResource("NoiseTexture2D_h7hsv")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_3w1rm")
+shader_parameter/strength = 0.1
+shader_parameter/fps = 64.0
+shader_parameter/frames = 256
+shader_parameter/base_color = Color(1, 0.988235, 0.192157, 1)
+shader_parameter/mix_color = Color(1.7, 1, 1, 1)
 
 [sub_resource type="Environment" id="Environment_lsr55"]
 background_mode = 3
@@ -177,14 +181,9 @@ modulate = Color(1.2, 0.161, 0.208, 1)
 position = Vector2(-2071, 971)
 texture = ExtResource("4_7wlep")
 
-[node name="Sprite2D5" type="Sprite2D" parent="Stage/NeonOrbs"]
-material = ExtResource("4_eldjb")
-position = Vector2(1075, 228)
-texture = ExtResource("4_7wlep")
-
 [node name="Sprite2D12" type="Sprite2D" parent="Stage/NeonOrbs"]
 material = ExtResource("4_eldjb")
-position = Vector2(1622, 260)
+position = Vector2(2874, 972)
 texture = ExtResource("4_7wlep")
 
 [node name="HealthBar" type="Sprite2D" parent="Stage/NeonOrbs"]
@@ -193,6 +192,7 @@ position = Vector2(300, 96)
 texture = ExtResource("9_aq1p2")
 
 [node name="WeaponEffects" type="Node2D" parent="Stage"]
+position = Vector2(-1045, 198)
 
 [node name="Laser" type="Node2D" parent="Stage/WeaponEffects"]
 position = Vector2(100, 187)
@@ -215,7 +215,7 @@ process_material = SubResource("ParticleProcessMaterial_tqfwn")
 
 [node name="MoonSprite" type="Sprite2D" parent="Stage"]
 modulate = Color(0.113725, 0.113725, 0.109804, 1)
-position = Vector2(1393, 540)
+position = Vector2(2529, 534)
 scale = Vector2(3.15789, 3.15789)
 texture = ExtResource("2_lqxvj")
 
@@ -240,10 +240,9 @@ rotation = 1.57081
 texture = ExtResource("1_44sa8")
 
 [node name="Actors" type="Node2D" parent="Stage"]
-position = Vector2(366, 551)
 
 [node name="Player" type="Node2D" parent="Stage/Actors"]
-position = Vector2(-203, -145)
+position = Vector2(385, 716)
 
 [node name="TopCannon" type="Sprite2D" parent="Stage/Actors/Player"]
 material = SubResource("ShaderMaterial_6ptfx")
@@ -260,11 +259,58 @@ position = Vector2(0, 57)
 texture = ExtResource("14_x6moa")
 
 [node name="AsteroidBeast" type="Node2D" parent="Stage/Actors"]
+position = Vector2(305, 496)
 
-[node name="Sprite2D2" type="Sprite2D" parent="Stage/Actors/AsteroidBeast"]
-material = SubResource("ShaderMaterial_0cob0")
-position = Vector2(319.702, 410.703)
+[node name="Stalk" type="Node2D" parent="Stage/Actors/AsteroidBeast"]
+position = Vector2(705, 364)
+
+[node name="Core" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Stalk"]
+material = ExtResource("4_eldjb")
+position = Vector2(0, -35)
+scale = Vector2(0.650391, 0.650391)
+texture = ExtResource("4_7wlep")
+
+[node name="StalkLower" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Stalk"]
+material = ExtResource("17_k1c70")
+position = Vector2(0, 90)
+texture = ExtResource("19_fdpbo")
+
+[node name="StalkCap" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Stalk"]
+material = ExtResource("17_k1c70")
+position = Vector2(0, -150)
+texture = ExtResource("20_0cob0")
+
+[node name="Shell" type="Sprite2D" parent="Stage/Actors/AsteroidBeast"]
+material = ExtResource("17_k1c70")
+position = Vector2(705, 696)
 texture = ExtResource("17_x6moa")
+
+[node name="StalkEnergyBeams" type="Node2D" parent="Stage/Actors/AsteroidBeast"]
+position = Vector2(705, 105)
+
+[node name="Laser" type="Node2D" parent="Stage/Actors/AsteroidBeast/StalkEnergyBeams"]
+rotation = -2.35619
+
+[node name="Line2D" type="Line2D" parent="Stage/Actors/AsteroidBeast/StalkEnergyBeams/Laser"]
+use_parent_material = true
+points = PackedVector2Array(0, 0, 500, 0)
+width = 20.0
+gradient = SubResource("Gradient_27gb1")
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Stage/Actors/AsteroidBeast/StalkEnergyBeams/Laser"]
+amount = 32
+texture = ExtResource("10_r0vbx")
+lifetime = 0.5
+explosiveness = 0.1
+process_material = SubResource("ParticleProcessMaterial_tqfwn")
+
+[node name="LaserSource" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StalkEnergyBeams"]
+material = SubResource("ShaderMaterial_0cob0")
+scale = Vector2(0.225586, 0.225586)
+texture = ExtResource("4_7wlep")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lsr55")
