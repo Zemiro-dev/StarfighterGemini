@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://da4ta4o721exf"]
+[gd_scene load_steps=43 format=3 uid="uid://da4ta4o721exf"]
 
 [ext_resource type="Script" uid="uid://dj8f28g3mmv8i" path="res://world/debug/world_debug.gd" id="1_0cob0"]
 [ext_resource type="Texture2D" uid="uid://bbq0js4b3j7xu" path="res://assets/shapes/circle_blue_2tone_large.png" id="1_44sa8"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bgm866x2bvwdt" path="res://assets/robot/robot_eye.png" id="4_3mc18"]
 [ext_resource type="Texture2D" uid="uid://dmdqxyd6jhfr5" path="res://assets/shapes/circle_ffffff_large.png" id="4_7wlep"]
 [ext_resource type="Material" uid="uid://4rph6123p6uq" path="res://shaders/resources/wibbly_material.tres" id="4_eldjb"]
+[ext_resource type="Shader" uid="uid://bhw3v5xd6khis" path="res://shaders/starfield_3.gdshader" id="4_v3mey"]
 [ext_resource type="Shader" uid="uid://d1qb4jskectyo" path="res://shaders/color_swap_prog.gdshader" id="7_an6al"]
 [ext_resource type="Texture2D" uid="uid://d3qvbvfka6f2f" path="res://assets/ui/health_bar.png" id="9_aq1p2"]
 [ext_resource type="Texture2D" uid="uid://beeeba5bogag7" path="res://assets/shapes/yellow_diamond_particle.png" id="10_r0vbx"]
@@ -37,6 +38,23 @@ shader_parameter/star_hsv_adjust = Color(0.113333, 0, 0.2, 1)
 shader_parameter/nebula_hsv_adjust = Color(0.25, 0, 0.025, 1)
 shader_parameter/zoom = 1.0
 shader_parameter/speed2 = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1t33c"]
+shader = ExtResource("4_v3mey")
+shader_parameter/iterations = 17
+shader_parameter/formuparam = 0.53
+shader_parameter/volsteps = 20
+shader_parameter/stepsize = 0.1
+shader_parameter/zoom = -0.925
+shader_parameter/tile = 0.85
+shader_parameter/speed = 0.01
+shader_parameter/brightness = 0.0015
+shader_parameter/darkmatter = 0.3
+shader_parameter/distfading = 0.73
+shader_parameter/saturation = 0.85
+shader_parameter/rotation = Vector2(0, 0)
+shader_parameter/scroll = Vector2(0, 0)
+shader_parameter/hollow_star = 0.00036
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3mc18"]
 shader = ExtResource("7_an6al")
@@ -146,8 +164,16 @@ script = ExtResource("1_0cob0")
 
 [node name="Stage" type="Node2D" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="Stage"]
+[node name="Starfield1" type="TextureRect" parent="Stage"]
+visible = false
 material = SubResource("ShaderMaterial_8o1ke")
+offset_top = 4.0
+offset_right = 1921.0
+offset_bottom = 1077.0
+texture = ExtResource("2_lqxvj")
+
+[node name="Starfield3" type="TextureRect" parent="Stage"]
+material = SubResource("ShaderMaterial_1t33c")
 offset_top = 4.0
 offset_right = 1921.0
 offset_bottom = 1077.0
