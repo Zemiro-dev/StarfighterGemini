@@ -1,0 +1,37 @@
+float clock(float time, float frames, float fps) {
+	return floor(mod(time * fps, frames)) / frames;
+}
+
+float linearToSRGB(float input) {
+    if(input < 0.040449907){
+		return input/12.92;
+	}else{
+		return pow(((input+0.055)/1.055),2.4);
+	}
+}
+
+/* Converts a linear space color to srgb for when HDR is enabled*/
+vec4 hdrout(vec4 i) {
+	return vec4(
+		linearToSRGB(i.r),
+		linearToSRGB(i.g),
+		linearToSRGB(i.b),
+		i.a
+	);
+}
+
+vec3 rgb2hsv(vec3 c) {
+    vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+    vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
+    vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));
+
+    float d = q.x - min(q.w, q.y);
+    float e = 1.0e-10;
+    return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+}
+
+vec3 hsv2rgb(vec3 c) {
+    vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+    vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+    return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+}

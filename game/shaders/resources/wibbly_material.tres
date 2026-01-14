@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://4rph6123p6uq"]
+
+[ext_resource type="Shader" uid="uid://b1v8l4mn65t1e" path="res://shaders/wibbly.gdshader" id="1_bmc1o"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sc1s7"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h7hsv"]
+seamless = true
+noise = SubResource("FastNoiseLite_sc1s7")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cbtnv"]
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3w1rm"]
+noise = SubResource("FastNoiseLite_cbtnv")
+
+[resource]
+shader = ExtResource("1_bmc1o")
+shader_parameter/noise1 = SubResource("NoiseTexture2D_h7hsv")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_3w1rm")
+shader_parameter/strength = 0.1
+shader_parameter/fps = 64.0
+shader_parameter/frames = 256
+shader_parameter/base_color = Color(0.87451, 0.160784, 0.207843, 1)
+shader_parameter/mix_color = Color(1.7, 1, 1, 1)
