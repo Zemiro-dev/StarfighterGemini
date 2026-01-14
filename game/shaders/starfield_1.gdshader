@@ -3,7 +3,7 @@ shader_type canvas_item;
 #include "includes/glint.gdshaderinc"
 
 uniform int iterations = 12;
-uniform vec2 mouse;
+uniform vec2 offset;
 uniform float time;
 uniform float brightness = 0.0015;
 uniform float darkmatter = 0.100;
@@ -12,11 +12,11 @@ uniform float saturation = 0.90;
 uniform float star_brightness: hint_range(0.0, .02, 0.0005) = .01;
 uniform vec4 star_hsv_adjust : source_color = vec4(1., 0., 0.017, 1.);
 uniform vec4 nebula_hsv_adjust : source_color = vec4(1., 0., 0.017, 1.);
+uniform float zoom : hint_range(0.001, 10.0, 0.001) = 1.0;
 
 const float formuparam2 = 0.79;
 const float volsteps = 7.0;
 const float stepsize = 0.290;
-const float zoom = 1.0;
 const float tile = 0.850;
 uniform float speed2 = 0.2;
 
@@ -60,7 +60,7 @@ void fragment() {
 	
     	//get coords and direction	
 	vec2 uv = uvs;		       
-	//mouse rotation
+	//offset rotation
 	float a_xz = 0.9;
 	float a_yz = -.6;
 	float a_xy = 0.9 + time*0.08;	
@@ -72,8 +72,8 @@ void fragment() {
 	float v2 =1.0;	
 	vec3 dir=vec3(uv*zoom,1.); 
 	vec3 from=vec3(0.0, 0.0,0.0);                               
-        from.x -= 2.0*(mouse.x-0.5);
-        from.y -= 2.0*(mouse.y-0.5);
+        from.x -= 2.0*(offset.x-0.5);
+        from.y -= 2.0*(offset.y-0.5);
 
 	vec3 forward = vec3(0.,0.,1.);   
 	from.x += transverseSpeed*(1.0)*cos(0.01*time) + 0.001*time;
