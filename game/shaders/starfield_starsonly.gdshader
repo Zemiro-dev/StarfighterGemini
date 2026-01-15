@@ -4,10 +4,12 @@
 shader_type canvas_item;
 
 uniform vec4 bg_color: source_color;
-uniform float cell_size = 10.0;
+uniform float cell_count = 10.0;
+uniform float cell_size = 100.0;
 uniform float star_cutoff = .5;
-uniform float size = 100.0;
 uniform vec2 px_offset = vec2(-256.);
+/* Scroll Speed */
+uniform vec2 speed = vec2(100., 0.);
 
 float random(vec2 st) {
     return fract(sin(dot(st.xy,
@@ -15,22 +17,21 @@ float random(vec2 st) {
         43758.5453123);
 }
 
+// SCREEN_PIXEL_SIZE is the SIZE of a pixel. Typically way less than 1.
+// FRAGCOORD is the REAL pixel position. So 1920x1080 kinda values
+// 1 / SCREEN_PIXEL_SIZE gives the resolution as wxh
 void fragment() {
-	vec2 resolution = vec2(1.0 / min(SCREEN_PIXEL_SIZE.x, SCREEN_PIXEL_SIZE.y));
-	vec2 px = (FRAGCOORD.xy + px_offset.xy) / resolution;
-	px *= cell_size;
+	vec2 current_offset = px_offset + TIME * speed;
+	vec2 resolution = vec2(1.0 / min(SCREEN_PIXEL_SIZE.x, SCREEN_PIXEL_SIZE.y)); //Gets a box based on widest side
+	vec2 px = (FRAGCOORD.xy + current_offset) / resolution;
+	px *= resolution.x / cell_size;
 	vec2 cell_index = floor(px);
 	vec2 cell_uv = fract(px);
 	vec4 out_color = bg_color;
 	float star_power = random(cell_index);
 	if (star_power > star_cutoff) {
-		out_color.rgb += vec3(.05);
+		out_color.rgb += vec3(star_power);
 	}
-	//float color = 0.0;
-	//float starValue = random(pos);
-	//if (starValue > prob) {
-		//out_color.rbg += vec3(1.0);
-	//}
 
 
 	//if (starValue > prob)
@@ -48,3 +49,17 @@ void fragment() {
 	COLOR = out_color;
 	
 }
+
+/* Scrolling Tile creation*/
+/* Tiles appear pretty reused, need to figure out how to get this into glint, but not atm*/
+	//vec2 current_offset = px_offset + TIME * speed;
+	//vec2 resolution = vec2(1.0 / min(SCREEN_PIXEL_SIZE.x, SCREEN_PIXEL_SIZE.y)); //Gets a box based on widest side
+	//vec2 px = (FRAGCOORD.xy + current_offset) / resolution;
+	//px *= resolution.x / cell_size;
+	//vec2 cell_index = floor(px);
+	//vec2 cell_uv = fract(px);
+	//vec4 out_color = bg_color;
+	//float star_power = random(cell_index);
+	//if (star_power > star_cutoff) {
+		//out_color.rgb += vec3(star_power);
+	//}
