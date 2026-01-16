@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://da4ta4o721exf"]
+[gd_scene load_steps=49 format=3 uid="uid://da4ta4o721exf"]
 
 [ext_resource type="Script" uid="uid://dj8f28g3mmv8i" path="res://world/debug/world_debug.gd" id="1_0cob0"]
 [ext_resource type="Texture2D" uid="uid://bbq0js4b3j7xu" path="res://assets/shapes/circle_blue_2tone_large.png" id="1_44sa8"]
@@ -57,16 +57,44 @@ shader_parameter/rotation = Vector2(0, 0)
 shader_parameter/scroll = Vector2(0, 0)
 shader_parameter/hollow_star = 0.00036
 
+[sub_resource type="Gradient" id="Gradient_1t33c"]
+offsets = PackedFloat32Array(0.592705, 0.662614, 0.762918, 0.844985, 1)
+colors = PackedColorArray(0.980392, 0.980392, 0.933333, 1, 0, 0.690196, 0.952941, 1, 0.964706, 0.709804, 0.0705882, 1, 0.87451, 0.160784, 0.207843, 1, 0.87451, 0.160784, 0.207843, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tix0w"]
+gradient = SubResource("Gradient_1t33c")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_45nm2"]
+noise_type = 0
+seed = 295
+frequency = 0.306
+fractal_octaves = 10
+fractal_lacunarity = 4.055
+fractal_weighted_strength = 0.8
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yey8d"]
+noise = SubResource("FastNoiseLite_45nm2")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tix0w"]
 resource_local_to_scene = true
 shader = ExtResource("5_1t33c")
-shader_parameter/bg_color = Color(0, 0, 0, 1)
-shader_parameter/cell_size = 100.0
-shader_parameter/star_cutoff = 0.375
+shader_parameter/star_noise = SubResource("NoiseTexture2D_yey8d")
+shader_parameter/star_noise_resolution = 116.0
+shader_parameter/star_noise_boost = 1.28
+shader_parameter/bg_color = Color(0, 0, 0, 0)
+shader_parameter/star_gradient = SubResource("GradientTexture1D_tix0w")
+shader_parameter/cell_size = 31.52
+shader_parameter/star_cutoff = 0.77
 shader_parameter/px_offset = Vector2(-256, -256)
-shader_parameter/speed = Vector2(200, 0)
-shader_parameter/star_size = 0.28
-shader_parameter/margin_value = 0.3
+shader_parameter/speed = Vector2(40, 0)
+shader_parameter/star_size = 0.84
+shader_parameter/margin_value = 0.71
+shader_parameter/rotation_mod = 1.0
+shader_parameter/min_star_size_and_bright = 0.31
+shader_parameter/star_blink_mod = 10.0
+shader_parameter/star_blink_variance = 0.03
+shader_parameter/base_star_bright_min = 0.1
+shader_parameter/base_star_bright_max = 1.7
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3mc18"]
 shader = ExtResource("7_an6al")
@@ -192,10 +220,17 @@ offset_right = 1921.0
 offset_bottom = 1077.0
 texture = ExtResource("2_lqxvj")
 
+[node name="ColorRect" type="ColorRect" parent="Stage"]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+
 [node name="StarfieldStarsOnly" type="TextureRect" parent="Stage"]
 material = SubResource("ShaderMaterial_tix0w")
 custom_minimum_size = Vector2(1920, 1080)
-offset_right = 1920.0
+offset_left = 1.0
+offset_right = 1921.0
 offset_bottom = 1080.0
 pivot_offset = Vector2(1599, -257)
 texture = ExtResource("2_lqxvj")
