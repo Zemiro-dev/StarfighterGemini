@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://da4ta4o721exf"]
+[gd_scene load_steps=62 format=3 uid="uid://da4ta4o721exf"]
 
 [ext_resource type="Script" uid="uid://dj8f28g3mmv8i" path="res://world/debug/world_debug.gd" id="1_0cob0"]
 [ext_resource type="Texture2D" uid="uid://bbq0js4b3j7xu" path="res://assets/shapes/circle_blue_2tone_large.png" id="1_44sa8"]
@@ -11,6 +11,7 @@
 [ext_resource type="Material" uid="uid://4rph6123p6uq" path="res://shaders/resources/wibbly_material.tres" id="4_eldjb"]
 [ext_resource type="Shader" uid="uid://bhw3v5xd6khis" path="res://shaders/starfield_3.gdshader" id="4_v3mey"]
 [ext_resource type="Shader" uid="uid://dyxv2wclt81tg" path="res://shaders/starfield_starsonly.gdshader" id="5_1t33c"]
+[ext_resource type="Shader" uid="uid://bmn7d1e8skxvl" path="res://shaders/noise_mixer.gdshader" id="6_tix0w"]
 [ext_resource type="Shader" uid="uid://d1qb4jskectyo" path="res://shaders/color_swap_prog.gdshader" id="7_an6al"]
 [ext_resource type="Texture2D" uid="uid://d3qvbvfka6f2f" path="res://assets/ui/health_bar.png" id="9_aq1p2"]
 [ext_resource type="Texture2D" uid="uid://beeeba5bogag7" path="res://assets/shapes/yellow_diamond_particle.png" id="10_r0vbx"]
@@ -28,7 +29,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8o1ke"]
 shader = ExtResource("1_sxhbq")
 shader_parameter/iterations = 12
-shader_parameter/offset = Vector2(0, 0)
+shader_parameter/offset = Vector2(0.00101667, 0)
 shader_parameter/time = -1.615
 shader_parameter/brightness = 0.001
 shader_parameter/darkmatter = 0.1
@@ -95,6 +96,93 @@ shader_parameter/star_blink_mod = 10.0
 shader_parameter/star_blink_variance = 0.03
 shader_parameter/base_star_bright_min = 0.1
 shader_parameter/base_star_bright_max = 1.7
+
+[sub_resource type="Gradient" id="Gradient_tix0w"]
+offsets = PackedFloat32Array(0, 0.898851)
+colors = PackedColorArray(0, 0, 0, 0, 2, 0.145, 6, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_70fnn"]
+gradient = SubResource("Gradient_tix0w")
+use_hdr = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3tir2"]
+frequency = 0.023
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tix0w"]
+width = 2048
+height = 2048
+seamless = true
+noise = SubResource("FastNoiseLite_3tir2")
+
+[sub_resource type="Gradient" id="Gradient_70fnn"]
+offsets = PackedFloat32Array(0, 0.765101)
+colors = PackedColorArray(0, 0, 0, 0, 0.113725, 0.113725, 0.109804, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3tir2"]
+gradient = SubResource("Gradient_70fnn")
+use_hdr = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_l5pim"]
+frequency = 0.0039
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_luyof"]
+width = 2048
+height = 2048
+seamless = true
+noise = SubResource("FastNoiseLite_l5pim")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_70fnn"]
+shader = ExtResource("6_tix0w")
+shader_parameter/noise0_offset = Vector2(0, 0)
+shader_parameter/noise1_offset = Vector2(0.74, 0.66)
+shader_parameter/noise0_speed = Vector2(0.1, 0)
+shader_parameter/noise1_speed = Vector2(0.1, 0)
+shader_parameter/zoom = 1.0
+shader_parameter/apply_feedback = true
+shader_parameter/use_mix_fn = true
+shader_parameter/mix_ratio = 1.0
+shader_parameter/noise0_texture = SubResource("NoiseTexture2D_tix0w")
+shader_parameter/noise1_texture = SubResource("NoiseTexture2D_luyof")
+shader_parameter/noise0_gradient = SubResource("GradientTexture1D_70fnn")
+shader_parameter/noise1_gradient = SubResource("GradientTexture1D_3tir2")
+
+[sub_resource type="Animation" id="Animation_tix0w"]
+resource_name = "pulse"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..:mix_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 0.85, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.76, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_70fnn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..:mix_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_70fnn"]
+_data = {
+&"RESET": SubResource("Animation_70fnn"),
+&"pulse": SubResource("Animation_tix0w")
+}
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3mc18"]
 shader = ExtResource("7_an6al")
@@ -234,6 +322,26 @@ offset_right = 1921.0
 offset_bottom = 1080.0
 pivot_offset = Vector2(1599, -257)
 texture = ExtResource("2_lqxvj")
+
+[node name="Nebula" type="Node2D" parent="Stage"]
+
+[node name="DEBUGBG" type="ColorRect" parent="Stage/Nebula"]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+
+[node name="NoiseMixer" type="TextureRect" parent="Stage/Nebula"]
+material = SubResource("ShaderMaterial_70fnn")
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_lqxvj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stage/Nebula"]
+libraries = {
+&"": SubResource("AnimationLibrary_70fnn")
+}
+autoplay = "pulse"
 
 [node name="NeonOrbs" type="Node2D" parent="Stage"]
 

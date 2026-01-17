@@ -5,7 +5,7 @@ shader_type canvas_item;
 
 #include "includes/glint.gdshaderinc"
 
-uniform sampler2D star_noise;
+uniform sampler2D star_noise : repeat_enable;
 uniform float star_noise_resolution : hint_range(2., 1028., 1.) = 256.;
 uniform float star_noise_boost : hint_range(1.0, 2.0, .01) = 1.5;
 uniform vec4 bg_color: source_color = vec4(0.0);
