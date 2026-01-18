@@ -22,20 +22,20 @@ uniform float saturation = 0.850;
 
 uniform vec2 rotation = vec2(0.0);
 uniform vec2 scroll = vec2(0.0);
-/** 
+/**
 * Hollows out the stars some to prvent glitter
 */
 uniform float hollow_star: hint_range(0.0, 0.002, 0.00001) = 0.00036;
 
 void fragment() {
 	vec2 resolution = 5.0 / SCREEN_PIXEL_SIZE;
-	
+
 	vec2 realScroll = vec2(scroll.x + TIME * speed, scroll.y);
 	vec2 uv = FRAGCOORD.xy / resolution.xy + realScroll;
 	uv.y *= resolution.y / resolution.x;
 	vec3 dir = vec3(uv * zoom, 1.0);
 	float time = 1. * speed + .25;
-	
+
 	float a1 = .5 + rotation.x / resolution.x * 2.0;
 	float a2 = .8 * rotation.y / resolution.y * 2.0;
 	mat2 rot1 = mat2(vec2(cos(a1), sin(a1)), vec2(-sin(a1), cos(a1)));
@@ -46,7 +46,7 @@ void fragment() {
 	from += vec3(time * 2., time, -2.);
 	from.xz *= rot1;
 	from.xy *= rot2;
-	
+
 	float s = 0.1, fade = 1.0;
 	vec3 v = vec3(0.);
 	for (int r = 0; r < volsteps; r++) {
