@@ -18,7 +18,7 @@ uniform float mix_ratio : hint_range(-1.0, 2.0, 0.001) = 0.5;
 uniform bool use_mix_noise = false;
 uniform bool apply_subdistortion = false;
 uniform bool subdistortion_locality = true;
-uniform float subdistortion_locality_flicker : hint_range(0.0, 50, .001) = 0.0; 
+uniform float subdistortion_locality_flicker : hint_range(0.0, 50, .001) = 0.0;
 uniform float subdistortion_strength : hint_range(0.0, .3, .001) = .1;
 uniform int subdistortion_frames = 256;
 uniform float subdistortion_fps = 24.;
@@ -59,7 +59,7 @@ void fragment() {
 	if (apply_feedback) {
 		noise_rng[1] *= noise_rng[0];
 	}
-	
+
 	vec4 noise_color[2] = vec4[2] (
 		texture(noise0_gradient, vec2(noise_rng[0])),
 		texture(noise1_gradient, vec2(noise_rng[1]))

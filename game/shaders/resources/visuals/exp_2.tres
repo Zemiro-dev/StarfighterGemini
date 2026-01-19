@@ -1,0 +1,81 @@
+[gd_resource type="VisualShader" load_steps=9 format=3 uid="uid://bsvdrmpcykucd"]
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_f6seo"]
+constant = Color(0, 0.690196, 0.952941, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_acoso"]
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_eqslb"]
+noise = SubResource("FastNoiseLite_acoso")
+
+[sub_resource type="VisualShaderNodeTexture3D" id="VisualShaderNodeTexture3D_l6hs5"]
+expanded_output_ports = [0]
+texture = SubResource("NoiseTexture3D_eqslb")
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_f6seo"]
+expanded_output_ports = [0]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_acoso"]
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_eqslb"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_acoso"]
+input_name = "time"
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform sampler3D tex3d_frg_3;
+
+
+
+void fragment() {
+// ColorConstant:2
+	vec4 n_out2p0 = vec4(0.000000, 0.690196, 0.952941, 1.000000);
+
+
+// Input:4
+	vec2 n_out4p0 = UV;
+	float n_out4p1 = n_out4p0.r;
+	float n_out4p2 = n_out4p0.g;
+
+
+// FloatConstant:6
+	float n_out6p0 = 0.000000;
+
+
+// VectorCompose:5
+	vec3 n_out5p0 = vec3(n_out4p1, n_out4p2, n_out6p0);
+
+
+	vec4 n_out3p0;
+// Texture3D:3
+	n_out3p0 = texture(tex3d_frg_3, n_out5p0);
+	float n_out3p1 = n_out3p0.r;
+
+
+// Output:0
+	COLOR.rgb = vec3(n_out2p0.xyz);
+	COLOR.a = n_out3p1;
+
+
+}
+"
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(740, 140)
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorConstant_f6seo")
+nodes/fragment/2/position = Vector2(460, 40)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture3D_l6hs5")
+nodes/fragment/3/position = Vector2(280, 380)
+nodes/fragment/4/node = SubResource("VisualShaderNodeInput_f6seo")
+nodes/fragment/4/position = Vector2(-800, 160)
+nodes/fragment/5/node = SubResource("VisualShaderNodeVectorCompose_acoso")
+nodes/fragment/5/position = Vector2(-100, 380)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatConstant_eqslb")
+nodes/fragment/6/position = Vector2(-620, 420)
+nodes/fragment/7/node = SubResource("VisualShaderNodeInput_acoso")
+nodes/fragment/7/position = Vector2(-800, 40)
+nodes/fragment/connections = PackedInt32Array(6, 0, 5, 2, 4, 1, 5, 0, 4, 2, 5, 1, 5, 0, 3, 0, 3, 1, 0, 1, 2, 0, 0, 0)
