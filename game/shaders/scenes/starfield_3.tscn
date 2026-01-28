@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://urmdaqpqmnnp"]
+
+[ext_resource type="Shader" uid="uid://bhw3v5xd6khis" path="res://shaders/starfield_3.gdshader" id="1_igsu6"]
+[ext_resource type="Texture2D" uid="uid://dbxi47ukeatat" path="res://assets/shapes/circle_white_large.png" id="2_ncbi6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1t33c"]
+shader = ExtResource("1_igsu6")
+shader_parameter/iterations = 17
+shader_parameter/formuparam = 0.53
+shader_parameter/volsteps = 20
+shader_parameter/stepsize = 0.1
+shader_parameter/zoom = 0.8
+shader_parameter/tile = 0.85
+shader_parameter/speed = 0.01
+shader_parameter/brightness = 0.0015
+shader_parameter/darkmatter = 0.3
+shader_parameter/distfading = 0.73
+shader_parameter/saturation = 0.85
+shader_parameter/rotation = Vector2(0, 0)
+shader_parameter/scroll = Vector2(0, 0)
+shader_parameter/hollow_star = 0.00036
+
+[node name="Starfield3" type="TextureRect"]
+material = SubResource("ShaderMaterial_1t33c")
+offset_top = 4.0
+offset_right = 1921.0
+offset_bottom = 1077.0
+texture = ExtResource("2_ncbi6")

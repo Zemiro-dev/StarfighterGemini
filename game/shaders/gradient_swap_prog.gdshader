@@ -1,4 +1,5 @@
 shader_type canvas_item;
+#include "includes/glint.gdshaderinc"
 //https://godotshaders.com/shader/starfield/
 uniform sampler2D gradient_texture_low;
 uniform sampler2D gradient_texture_high;
@@ -14,5 +15,5 @@ void fragment() {
 		),
 		texture_color.a
 	);
-	COLOR = out_color;
+	COLOR = hdrout(out_color);
 }

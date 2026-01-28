@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://lp2g72a775sk"]
+
+[ext_resource type="Texture2D" uid="uid://crlic45tdcsjj" path="res://actors/enemies/resources/asteroid_beast_armored_gradient_high.tres" id="1_fbri0"]
+[ext_resource type="Shader" uid="uid://cs0xfte7rnnx8" path="res://shaders/gradient_swap_prog.gdshader" id="1_ojesn"]
+[ext_resource type="Texture2D" uid="uid://bdir7wwni1etj" path="res://actors/enemies/resources/asteroid_beast_armored_gradient_low.tres" id="2_ojesn"]
+
+[resource]
+shader = ExtResource("1_ojesn")
+shader_parameter/gradient_texture_low = ExtResource("2_ojesn")
+shader_parameter/gradient_texture_high = ExtResource("1_fbri0")
+shader_parameter/progress = 0.2

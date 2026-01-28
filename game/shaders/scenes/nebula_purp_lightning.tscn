@@ -1,0 +1,81 @@
+[gd_scene load_steps=18 format=3 uid="uid://bl1rggybkpt1w"]
+
+[ext_resource type="Shader" uid="uid://bmn7d1e8skxvl" path="res://shaders/noise_mixer.gdshader" id="1_4p1ln"]
+[ext_resource type="Texture2D" uid="uid://u4qi5whm31l6" path="res://shaders/resources/moody.tres" id="2_urx1h"]
+[ext_resource type="Texture2D" uid="uid://dr5oermxoaei4" path="res://shaders/resources/noise_cloud.tres" id="3_rybxj"]
+[ext_resource type="Texture2D" uid="uid://dy3wuubmevh4j" path="res://shaders/resources/purple_lightning.tres" id="4_vefb2"]
+[ext_resource type="Texture2D" uid="uid://ikin545tq4it" path="res://shaders/resources/noise_speckle.tres" id="5_osojr"]
+[ext_resource type="Texture2D" uid="uid://dbxi47ukeatat" path="res://assets/shapes/circle_white_large.png" id="6_v32vc"]
+
+[sub_resource type="Curve" id="Curve_tix0w"]
+_data = [Vector2(0.44921, 0), 0.0, 0.0, 0, 0, Vector2(0.521445, 0.988007), 0.0, 0.0, 0, 0, Vector2(0.571106, 0), -2.5615, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_70fnn"]
+curve = SubResource("Curve_tix0w")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tix0w"]
+frequency = 0.0063
+fractal_lacunarity = 5.455
+fractal_gain = 0.395
+fractal_weighted_strength = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_70fnn"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_tix0w")
+
+[sub_resource type="Curve" id="Curve_luyof"]
+_data = [Vector2(0.361045, 0.0294696), 0.0, 1.17804, 0, 0, Vector2(0.995475, 1), 1.0484, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tj5ml"]
+curve = SubResource("Curve_luyof")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_luyof"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tj5ml"]
+seamless = true
+noise = SubResource("FastNoiseLite_luyof")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tj5ml"]
+noise_type = 2
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ydj13"]
+seamless = true
+noise = SubResource("FastNoiseLite_tj5ml")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_70fnn"]
+shader = ExtResource("1_4p1ln")
+shader_parameter/noise0_offset = Vector2(0, 0)
+shader_parameter/noise1_offset = Vector2(0, 0)
+shader_parameter/noise0_speed = Vector2(0.09, 0)
+shader_parameter/noise1_speed = Vector2(0, 0)
+shader_parameter/zoom = 1.0
+shader_parameter/apply_feedback = true
+shader_parameter/use_mix_fn = true
+shader_parameter/mix_ratio = 0.5
+shader_parameter/use_mix_noise = true
+shader_parameter/apply_subdistortion = true
+shader_parameter/subdistortion_locality = true
+shader_parameter/subdistortion_locality_flicker = 0.05
+shader_parameter/subdistortion_strength = 0.005
+shader_parameter/subdistortion_frames = 256
+shader_parameter/subdistortion_fps = 24.0
+shader_parameter/noise0_texture = ExtResource("3_rybxj")
+shader_parameter/noise1_texture = ExtResource("5_osojr")
+shader_parameter/noise1_dist1 = SubResource("NoiseTexture2D_tj5ml")
+shader_parameter/noise1_dist2 = SubResource("NoiseTexture2D_ydj13")
+shader_parameter/noise0_gradient = ExtResource("2_urx1h")
+shader_parameter/noise1_gradient = ExtResource("4_vefb2")
+shader_parameter/noise0_curve = SubResource("CurveTexture_tj5ml")
+shader_parameter/mix_noise_texture = SubResource("NoiseTexture2D_70fnn")
+shader_parameter/mix_noise_curve = SubResource("CurveTexture_70fnn")
+
+[node name="NebulaPurpLightning" type="TextureRect"]
+visible = false
+material = SubResource("ShaderMaterial_70fnn")
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("6_v32vc")

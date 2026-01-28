@@ -1,0 +1,103 @@
+[gd_scene load_steps=20 format=3 uid="uid://b55f4myarw3iw"]
+
+[ext_resource type="Shader" uid="uid://c8ttfsrrmx6ct" path="res://shaders/noise_mixer_3D.gdshader" id="1_qsi11"]
+[ext_resource type="Texture2D" uid="uid://dbxi47ukeatat" path="res://assets/shapes/circle_white_large.png" id="2_mjch0"]
+
+[sub_resource type="Curve" id="Curve_tix0w"]
+_data = [Vector2(0.44921, 0), 0.0, 0.0, 0, 0, Vector2(0.521445, 0.988007), 0.0, 0.0, 0, 0, Vector2(0.571106, 0), -2.5615, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_70fnn"]
+curve = SubResource("Curve_tix0w")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tix0w"]
+frequency = 0.0063
+fractal_lacunarity = 5.455
+fractal_gain = 0.395
+fractal_weighted_strength = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_70fnn"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_tix0w")
+
+[sub_resource type="Curve" id="Curve_5id7d"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.237785, 0.503444), 0.0, 0.0, 0, 0, Vector2(0.429967, 0.00281775), 0.0, 0.0, 0, 0, Vector2(0.578176, 0.00688791), 0.0, 0.0, 0, 0, Vector2(0.822476, 0.98779), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="CurveTexture" id="CurveTexture_pme7f"]
+curve = SubResource("Curve_5id7d")
+
+[sub_resource type="Gradient" id="Gradient_ghjbf"]
+colors = PackedColorArray(0.212, 0.212, 0.204, 0, 0.212, 0.212, 0.204, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1jd2g"]
+gradient = SubResource("Gradient_ghjbf")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ydj13"]
+frequency = 0.0487
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_5id7d"]
+seamless = true
+seamless_blend_skirt = 0.875
+noise = SubResource("FastNoiseLite_ydj13")
+
+[sub_resource type="Curve" id="Curve_1jd2g"]
+_data = [Vector2(0.410835, 0), 0.0, -0.771937, 0, 0, Vector2(0.424379, 0.592251), 0.0, 0.0, 0, 0, Vector2(0.444695, 0), 2.41488, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_82x64"]
+curve = SubResource("Curve_1jd2g")
+
+[sub_resource type="Gradient" id="Gradient_ydj13"]
+colors = PackedColorArray(0.211765, 0.211765, 0.203922, 1, 4, 0.145, 15, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5id7d"]
+gradient = SubResource("Gradient_ydj13")
+use_hdr = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1jd2g"]
+noise_type = 3
+frequency = 0.127
+domain_warp_fractal_gain = 1.36
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_82x64"]
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_1jd2g")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5id7d"]
+shader = ExtResource("1_qsi11")
+shader_parameter/noise0_offset = Vector2(0, 0)
+shader_parameter/noise1_offset = Vector2(0, 0)
+shader_parameter/noise0_speed = Vector2(0.1, 0)
+shader_parameter/noise1_speed = Vector2(0, 0)
+shader_parameter/zoom = 1.0
+shader_parameter/apply_feedback = true
+shader_parameter/use_mix_fn = true
+shader_parameter/mix_ratio = 0.02
+shader_parameter/use_mix_noise = true
+shader_parameter/apply_subdistortion = false
+shader_parameter/subdistortion_locality = false
+shader_parameter/subdistortion_locality_flicker = 0.0
+shader_parameter/subdistortion_strength = 0.1
+shader_parameter/subdistortion_frames = 256
+shader_parameter/subdistortion_fps = 24.0
+shader_parameter/noise0_animation_speed = 0.17
+shader_parameter/noise1_animation_speed = 2.833
+shader_parameter/noise0_texture = SubResource("NoiseTexture3D_5id7d")
+shader_parameter/noise1_texture = SubResource("NoiseTexture3D_82x64")
+shader_parameter/noise0_gradient = SubResource("GradientTexture1D_1jd2g")
+shader_parameter/noise1_gradient = SubResource("GradientTexture1D_5id7d")
+shader_parameter/noise0_curve = SubResource("CurveTexture_pme7f")
+shader_parameter/noise1_curve = SubResource("CurveTexture_82x64")
+shader_parameter/mix_noise_texture = SubResource("NoiseTexture2D_70fnn")
+shader_parameter/mix_noise_curve = SubResource("CurveTexture_70fnn")
+
+[node name="NebulaNew3D" type="TextureRect"]
+visible = false
+material = SubResource("ShaderMaterial_5id7d")
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_mjch0")
+flip_v = true

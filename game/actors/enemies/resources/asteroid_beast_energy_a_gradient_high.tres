@@ -1,0 +1,9 @@
+[gd_resource type="GradientTexture1D" load_steps=2 format=3 uid="uid://dqeilhyp4xqfd"]
+
+[sub_resource type="Gradient" id="Gradient_ajhac"]
+offsets = PackedFloat32Array(0.00414079, 1)
+colors = PackedColorArray(1.5, 1.5, 0.192, 1, 1.5, 0.161, 0.208, 1)
+
+[resource]
+gradient = SubResource("Gradient_ajhac")
+use_hdr = true

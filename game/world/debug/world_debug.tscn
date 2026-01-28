@@ -1,27 +1,18 @@
-[gd_scene load_steps=126 format=3 uid="uid://da4ta4o721exf"]
+[gd_scene load_steps=61 format=3 uid="uid://da4ta4o721exf"]
 
 [ext_resource type="Script" uid="uid://dj8f28g3mmv8i" path="res://world/debug/world_debug.gd" id="1_0cob0"]
 [ext_resource type="Texture2D" uid="uid://bbq0js4b3j7xu" path="res://assets/shapes/circle_blue_2tone_large.png" id="1_44sa8"]
-[ext_resource type="Shader" uid="uid://cfiansss2vfpv" path="res://shaders/starfield_1.gdshader" id="1_sxhbq"]
 [ext_resource type="Texture2D" uid="uid://dbxi47ukeatat" path="res://assets/shapes/circle_white_large.png" id="2_lqxvj"]
 [ext_resource type="Shader" uid="uid://cpxbvoj3jk5m8" path="res://shaders/robot_eye.gdshader" id="3_an6al"]
 [ext_resource type="Texture2D" uid="uid://dt55vtretkigv" path="res://assets/shapes/circle_blue_2tone_glass_large.png" id="3_lsr55"]
+[ext_resource type="PackedScene" uid="uid://cii4yhnv0ln4b" path="res://shaders/scenes/noise_exp_1.tscn" id="4_1t33c"]
 [ext_resource type="Texture2D" uid="uid://bgm866x2bvwdt" path="res://assets/robot/robot_eye.png" id="4_3mc18"]
 [ext_resource type="Texture2D" uid="uid://dmdqxyd6jhfr5" path="res://assets/shapes/circle_ffffff_large.png" id="4_7wlep"]
 [ext_resource type="Material" uid="uid://4rph6123p6uq" path="res://shaders/resources/wibbly_material.tres" id="4_eldjb"]
-[ext_resource type="Shader" uid="uid://bhw3v5xd6khis" path="res://shaders/starfield_3.gdshader" id="4_v3mey"]
 [ext_resource type="Shader" uid="uid://dyxv2wclt81tg" path="res://shaders/starfield_starsonly.gdshader" id="5_1t33c"]
-[ext_resource type="Shader" uid="uid://bmn7d1e8skxvl" path="res://shaders/noise_mixer.gdshader" id="6_tix0w"]
 [ext_resource type="Shader" uid="uid://d1qb4jskectyo" path="res://shaders/color_swap_prog.gdshader" id="7_an6al"]
-[ext_resource type="Texture2D" uid="uid://u4qi5whm31l6" path="res://shaders/resources/moody.tres" id="7_l5pim"]
-[ext_resource type="Texture2D" uid="uid://dr5oermxoaei4" path="res://shaders/resources/noise_cloud.tres" id="8_luyof"]
 [ext_resource type="Texture2D" uid="uid://d3qvbvfka6f2f" path="res://assets/ui/health_bar.png" id="9_aq1p2"]
-[ext_resource type="Texture2D" uid="uid://dy3wuubmevh4j" path="res://shaders/resources/purple_lightning.tres" id="9_luyof"]
-[ext_resource type="Texture2D" uid="uid://ikin545tq4it" path="res://shaders/resources/noise_speckle.tres" id="9_tj5ml"]
 [ext_resource type="Texture2D" uid="uid://beeeba5bogag7" path="res://assets/shapes/yellow_diamond_particle.png" id="10_r0vbx"]
-[ext_resource type="Shader" uid="uid://cs0xfte7rnnx8" path="res://shaders/gradient_swap_prog.gdshader" id="11_27gb1"]
-[ext_resource type="Shader" uid="uid://c8ttfsrrmx6ct" path="res://shaders/noise_mixer_3D.gdshader" id="11_ydj13"]
-[ext_resource type="Shader" uid="uid://dvnympubq1w1c" path="res://shaders/noise_exp_1.gdshader" id="12_5id7d"]
 [ext_resource type="Texture2D" uid="uid://16wlwkn7g2xc" path="res://actors/player/resources/player_gradient_high.tres" id="12_iodkf"]
 [ext_resource type="Texture2D" uid="uid://xtisnn3t5jr2" path="res://assets/player/core.png" id="12_lo56x"]
 [ext_resource type="Texture2D" uid="uid://c7dvlc535fux2" path="res://actors/player/resources/player_gradient_low.tres" id="13_sxhbq"]
@@ -31,39 +22,21 @@
 [ext_resource type="Texture2D" uid="uid://bsem521pm0ryh" path="res://assets/enemies/asteroid_beast/asteroid_beast_stalk_lower.png" id="19_fdpbo"]
 [ext_resource type="Texture2D" uid="uid://bv3pj4ag8p0e6" path="res://assets/enemies/asteroid_beast/asteroid_beast_stalk_cap.png" id="20_0cob0"]
 [ext_resource type="Shader" uid="uid://b1v8l4mn65t1e" path="res://shaders/wibbly.gdshader" id="21_fdpbo"]
+[ext_resource type="Material" uid="uid://c0xt8pljwmsw0" path="res://actors/enemies/resources/asteroid_beast_tendon_shader_material.tres" id="22_7g11o"]
+[ext_resource type="Texture2D" uid="uid://fku045dhle" path="res://assets/enemies/asteroid_beast/asteroid_beast_tendon_a.png" id="23_1jd2g"]
+[ext_resource type="Texture2D" uid="uid://c1211cel36anj" path="res://assets/enemies/asteroid_beast/asteroid_beast_tendon_b.png" id="24_82x64"]
+[ext_resource type="Material" uid="uid://lp2g72a775sk" path="res://actors/enemies/resources/asteroid_beast_armored_shader_material.tres" id="24_ghjbf"]
+[ext_resource type="Texture2D" uid="uid://bqvqp533lcb05" path="res://assets/enemies/asteroid_beast/asteroid_beast_scale_a.png" id="26_t3a8v"]
+[ext_resource type="Texture2D" uid="uid://vur7uhyn7by" path="res://assets/enemies/asteroid_beast/asteroid_beast_scale_b.png" id="27_67ikf"]
+[ext_resource type="Texture2D" uid="uid://c18rhwvkti25c" path="res://assets/enemies/asteroid_beast/asteroid_beast_fin_a.png" id="28_jl7ui"]
+[ext_resource type="Texture2D" uid="uid://b674eu2imajpi" path="res://assets/enemies/asteroid_beast/asteroid_beast_fin_b.png" id="29_0bnsj"]
+[ext_resource type="Material" uid="uid://mrmdmrmv1t5n" path="res://actors/enemies/resources/asteroid_beast_weakspot_shader_material.tres" id="29_82x64"]
+[ext_resource type="Texture2D" uid="uid://bbtxwoos1v1aq" path="res://assets/enemies/asteroid_beast/asteroid_beast_weakspot_a.png" id="30_1h5nw"]
 [ext_resource type="Script" uid="uid://cdncdg7hcl25m" path="res://ui/labels/fps.gd" id="30_tj5ml"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8o1ke"]
-shader = ExtResource("1_sxhbq")
-shader_parameter/iterations = 12
-shader_parameter/offset = Vector2(1.21029, 0)
-shader_parameter/time = -1.615
-shader_parameter/brightness = 0.001
-shader_parameter/darkmatter = 0.1
-shader_parameter/distfading = 0.56
-shader_parameter/saturation = 0.9
-shader_parameter/star_brightness = 0.0115
-shader_parameter/star_hsv_adjust = Color(0.113333, 0, 0.2, 1)
-shader_parameter/nebula_hsv_adjust = Color(0.25, 0, 0.025, 1)
-shader_parameter/zoom = 1.0
-shader_parameter/speed2 = 0.2
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1t33c"]
-shader = ExtResource("4_v3mey")
-shader_parameter/iterations = 17
-shader_parameter/formuparam = 0.53
-shader_parameter/volsteps = 20
-shader_parameter/stepsize = 0.1
-shader_parameter/zoom = 0.8
-shader_parameter/tile = 0.85
-shader_parameter/speed = 0.01
-shader_parameter/brightness = 0.0015
-shader_parameter/darkmatter = 0.3
-shader_parameter/distfading = 0.73
-shader_parameter/saturation = 0.85
-shader_parameter/rotation = Vector2(0, 0)
-shader_parameter/scroll = Vector2(0, 0)
-shader_parameter/hollow_star = 0.00036
+[ext_resource type="Texture2D" uid="uid://bhbsb3ofrvc6a" path="res://assets/enemies/asteroid_beast/asteroid_beast_scale_spike_a.png" id="31_f8emp"]
+[ext_resource type="Material" uid="uid://byx4eobrlkwum" path="res://actors/enemies/resources/asteroid_beast_energy_a_shader_material.tres" id="32_7g11o"]
+[ext_resource type="Texture2D" uid="uid://cwpcljmd2jg6e" path="res://assets/enemies/asteroid_beast/asteroid_beast_energy_talon_lower.png" id="32_oai4s"]
+[ext_resource type="Texture2D" uid="uid://c36817fty0sew" path="res://assets/enemies/asteroid_beast/asteroid_beast_energy_talon_upper.png" id="33_nq3s0"]
 
 [sub_resource type="Gradient" id="Gradient_1t33c"]
 offsets = PackedFloat32Array(0.592705, 0.662614, 0.762918, 0.844985, 1)
@@ -103,409 +76,6 @@ shader_parameter/star_blink_mod = 10.0
 shader_parameter/star_blink_variance = 0.03
 shader_parameter/base_star_bright_min = 0.1
 shader_parameter/base_star_bright_max = 1.7
-
-[sub_resource type="Curve" id="Curve_tj5ml"]
-_data = [Vector2(0.19279, 0.139305), 0.0, 0.0, 0, 0, Vector2(0.42163, 0.501498), 0.0, 0.0, 0, 0, Vector2(0.62069, 0.298981), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_ydj13"]
-curve = SubResource("Curve_tj5ml")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_5id7d"]
-seed = 270
-frequency = 0.019
-fractal_lacunarity = 5.455
-fractal_gain = 0.395
-fractal_weighted_strength = 1.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pme7f"]
-width = 1024
-height = 1024
-noise = SubResource("FastNoiseLite_5id7d")
-
-[sub_resource type="Curve" id="Curve_ghjbf"]
-_data = [Vector2(0.205329, 0), 0.0, 1.17804, 0, 0, Vector2(1, 1), 1.0484, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_1jd2g"]
-curve = SubResource("Curve_ghjbf")
-
-[sub_resource type="Gradient" id="Gradient_82x64"]
-offsets = PackedFloat32Array(0, 0.765101)
-colors = PackedColorArray(0, 0, 0, 0, 0.113725, 0.113725, 0.109804, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_7g11o"]
-gradient = SubResource("Gradient_82x64")
-use_hdr = true
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_t3a8v"]
-seed = 445
-frequency = 0.0039
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_67ikf"]
-width = 2048
-height = 2048
-seamless = true
-noise = SubResource("FastNoiseLite_t3a8v")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_jl7ui"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0bnsj"]
-seamless = true
-noise = SubResource("FastNoiseLite_jl7ui")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_1h5nw"]
-noise_type = 2
-fractal_type = 2
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_f8emp"]
-seamless = true
-noise = SubResource("FastNoiseLite_1h5nw")
-
-[sub_resource type="Gradient" id="Gradient_oai4s"]
-offsets = PackedFloat32Array(0, 0.298765, 1)
-colors = PackedColorArray(0.212, 0.212, 0.204, 0, 0.212, 0.212, 0.204, 0.331, 0, 0.376, 10, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_nq3s0"]
-gradient = SubResource("Gradient_oai4s")
-use_hdr = true
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_iry6d"]
-seed = 425
-frequency = 0.023
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4xgwv"]
-width = 2048
-height = 2048
-seamless = true
-noise = SubResource("FastNoiseLite_iry6d")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2c057"]
-shader = ExtResource("6_tix0w")
-shader_parameter/noise0_offset = Vector2(0.895, 0)
-shader_parameter/noise1_offset = Vector2(0.375, 0)
-shader_parameter/noise0_speed = Vector2(0.1, 0)
-shader_parameter/noise1_speed = Vector2(0, 0)
-shader_parameter/zoom = 1.0
-shader_parameter/apply_feedback = true
-shader_parameter/use_mix_fn = true
-shader_parameter/mix_ratio = 1.0
-shader_parameter/use_mix_noise = true
-shader_parameter/apply_subdistortion = true
-shader_parameter/subdistortion_locality = true
-shader_parameter/subdistortion_locality_flicker = 0.05
-shader_parameter/subdistortion_strength = 0.005
-shader_parameter/subdistortion_frames = 256
-shader_parameter/subdistortion_fps = 24.0
-shader_parameter/noise0_texture = SubResource("NoiseTexture2D_67ikf")
-shader_parameter/noise1_texture = SubResource("NoiseTexture2D_4xgwv")
-shader_parameter/noise1_dist1 = SubResource("NoiseTexture2D_0bnsj")
-shader_parameter/noise1_dist2 = SubResource("NoiseTexture2D_f8emp")
-shader_parameter/noise0_gradient = SubResource("GradientTexture1D_7g11o")
-shader_parameter/noise1_gradient = SubResource("GradientTexture1D_nq3s0")
-shader_parameter/noise0_curve = SubResource("CurveTexture_1jd2g")
-shader_parameter/mix_noise_texture = SubResource("NoiseTexture2D_pme7f")
-shader_parameter/mix_noise_curve = SubResource("CurveTexture_ydj13")
-
-[sub_resource type="Curve" id="Curve_tix0w"]
-_data = [Vector2(0.44921, 0), 0.0, 0.0, 0, 0, Vector2(0.521445, 0.988007), 0.0, 0.0, 0, 0, Vector2(0.571106, 0), -2.5615, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_70fnn"]
-curve = SubResource("Curve_tix0w")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_tix0w"]
-frequency = 0.0063
-fractal_lacunarity = 5.455
-fractal_gain = 0.395
-fractal_weighted_strength = 1.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_70fnn"]
-width = 1024
-height = 1024
-noise = SubResource("FastNoiseLite_tix0w")
-
-[sub_resource type="Curve" id="Curve_luyof"]
-_data = [Vector2(0.361045, 0.0294696), 0.0, 1.17804, 0, 0, Vector2(0.995475, 1), 1.0484, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_tj5ml"]
-curve = SubResource("Curve_luyof")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_luyof"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tj5ml"]
-seamless = true
-noise = SubResource("FastNoiseLite_luyof")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_tj5ml"]
-noise_type = 2
-fractal_type = 2
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ydj13"]
-seamless = true
-noise = SubResource("FastNoiseLite_tj5ml")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_70fnn"]
-shader = ExtResource("6_tix0w")
-shader_parameter/noise0_offset = Vector2(0, 0)
-shader_parameter/noise1_offset = Vector2(0, 0)
-shader_parameter/noise0_speed = Vector2(0.09, 0)
-shader_parameter/noise1_speed = Vector2(0, 0)
-shader_parameter/zoom = 1.0
-shader_parameter/apply_feedback = true
-shader_parameter/use_mix_fn = true
-shader_parameter/mix_ratio = 0.5
-shader_parameter/use_mix_noise = true
-shader_parameter/apply_subdistortion = true
-shader_parameter/subdistortion_locality = true
-shader_parameter/subdistortion_locality_flicker = 0.05
-shader_parameter/subdistortion_strength = 0.005
-shader_parameter/subdistortion_frames = 256
-shader_parameter/subdistortion_fps = 24.0
-shader_parameter/noise0_texture = ExtResource("8_luyof")
-shader_parameter/noise1_texture = ExtResource("9_tj5ml")
-shader_parameter/noise1_dist1 = SubResource("NoiseTexture2D_tj5ml")
-shader_parameter/noise1_dist2 = SubResource("NoiseTexture2D_ydj13")
-shader_parameter/noise0_gradient = ExtResource("7_l5pim")
-shader_parameter/noise1_gradient = ExtResource("9_luyof")
-shader_parameter/noise0_curve = SubResource("CurveTexture_tj5ml")
-shader_parameter/mix_noise_texture = SubResource("NoiseTexture2D_70fnn")
-shader_parameter/mix_noise_curve = SubResource("CurveTexture_70fnn")
-
-[sub_resource type="Curve" id="Curve_ydj13"]
-_data = [Vector2(0.399687, 0.119355), 0.0, 0.0, 0, 0, Vector2(0.507837, 0.923754), 0.0, 0.0, 0, 0, Vector2(0.684953, 0.298534), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_5id7d"]
-curve = SubResource("Curve_ydj13")
-
-[sub_resource type="Curve" id="Curve_pme7f"]
-_data = [Vector2(0, 0), 0.0, 1.17804, 0, 0, Vector2(1, 1), 1.0484, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_ghjbf"]
-curve = SubResource("Curve_pme7f")
-
-[sub_resource type="Gradient" id="Gradient_1jd2g"]
-offsets = PackedFloat32Array(0, 0.765101)
-colors = PackedColorArray(0, 0, 0, 0, 0, 0.376471, 0.94902, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_82x64"]
-gradient = SubResource("Gradient_1jd2g")
-use_hdr = true
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_7g11o"]
-seed = 365
-frequency = 0.0032
-fractal_lacunarity = 2.405
-fractal_gain = 0.57
-fractal_weighted_strength = 1.0
-domain_warp_enabled = true
-domain_warp_amplitude = 39.15
-domain_warp_fractal_type = 2
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t3a8v"]
-seamless = true
-seamless_blend_skirt = 1.0
-noise = SubResource("FastNoiseLite_7g11o")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0bnsj"]
-shader = ExtResource("6_tix0w")
-shader_parameter/noise0_offset = Vector2(0, 0)
-shader_parameter/noise1_offset = Vector2(0, 0)
-shader_parameter/noise0_speed = Vector2(0.5, 0)
-shader_parameter/noise1_speed = Vector2(0, 0)
-shader_parameter/zoom = 1.0
-shader_parameter/apply_feedback = true
-shader_parameter/use_mix_fn = true
-shader_parameter/mix_ratio = 4.75e-08
-shader_parameter/use_mix_noise = false
-shader_parameter/apply_subdistortion = false
-shader_parameter/subdistortion_locality = true
-shader_parameter/subdistortion_locality_flicker = 0.0
-shader_parameter/subdistortion_strength = 0.1
-shader_parameter/subdistortion_frames = 256
-shader_parameter/subdistortion_fps = 24.025
-shader_parameter/noise0_texture = SubResource("NoiseTexture2D_t3a8v")
-shader_parameter/noise0_gradient = SubResource("GradientTexture1D_82x64")
-shader_parameter/noise0_curve = SubResource("CurveTexture_ghjbf")
-shader_parameter/mix_noise_curve = SubResource("CurveTexture_5id7d")
-
-[sub_resource type="Curve" id="Curve_5id7d"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.237785, 0.503444), 0.0, 0.0, 0, 0, Vector2(0.429967, 0.00281775), 0.0, 0.0, 0, 0, Vector2(0.578176, 0.00688791), 0.0, 0.0, 0, 0, Vector2(0.822476, 0.98779), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 6
-
-[sub_resource type="CurveTexture" id="CurveTexture_pme7f"]
-curve = SubResource("Curve_5id7d")
-
-[sub_resource type="Gradient" id="Gradient_ghjbf"]
-colors = PackedColorArray(0.212, 0.212, 0.204, 0, 0.212, 0.212, 0.204, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_1jd2g"]
-gradient = SubResource("Gradient_ghjbf")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ydj13"]
-frequency = 0.0487
-
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_5id7d"]
-seamless = true
-seamless_blend_skirt = 0.875
-noise = SubResource("FastNoiseLite_ydj13")
-
-[sub_resource type="Curve" id="Curve_1jd2g"]
-_data = [Vector2(0.410835, 0), 0.0, -0.771937, 0, 0, Vector2(0.424379, 0.592251), 0.0, 0.0, 0, 0, Vector2(0.444695, 0), 2.41488, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_82x64"]
-curve = SubResource("Curve_1jd2g")
-
-[sub_resource type="Gradient" id="Gradient_ydj13"]
-colors = PackedColorArray(0.211765, 0.211765, 0.203922, 1, 4, 0.145, 15, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_5id7d"]
-gradient = SubResource("Gradient_ydj13")
-use_hdr = true
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_1jd2g"]
-noise_type = 3
-frequency = 0.127
-domain_warp_fractal_gain = 1.36
-
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_82x64"]
-seamless = true
-seamless_blend_skirt = 1.0
-noise = SubResource("FastNoiseLite_1jd2g")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5id7d"]
-shader = ExtResource("11_ydj13")
-shader_parameter/noise0_offset = Vector2(0, 0)
-shader_parameter/noise1_offset = Vector2(0, 0)
-shader_parameter/noise0_speed = Vector2(0.1, 0)
-shader_parameter/noise1_speed = Vector2(0, 0)
-shader_parameter/zoom = 1.0
-shader_parameter/apply_feedback = true
-shader_parameter/use_mix_fn = true
-shader_parameter/mix_ratio = 0.02
-shader_parameter/use_mix_noise = true
-shader_parameter/apply_subdistortion = false
-shader_parameter/subdistortion_locality = false
-shader_parameter/subdistortion_locality_flicker = 0.0
-shader_parameter/subdistortion_strength = 0.1
-shader_parameter/subdistortion_frames = 256
-shader_parameter/subdistortion_fps = 24.0
-shader_parameter/noise0_animation_speed = 0.17
-shader_parameter/noise1_animation_speed = 2.833
-shader_parameter/noise0_texture = SubResource("NoiseTexture3D_5id7d")
-shader_parameter/noise1_texture = SubResource("NoiseTexture3D_82x64")
-shader_parameter/noise0_gradient = SubResource("GradientTexture1D_1jd2g")
-shader_parameter/noise1_gradient = SubResource("GradientTexture1D_5id7d")
-shader_parameter/noise0_curve = SubResource("CurveTexture_pme7f")
-shader_parameter/noise1_curve = SubResource("CurveTexture_82x64")
-shader_parameter/mix_noise_texture = SubResource("NoiseTexture2D_70fnn")
-shader_parameter/mix_noise_curve = SubResource("CurveTexture_70fnn")
-
-[sub_resource type="Curve" id="Curve_82x64"]
-_data = [Vector2(0.230207, 0), 0.0, 0.0, 0, 0, Vector2(0.991304, 0.967089), 1.85127, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_7g11o"]
-curve = SubResource("Curve_82x64")
-
-[sub_resource type="Curve" id="Curve_7g11o"]
-_data = [Vector2(0.475362, 0), 0.0, 1.31822, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_t3a8v"]
-curve = SubResource("Curve_7g11o")
-
-[sub_resource type="Curve" id="Curve_t3a8v"]
-_data = [Vector2(0.594761, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 3.93652, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_67ikf"]
-curve = SubResource("Curve_t3a8v")
-
-[sub_resource type="Gradient" id="Gradient_jl7ui"]
-offsets = PackedFloat32Array(0, 0.146832)
-colors = PackedColorArray(0.596078, 0.596078, 0.568627, 1, 5, 0.596, 10, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_0bnsj"]
-gradient = SubResource("Gradient_jl7ui")
-use_hdr = true
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_f8emp"]
-frequency = 0.1118
-fractal_gain = 0.405
-domain_warp_type = 1
-domain_warp_fractal_type = 0
-
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_oai4s"]
-width = 128
-height = 128
-depth = 8
-seamless = true
-seamless_blend_skirt = 0.62
-noise = SubResource("FastNoiseLite_f8emp")
-
-[sub_resource type="Gradient" id="Gradient_5id7d"]
-offsets = PackedFloat32Array(0, 0.404946)
-colors = PackedColorArray(0.212, 0.212, 0.204, 0, 0.211765, 0.211765, 0.203922, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_pme7f"]
-gradient = SubResource("Gradient_5id7d")
-use_hdr = true
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_pme7f"]
-frequency = 0.0075
-domain_warp_frequency = 0.015
-domain_warp_fractal_type = 0
-
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_ghjbf"]
-width = 128
-height = 128
-depth = 16
-seamless = true
-seamless_blend_skirt = 0.83
-noise = SubResource("FastNoiseLite_pme7f")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ghjbf"]
-seed = 5
-frequency = 0.0147
-domain_warp_frequency = 0.015
-domain_warp_fractal_type = 0
-
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_1jd2g"]
-width = 128
-height = 128
-depth = 16
-seamless = true
-seamless_blend_skirt = 0.83
-noise = SubResource("FastNoiseLite_ghjbf")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pme7f"]
-shader = ExtResource("12_5id7d")
-shader_parameter/zoom = 1.0
-shader_parameter/feedback_override = 0.1
-shader_parameter/mix_value = 0.5
-shader_parameter/offset0 = Vector2(0.97, 0)
-shader_parameter/speed0 = Vector2(0.05, 0)
-shader_parameter/animation_speed0 = 0.1
-shader_parameter/_curve0 = SubResource("CurveTexture_7g11o")
-shader_parameter/_gradient0 = SubResource("GradientTexture1D_pme7f")
-shader_parameter/_noise0 = SubResource("NoiseTexture3D_ghjbf")
-shader_parameter/offset1 = Vector2(0, 0)
-shader_parameter/speed1 = Vector2(0.05, 0)
-shader_parameter/animation_speed1 = 0.5
-shader_parameter/_curve1 = SubResource("CurveTexture_t3a8v")
-shader_parameter/_gradient1 = SubResource("GradientTexture1D_pme7f")
-shader_parameter/_noise1 = SubResource("NoiseTexture3D_1jd2g")
-shader_parameter/energy_offset0 = Vector2(0, 0)
-shader_parameter/energy_speed0 = Vector2(0.05, 0)
-shader_parameter/energy_animation_speed0 = 1.0
-shader_parameter/_energy_curve0 = SubResource("CurveTexture_67ikf")
-shader_parameter/_energy_gradient0 = SubResource("GradientTexture1D_0bnsj")
-shader_parameter/_energy_noise0 = SubResource("NoiseTexture3D_oai4s")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3mc18"]
 shader = ExtResource("7_an6al")
@@ -557,14 +127,35 @@ shader_parameter/progress_style = 0
 shader_parameter/progress = 0.595
 shader_parameter/threshold = 0.005
 
+[sub_resource type="Shader" id="Shader_1jd2g"]
+code = "shader_type canvas_item;
+//https://godotshaders.com/shader/starfield/
+uniform sampler2D gradient_texture_low;
+uniform sampler2D gradient_texture_high;
+uniform float progress : hint_range(0.0, 1.0, 0.001) = 0.0;
+
+void fragment() {
+	vec4 texture_color = texture(TEXTURE, UV);
+	vec4 out_color = vec4(
+		mix(
+			texture(gradient_texture_low, vec2(texture_color.r, texture_color.r)).rgb,
+			texture(gradient_texture_high, vec2(texture_color.r, texture_color.r)).rgb,
+			progress
+		),
+		texture_color.a
+	);
+	COLOR = out_color;
+}
+"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6ptfx"]
-shader = ExtResource("11_27gb1")
+shader = SubResource("Shader_1jd2g")
 shader_parameter/gradient_texture_low = ExtResource("13_sxhbq")
 shader_parameter/gradient_texture_high = ExtResource("12_iodkf")
 shader_parameter/progress = 0.8
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x6moa"]
-shader = ExtResource("11_27gb1")
+shader = SubResource("Shader_1jd2g")
 shader_parameter/gradient_texture_low = ExtResource("13_sxhbq")
 shader_parameter/gradient_texture_high = ExtResource("12_iodkf")
 shader_parameter/progress = 0.15
@@ -615,22 +206,6 @@ script = ExtResource("1_0cob0")
 
 [node name="Stage" type="Node2D" parent="."]
 
-[node name="Starfield1" type="TextureRect" parent="Stage"]
-visible = false
-material = SubResource("ShaderMaterial_8o1ke")
-offset_top = 4.0
-offset_right = 1921.0
-offset_bottom = 1077.0
-texture = ExtResource("2_lqxvj")
-
-[node name="Starfield3" type="TextureRect" parent="Stage"]
-visible = false
-material = SubResource("ShaderMaterial_1t33c")
-offset_top = 4.0
-offset_right = 1921.0
-offset_bottom = 1077.0
-texture = ExtResource("2_lqxvj")
-
 [node name="StarfieldStarsOnly" type="TextureRect" parent="Stage"]
 material = SubResource("ShaderMaterial_tix0w")
 custom_minimum_size = Vector2(1920, 1080)
@@ -642,46 +217,7 @@ texture = ExtResource("2_lqxvj")
 
 [node name="Nebula" type="Node2D" parent="Stage"]
 
-[node name="DEBUGBG" type="ColorRect" parent="Stage/Nebula"]
-visible = false
-custom_minimum_size = Vector2(1920, 1080)
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.0196078, 0.0196078, 0.0196078, 1)
-
-[node name="NebulaBlueLightning" type="TextureRect" parent="Stage/Nebula"]
-visible = false
-material = SubResource("ShaderMaterial_2c057")
-offset_right = 1920.0
-offset_bottom = 1080.0
-texture = ExtResource("2_lqxvj")
-
-[node name="NebulaPurpLightning" type="TextureRect" parent="Stage/Nebula"]
-visible = false
-material = SubResource("ShaderMaterial_70fnn")
-offset_right = 1920.0
-offset_bottom = 1080.0
-texture = ExtResource("2_lqxvj")
-
-[node name="NebulaNew" type="TextureRect" parent="Stage/Nebula"]
-visible = false
-material = SubResource("ShaderMaterial_0bnsj")
-offset_right = 1920.0
-offset_bottom = 1080.0
-texture = ExtResource("2_lqxvj")
-
-[node name="NebulaNew3D" type="TextureRect" parent="Stage/Nebula"]
-visible = false
-material = SubResource("ShaderMaterial_5id7d")
-offset_right = 1920.0
-offset_bottom = 1080.0
-texture = ExtResource("2_lqxvj")
-flip_v = true
-
-[node name="ColorRect" type="ColorRect" parent="Stage/Nebula"]
-material = SubResource("ShaderMaterial_pme7f")
-offset_right = 1920.0
-offset_bottom = 1080.0
+[node name="NoiseExp1" parent="Stage/Nebula" instance=ExtResource("4_1t33c")]
 
 [node name="NeonOrbs" type="Node2D" parent="Stage"]
 visible = false
@@ -772,7 +308,6 @@ rotation = 1.57081
 texture = ExtResource("1_44sa8")
 
 [node name="Actors" type="Node2D" parent="Stage"]
-visible = false
 
 [node name="Player" type="Node2D" parent="Stage/Actors"]
 position = Vector2(385, 716)
@@ -792,10 +327,10 @@ position = Vector2(0, 57)
 texture = ExtResource("14_x6moa")
 
 [node name="AsteroidBeast" type="Node2D" parent="Stage/Actors"]
-position = Vector2(305, 496)
+position = Vector2(960, 540)
 
 [node name="Stalk" type="Node2D" parent="Stage/Actors/AsteroidBeast"]
-position = Vector2(705, 364)
+position = Vector2(1727, 113)
 
 [node name="Core" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Stalk"]
 material = ExtResource("4_eldjb")
@@ -813,18 +348,18 @@ material = ExtResource("17_k1c70")
 position = Vector2(0, -150)
 texture = ExtResource("20_0cob0")
 
-[node name="Shell" type="Sprite2D" parent="Stage/Actors/AsteroidBeast"]
+[node name="Shell" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Stalk"]
 material = ExtResource("17_k1c70")
-position = Vector2(705, 696)
+position = Vector2(0, 332)
 texture = ExtResource("17_x6moa")
 
-[node name="StalkEnergyBeams" type="Node2D" parent="Stage/Actors/AsteroidBeast"]
-position = Vector2(705, 105)
+[node name="StalkEnergyBeams" type="Node2D" parent="Stage/Actors/AsteroidBeast/Stalk"]
+position = Vector2(0, -259)
 
-[node name="Laser" type="Node2D" parent="Stage/Actors/AsteroidBeast/StalkEnergyBeams"]
+[node name="Laser" type="Node2D" parent="Stage/Actors/AsteroidBeast/Stalk/StalkEnergyBeams"]
 rotation = -2.35619
 
-[node name="Line2D" type="Line2D" parent="Stage/Actors/AsteroidBeast/StalkEnergyBeams/Laser"]
+[node name="Line2D" type="Line2D" parent="Stage/Actors/AsteroidBeast/Stalk/StalkEnergyBeams/Laser"]
 use_parent_material = true
 points = PackedVector2Array(0, 0, 500, 0)
 width = 20.0
@@ -833,17 +368,150 @@ begin_cap_mode = 2
 end_cap_mode = 2
 antialiased = true
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Stage/Actors/AsteroidBeast/StalkEnergyBeams/Laser"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Stage/Actors/AsteroidBeast/Stalk/StalkEnergyBeams/Laser"]
 amount = 32
 texture = ExtResource("10_r0vbx")
 lifetime = 0.5
 explosiveness = 0.1
 process_material = SubResource("ParticleProcessMaterial_tqfwn")
 
-[node name="LaserSource" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StalkEnergyBeams"]
+[node name="LaserSource" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Stalk/StalkEnergyBeams"]
 material = SubResource("ShaderMaterial_0cob0")
 scale = Vector2(0.225586, 0.225586)
 texture = ExtResource("4_7wlep")
+
+[node name="Claw" type="Node2D" parent="Stage/Actors/AsteroidBeast"]
+position = Vector2(-1385, 265)
+
+[node name="TendonA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw"]
+material = ExtResource("22_7g11o")
+position = Vector2(-53, 39.2261)
+rotation = 2.38042
+texture = ExtResource("23_1jd2g")
+
+[node name="TendonB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw"]
+material = ExtResource("22_7g11o")
+position = Vector2(-85, -34.7739)
+rotation = -3.14159
+texture = ExtResource("24_82x64")
+
+[node name="ScaleA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw"]
+material = ExtResource("24_ghjbf")
+position = Vector2(-64, 103.226)
+rotation = 0.875632
+texture = ExtResource("26_t3a8v")
+
+[node name="ScaleB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw"]
+material = ExtResource("24_ghjbf")
+position = Vector2(1, 2.22614)
+rotation = 0.876155
+texture = ExtResource("27_67ikf")
+
+[node name="FinA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw"]
+material = ExtResource("17_k1c70")
+position = Vector2(-112, -36.7739)
+texture = ExtResource("28_jl7ui")
+offset = Vector2(-60, 0)
+
+[node name="FinB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw"]
+material = ExtResource("24_ghjbf")
+position = Vector2(-202, 40.2261)
+texture = ExtResource("29_0bnsj")
+offset = Vector2(-55, 0)
+
+[node name="WeakspotA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw"]
+material = ExtResource("29_82x64")
+position = Vector2(-21, -88.7739)
+texture = ExtResource("30_1h5nw")
+
+[node name="ScaledSpike" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw"]
+material = ExtResource("17_k1c70")
+position = Vector2(-22, -84.7739)
+rotation = 0.00141498
+texture = ExtResource("31_f8emp")
+offset = Vector2(0, -90)
+
+[node name="EnergyTalon" type="Node2D" parent="Stage/Actors/AsteroidBeast/Claw"]
+position = Vector2(59, -36)
+
+[node name="EnergyTalonLower" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw/EnergyTalon"]
+material = ExtResource("32_7g11o")
+texture = ExtResource("32_oai4s")
+offset = Vector2(20, -105)
+
+[node name="EnergyTalonUpper" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw/EnergyTalon/EnergyTalonLower"]
+show_behind_parent = true
+material = ExtResource("32_7g11o")
+position = Vector2(30, -134)
+texture = ExtResource("33_nq3s0")
+offset = Vector2(0, -166)
+
+[node name="Claw2" type="Node2D" parent="Stage/Actors/AsteroidBeast"]
+position = Vector2(230, 433)
+scale = Vector2(-1, 1)
+
+[node name="TendonA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw2"]
+material = ExtResource("22_7g11o")
+position = Vector2(-53, 39.2261)
+rotation = 2.38042
+texture = ExtResource("23_1jd2g")
+
+[node name="TendonB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw2"]
+material = ExtResource("22_7g11o")
+position = Vector2(-85, -34.7739)
+rotation = -3.14159
+texture = ExtResource("24_82x64")
+
+[node name="ScaleA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw2"]
+material = ExtResource("24_ghjbf")
+position = Vector2(-64, 103.226)
+rotation = 0.875632
+texture = ExtResource("26_t3a8v")
+
+[node name="ScaleB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw2"]
+material = ExtResource("24_ghjbf")
+position = Vector2(1, 2.22614)
+rotation = 0.876155
+texture = ExtResource("27_67ikf")
+
+[node name="FinA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw2"]
+material = ExtResource("17_k1c70")
+position = Vector2(-112, -36.7739)
+texture = ExtResource("28_jl7ui")
+offset = Vector2(-60, 0)
+
+[node name="FinB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw2"]
+material = ExtResource("24_ghjbf")
+position = Vector2(-202, 40.2261)
+texture = ExtResource("29_0bnsj")
+offset = Vector2(-55, 0)
+
+[node name="WeakspotA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw2"]
+material = ExtResource("29_82x64")
+position = Vector2(-21, -88.7739)
+texture = ExtResource("30_1h5nw")
+
+[node name="ScaledSpike" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw2"]
+material = ExtResource("17_k1c70")
+position = Vector2(-22, -84.7739)
+rotation = 0.00141498
+texture = ExtResource("31_f8emp")
+offset = Vector2(0, -90)
+
+[node name="EnergyTalon" type="Node2D" parent="Stage/Actors/AsteroidBeast/Claw2"]
+position = Vector2(59, -36)
+
+[node name="EnergyTalonLower" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw2/EnergyTalon"]
+material = ExtResource("32_7g11o")
+texture = ExtResource("32_oai4s")
+offset = Vector2(20, -105)
+
+[node name="EnergyTalonUpper" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw2/EnergyTalon/EnergyTalonLower"]
+show_behind_parent = true
+material = ExtResource("32_7g11o")
+position = Vector2(30, -134)
+texture = ExtResource("33_nq3s0")
+offset = Vector2(0, -166)
 
 [node name="UI" type="Node2D" parent="."]
 
@@ -859,7 +527,7 @@ offset_top = 27.0
 offset_right = 1889.0
 offset_bottom = 115.0
 theme_override_font_sizes/font_size = 64
-text = "FPS: 145.0"
+text = "FPS: 125.0"
 script = ExtResource("30_tj5ml")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
