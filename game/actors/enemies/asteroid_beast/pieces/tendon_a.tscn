@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmkqxm1w5gv6i"]
+
+[ext_resource type="Material" uid="uid://c0xt8pljwmsw0" path="res://actors/enemies/resources/asteroid_beast_tendon_shader_material.tres" id="1_texx5"]
+[ext_resource type="Texture2D" uid="uid://fku045dhle" path="res://assets/enemies/asteroid_beast/asteroid_beast_tendon_a.png" id="2_2tfs8"]
+
+[node name="TendonA" type="Sprite2D"]
+material = ExtResource("1_texx5")
+texture = ExtResource("2_2tfs8")

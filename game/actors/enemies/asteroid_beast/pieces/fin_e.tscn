@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1qnn5ioqy8lc"]
+
+[ext_resource type="Texture2D" uid="uid://bbr4yvl0xe1yo" path="res://assets/enemies/asteroid_beast/asteroid_beast_fin_e.png" id="1_1ob4w"]
+
+[node name="FinE" type="Sprite2D"]
+texture = ExtResource("1_1ob4w")

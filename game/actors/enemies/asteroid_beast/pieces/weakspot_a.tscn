@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqd5es6ev36jv"]
+
+[ext_resource type="Material" uid="uid://mrmdmrmv1t5n" path="res://actors/enemies/resources/asteroid_beast_weakspot_shader_material.tres" id="1_v43cs"]
+[ext_resource type="Texture2D" uid="uid://bbtxwoos1v1aq" path="res://assets/enemies/asteroid_beast/asteroid_beast_weakspot_a.png" id="2_xe224"]
+
+[node name="WeakspotA" type="Sprite2D"]
+material = ExtResource("1_v43cs")
+texture = ExtResource("2_xe224")

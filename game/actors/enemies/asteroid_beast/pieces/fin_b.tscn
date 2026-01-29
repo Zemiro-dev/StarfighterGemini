@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxlgjm67238be"]
+
+[ext_resource type="Material" uid="uid://lp2g72a775sk" path="res://actors/enemies/resources/asteroid_beast_armored_shader_material.tres" id="1_26ejt"]
+[ext_resource type="Texture2D" uid="uid://b674eu2imajpi" path="res://assets/enemies/asteroid_beast/asteroid_beast_fin_b.png" id="2_lrrvd"]
+
+[node name="FinB" type="Sprite2D"]
+material = ExtResource("1_26ejt")
+texture = ExtResource("2_lrrvd")
+offset = Vector2(-55, 0)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo6mjgja7p3k0"]
+
+[ext_resource type="Material" uid="uid://mrmdmrmv1t5n" path="res://actors/enemies/resources/asteroid_beast_weakspot_shader_material.tres" id="1_0jmrm"]
+[ext_resource type="Texture2D" uid="uid://cktauhtvmcr31" path="res://assets/enemies/asteroid_beast/asteroid_beast_laser_emitter_a.png" id="2_fjyxr"]
+
+[node name="LaserEmitter" type="Sprite2D"]
+material = ExtResource("1_0jmrm")
+texture = ExtResource("2_fjyxr")

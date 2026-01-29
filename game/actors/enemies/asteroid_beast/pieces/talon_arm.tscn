@@ -1,0 +1,42 @@
+[gd_scene load_steps=10 format=3 uid="uid://b58dppq2aevhp"]
+
+[ext_resource type="PackedScene" uid="uid://cmkqxm1w5gv6i" path="res://actors/enemies/asteroid_beast/pieces/tendon_a.tscn" id="1_65a65"]
+[ext_resource type="PackedScene" uid="uid://de5u74c58dsy3" path="res://actors/enemies/asteroid_beast/pieces/tendon_b.tscn" id="2_mayl8"]
+[ext_resource type="PackedScene" uid="uid://cwxw6t0uxiyws" path="res://actors/enemies/asteroid_beast/pieces/scale_a.tscn" id="3_ibuir"]
+[ext_resource type="PackedScene" uid="uid://vewji0t3hiv4" path="res://actors/enemies/asteroid_beast/pieces/scale_b.tscn" id="4_xvf24"]
+[ext_resource type="PackedScene" uid="uid://cpuypuskmdewk" path="res://actors/enemies/asteroid_beast/pieces/fin_a.tscn" id="5_01sas"]
+[ext_resource type="PackedScene" uid="uid://bxlgjm67238be" path="res://actors/enemies/asteroid_beast/pieces/fin_b.tscn" id="6_i7f48"]
+[ext_resource type="PackedScene" uid="uid://cqd5es6ev36jv" path="res://actors/enemies/asteroid_beast/pieces/weakspot_a.tscn" id="7_82crf"]
+[ext_resource type="PackedScene" uid="uid://e6hl8warshut" path="res://actors/enemies/asteroid_beast/pieces/scale_spike_a.tscn" id="8_2ev52"]
+[ext_resource type="PackedScene" uid="uid://y3vswpw4bs4j" path="res://actors/enemies/asteroid_beast/pieces/energy_talon_a.tscn" id="9_a4v3c"]
+
+[node name="TalonArm" type="Node2D"]
+
+[node name="TendonA" parent="." instance=ExtResource("1_65a65")]
+position = Vector2(-53, 39.2261)
+rotation = -0.705612
+
+[node name="TendonB" parent="." instance=ExtResource("2_mayl8")]
+position = Vector2(-85, -34.7739)
+
+[node name="ScaleA" parent="." instance=ExtResource("3_ibuir")]
+position = Vector2(-64, 103.226)
+rotation = 0.876155
+
+[node name="ScaleB" parent="." instance=ExtResource("4_xvf24")]
+position = Vector2(1, 2.22614)
+
+[node name="FinA" parent="." instance=ExtResource("5_01sas")]
+position = Vector2(-112, -36.7739)
+
+[node name="FinB" parent="." instance=ExtResource("6_i7f48")]
+position = Vector2(-202, 40.2261)
+
+[node name="WeakspotA" parent="." instance=ExtResource("7_82crf")]
+position = Vector2(-21, -88.7739)
+
+[node name="ScaleSpikeA" parent="." instance=ExtResource("8_2ev52")]
+position = Vector2(-22, -84.7739)
+
+[node name="EnergyTalonA" parent="." instance=ExtResource("9_a4v3c")]
+position = Vector2(59, -36)

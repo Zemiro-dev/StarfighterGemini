@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://kvt0dd2a04pf"]
+
+[ext_resource type="Texture2D" uid="uid://e0vbjejruehv" path="res://assets/enemies/asteroid_beast/asteroid_beast_tendon_c.png" id="1_jcd17"]
+
+[node name="TendonC" type="Sprite2D"]
+texture = ExtResource("1_jcd17")

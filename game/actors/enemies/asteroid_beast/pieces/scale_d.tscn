@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://e4o478wce2q4"]
+
+[ext_resource type="Texture2D" uid="uid://b6xinorem03ve" path="res://assets/enemies/asteroid_beast/asteroid_beast_scale_d.png" id="1_jn07y"]
+
+[node name="ScaleD" type="Sprite2D"]
+texture = ExtResource("1_jn07y")

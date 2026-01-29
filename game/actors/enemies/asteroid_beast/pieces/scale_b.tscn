@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://vewji0t3hiv4"]
+
+[ext_resource type="Material" uid="uid://lp2g72a775sk" path="res://actors/enemies/resources/asteroid_beast_armored_shader_material.tres" id="1_k8x6a"]
+[ext_resource type="Texture2D" uid="uid://vur7uhyn7by" path="res://assets/enemies/asteroid_beast/asteroid_beast_scale_b.png" id="2_h47d2"]
+
+[node name="ScaleB" type="Sprite2D"]
+material = ExtResource("1_k8x6a")
+rotation = 0.876155
+texture = ExtResource("2_h47d2")

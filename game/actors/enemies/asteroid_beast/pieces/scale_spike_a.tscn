@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://e6hl8warshut"]
+
+[ext_resource type="Material" uid="uid://dv0177xqfognf" path="res://actors/enemies/resources/asteroid_beast_shader_material.tres" id="1_jxcpa"]
+[ext_resource type="Texture2D" uid="uid://bhbsb3ofrvc6a" path="res://assets/enemies/asteroid_beast/asteroid_beast_scale_spike_a.png" id="2_s7cmk"]
+
+[node name="ScaleSpikeA" type="Sprite2D"]
+material = ExtResource("1_jxcpa")
+rotation = 0.00141498
+texture = ExtResource("2_s7cmk")
+offset = Vector2(0, -90)
