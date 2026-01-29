@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c25griw2403wr"
-path="res://.godot/imported/asteroid_beast_claw_template.png-874513f6a6644dea65f0fcea9f238caa.ctex"
+path="res://.godot/imported/asteroid_beast_talon_template.png-901a88320c1447251d1e682af8361cff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/asteroid_beast/asteroid_beast_claw_template.png"
-dest_files=["res://.godot/imported/asteroid_beast_claw_template.png-874513f6a6644dea65f0fcea9f238caa.ctex"]
+source_file="res://assets/enemies/asteroid_beast/asteroid_beast_talon_template.png"
+dest_files=["res://.godot/imported/asteroid_beast_talon_template.png-901a88320c1447251d1e682af8361cff.ctex"]
 
 [params]
 

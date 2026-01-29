@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://da4ta4o721exf"]
+[gd_scene load_steps=64 format=3 uid="uid://da4ta4o721exf"]
 
 [ext_resource type="Script" uid="uid://dj8f28g3mmv8i" path="res://world/debug/world_debug.gd" id="1_0cob0"]
 [ext_resource type="Texture2D" uid="uid://bbq0js4b3j7xu" path="res://assets/shapes/circle_blue_2tone_large.png" id="1_44sa8"]
@@ -37,6 +37,9 @@
 [ext_resource type="Material" uid="uid://byx4eobrlkwum" path="res://actors/enemies/resources/asteroid_beast_energy_a_shader_material.tres" id="32_7g11o"]
 [ext_resource type="Texture2D" uid="uid://cwpcljmd2jg6e" path="res://assets/enemies/asteroid_beast/asteroid_beast_energy_talon_lower.png" id="32_oai4s"]
 [ext_resource type="Texture2D" uid="uid://c36817fty0sew" path="res://assets/enemies/asteroid_beast/asteroid_beast_energy_talon_upper.png" id="33_nq3s0"]
+[ext_resource type="Texture2D" uid="uid://cdbtwetqjpqui" path="res://assets/enemies/asteroid_beast/asteroid_beast_claw_arm_template.png" id="36_jl7ui"]
+[ext_resource type="Texture2D" uid="uid://0ic4q8pb0sei" path="res://assets/enemies/asteroid_beast/asteroid_beast_body_template.png" id="37_0bnsj"]
+[ext_resource type="Texture2D" uid="uid://c43sds3wcquph" path="res://assets/enemies/asteroid_beast/asteroid_beast_head_template.png" id="38_1h5nw"]
 
 [sub_resource type="Gradient" id="Gradient_1t33c"]
 offsets = PackedFloat32Array(0.592705, 0.662614, 0.762918, 0.844985, 1)
@@ -380,138 +383,156 @@ material = SubResource("ShaderMaterial_0cob0")
 scale = Vector2(0.225586, 0.225586)
 texture = ExtResource("4_7wlep")
 
-[node name="Claw" type="Node2D" parent="Stage/Actors/AsteroidBeast"]
+[node name="TalonArm" type="Node2D" parent="Stage/Actors/AsteroidBeast"]
 position = Vector2(-1385, 265)
 
-[node name="TendonA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw"]
+[node name="TendonA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/TalonArm"]
 material = ExtResource("22_7g11o")
 position = Vector2(-53, 39.2261)
 rotation = 2.38042
 texture = ExtResource("23_1jd2g")
 
-[node name="TendonB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw"]
+[node name="TendonB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/TalonArm"]
 material = ExtResource("22_7g11o")
 position = Vector2(-85, -34.7739)
 rotation = -3.14159
 texture = ExtResource("24_82x64")
 
-[node name="ScaleA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw"]
+[node name="ScaleA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/TalonArm"]
 material = ExtResource("24_ghjbf")
 position = Vector2(-64, 103.226)
 rotation = 0.875632
 texture = ExtResource("26_t3a8v")
 
-[node name="ScaleB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw"]
+[node name="ScaleB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/TalonArm"]
 material = ExtResource("24_ghjbf")
 position = Vector2(1, 2.22614)
 rotation = 0.876155
 texture = ExtResource("27_67ikf")
 
-[node name="FinA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw"]
+[node name="FinA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/TalonArm"]
 material = ExtResource("17_k1c70")
 position = Vector2(-112, -36.7739)
 texture = ExtResource("28_jl7ui")
 offset = Vector2(-60, 0)
 
-[node name="FinB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw"]
+[node name="FinB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/TalonArm"]
 material = ExtResource("24_ghjbf")
 position = Vector2(-202, 40.2261)
 texture = ExtResource("29_0bnsj")
 offset = Vector2(-55, 0)
 
-[node name="WeakspotA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw"]
+[node name="WeakspotA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/TalonArm"]
 material = ExtResource("29_82x64")
 position = Vector2(-21, -88.7739)
 texture = ExtResource("30_1h5nw")
 
-[node name="ScaledSpike" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw"]
+[node name="ScaledSpike" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/TalonArm"]
 material = ExtResource("17_k1c70")
 position = Vector2(-22, -84.7739)
 rotation = 0.00141498
 texture = ExtResource("31_f8emp")
 offset = Vector2(0, -90)
 
-[node name="EnergyTalon" type="Node2D" parent="Stage/Actors/AsteroidBeast/Claw"]
+[node name="EnergyTalon" type="Node2D" parent="Stage/Actors/AsteroidBeast/TalonArm"]
 position = Vector2(59, -36)
 
-[node name="EnergyTalonLower" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw/EnergyTalon"]
+[node name="EnergyTalonLower" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/TalonArm/EnergyTalon"]
 material = ExtResource("32_7g11o")
 texture = ExtResource("32_oai4s")
 offset = Vector2(20, -105)
 
-[node name="EnergyTalonUpper" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw/EnergyTalon/EnergyTalonLower"]
+[node name="EnergyTalonUpper" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/TalonArm/EnergyTalon/EnergyTalonLower"]
 show_behind_parent = true
 material = ExtResource("32_7g11o")
 position = Vector2(30, -134)
 texture = ExtResource("33_nq3s0")
 offset = Vector2(0, -166)
 
-[node name="Claw2" type="Node2D" parent="Stage/Actors/AsteroidBeast"]
+[node name="TalonArm2" type="Node2D" parent="Stage/Actors/AsteroidBeast"]
 position = Vector2(230, 433)
 scale = Vector2(-1, 1)
 
-[node name="TendonA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw2"]
+[node name="TendonA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/TalonArm2"]
 material = ExtResource("22_7g11o")
 position = Vector2(-53, 39.2261)
 rotation = 2.38042
 texture = ExtResource("23_1jd2g")
 
-[node name="TendonB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw2"]
+[node name="TendonB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/TalonArm2"]
 material = ExtResource("22_7g11o")
 position = Vector2(-85, -34.7739)
 rotation = -3.14159
 texture = ExtResource("24_82x64")
 
-[node name="ScaleA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw2"]
+[node name="ScaleA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/TalonArm2"]
 material = ExtResource("24_ghjbf")
 position = Vector2(-64, 103.226)
 rotation = 0.875632
 texture = ExtResource("26_t3a8v")
 
-[node name="ScaleB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw2"]
+[node name="ScaleB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/TalonArm2"]
 material = ExtResource("24_ghjbf")
 position = Vector2(1, 2.22614)
 rotation = 0.876155
 texture = ExtResource("27_67ikf")
 
-[node name="FinA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw2"]
+[node name="FinA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/TalonArm2"]
 material = ExtResource("17_k1c70")
 position = Vector2(-112, -36.7739)
 texture = ExtResource("28_jl7ui")
 offset = Vector2(-60, 0)
 
-[node name="FinB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw2"]
+[node name="FinB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/TalonArm2"]
 material = ExtResource("24_ghjbf")
 position = Vector2(-202, 40.2261)
 texture = ExtResource("29_0bnsj")
 offset = Vector2(-55, 0)
 
-[node name="WeakspotA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw2"]
+[node name="WeakspotA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/TalonArm2"]
 material = ExtResource("29_82x64")
 position = Vector2(-21, -88.7739)
 texture = ExtResource("30_1h5nw")
 
-[node name="ScaledSpike" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw2"]
+[node name="ScaledSpike" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/TalonArm2"]
 material = ExtResource("17_k1c70")
 position = Vector2(-22, -84.7739)
 rotation = 0.00141498
 texture = ExtResource("31_f8emp")
 offset = Vector2(0, -90)
 
-[node name="EnergyTalon" type="Node2D" parent="Stage/Actors/AsteroidBeast/Claw2"]
+[node name="EnergyTalon" type="Node2D" parent="Stage/Actors/AsteroidBeast/TalonArm2"]
 position = Vector2(59, -36)
 
-[node name="EnergyTalonLower" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw2/EnergyTalon"]
+[node name="EnergyTalonLower" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/TalonArm2/EnergyTalon"]
 material = ExtResource("32_7g11o")
 texture = ExtResource("32_oai4s")
 offset = Vector2(20, -105)
 
-[node name="EnergyTalonUpper" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Claw2/EnergyTalon/EnergyTalonLower"]
+[node name="EnergyTalonUpper" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/TalonArm2/EnergyTalon/EnergyTalonLower"]
 show_behind_parent = true
 material = ExtResource("32_7g11o")
 position = Vector2(30, -134)
 texture = ExtResource("33_nq3s0")
 offset = Vector2(0, -166)
+
+[node name="ClawArm" type="Node2D" parent="Stage/Actors/AsteroidBeast"]
+position = Vector2(-447, -309)
+
+[node name="T" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/ClawArm"]
+texture = ExtResource("36_jl7ui")
+
+[node name="Body" type="Node2D" parent="Stage/Actors/AsteroidBeast"]
+position = Vector2(411, -267)
+
+[node name="T" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Body"]
+texture = ExtResource("37_0bnsj")
+
+[node name="Head" type="Node2D" parent="Stage/Actors/AsteroidBeast"]
+position = Vector2(-292, 304)
+
+[node name="T" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Head"]
+texture = ExtResource("38_1h5nw")
 
 [node name="UI" type="Node2D" parent="."]
 
@@ -527,7 +548,7 @@ offset_top = 27.0
 offset_right = 1889.0
 offset_bottom = 115.0
 theme_override_font_sizes/font_size = 64
-text = "FPS: 125.0"
+text = "FPS: 141.0"
 script = ExtResource("30_tj5ml")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
