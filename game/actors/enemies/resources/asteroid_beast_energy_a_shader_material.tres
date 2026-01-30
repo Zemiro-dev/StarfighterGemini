@@ -1,11 +1,29 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://byx4eobrlkwum"]
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://byx4eobrlkwum"]
 
 [ext_resource type="Shader" uid="uid://cs0xfte7rnnx8" path="res://shaders/gradient_swap_prog.gdshader" id="1_1pxxn"]
 [ext_resource type="Texture2D" uid="uid://dqeilhyp4xqfd" path="res://actors/enemies/resources/asteroid_beast_energy_a_gradient_high.tres" id="2_8kw27"]
 [ext_resource type="Texture2D" uid="uid://bkrluhvfbqane" path="res://actors/enemies/resources/asteroid_beast_energy_a_gradient_low.tres" id="3_2qw3v"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sc1s7"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8kw27"]
+seamless = true
+noise = SubResource("FastNoiseLite_sc1s7")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cbtnv"]
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2qw3v"]
+noise = SubResource("FastNoiseLite_cbtnv")
 
 [resource]
 shader = ExtResource("1_1pxxn")
 shader_parameter/gradient_texture_low = ExtResource("3_2qw3v")
 shader_parameter/gradient_texture_high = ExtResource("2_8kw27")
 shader_parameter/progress = 0.715
+shader_parameter/use_distortion = true
+shader_parameter/wibbly_noise1 = SubResource("NoiseTexture2D_8kw27")
+shader_parameter/wibbly_noise2 = SubResource("NoiseTexture2D_2qw3v")
+shader_parameter/strength = 0.05
+shader_parameter/fps = 32.0
+shader_parameter/frames = 256

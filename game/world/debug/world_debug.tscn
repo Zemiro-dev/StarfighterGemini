@@ -243,7 +243,6 @@ texture = ExtResource("2_lqxvj")
 [node name="NoiseExp1" parent="Stage/Nebula" instance=ExtResource("4_1t33c")]
 
 [node name="NeonOrbs" type="Node2D" parent="Stage"]
-visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Stage/NeonOrbs"]
 position = Vector2(-2547, 339)
@@ -337,7 +336,7 @@ position = Vector2(209, 491)
 
 [node name="TopCannon" type="Sprite2D" parent="Stage/Actors/Player"]
 material = SubResource("ShaderMaterial_6ptfx")
-position = Vector2(0, -63)
+position = Vector2(32, -63)
 texture = ExtResource("14_x6moa")
 
 [node name="Core" type="Sprite2D" parent="Stage/Actors/Player"]
@@ -346,13 +345,14 @@ texture = ExtResource("12_lo56x")
 
 [node name="BottomCannon" type="Sprite2D" parent="Stage/Actors/Player"]
 material = SubResource("ShaderMaterial_6ptfx")
-position = Vector2(0, 57)
+position = Vector2(32, 57)
 texture = ExtResource("14_x6moa")
 
 [node name="AsteroidBeast" type="Node2D" parent="Stage/Actors"]
 position = Vector2(960, 540)
 
 [node name="Stalk" type="Node2D" parent="Stage/Actors/AsteroidBeast"]
+visible = false
 position = Vector2(1727, 113)
 
 [node name="Core" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/Stalk"]
@@ -573,7 +573,7 @@ position = Vector2(64, 119)
 [node name="StageBody" type="Node2D" parent="Stage/Actors/AsteroidBeast"]
 
 [node name="TalonArmUpper" type="Node2D" parent="Stage/Actors/AsteroidBeast/StageBody"]
-position = Vector2(-253, -427)
+position = Vector2(-288, -427)
 rotation = -3.14159
 
 [node name="TendonA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmUpper"]
@@ -640,7 +640,7 @@ texture = ExtResource("33_nq3s0")
 offset = Vector2(0, -166)
 
 [node name="TalonArmLower" type="Node2D" parent="Stage/Actors/AsteroidBeast/StageBody"]
-position = Vector2(-83, 411)
+position = Vector2(-111, 411)
 rotation = 3.14159
 scale = Vector2(1, -1)
 
@@ -708,7 +708,7 @@ texture = ExtResource("33_nq3s0")
 offset = Vector2(0, -166)
 
 [node name="Head" type="Node2D" parent="Stage/Actors/AsteroidBeast/StageBody"]
-position = Vector2(314, -48)
+position = Vector2(314, 4)
 rotation = -0.00050153
 scale = Vector2(-1, 1)
 
@@ -751,7 +751,7 @@ material = ExtResource("24_ghjbf")
 position = Vector2(64, 119)
 
 [node name="ClawArmUpper" type="Node2D" parent="Stage/Actors/AsteroidBeast/StageBody"]
-position = Vector2(555, -341)
+position = Vector2(555, -289)
 scale = Vector2(-1, 1)
 
 [node name="T" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper"]
@@ -810,7 +810,7 @@ texture = ExtResource("45_eijjf")
 
 [node name="EnergyTalonBUpper" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper/EnergyTalonB/EnergyTalonBLower"]
 material = ExtResource("32_7g11o")
-position = Vector2(-23, -99)
+position = Vector2(-19.9994, -91.0001)
 texture = ExtResource("46_h8mm7")
 
 [node name="LaserEmitter1" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper" instance=ExtResource("47_u1s7s")]
@@ -823,7 +823,7 @@ position = Vector2(5, 93)
 position = Vector2(-120, 94)
 
 [node name="ClawArmLower" type="Node2D" parent="Stage/Actors/AsteroidBeast/StageBody"]
-position = Vector2(567, 249)
+position = Vector2(567, 301)
 scale = Vector2(-1, -1)
 
 [node name="T" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower"]
@@ -882,7 +882,7 @@ texture = ExtResource("45_eijjf")
 
 [node name="EnergyTalonBUpper" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower/EnergyTalonB/EnergyTalonBLower"]
 material = ExtResource("32_7g11o")
-position = Vector2(-23, -99)
+position = Vector2(-14.9995, -80.0001)
 texture = ExtResource("46_h8mm7")
 
 [node name="LaserEmitter1" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower" instance=ExtResource("47_u1s7s")]
@@ -895,7 +895,7 @@ position = Vector2(5, 93)
 position = Vector2(-120, 94)
 
 [node name="Body" type="Node2D" parent="Stage/Actors/AsteroidBeast/StageBody"]
-position = Vector2(676, -49)
+position = Vector2(676, 3)
 scale = Vector2(-1, 1)
 
 [node name="TendonA" parent="Stage/Actors/AsteroidBeast/StageBody/Body" instance=ExtResource("38_vb6qs")]
@@ -960,7 +960,7 @@ offset_top = 27.0
 offset_right = 1889.0
 offset_bottom = 115.0
 theme_override_font_sizes/font_size = 64
-text = "FPS: 145.0"
+text = "FPS: 134.0"
 script = ExtResource("30_tj5ml")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
