@@ -14,7 +14,7 @@ uniform int frames = 256;
 
 void fragment() {
 	vec2 uv = UV;
-	
+
 	if (use_distortion) {
 		float c = clock(TIME, float(frames), fps); //Get clock frame
 		vec4 offset1 = texture(wibbly_noise1, uv+c); //Get offset
@@ -22,8 +22,8 @@ void fragment() {
 		vec4 offset = offset1*offset2*strength;
 		uv += offset.xy - vec2(.5) * strength;
 	}
-	
-	
+
+
 	vec4 texture_color = texture(TEXTURE, uv);
 	vec4 out_color = vec4(
 		mix(

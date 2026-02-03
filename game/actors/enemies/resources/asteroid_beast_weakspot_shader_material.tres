@@ -9,3 +9,7 @@ shader = ExtResource("1_a0evt")
 shader_parameter/gradient_texture_low = ExtResource("3_rs0p0")
 shader_parameter/gradient_texture_high = ExtResource("2_d7hw4")
 shader_parameter/progress = 0.568
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
