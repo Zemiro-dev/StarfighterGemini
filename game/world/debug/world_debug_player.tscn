@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx43pr6jsovls"]
+
+[ext_resource type="PackedScene" uid="uid://c2inv1wwwo464" path="res://world/backgrounds/debug_background.tscn" id="1_o4jka"]
+[ext_resource type="PackedScene" uid="uid://3p08pqbj3jx1" path="res://actors/player/player.tscn" id="2_wkasf"]
+
+[node name="WorldDebugPlayer" type="Node2D"]
+
+[node name="DebugBackground" parent="." instance=ExtResource("1_o4jka")]
+
+[node name="Stage" type="Node2D" parent="."]
+
+[node name="Player" parent="Stage" instance=ExtResource("2_wkasf")]
+position = Vector2(818, 501)

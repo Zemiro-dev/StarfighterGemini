@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dbm74b75gf2st"]
 
-[ext_resource type="PackedScene" uid="uid://da4ta4o721exf" path="res://world/debug/world_debug.tscn" id="1_gp7c4"]
+[ext_resource type="Script" uid="uid://qb6o7cwvtaui" path="res://world/world_viewport_container.gd" id="1_06d7j"]
 
 [node name="WorldViewportContainer" type="SubViewportContainer"]
 offset_left = -256.0
@@ -8,6 +8,7 @@ offset_top = -256.0
 offset_right = 2176.0
 offset_bottom = 1336.0
 stretch = true
+script = ExtResource("1_06d7j")
 
 [node name="WorldViewport" type="SubViewport" parent="."]
 own_world_3d = true
@@ -15,6 +16,3 @@ handle_input_locally = false
 use_hdr_2d = true
 size = Vector2i(2432, 1592)
 render_target_update_mode = 4
-
-[node name="WorldDebug" parent="WorldViewport" instance=ExtResource("1_gp7c4")]
-position = Vector2(256, 256)
