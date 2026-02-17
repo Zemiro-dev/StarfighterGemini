@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 [autoload]
 
 GlobalSignals="*res://autoloads/global_signals.gd"
+GameActor="*res://autoloads/game_actor.gd"
 
 [display]
 

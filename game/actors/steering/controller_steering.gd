@@ -5,4 +5,4 @@ class_name ControllerSteering
 
 
 func steer(steering: Steering, velocity: Vector2) -> Vector2:
-	return controller.get_goal() * steering.get_max_speed()
+	return controller.get_goal()
