@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dx43pr6jsovls"]
+[gd_scene load_steps=4 format=3 uid="uid://dx43pr6jsovls"]
 
 [ext_resource type="PackedScene" uid="uid://c2inv1wwwo464" path="res://world/backgrounds/debug_background.tscn" id="1_o4jka"]
 [ext_resource type="PackedScene" uid="uid://3p08pqbj3jx1" path="res://actors/player/player.tscn" id="2_wkasf"]
+[ext_resource type="PackedScene" uid="uid://db3jamtupa1pe" path="res://world/world_environment_default.tscn" id="3_bkelj"]
 
 [node name="WorldDebugPlayer" type="Node2D"]
 
@@ -11,3 +12,5 @@
 
 [node name="Player" parent="Stage" instance=ExtResource("2_wkasf")]
 position = Vector2(818, 501)
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("3_bkelj")]

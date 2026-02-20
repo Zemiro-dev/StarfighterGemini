@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://3p08pqbj3jx1"]
+[gd_scene load_steps=23 format=3 uid="uid://3p08pqbj3jx1"]
 
 [ext_resource type="Script" uid="uid://f4fh5oklml4n" path="res://actors/player/player.gd" id="1_bop6h"]
 [ext_resource type="Script" uid="uid://bnsxf2wmnmjo5" path="res://actors/player/player_controller.gd" id="2_388e2"]
 [ext_resource type="Texture2D" uid="uid://16wlwkn7g2xc" path="res://actors/player/resources/player_gradient_high.tres" id="2_a744p"]
+[ext_resource type="Script" uid="uid://dqv8o16nxsy37" path="res://actors/player/player_move_machine.gd" id="2_k67x5"]
 [ext_resource type="Script" uid="uid://3lg6lbyu7lu8" path="res://actors/physics_body_move_resolver.gd" id="3_7aotg"]
 [ext_resource type="Texture2D" uid="uid://c7dvlc535fux2" path="res://actors/player/resources/player_gradient_low.tres" id="3_388e2"]
 [ext_resource type="Script" uid="uid://d17glutkysooc" path="res://actors/steering/steering.gd" id="3_lsln6"]
@@ -24,6 +25,7 @@ base_max_speed = 1250.0
 base_max_acceleration = 2000.0
 turn_around_multiplier = 2.0
 overspeed_break_force = 10000.0
+dash_multiplier = 10.0
 metadata/_custom_type_script = "uid://dno1a1koeexnq"
 
 [sub_resource type="Shader" id="Shader_1jd2g"]
@@ -246,6 +248,11 @@ script = ExtResource("1_bop6h")
 position = Vector2(6, -7)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_lsln6")
+
+[node name="Machines" type="Node" parent="."]
+
+[node name="PlayerMoveMachine" type="Node" parent="Machines"]
+script = ExtResource("2_k67x5")
 
 [node name="Controller" type="Node" parent="."]
 script = ExtResource("2_388e2")

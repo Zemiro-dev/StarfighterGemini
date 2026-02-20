@@ -8,3 +8,7 @@ func get_goal() -> Vector2:
 		Input.get_axis("left", "right"),
 		Input.get_axis("up", "down")
 	)
+
+
+func dash_pressed() -> bool:
+	return Input.is_action_pressed("dash")

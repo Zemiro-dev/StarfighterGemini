@@ -63,6 +63,7 @@
 [ext_resource type="PackedScene" uid="uid://vdts8s2wou03" path="res://actors/enemies/asteroid_beast/pieces/scale_e.tscn" id="52_phfj2"]
 [ext_resource type="Texture2D" uid="uid://dqufylk7anldw" path="res://assets/enemies/asteroid_beast/asteroid_beast_bolt_sheet_a.png" id="59_1g7u1"]
 [ext_resource type="PackedScene" uid="uid://3p08pqbj3jx1" path="res://actors/player/player.tscn" id="61_7to6k"]
+[ext_resource type="PackedScene" uid="uid://db3jamtupa1pe" path="res://world/world_environment_default.tscn" id="64_otf24"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3mc18"]
 shader = ExtResource("7_an6al")
@@ -382,14 +383,6 @@ shader_parameter/swap_in_off = Color(0, 0, 0, 1)
 shader_parameter/progress_style = 0
 shader_parameter/progress = 0.7
 shader_parameter/threshold = 0.005
-
-[sub_resource type="Environment" id="Environment_lsr55"]
-background_mode = 3
-glow_enabled = true
-glow_levels/1 = 1.0
-glow_levels/2 = 3.0
-glow_levels/5 = 0.0
-glow_blend_mode = 0
 
 [node name="WorldDebug" type="Node2D"]
 script = ExtResource("1_0cob0")
@@ -1248,8 +1241,7 @@ theme_override_font_sizes/font_size = 64
 text = "FPS: 145.0"
 script = ExtResource("30_tj5ml")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_lsr55")
+[node name="WorldEnvironment" parent="." instance=ExtResource("64_otf24")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
