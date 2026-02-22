@@ -20,15 +20,29 @@ func steer(velocity: Vector2, delta: float) -> Vector2:
 	for strategy in strategies:
 		var result := strategy.steer(self, velocity)
 		combined_steering += result / strategies.size()
+		
+	var desired_velocity = combined_steering * get_max_speed()
+	var steering_acceleration = (desired_velocity - velocity).normalized() * get_acceleration(velocity)
+		
 	var turn_around_dot := combined_steering.normalized().dot(velocity.normalized())
-	var turn_around_power := 1.0 if turn_around_dot >= 0 else get_turn_around_multiplier()
-	
-	var acceleration := get_max_acceleration() * combined_steering * turn_around_power
-	return velocity + acceleration * delta
+	var turn_around_power := 1.0 if turn_around_dot >= 0.0 else get_turn_around_multiplier()
+	steering_acceleration *= turn_around_power
+	return velocity + steering_acceleration * delta
+
+
+func get_acceleration(velocity: Vector2) -> float:
+	if (!steering_stats.acceleration_curve): return get_max_acceleration()
+	var speed_ratio = clampf(velocity.length() / get_max_speed(), 0.0, 1.0)
+	var accel_ratio = steering_stats.acceleration_curve.sample(speed_ratio)
+	return accel_ratio * get_max_acceleration()
 
 
 func slow(velocity: Vector2, delta: float) -> Vector2:
-	return velocity.move_toward(Vector2.ZERO, get_max_acceleration() * delta * 5.)
+	return velocity.move_toward(Vector2.ZERO, get_acceleration(velocity) * delta * steering_stats.turn_around_multiplier)
+
+
+func overspeed_break(velocity: Vector2, delta) -> Vector2:
+	return velocity.move_toward(velocity.normalized() * get_max_speed(), steering_stats.overspeed_break_force * delta)
 
 
 func get_strategies() -> Array[SteeringStrategy]:
@@ -53,7 +67,3 @@ func get_turn_around_multiplier() -> float:
 
 func should_overspeed_break(velocity: Vector2) -> bool:
 	return velocity.length() > get_max_speed()
-
-
-func overspeed_break(velocity: Vector2) -> Vector2:
-	return velocity.move_toward(velocity.normalized() * get_max_speed(), steering_stats.overspeed_break_force)

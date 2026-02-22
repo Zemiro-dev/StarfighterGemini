@@ -9,6 +9,7 @@ signal on_state_change(prev: State, current: State)
 @export var actor: Player: set = _set_actor
 @onready var move_request: PhysicsBodyMoveResolver.MoveRequest = PhysicsBodyMoveResolver.MoveRequest.new()
 
+var remaining_dash_time := 0.0
 var remaining_dash_cooldown := 0.0
 
 
@@ -29,6 +30,8 @@ func _set_state(new_state: State) -> void:
 	match(new_state):
 		State.DASH:
 			actor.steering.power_multiplier = actor.steering.steering_stats.dash_multiplier
+			remaining_dash_cooldown = actor.steering.steering_stats.dash_cooldown
+			remaining_dash_time = actor.steering.steering_stats.dash_duration
 		State.IDLE:
 			move_request.should_slow = true
 
@@ -53,7 +56,7 @@ func process(delta: float) -> PhysicsBodyMoveResolver.MoveRequest:
 			elif actor.controller.get_goal().is_zero_approx():
 				state = State.IDLE
 		State.DASH:
-			if !should_dash():
+			if remaining_dash_time <= 0.0:
 				state = State.IDLE
 		State.IDLE:
 			if should_dash():
@@ -67,10 +70,11 @@ func process(delta: float) -> PhysicsBodyMoveResolver.MoveRequest:
 
 
 func update_timers(delta: float) -> void:
-	if remaining_dash_cooldown > 0.0:
-		remaining_dash_cooldown -= delta
+	if remaining_dash_cooldown >= 0.0: remaining_dash_cooldown -= delta
+	if remaining_dash_time >= 0.0: remaining_dash_time -= delta
+
 
 func should_dash() -> bool:
-	if actor.controller.dash_pressed():
+	if actor.controller.dash_pressed() and remaining_dash_cooldown <= 0.0:
 		return true
 	return false

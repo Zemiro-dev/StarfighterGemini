@@ -27,5 +27,5 @@ func resolve(request: MoveRequest, delta: float) -> Vector2:
 					if collision.get_normal().dot(velocity) <= 0.:
 						velocity = velocity.bounce(collision.get_normal())
 	if steering and steering.should_overspeed_break(velocity):
-		velocity = steering.overspeed_break(velocity)
+		velocity = steering.overspeed_break(velocity, delta)
 	return velocity
