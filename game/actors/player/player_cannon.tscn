@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=3 uid="uid://c4dfwdemcmkp3"]
+
+[ext_resource type="Texture2D" uid="uid://16wlwkn7g2xc" path="res://actors/player/resources/player_gradient_high.tres" id="1_mrm5d"]
+[ext_resource type="Texture2D" uid="uid://c7dvlc535fux2" path="res://actors/player/resources/player_gradient_low.tres" id="2_3oui1"]
+[ext_resource type="Texture2D" uid="uid://083ymv6ej1vl" path="res://assets/player/cannon.png" id="3_rhlr8"]
+[ext_resource type="Script" uid="uid://bqqog7hwn58ri" path="res://actors/player/player_cannon.gd" id="4_rbuk3"]
+[ext_resource type="Texture2D" uid="uid://ctn56roawyp8m" path="res://assets/player/player_cannon_flash.png" id="5_k1k7d"]
+
+[sub_resource type="Shader" id="Shader_1jd2g"]
+code = "shader_type canvas_item;
+//https://godotshaders.com/shader/starfield/
+uniform sampler2D gradient_texture_low;
+uniform sampler2D gradient_texture_high;
+uniform float progress : hint_range(0.0, 1.0, 0.001) = 0.0;
+
+void fragment() {
+	vec4 texture_color = texture(TEXTURE, UV);
+	vec4 out_color = vec4(
+		mix(
+			texture(gradient_texture_low, vec2(texture_color.r, texture_color.r)).rgb,
+			texture(gradient_texture_high, vec2(texture_color.r, texture_color.r)).rgb,
+			progress
+		),
+		texture_color.a
+	);
+	COLOR = out_color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k67x5"]
+shader = SubResource("Shader_1jd2g")
+shader_parameter/gradient_texture_low = ExtResource("2_3oui1")
+shader_parameter/gradient_texture_high = ExtResource("1_mrm5d")
+shader_parameter/progress = 0.8
+
+[sub_resource type="Animation" id="Animation_mrm5d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xur5k"]
+resource_name = "fire"
+length = 0.2
+capture_included = true
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 2,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3oui1"]
+_data = {
+&"RESET": SubResource("Animation_mrm5d"),
+&"fire": SubResource("Animation_xur5k")
+}
+
+[node name="PlayerCannon" type="Sprite2D"]
+material = SubResource("ShaderMaterial_k67x5")
+texture = ExtResource("3_rhlr8")
+script = ExtResource("4_rbuk3")
+
+[node name="Flash" type="Sprite2D" parent="."]
+modulate = Color(0, 1.5, 1.5, 1)
+self_modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+position = Vector2(25, 0)
+texture = ExtResource("5_k1k7d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3oui1")
+}
