@@ -13,6 +13,7 @@ func _ready() -> void:
 	move_machine.actor = self
 	move_machine.on_state_change.connect(on_move_state_change)
 	$TopCannon.controller = controller
+	$BottomCannon.controller = controller
 	blast_pool.spawn_signal = GlobalSignals.request_projectile_spawn
 	blast_pool.fill(blast_pack, 20)
 
@@ -32,3 +33,4 @@ func on_move_state_change(prev:PlayerMoveMachine.State,  next: PlayerMoveMachine
 
 func fire():
 	$TopCannon.fire(blast_pool)
+	$BottomCannon.fire(blast_pool)

@@ -25,11 +25,11 @@ func set_is_available(new_value: bool):
 
 
 func fire(_transform: Transform2D) -> void:
-	reset_physics_interpolation()
 	global_transform = _transform
 	velocity = Vector2.from_angle(rotation) * 3000.0
 	lifetime.start()
 	animation_player.play("on")
+	reset_physics_interpolation()
 
 
 func off() -> void:

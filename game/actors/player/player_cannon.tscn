@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4dfwdemcmkp3"]
+[gd_scene load_steps=12 format=3 uid="uid://c4dfwdemcmkp3"]
 
 [ext_resource type="Texture2D" uid="uid://16wlwkn7g2xc" path="res://actors/player/resources/player_gradient_high.tres" id="1_mrm5d"]
 [ext_resource type="Texture2D" uid="uid://c7dvlc535fux2" path="res://actors/player/resources/player_gradient_low.tres" id="2_3oui1"]
 [ext_resource type="Texture2D" uid="uid://083ymv6ej1vl" path="res://assets/player/cannon.png" id="3_rhlr8"]
 [ext_resource type="Script" uid="uid://bqqog7hwn58ri" path="res://actors/player/player_cannon.gd" id="4_rbuk3"]
 [ext_resource type="Texture2D" uid="uid://ctn56roawyp8m" path="res://assets/player/player_cannon_flash.png" id="5_k1k7d"]
+[ext_resource type="Script" uid="uid://chyrw7oxghtol" path="res://actors/cannons/cannon_cooldown.gd" id="5_mrm5d"]
 
 [sub_resource type="Shader" id="Shader_1jd2g"]
 code = "shader_type canvas_item;
@@ -75,6 +76,15 @@ _data = {
 material = SubResource("ShaderMaterial_k67x5")
 texture = ExtResource("3_rhlr8")
 script = ExtResource("4_rbuk3")
+
+[node name="CannonCooldown" type="Node" parent="."]
+script = ExtResource("5_mrm5d")
+
+[node name="BurstInnerTimer" type="Timer" parent="CannonCooldown"]
+one_shot = true
+
+[node name="BurstBetweenTimer" type="Timer" parent="CannonCooldown"]
+one_shot = true
 
 [node name="Flash" type="Sprite2D" parent="."]
 modulate = Color(0, 1.5, 1.5, 1)

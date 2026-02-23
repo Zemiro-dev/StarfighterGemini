@@ -87,6 +87,9 @@ controller = NodePath("../../Controller")
 [node name="TopCannon" parent="." instance=ExtResource("8_rt46e")]
 position = Vector2(32, -63)
 
+[node name="BottomCannon" parent="." instance=ExtResource("8_rt46e")]
+position = Vector2(32, 63)
+
 [node name="Core" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_12xki")
 texture = ExtResource("7_7aotg")
