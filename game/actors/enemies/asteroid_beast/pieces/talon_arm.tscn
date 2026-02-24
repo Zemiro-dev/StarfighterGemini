@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b58dppq2aevhp"]
+[gd_scene load_steps=11 format=3 uid="uid://b58dppq2aevhp"]
 
 [ext_resource type="PackedScene" uid="uid://cmkqxm1w5gv6i" path="res://actors/enemies/asteroid_beast/pieces/tendon_a.tscn" id="1_65a65"]
 [ext_resource type="PackedScene" uid="uid://de5u74c58dsy3" path="res://actors/enemies/asteroid_beast/pieces/tendon_b.tscn" id="2_mayl8"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bxlgjm67238be" path="res://actors/enemies/asteroid_beast/pieces/fin_b.tscn" id="6_i7f48"]
 [ext_resource type="PackedScene" uid="uid://cqd5es6ev36jv" path="res://actors/enemies/asteroid_beast/pieces/weakspot_a.tscn" id="7_82crf"]
 [ext_resource type="PackedScene" uid="uid://e6hl8warshut" path="res://actors/enemies/asteroid_beast/pieces/scale_spike_a.tscn" id="8_2ev52"]
+[ext_resource type="PackedScene" uid="uid://u1ixb7camcwy" path="res://actors/enemies/enemy_scale.tscn" id="8_mayl8"]
 [ext_resource type="PackedScene" uid="uid://y3vswpw4bs4j" path="res://actors/enemies/asteroid_beast/pieces/energy_talon_a.tscn" id="9_a4v3c"]
 
 [node name="TalonArm" type="Node2D"]
@@ -35,8 +36,13 @@ position = Vector2(-202, 40.2261)
 [node name="WeakspotA" parent="." instance=ExtResource("7_82crf")]
 position = Vector2(-21, -88.7739)
 
-[node name="ScaleSpikeA" parent="." instance=ExtResource("8_2ev52")]
-position = Vector2(-22, -84.7739)
+[node name="EnemyScale" parent="." instance=ExtResource("8_mayl8")]
+position = Vector2(-22, -85)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EnemyScale"]
+polygon = PackedVector2Array(-36, 12, 27, 13, 35, -181)
+
+[node name="ScaleSpikeA" parent="EnemyScale" instance=ExtResource("8_2ev52")]
 
 [node name="EnergyTalonA" parent="." instance=ExtResource("9_a4v3c")]
 position = Vector2(59, -36)

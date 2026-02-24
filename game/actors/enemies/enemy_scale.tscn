@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://u1ixb7camcwy"]
+
+[ext_resource type="Script" uid="uid://dlg23m28wbap6" path="res://actors/enemies/enemy_scale.gd" id="1_oyj02"]
+
+[node name="EnemyScale" type="AnimatableBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_oyj02")
