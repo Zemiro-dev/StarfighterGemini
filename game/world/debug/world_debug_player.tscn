@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx43pr6jsovls"]
+[gd_scene load_steps=6 format=3 uid="uid://dx43pr6jsovls"]
 
 [ext_resource type="PackedScene" uid="uid://c2inv1wwwo464" path="res://world/backgrounds/debug_background.tscn" id="1_o4jka"]
 [ext_resource type="PackedScene" uid="uid://bo20bbc3v4n5k" path="res://world/node_roots/projectiles_root.tscn" id="2_fy8ls"]
 [ext_resource type="PackedScene" uid="uid://3p08pqbj3jx1" path="res://actors/player/player.tscn" id="2_wkasf"]
 [ext_resource type="PackedScene" uid="uid://db3jamtupa1pe" path="res://world/world_environment_default.tscn" id="3_bkelj"]
+[ext_resource type="PackedScene" uid="uid://b58dppq2aevhp" path="res://actors/enemies/asteroid_beast/pieces/talon_arm.tscn" id="4_p353n"]
 
 [node name="WorldDebugPlayer" type="Node2D"]
 
@@ -15,5 +16,8 @@
 
 [node name="Player" parent="Stage" instance=ExtResource("2_wkasf")]
 position = Vector2(818, 501)
+
+[node name="TalonArm" parent="Stage" instance=ExtResource("4_p353n")]
+position = Vector2(1329, 673)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("3_bkelj")]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://uicpnh4rn6ps"]
+
+[ext_resource type="Script" uid="uid://bbe2sqowk0uas" path="res://actors/damage/damagable.gd" id="1_2xd70"]
+
+[node name="Damagable" type="Node"]
+script = ExtResource("1_2xd70")

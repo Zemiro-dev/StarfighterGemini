@@ -12,6 +12,7 @@ func _ready() -> void:
 	body_entered.connect(on_body_entered)
 	lifetime.timeout.connect(off)
 
+
 func on_body_entered(body: Node2D) -> void:
 	off()
 
@@ -21,7 +22,7 @@ func set_is_available(new_value: bool):
 	if !is_available:
 		process_mode = Node.PROCESS_MODE_INHERIT
 	else:
-		process_mode = Node.PROCESS_MODE_DISABLED	
+		process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func fire(_transform: Transform2D) -> void:
@@ -33,9 +34,24 @@ func fire(_transform: Transform2D) -> void:
 
 
 func off() -> void:
+	velocity = Vector2.ZERO
 	animation_player.play("off")
 
 
 func _physics_process(delta: float) -> void:
-	rotation = velocity.angle()
-	global_position += velocity * delta
+	if !velocity.is_zero_approx():
+		rotation = velocity.angle()
+		var space_state := get_world_2d().direct_space_state
+		var query := PhysicsShapeQueryParameters2D.new()
+		query.shape = collision_shape_2d.shape
+		query.transform = global_transform
+		query.collide_with_areas = false
+		query.collide_with_bodies = true
+		query.collision_mask = collision_mask
+		query.motion = velocity * delta
+		var result = space_state.cast_motion(query)
+		var unsafe = result[1]
+		if unsafe >= 1.0:
+			global_position += velocity * delta
+		else:
+			global_position += velocity * delta * unsafe
