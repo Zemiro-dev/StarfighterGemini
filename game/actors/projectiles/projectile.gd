@@ -4,16 +4,19 @@ class_name Projectile
 @onready var lifetime: Timer = $Lifetime
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @export var is_available := true: set = set_is_available
+@export var stats: ProjectileStats
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 var velocity := Vector2.ZERO
 
 
 func _ready() -> void:
+	if !stats: stats = ProjectileStats.new()
 	body_entered.connect(on_body_entered)
 	lifetime.timeout.connect(off)
 
 
 func on_body_entered(body: Node2D) -> void:
+	var damage_dealt = GameActor.attack(body, stats.damage)
 	off()
 
 
