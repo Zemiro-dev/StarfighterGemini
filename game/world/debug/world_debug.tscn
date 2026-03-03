@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://da4ta4o721exf"]
+[gd_scene load_steps=103 format=3 uid="uid://da4ta4o721exf"]
 
 [ext_resource type="Script" uid="uid://dj8f28g3mmv8i" path="res://world/debug/world_debug.gd" id="1_0cob0"]
 [ext_resource type="Texture2D" uid="uid://bbq0js4b3j7xu" path="res://assets/shapes/circle_blue_2tone_large.png" id="1_44sa8"]
@@ -11,6 +11,7 @@
 [ext_resource type="Material" uid="uid://4rph6123p6uq" path="res://shaders/resources/wibbly_material.tres" id="4_eldjb"]
 [ext_resource type="Shader" uid="uid://d1qb4jskectyo" path="res://shaders/color_swap_prog.gdshader" id="7_an6al"]
 [ext_resource type="Texture2D" uid="uid://d3qvbvfka6f2f" path="res://assets/ui/health_bar.png" id="9_aq1p2"]
+[ext_resource type="PackedScene" uid="uid://bo20bbc3v4n5k" path="res://world/node_roots/projectiles_root.tscn" id="10_ns7c5"]
 [ext_resource type="Texture2D" uid="uid://beeeba5bogag7" path="res://assets/shapes/yellow_diamond_particle.png" id="10_r0vbx"]
 [ext_resource type="Texture2D" uid="uid://16wlwkn7g2xc" path="res://actors/player/resources/player_gradient_high.tres" id="12_iodkf"]
 [ext_resource type="Texture2D" uid="uid://xtisnn3t5jr2" path="res://assets/player/core.png" id="12_lo56x"]
@@ -23,44 +24,38 @@
 [ext_resource type="Texture2D" uid="uid://bsem521pm0ryh" path="res://assets/enemies/asteroid_beast/asteroid_beast_stalk_lower.png" id="19_fdpbo"]
 [ext_resource type="Texture2D" uid="uid://bv3pj4ag8p0e6" path="res://assets/enemies/asteroid_beast/asteroid_beast_stalk_cap.png" id="20_0cob0"]
 [ext_resource type="Shader" uid="uid://b1v8l4mn65t1e" path="res://shaders/wibbly.gdshader" id="21_fdpbo"]
-[ext_resource type="PackedScene" uid="uid://b58dppq2aevhp" path="res://actors/enemies/asteroid_beast/pieces/talon_arm.tscn" id="22_4xgwv"]
 [ext_resource type="Material" uid="uid://c0xt8pljwmsw0" path="res://actors/enemies/resources/asteroid_beast_tendon_shader_material.tres" id="22_7g11o"]
 [ext_resource type="Texture2D" uid="uid://fku045dhle" path="res://assets/enemies/asteroid_beast/asteroid_beast_tendon_a.png" id="23_1jd2g"]
 [ext_resource type="Texture2D" uid="uid://c1211cel36anj" path="res://assets/enemies/asteroid_beast/asteroid_beast_tendon_b.png" id="24_82x64"]
 [ext_resource type="Material" uid="uid://lp2g72a775sk" path="res://actors/enemies/resources/asteroid_beast_armored_shader_material.tres" id="24_ghjbf"]
+[ext_resource type="Texture2D" uid="uid://e0vbjejruehv" path="res://assets/enemies/asteroid_beast/asteroid_beast_tendon_c.png" id="25_7xm87"]
 [ext_resource type="Texture2D" uid="uid://bqvqp533lcb05" path="res://assets/enemies/asteroid_beast/asteroid_beast_scale_a.png" id="26_t3a8v"]
 [ext_resource type="Texture2D" uid="uid://vur7uhyn7by" path="res://assets/enemies/asteroid_beast/asteroid_beast_scale_b.png" id="27_67ikf"]
-[ext_resource type="Texture2D" uid="uid://c18rhwvkti25c" path="res://assets/enemies/asteroid_beast/asteroid_beast_fin_a.png" id="28_jl7ui"]
-[ext_resource type="Texture2D" uid="uid://b674eu2imajpi" path="res://assets/enemies/asteroid_beast/asteroid_beast_fin_b.png" id="29_0bnsj"]
 [ext_resource type="Material" uid="uid://mrmdmrmv1t5n" path="res://actors/enemies/resources/asteroid_beast_weakspot_shader_material.tres" id="29_82x64"]
-[ext_resource type="Texture2D" uid="uid://bbtxwoos1v1aq" path="res://assets/enemies/asteroid_beast/asteroid_beast_weakspot_a.png" id="30_1h5nw"]
+[ext_resource type="Texture2D" uid="uid://b6xinorem03ve" path="res://assets/enemies/asteroid_beast/asteroid_beast_scale_d.png" id="29_h8r0t"]
 [ext_resource type="Script" uid="uid://cdncdg7hcl25m" path="res://ui/labels/fps.gd" id="30_tj5ml"]
-[ext_resource type="Texture2D" uid="uid://bhbsb3ofrvc6a" path="res://assets/enemies/asteroid_beast/asteroid_beast_scale_spike_a.png" id="31_f8emp"]
+[ext_resource type="Texture2D" uid="uid://djanyf3lvsprm" path="res://assets/enemies/asteroid_beast/asteroid_beast_scale_cheek_lower_a.png" id="31_ns7c5"]
+[ext_resource type="Texture2D" uid="uid://b0flvxy8yts1" path="res://assets/enemies/asteroid_beast/asteroid_beast_scale_cheek_lower_b.png" id="32_5xugk"]
 [ext_resource type="Material" uid="uid://byx4eobrlkwum" path="res://actors/enemies/resources/asteroid_beast_energy_a_shader_material.tres" id="32_7g11o"]
-[ext_resource type="Texture2D" uid="uid://cwpcljmd2jg6e" path="res://assets/enemies/asteroid_beast/asteroid_beast_energy_talon_lower.png" id="32_oai4s"]
-[ext_resource type="Texture2D" uid="uid://c36817fty0sew" path="res://assets/enemies/asteroid_beast/asteroid_beast_energy_talon_upper.png" id="33_nq3s0"]
+[ext_resource type="Texture2D" uid="uid://cglr6dsbo6lw0" path="res://assets/enemies/asteroid_beast/asteroid_beast_scale_cheek_upper_a.png" id="35_1g7u1"]
+[ext_resource type="Texture2D" uid="uid://mbc27chg5eo3" path="res://assets/enemies/asteroid_beast/asteroid_beast_scale_cheek_upper_b.png" id="36_1aouo"]
 [ext_resource type="Texture2D" uid="uid://cdbtwetqjpqui" path="res://assets/enemies/asteroid_beast/asteroid_beast_claw_arm_template.png" id="36_jl7ui"]
-[ext_resource type="PackedScene" uid="uid://cwxw6t0uxiyws" path="res://actors/enemies/asteroid_beast/pieces/scale_a.tscn" id="38_2c057"]
-[ext_resource type="PackedScene" uid="uid://cmkqxm1w5gv6i" path="res://actors/enemies/asteroid_beast/pieces/tendon_a.tscn" id="38_vb6qs"]
-[ext_resource type="PackedScene" uid="uid://vewji0t3hiv4" path="res://actors/enemies/asteroid_beast/pieces/scale_b.tscn" id="39_5lfug"]
-[ext_resource type="PackedScene" uid="uid://de5u74c58dsy3" path="res://actors/enemies/asteroid_beast/pieces/tendon_b.tscn" id="39_yuffk"]
-[ext_resource type="PackedScene" uid="uid://kvt0dd2a04pf" path="res://actors/enemies/asteroid_beast/pieces/tendon_c.tscn" id="40_5xugk"]
-[ext_resource type="PackedScene" uid="uid://b8acn80odjmig" path="res://actors/enemies/asteroid_beast/pieces/scale_c.tscn" id="40_xte43"]
-[ext_resource type="PackedScene" uid="uid://bm3c4mvxwnn1r" path="res://actors/enemies/asteroid_beast/pieces/fin_c.tscn" id="41_eijjf"]
-[ext_resource type="PackedScene" uid="uid://e4o478wce2q4" path="res://actors/enemies/asteroid_beast/pieces/scale_d.tscn" id="42_1g7u1"]
-[ext_resource type="PackedScene" uid="uid://rcrwrbwudvyy" path="res://actors/enemies/asteroid_beast/pieces/fin_d.tscn" id="42_h8mm7"]
-[ext_resource type="PackedScene" uid="uid://dja8ycm6lygx1" path="res://actors/enemies/asteroid_beast/pieces/scale_cheek_lower_a.tscn" id="43_1aouo"]
-[ext_resource type="PackedScene" uid="uid://d1qnn5ioqy8lc" path="res://actors/enemies/asteroid_beast/pieces/fin_e.tscn" id="43_u1s7s"]
-[ext_resource type="PackedScene" uid="uid://tiryepdi5fbr" path="res://actors/enemies/asteroid_beast/pieces/scale_cheek_lower_b.tscn" id="44_7to6k"]
+[ext_resource type="Shader" uid="uid://cs0xfte7rnnx8" path="res://shaders/gradient_swap_prog.gdshader" id="40_uibwa"]
+[ext_resource type="Texture2D" uid="uid://c1cd0fm3or673" path="res://assets/enemies/asteroid_beast/asteroid_beast_scale_c.png" id="42_7to6k"]
+[ext_resource type="Texture2D" uid="uid://bks33qlf4a707" path="res://assets/enemies/asteroid_beast/asteroid_beast_fin_c.png" id="43_otf24"]
+[ext_resource type="Texture2D" uid="uid://b77o8y1tklh4k" path="res://assets/enemies/asteroid_beast/asteroid_beast_fin_d.png" id="44_uibwa"]
 [ext_resource type="Texture2D" uid="uid://b1bkjlayxplhr" path="res://assets/enemies/asteroid_beast/asteroid_beast_energy_talon_b_lower.png" id="45_eijjf"]
+[ext_resource type="Texture2D" uid="uid://bbr4yvl0xe1yo" path="res://assets/enemies/asteroid_beast/asteroid_beast_fin_e.png" id="45_fn7rg"]
 [ext_resource type="Texture2D" uid="uid://caexl1ryicpg3" path="res://assets/enemies/asteroid_beast/asteroid_beast_energy_talon_b_upper.png" id="46_h8mm7"]
 [ext_resource type="Texture2D" uid="uid://cxjjbbxcvccqd" path="res://assets/enemies/asteroid_beast/asteroid_beast_weakspot_targeteye.png" id="46_otf24"]
-[ext_resource type="PackedScene" uid="uid://dehltgdt0onv6" path="res://actors/enemies/asteroid_beast/pieces/weakspot_b.tscn" id="46_phfj2"]
+[ext_resource type="Texture2D" uid="uid://chwg142ubta5" path="res://assets/enemies/asteroid_beast/asteroid_beast_weakspot_b.png" id="46_u7n2f"]
+[ext_resource type="Texture2D" uid="uid://btanvidn4ttom" path="res://assets/enemies/asteroid_beast/asteroid_beast_scale_spike_b.png" id="47_32kck"]
 [ext_resource type="PackedScene" uid="uid://bo6mjgja7p3k0" path="res://actors/enemies/asteroid_beast/pieces/laser_emitter.tscn" id="47_u1s7s"]
-[ext_resource type="PackedScene" uid="uid://b2a7rj4d3yqce" path="res://actors/enemies/asteroid_beast/pieces/scale_cheek_upper_a.tscn" id="47_uibwa"]
-[ext_resource type="PackedScene" uid="uid://scngc4cuo6u7" path="res://actors/enemies/asteroid_beast/pieces/scale_spike_b.tscn" id="47_yuffk"]
-[ext_resource type="PackedScene" uid="uid://c0vtjp04a0ke7" path="res://actors/enemies/asteroid_beast/pieces/scale_cheek_upper_b.tscn" id="48_fn7rg"]
-[ext_resource type="PackedScene" uid="uid://vdts8s2wou03" path="res://actors/enemies/asteroid_beast/pieces/scale_e.tscn" id="52_phfj2"]
+[ext_resource type="Texture2D" uid="uid://bes71wkbxiil0" path="res://assets/enemies/asteroid_beast/asteroid_beast_scale_e.png" id="52_d5408"]
+[ext_resource type="Texture2D" uid="uid://c4orlwxdbnuai" path="res://actors/enemies/resources/asteroid_beast_gradient_high.tres" id="52_otf24"]
+[ext_resource type="Texture2D" uid="uid://cktauhtvmcr31" path="res://assets/enemies/asteroid_beast/asteroid_beast_laser_emitter_a.png" id="53_buayg"]
+[ext_resource type="Texture2D" uid="uid://nd62n0wgrx1d" path="res://actors/enemies/resources/asteroid_beast_gradient_low.tres" id="53_uibwa"]
+[ext_resource type="PackedScene" uid="uid://b58dppq2aevhp" path="res://actors/enemies/asteroid_beast/pieces/talon_arm.tscn" id="54_h8r0t"]
 [ext_resource type="Texture2D" uid="uid://dqufylk7anldw" path="res://assets/enemies/asteroid_beast/asteroid_beast_bolt_sheet_a.png" id="59_1g7u1"]
 [ext_resource type="PackedScene" uid="uid://3p08pqbj3jx1" path="res://actors/player/player.tscn" id="61_7to6k"]
 [ext_resource type="PackedScene" uid="uid://db3jamtupa1pe" path="res://world/world_environment_default.tscn" id="64_otf24"]
@@ -373,6 +368,197 @@ color = Color(1.5, 1.488, 0.192, 1)
 color_ramp = SubResource("GradientTexture1D_1aouo")
 anim_offset_max = 1.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_55kvu"]
+resource_local_to_scene = true
+shader = ExtResource("40_uibwa")
+shader_parameter/gradient_texture_low = ExtResource("53_uibwa")
+shader_parameter/gradient_texture_high = ExtResource("52_otf24")
+shader_parameter/progress = 0.2
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovu4y"]
+resource_local_to_scene = true
+shader = ExtResource("40_uibwa")
+shader_parameter/gradient_texture_low = ExtResource("53_uibwa")
+shader_parameter/gradient_texture_high = ExtResource("52_otf24")
+shader_parameter/progress = 0.2
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p3a01"]
+resource_local_to_scene = true
+shader = ExtResource("40_uibwa")
+shader_parameter/gradient_texture_low = ExtResource("53_uibwa")
+shader_parameter/gradient_texture_high = ExtResource("52_otf24")
+shader_parameter/progress = 0.2
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_20gwj"]
+resource_local_to_scene = true
+shader = ExtResource("40_uibwa")
+shader_parameter/gradient_texture_low = ExtResource("53_uibwa")
+shader_parameter/gradient_texture_high = ExtResource("52_otf24")
+shader_parameter/progress = 0.2
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_psygv"]
+resource_local_to_scene = true
+shader = ExtResource("40_uibwa")
+shader_parameter/gradient_texture_low = ExtResource("53_uibwa")
+shader_parameter/gradient_texture_high = ExtResource("52_otf24")
+shader_parameter/progress = 0.2
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ec0n"]
+resource_local_to_scene = true
+shader = ExtResource("40_uibwa")
+shader_parameter/gradient_texture_low = ExtResource("53_uibwa")
+shader_parameter/gradient_texture_high = ExtResource("52_otf24")
+shader_parameter/progress = 0.2
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rllla"]
+resource_local_to_scene = true
+shader = ExtResource("40_uibwa")
+shader_parameter/gradient_texture_low = ExtResource("53_uibwa")
+shader_parameter/gradient_texture_high = ExtResource("52_otf24")
+shader_parameter/progress = 0.2
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_06ag3"]
+resource_local_to_scene = true
+shader = ExtResource("40_uibwa")
+shader_parameter/gradient_texture_low = ExtResource("53_uibwa")
+shader_parameter/gradient_texture_high = ExtResource("52_otf24")
+shader_parameter/progress = 0.2
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
+
+[sub_resource type="Shader" id="Shader_fn7rg"]
+code = "shader_type canvas_item;
+//https://godotshaders.com/shader/starfield/
+uniform sampler2D gradient_texture_low;
+uniform sampler2D gradient_texture_high;
+uniform float progress : hint_range(0.0, 1.0, 0.001) = 0.0;
+
+void fragment() {
+	vec4 texture_color = texture(TEXTURE, UV);
+	vec4 out_color = vec4(
+		mix(
+			texture(gradient_texture_low, vec2(texture_color.r, texture_color.r)).rgb,
+			texture(gradient_texture_high, vec2(texture_color.r, texture_color.r)).rgb,
+			progress
+		),
+		texture_color.a
+	);
+	COLOR = out_color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aw75e"]
+resource_local_to_scene = true
+shader = SubResource("Shader_fn7rg")
+shader_parameter/gradient_texture_low = ExtResource("53_uibwa")
+shader_parameter/gradient_texture_high = ExtResource("52_otf24")
+shader_parameter/progress = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1r76d"]
+resource_local_to_scene = true
+shader = SubResource("Shader_fn7rg")
+shader_parameter/gradient_texture_low = ExtResource("53_uibwa")
+shader_parameter/gradient_texture_high = ExtResource("52_otf24")
+shader_parameter/progress = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d5408"]
+resource_local_to_scene = true
+shader = SubResource("Shader_fn7rg")
+shader_parameter/gradient_texture_low = ExtResource("53_uibwa")
+shader_parameter/gradient_texture_high = ExtResource("52_otf24")
+shader_parameter/progress = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3coyj"]
+resource_local_to_scene = true
+shader = ExtResource("40_uibwa")
+shader_parameter/gradient_texture_low = ExtResource("53_uibwa")
+shader_parameter/gradient_texture_high = ExtResource("52_otf24")
+shader_parameter/progress = 0.2
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kehqe"]
+resource_local_to_scene = true
+shader = ExtResource("40_uibwa")
+shader_parameter/gradient_texture_low = ExtResource("53_uibwa")
+shader_parameter/gradient_texture_high = ExtResource("52_otf24")
+shader_parameter/progress = 0.2
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f6d7o"]
+resource_local_to_scene = true
+shader = ExtResource("40_uibwa")
+shader_parameter/gradient_texture_low = ExtResource("53_uibwa")
+shader_parameter/gradient_texture_high = ExtResource("52_otf24")
+shader_parameter/progress = 0.2
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0mc2c"]
+resource_local_to_scene = true
+shader = SubResource("Shader_fn7rg")
+shader_parameter/gradient_texture_low = ExtResource("53_uibwa")
+shader_parameter/gradient_texture_high = ExtResource("52_otf24")
+shader_parameter/progress = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6anj2"]
+resource_local_to_scene = true
+shader = SubResource("Shader_fn7rg")
+shader_parameter/gradient_texture_low = ExtResource("53_uibwa")
+shader_parameter/gradient_texture_high = ExtResource("52_otf24")
+shader_parameter/progress = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ixon"]
+resource_local_to_scene = true
+shader = SubResource("Shader_fn7rg")
+shader_parameter/gradient_texture_low = ExtResource("53_uibwa")
+shader_parameter/gradient_texture_high = ExtResource("52_otf24")
+shader_parameter/progress = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_seypg"]
+resource_local_to_scene = true
+shader = SubResource("Shader_fn7rg")
+shader_parameter/gradient_texture_low = ExtResource("53_uibwa")
+shader_parameter/gradient_texture_high = ExtResource("52_otf24")
+shader_parameter/progress = 0.3
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r0vbx"]
 shader = ExtResource("7_an6al")
 shader_parameter/swap_out = Color(0.87451, 0.160784, 0.207843, 1)
@@ -413,18 +599,18 @@ texture = ExtResource("4_7wlep")
 
 [node name="Sprite2D8" type="Sprite2D" parent="Stage/NeonOrbs"]
 material = SubResource("ShaderMaterial_3mc18")
-position = Vector2(-661, 1354)
+position = Vector2(-1045, 336)
 rotation = 1.57079
 texture = ExtResource("1_44sa8")
 
 [node name="Sprite2D6" type="Sprite2D" parent="Stage/NeonOrbs"]
 modulate = Color(1.2, 0.161, 0.208, 1)
-position = Vector2(-2071, 971)
+position = Vector2(-2047, 716)
 texture = ExtResource("4_7wlep")
 
 [node name="Sprite2D12" type="Sprite2D" parent="Stage/NeonOrbs"]
 material = ExtResource("4_eldjb")
-position = Vector2(2874, 972)
+position = Vector2(-2546, 729)
 texture = ExtResource("4_7wlep")
 
 [node name="WeaponEffects" type="Node2D" parent="Stage"]
@@ -449,6 +635,8 @@ texture = ExtResource("10_r0vbx")
 lifetime = 0.5
 explosiveness = 0.1
 process_material = SubResource("ParticleProcessMaterial_tqfwn")
+
+[node name="ProjectilesRoot" parent="Stage" instance=ExtResource("10_ns7c5")]
 
 [node name="MoonSprite" type="Sprite2D" parent="Stage"]
 visible = false
@@ -481,8 +669,7 @@ texture = ExtResource("1_44sa8")
 [node name="Actors" type="Node2D" parent="Stage"]
 
 [node name="Player" type="Node2D" parent="Stage/Actors"]
-visible = false
-position = Vector2(209, 491)
+position = Vector2(-180, 215)
 
 [node name="TopCannon" type="Sprite2D" parent="Stage/Actors/Player"]
 material = SubResource("ShaderMaterial_6ptfx")
@@ -589,171 +776,6 @@ texture = ExtResource("4_7wlep")
 
 [node name="SourceParts" type="Node2D" parent="Stage/Actors/AsteroidBeast"]
 
-[node name="TalonArm" parent="Stage/Actors/AsteroidBeast/SourceParts" instance=ExtResource("22_4xgwv")]
-position = Vector2(-1385, 265)
-
-[node name="ClawArm" type="Node2D" parent="Stage/Actors/AsteroidBeast/SourceParts"]
-position = Vector2(-1770, -540)
-
-[node name="T" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/SourceParts/ClawArm"]
-visible = false
-texture = ExtResource("36_jl7ui")
-
-[node name="TendonA" parent="Stage/Actors/AsteroidBeast/SourceParts/ClawArm" instance=ExtResource("38_vb6qs")]
-position = Vector2(-92, 34)
-rotation = 2.63895
-
-[node name="TendonA2" parent="Stage/Actors/AsteroidBeast/SourceParts/ClawArm" instance=ExtResource("38_vb6qs")]
-position = Vector2(19, 9)
-rotation = 2.63895
-
-[node name="TendonB" parent="Stage/Actors/AsteroidBeast/SourceParts/ClawArm" instance=ExtResource("39_yuffk")]
-position = Vector2(-205, 30)
-rotation = -2.98312
-
-[node name="ScaleA" parent="Stage/Actors/AsteroidBeast/SourceParts/ClawArm" instance=ExtResource("38_2c057")]
-position = Vector2(89, -12)
-rotation = 0.887974
-
-[node name="ScaleB" parent="Stage/Actors/AsteroidBeast/SourceParts/ClawArm" instance=ExtResource("39_5lfug")]
-position = Vector2(-24, 29)
-
-[node name="ScaleC" parent="Stage/Actors/AsteroidBeast/SourceParts/ClawArm" instance=ExtResource("40_xte43")]
-position = Vector2(-135, 50)
-
-[node name="FinC" parent="Stage/Actors/AsteroidBeast/SourceParts/ClawArm" instance=ExtResource("41_eijjf")]
-material = ExtResource("24_ghjbf")
-position = Vector2(-291, 27)
-
-[node name="FinD" parent="Stage/Actors/AsteroidBeast/SourceParts/ClawArm" instance=ExtResource("42_h8mm7")]
-material = ExtResource("17_k1c70")
-position = Vector2(-220, -19)
-
-[node name="FinE" parent="Stage/Actors/AsteroidBeast/SourceParts/ClawArm" instance=ExtResource("43_u1s7s")]
-material = ExtResource("17_k1c70")
-position = Vector2(-117, -73)
-
-[node name="WeakspotB" parent="Stage/Actors/AsteroidBeast/SourceParts/ClawArm" instance=ExtResource("46_phfj2")]
-position = Vector2(150, -53)
-rotation = 1.00107
-
-[node name="ScaleSpikeB" parent="Stage/Actors/AsteroidBeast/SourceParts/ClawArm" instance=ExtResource("47_yuffk")]
-position = Vector2(221, -66)
-
-[node name="EnergyTalonB" type="Node2D" parent="Stage/Actors/AsteroidBeast/SourceParts/ClawArm"]
-position = Vector2(233, 51)
-
-[node name="EnergyTalonBLower" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/SourceParts/ClawArm/EnergyTalonB"]
-material = ExtResource("32_7g11o")
-position = Vector2(0, 1)
-rotation = 1.57079
-texture = ExtResource("45_eijjf")
-
-[node name="EnergyTalonBUpper" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/SourceParts/ClawArm/EnergyTalonB/EnergyTalonBLower"]
-material = ExtResource("32_7g11o")
-position = Vector2(-23, -99)
-texture = ExtResource("46_h8mm7")
-
-[node name="LaserEmitter1" parent="Stage/Actors/AsteroidBeast/SourceParts/ClawArm" instance=ExtResource("47_u1s7s")]
-position = Vector2(133, 94)
-
-[node name="LaserEmitter2" parent="Stage/Actors/AsteroidBeast/SourceParts/ClawArm" instance=ExtResource("47_u1s7s")]
-position = Vector2(5, 93)
-
-[node name="LaserEmitter3" parent="Stage/Actors/AsteroidBeast/SourceParts/ClawArm" instance=ExtResource("47_u1s7s")]
-position = Vector2(-120, 94)
-
-[node name="Body" type="Node2D" parent="Stage/Actors/AsteroidBeast/SourceParts"]
-position = Vector2(-1957, 0)
-
-[node name="TendonA" parent="Stage/Actors/AsteroidBeast/SourceParts/Body" instance=ExtResource("38_vb6qs")]
-position = Vector2(141, 0)
-
-[node name="TendonA2" parent="Stage/Actors/AsteroidBeast/SourceParts/Body" instance=ExtResource("38_vb6qs")]
-position = Vector2(12, 0)
-
-[node name="ScaleA" parent="Stage/Actors/AsteroidBeast/SourceParts/Body" instance=ExtResource("38_2c057")]
-position = Vector2(-56, 4)
-rotation = 1.5708
-
-[node name="ScaleA2" parent="Stage/Actors/AsteroidBeast/SourceParts/Body" instance=ExtResource("38_2c057")]
-position = Vector2(70, 4)
-rotation = 1.5708
-
-[node name="ScaleA3" parent="Stage/Actors/AsteroidBeast/SourceParts/Body" instance=ExtResource("38_2c057")]
-position = Vector2(196, 4)
-rotation = 1.5708
-
-[node name="WeakspotB" parent="Stage/Actors/AsteroidBeast/SourceParts/Body" instance=ExtResource("46_phfj2")]
-position = Vector2(-135, 0)
-rotation = -1.57079
-
-[node name="ScaleE" parent="Stage/Actors/AsteroidBeast/SourceParts/Body" instance=ExtResource("52_phfj2")]
-material = ExtResource("17_k1c70")
-position = Vector2(-192, 0)
-
-[node name="LaserEmitter" parent="Stage/Actors/AsteroidBeast/SourceParts/Body" instance=ExtResource("47_u1s7s")]
-position = Vector2(-58, 115)
-
-[node name="LaserEmitter2" parent="Stage/Actors/AsteroidBeast/SourceParts/Body" instance=ExtResource("47_u1s7s")]
-position = Vector2(69, 115)
-
-[node name="LaserEmitter3" parent="Stage/Actors/AsteroidBeast/SourceParts/Body" instance=ExtResource("47_u1s7s")]
-position = Vector2(199, 115)
-
-[node name="LaserEmitter4" parent="Stage/Actors/AsteroidBeast/SourceParts/Body" instance=ExtResource("47_u1s7s")]
-position = Vector2(199, -114)
-rotation = -3.14159
-
-[node name="LaserEmitter5" parent="Stage/Actors/AsteroidBeast/SourceParts/Body" instance=ExtResource("47_u1s7s")]
-position = Vector2(68, -114)
-rotation = -3.14159
-
-[node name="LaserEmitter6" parent="Stage/Actors/AsteroidBeast/SourceParts/Body" instance=ExtResource("47_u1s7s")]
-position = Vector2(-58, -114)
-rotation = -3.14159
-
-[node name="Head" type="Node2D" parent="Stage/Actors/AsteroidBeast/SourceParts"]
-position = Vector2(-2253, 615)
-
-[node name="TendonC" parent="Stage/Actors/AsteroidBeast/SourceParts/Head" instance=ExtResource("40_5xugk")]
-material = ExtResource("22_7g11o")
-position = Vector2(-113, -56)
-
-[node name="TendonC2" parent="Stage/Actors/AsteroidBeast/SourceParts/Head" instance=ExtResource("40_5xugk")]
-material = ExtResource("22_7g11o")
-position = Vector2(-113, 54)
-scale = Vector2(1, -1)
-
-[node name="ScaleD" parent="Stage/Actors/AsteroidBeast/SourceParts/Head" instance=ExtResource("42_1g7u1")]
-material = ExtResource("24_ghjbf")
-position = Vector2(-19, 2)
-
-[node name="TendonA" parent="Stage/Actors/AsteroidBeast/SourceParts/Head" instance=ExtResource("38_vb6qs")]
-position = Vector2(-15, -2)
-rotation = -3.14159
-
-[node name="ScaleCheekLowerA" parent="Stage/Actors/AsteroidBeast/SourceParts/Head" instance=ExtResource("43_1aouo")]
-material = ExtResource("24_ghjbf")
-position = Vector2(73, -60)
-
-[node name="ScaleCheekLowerB" parent="Stage/Actors/AsteroidBeast/SourceParts/Head" instance=ExtResource("44_7to6k")]
-material = ExtResource("24_ghjbf")
-position = Vector2(73, 62)
-
-[node name="WeakspotTargetEye" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/SourceParts/Head"]
-material = ExtResource("29_82x64")
-position = Vector2(57, -2)
-texture = ExtResource("46_otf24")
-
-[node name="ScaleCheekUpperA" parent="Stage/Actors/AsteroidBeast/SourceParts/Head" instance=ExtResource("47_uibwa")]
-material = ExtResource("24_ghjbf")
-position = Vector2(64, -120)
-
-[node name="ScaleCheekUpperB" parent="Stage/Actors/AsteroidBeast/SourceParts/Head" instance=ExtResource("48_fn7rg")]
-material = ExtResource("24_ghjbf")
-position = Vector2(64, 119)
-
 [node name="Bolt" type="GPUParticles2D" parent="Stage/Actors/AsteroidBeast/SourceParts"]
 material = SubResource("CanvasItemMaterial_1aouo")
 position = Vector2(-2558, -638)
@@ -847,183 +869,57 @@ visibility_rect = Rect2(-100, -100, 2000, 200)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_7to6k")
 
-[node name="TalonArmUpper" type="Node2D" parent="Stage/Actors/AsteroidBeast/StageBody"]
-position = Vector2(-288, -427)
-rotation = -3.14159
-
-[node name="TendonA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmUpper"]
-material = ExtResource("22_7g11o")
-position = Vector2(-53, 39.2261)
-rotation = 2.38042
-texture = ExtResource("23_1jd2g")
-
-[node name="TendonB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmUpper"]
-material = ExtResource("22_7g11o")
-position = Vector2(-85, -34.7739)
-rotation = -3.14159
-texture = ExtResource("24_82x64")
-
-[node name="ScaleA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmUpper"]
-material = ExtResource("24_ghjbf")
-position = Vector2(-64, 103.226)
-rotation = 0.875632
-texture = ExtResource("26_t3a8v")
-
-[node name="ScaleB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmUpper"]
-material = ExtResource("24_ghjbf")
-position = Vector2(1, 2.22614)
-rotation = 0.876155
-texture = ExtResource("27_67ikf")
-
-[node name="FinA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmUpper"]
-material = ExtResource("17_k1c70")
-position = Vector2(-112, -36.7739)
-texture = ExtResource("28_jl7ui")
-offset = Vector2(-60, 0)
-
-[node name="FinB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmUpper"]
-material = ExtResource("24_ghjbf")
-position = Vector2(-202, 40.2261)
-texture = ExtResource("29_0bnsj")
-offset = Vector2(-55, 0)
-
-[node name="WeakspotA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmUpper"]
-material = ExtResource("29_82x64")
-position = Vector2(-21, -88.7739)
-texture = ExtResource("30_1h5nw")
-
-[node name="ScaledSpike" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmUpper"]
-material = ExtResource("17_k1c70")
-position = Vector2(-22, -84.7739)
-rotation = 0.00141498
-texture = ExtResource("31_f8emp")
-offset = Vector2(0, -90)
-
-[node name="EnergyTalon" type="Node2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmUpper"]
-position = Vector2(59, -36)
-
-[node name="EnergyTalonLower" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmUpper/EnergyTalon"]
-material = ExtResource("32_7g11o")
-texture = ExtResource("32_oai4s")
-offset = Vector2(20, -105)
-
-[node name="EnergyTalonUpper" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmUpper/EnergyTalon/EnergyTalonLower"]
-show_behind_parent = true
-material = ExtResource("32_7g11o")
-position = Vector2(30, -134)
-texture = ExtResource("33_nq3s0")
-offset = Vector2(0, -166)
-
-[node name="TalonArmLower" type="Node2D" parent="Stage/Actors/AsteroidBeast/StageBody"]
-position = Vector2(-111, 411)
-rotation = 3.14159
-scale = Vector2(1, -1)
-
-[node name="TendonA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmLower"]
-material = ExtResource("22_7g11o")
-position = Vector2(-53, 39.2261)
-rotation = 2.38042
-texture = ExtResource("23_1jd2g")
-
-[node name="TendonB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmLower"]
-material = ExtResource("22_7g11o")
-position = Vector2(-85, -34.7739)
-rotation = -3.14159
-texture = ExtResource("24_82x64")
-
-[node name="ScaleA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmLower"]
-material = ExtResource("24_ghjbf")
-position = Vector2(-64, 103.226)
-rotation = 0.875632
-texture = ExtResource("26_t3a8v")
-
-[node name="ScaleB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmLower"]
-material = ExtResource("24_ghjbf")
-position = Vector2(1, 2.22614)
-rotation = 0.876155
-texture = ExtResource("27_67ikf")
-
-[node name="FinA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmLower"]
-material = ExtResource("17_k1c70")
-position = Vector2(-112, -36.7739)
-texture = ExtResource("28_jl7ui")
-offset = Vector2(-60, 0)
-
-[node name="FinB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmLower"]
-material = ExtResource("24_ghjbf")
-position = Vector2(-202, 40.2261)
-texture = ExtResource("29_0bnsj")
-offset = Vector2(-55, 0)
-
-[node name="WeakspotA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmLower"]
-material = ExtResource("29_82x64")
-position = Vector2(-21, -88.7739)
-texture = ExtResource("30_1h5nw")
-
-[node name="ScaledSpike" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmLower"]
-material = ExtResource("17_k1c70")
-position = Vector2(-22, -84.7739)
-rotation = 0.00141498
-texture = ExtResource("31_f8emp")
-offset = Vector2(0, -90)
-
-[node name="EnergyTalon" type="Node2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmLower"]
-position = Vector2(59, -36)
-
-[node name="EnergyTalonLower" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmLower/EnergyTalon"]
-material = ExtResource("32_7g11o")
-texture = ExtResource("32_oai4s")
-offset = Vector2(20, -105)
-
-[node name="EnergyTalonUpper" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/TalonArmLower/EnergyTalon/EnergyTalonLower"]
-show_behind_parent = true
-material = ExtResource("32_7g11o")
-position = Vector2(30, -134)
-texture = ExtResource("33_nq3s0")
-offset = Vector2(0, -166)
-
 [node name="Head" type="Node2D" parent="Stage/Actors/AsteroidBeast/StageBody"]
 position = Vector2(314, 4)
 rotation = -0.00050153
 scale = Vector2(-1, 1)
 
-[node name="TendonC" parent="Stage/Actors/AsteroidBeast/StageBody/Head" instance=ExtResource("40_5xugk")]
+[node name="TendonC" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/Head"]
 material = ExtResource("22_7g11o")
 position = Vector2(-113, -56)
+texture = ExtResource("25_7xm87")
 
-[node name="TendonC2" parent="Stage/Actors/AsteroidBeast/StageBody/Head" instance=ExtResource("40_5xugk")]
+[node name="TendonC2" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/Head"]
 material = ExtResource("22_7g11o")
 position = Vector2(-113, 54)
 scale = Vector2(1, -1)
+texture = ExtResource("25_7xm87")
 
-[node name="ScaleD" parent="Stage/Actors/AsteroidBeast/StageBody/Head" instance=ExtResource("42_1g7u1")]
-material = ExtResource("24_ghjbf")
+[node name="ScaleD" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/Head"]
+material = SubResource("ShaderMaterial_55kvu")
 position = Vector2(-19, 2)
+texture = ExtResource("29_h8r0t")
 
-[node name="TendonA" parent="Stage/Actors/AsteroidBeast/StageBody/Head" instance=ExtResource("38_vb6qs")]
+[node name="TendonA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/Head"]
+material = ExtResource("22_7g11o")
 position = Vector2(-15, -2)
 rotation = -3.14159
+texture = ExtResource("23_1jd2g")
 
-[node name="ScaleCheekLowerA" parent="Stage/Actors/AsteroidBeast/StageBody/Head" instance=ExtResource("43_1aouo")]
-material = ExtResource("24_ghjbf")
+[node name="ScaleCheekLowerA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/Head"]
+material = SubResource("ShaderMaterial_ovu4y")
 position = Vector2(73, -60)
+texture = ExtResource("31_ns7c5")
 
-[node name="ScaleCheekLowerB" parent="Stage/Actors/AsteroidBeast/StageBody/Head" instance=ExtResource("44_7to6k")]
-material = ExtResource("24_ghjbf")
+[node name="ScaleCheekLowerB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/Head"]
+material = SubResource("ShaderMaterial_p3a01")
 position = Vector2(73, 62)
+texture = ExtResource("32_5xugk")
 
 [node name="WeakspotTargetEye" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/Head"]
 material = ExtResource("29_82x64")
 position = Vector2(57, -2)
 texture = ExtResource("46_otf24")
 
-[node name="ScaleCheekUpperA" parent="Stage/Actors/AsteroidBeast/StageBody/Head" instance=ExtResource("47_uibwa")]
-material = ExtResource("24_ghjbf")
+[node name="ScaleCheekUpperA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/Head"]
+material = SubResource("ShaderMaterial_20gwj")
 position = Vector2(64, -120)
+texture = ExtResource("35_1g7u1")
 
-[node name="ScaleCheekUpperB" parent="Stage/Actors/AsteroidBeast/StageBody/Head" instance=ExtResource("48_fn7rg")]
-material = ExtResource("24_ghjbf")
+[node name="ScaleCheekUpperB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/Head"]
+material = SubResource("ShaderMaterial_psygv")
 position = Vector2(64, 119)
+texture = ExtResource("36_1aouo")
 
 [node name="ClawArmUpper" type="Node2D" parent="Stage/Actors/AsteroidBeast/StageBody"]
 position = Vector2(555, -289)
@@ -1033,46 +929,68 @@ scale = Vector2(-1, 1)
 visible = false
 texture = ExtResource("36_jl7ui")
 
-[node name="TendonA" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper" instance=ExtResource("38_vb6qs")]
+[node name="TendonA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper"]
+material = ExtResource("22_7g11o")
 position = Vector2(-92, 34)
 rotation = 2.63895
+texture = ExtResource("23_1jd2g")
 
-[node name="TendonA2" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper" instance=ExtResource("38_vb6qs")]
+[node name="TendonA2" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper"]
+material = ExtResource("22_7g11o")
 position = Vector2(19, 9)
 rotation = 2.63895
+texture = ExtResource("23_1jd2g")
 
-[node name="TendonB" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper" instance=ExtResource("39_yuffk")]
+[node name="TendonB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper"]
+material = ExtResource("22_7g11o")
 position = Vector2(-205, 30)
 rotation = -2.98312
+texture = ExtResource("24_82x64")
 
-[node name="ScaleA" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper" instance=ExtResource("38_2c057")]
+[node name="ScaleA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper"]
+material = ExtResource("24_ghjbf")
 position = Vector2(89, -12)
 rotation = 0.887974
+texture = ExtResource("26_t3a8v")
 
-[node name="ScaleB" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper" instance=ExtResource("39_5lfug")]
+[node name="ScaleB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper"]
+material = SubResource("ShaderMaterial_5ec0n")
 position = Vector2(-24, 29)
+rotation = 0.876155
+texture = ExtResource("27_67ikf")
 
-[node name="ScaleC" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper" instance=ExtResource("40_xte43")]
+[node name="ScaleC" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper"]
+material = SubResource("ShaderMaterial_rllla")
 position = Vector2(-135, 50)
+scale = Vector2(-1, 1)
+texture = ExtResource("42_7to6k")
 
-[node name="FinC" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper" instance=ExtResource("41_eijjf")]
-material = ExtResource("24_ghjbf")
+[node name="FinC" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper"]
+material = SubResource("ShaderMaterial_06ag3")
 position = Vector2(-291, 27)
+texture = ExtResource("43_otf24")
 
-[node name="FinD" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper" instance=ExtResource("42_h8mm7")]
-material = ExtResource("17_k1c70")
+[node name="FinD" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper"]
+material = SubResource("ShaderMaterial_aw75e")
 position = Vector2(-220, -19)
+texture = ExtResource("44_uibwa")
 
-[node name="FinE" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper" instance=ExtResource("43_u1s7s")]
-material = ExtResource("17_k1c70")
+[node name="FinE" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper"]
+material = SubResource("ShaderMaterial_1r76d")
 position = Vector2(-117, -73)
+texture = ExtResource("45_fn7rg")
 
-[node name="WeakspotB" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper" instance=ExtResource("46_phfj2")]
+[node name="WeakspotB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper"]
+material = ExtResource("29_82x64")
 position = Vector2(150, -53)
 rotation = 1.00107
+texture = ExtResource("46_u7n2f")
 
-[node name="ScaleSpikeB" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper" instance=ExtResource("47_yuffk")]
+[node name="ScaleSpikeB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper"]
+material = SubResource("ShaderMaterial_d5408")
 position = Vector2(221, -66)
+rotation = 1.57079
+texture = ExtResource("47_32kck")
 
 [node name="EnergyTalonB" type="Node2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper"]
 position = Vector2(233, 51)
@@ -1105,46 +1023,68 @@ scale = Vector2(-1, -1)
 visible = false
 texture = ExtResource("36_jl7ui")
 
-[node name="TendonA" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower" instance=ExtResource("38_vb6qs")]
+[node name="TendonA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower"]
+material = ExtResource("22_7g11o")
 position = Vector2(-92, 34)
 rotation = 2.63895
+texture = ExtResource("23_1jd2g")
 
-[node name="TendonA2" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower" instance=ExtResource("38_vb6qs")]
+[node name="TendonA2" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower"]
+material = ExtResource("22_7g11o")
 position = Vector2(19, 9)
 rotation = 2.63895
+texture = ExtResource("23_1jd2g")
 
-[node name="TendonB" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower" instance=ExtResource("39_yuffk")]
+[node name="TendonB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower"]
+material = ExtResource("22_7g11o")
 position = Vector2(-205, 30)
 rotation = -2.98312
+texture = ExtResource("24_82x64")
 
-[node name="ScaleA" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower" instance=ExtResource("38_2c057")]
+[node name="ScaleA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower"]
+material = ExtResource("24_ghjbf")
 position = Vector2(89, -12)
 rotation = 0.887974
+texture = ExtResource("26_t3a8v")
 
-[node name="ScaleB" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower" instance=ExtResource("39_5lfug")]
+[node name="ScaleB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower"]
+material = SubResource("ShaderMaterial_3coyj")
 position = Vector2(-24, 29)
+rotation = 0.876155
+texture = ExtResource("27_67ikf")
 
-[node name="ScaleC" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower" instance=ExtResource("40_xte43")]
+[node name="ScaleC" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower"]
+material = SubResource("ShaderMaterial_kehqe")
 position = Vector2(-135, 50)
+scale = Vector2(-1, 1)
+texture = ExtResource("42_7to6k")
 
-[node name="FinC" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower" instance=ExtResource("41_eijjf")]
-material = ExtResource("24_ghjbf")
+[node name="FinC" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower"]
+material = SubResource("ShaderMaterial_f6d7o")
 position = Vector2(-291, 27)
+texture = ExtResource("43_otf24")
 
-[node name="FinD" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower" instance=ExtResource("42_h8mm7")]
-material = ExtResource("17_k1c70")
+[node name="FinD" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower"]
+material = SubResource("ShaderMaterial_0mc2c")
 position = Vector2(-220, -19)
+texture = ExtResource("44_uibwa")
 
-[node name="FinE" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower" instance=ExtResource("43_u1s7s")]
-material = ExtResource("17_k1c70")
+[node name="FinE" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower"]
+material = SubResource("ShaderMaterial_6anj2")
 position = Vector2(-117, -73)
+texture = ExtResource("45_fn7rg")
 
-[node name="WeakspotB" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower" instance=ExtResource("46_phfj2")]
+[node name="WeakspotB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower"]
+material = ExtResource("29_82x64")
 position = Vector2(150, -53)
 rotation = 1.00107
+texture = ExtResource("46_u7n2f")
 
-[node name="ScaleSpikeB" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower" instance=ExtResource("47_yuffk")]
+[node name="ScaleSpikeB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower"]
+material = SubResource("ShaderMaterial_5ixon")
 position = Vector2(221, -66)
+rotation = 1.57079
+texture = ExtResource("47_32kck")
 
 [node name="EnergyTalonB" type="Node2D" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower"]
 position = Vector2(233, 51)
@@ -1173,44 +1113,65 @@ position = Vector2(-120, 94)
 position = Vector2(676, 3)
 scale = Vector2(-1, 1)
 
-[node name="TendonA" parent="Stage/Actors/AsteroidBeast/StageBody/Body" instance=ExtResource("38_vb6qs")]
+[node name="TendonA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/Body"]
+material = ExtResource("22_7g11o")
 position = Vector2(141, 0)
+texture = ExtResource("23_1jd2g")
 
-[node name="TendonA2" parent="Stage/Actors/AsteroidBeast/StageBody/Body" instance=ExtResource("38_vb6qs")]
+[node name="TendonA2" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/Body"]
+material = ExtResource("22_7g11o")
 position = Vector2(12, 0)
+texture = ExtResource("23_1jd2g")
 
-[node name="ScaleA" parent="Stage/Actors/AsteroidBeast/StageBody/Body" instance=ExtResource("38_2c057")]
+[node name="ScaleA" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/Body"]
+material = ExtResource("24_ghjbf")
 position = Vector2(-56, 4)
 rotation = 1.5708
+texture = ExtResource("26_t3a8v")
 
-[node name="ScaleA2" parent="Stage/Actors/AsteroidBeast/StageBody/Body" instance=ExtResource("38_2c057")]
+[node name="ScaleA2" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/Body"]
+material = ExtResource("24_ghjbf")
 position = Vector2(70, 4)
 rotation = 1.5708
+texture = ExtResource("26_t3a8v")
 
-[node name="ScaleA3" parent="Stage/Actors/AsteroidBeast/StageBody/Body" instance=ExtResource("38_2c057")]
+[node name="ScaleA3" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/Body"]
+material = ExtResource("24_ghjbf")
 position = Vector2(196, 4)
 rotation = 1.5708
+texture = ExtResource("26_t3a8v")
 
-[node name="WeakspotB" parent="Stage/Actors/AsteroidBeast/StageBody/Body" instance=ExtResource("46_phfj2")]
+[node name="WeakspotB" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/Body"]
+material = ExtResource("29_82x64")
 position = Vector2(-135, 0)
 rotation = -1.57079
+texture = ExtResource("46_u7n2f")
 
-[node name="ScaleE" parent="Stage/Actors/AsteroidBeast/StageBody/Body" instance=ExtResource("52_phfj2")]
-material = ExtResource("17_k1c70")
+[node name="ScaleE" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/Body"]
+material = SubResource("ShaderMaterial_seypg")
 position = Vector2(-192, 0)
+texture = ExtResource("52_d5408")
 
-[node name="LaserEmitter" parent="Stage/Actors/AsteroidBeast/StageBody/Body" instance=ExtResource("47_u1s7s")]
+[node name="LaserEmitter" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/Body"]
+material = ExtResource("29_82x64")
 position = Vector2(-58, 115)
+texture = ExtResource("53_buayg")
 
-[node name="LaserEmitter2" parent="Stage/Actors/AsteroidBeast/StageBody/Body" instance=ExtResource("47_u1s7s")]
+[node name="LaserEmitter2" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/Body"]
+material = ExtResource("29_82x64")
 position = Vector2(69, 115)
+texture = ExtResource("53_buayg")
 
-[node name="LaserEmitter3" parent="Stage/Actors/AsteroidBeast/StageBody/Body" instance=ExtResource("47_u1s7s")]
+[node name="LaserEmitter3" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/Body"]
+material = ExtResource("29_82x64")
 position = Vector2(199, 115)
+texture = ExtResource("53_buayg")
 
-[node name="LaserEmitter4" parent="Stage/Actors/AsteroidBeast/StageBody/Body" instance=ExtResource("47_u1s7s")]
+[node name="LaserEmitter4" type="Sprite2D" parent="Stage/Actors/AsteroidBeast/StageBody/Body"]
+material = ExtResource("29_82x64")
 position = Vector2(199, -114)
 rotation = -3.14159
+texture = ExtResource("53_buayg")
 
 [node name="LaserEmitter5" parent="Stage/Actors/AsteroidBeast/StageBody/Body" instance=ExtResource("47_u1s7s")]
 position = Vector2(68, -114)
@@ -1219,6 +1180,10 @@ rotation = -3.14159
 [node name="LaserEmitter6" parent="Stage/Actors/AsteroidBeast/StageBody/Body" instance=ExtResource("47_u1s7s")]
 position = Vector2(-58, -114)
 rotation = -3.14159
+
+[node name="TalonArm" parent="Stage/Actors/AsteroidBeast" instance=ExtResource("54_h8r0t")]
+position = Vector2(-330, 153)
+scale = Vector2(-1, 1)
 
 [node name="Player2" parent="Stage/Actors" instance=ExtResource("61_7to6k")]
 position = Vector2(209, 540)
@@ -1238,7 +1203,7 @@ offset_top = 27.0
 offset_right = 1889.0
 offset_bottom = 115.0
 theme_override_font_sizes/font_size = 64
-text = "FPS: 137.0"
+text = "FPS: 145.0"
 script = ExtResource("30_tj5ml")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("64_otf24")]

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bdir7wwni1etj" path="res://actors/enemies/resources/asteroid_beast_armored_gradient_low.tres" id="2_ojesn"]
 
 [resource]
+resource_local_to_scene = true
 shader = ExtResource("1_ojesn")
 shader_parameter/gradient_texture_low = ExtResource("2_ojesn")
 shader_parameter/gradient_texture_high = ExtResource("1_fbri0")

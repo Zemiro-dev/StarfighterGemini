@@ -1,14 +1,16 @@
+@tool
 extends Node
 class_name Damagable
 
 signal on_damage_taken(damage_dealt: int)
 signal on_health_changed(new_health: int, max_health: int)
 signal on_death(actor: Node2D)
+signal on_invincibility_changed(is_invincible: bool)
 
 
 @export var stats: DamagableStats = DamagableStats.new()
 @export var is_dead := false
-@export var is_invincible := false
+@export var is_invincible := false: set = _set_is_invincible
 @export var actor: Node2D
 @onready var health: float = stats.max_health
 
@@ -16,6 +18,12 @@ signal on_death(actor: Node2D)
 func _ready() -> void:
 	if !actor:
 		actor = get_parent()
+
+
+func _set_is_invincible(new_value: bool):
+	if is_invincible != new_value:
+		is_invincible = new_value
+		on_invincibility_changed.emit(is_invincible)
 
 
 func _physics_process(delta: float) -> void:

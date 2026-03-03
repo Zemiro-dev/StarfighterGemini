@@ -1,20 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://u1ixb7camcwy"]
+[gd_scene load_steps=6 format=3 uid="uid://u1ixb7camcwy"]
 
 [ext_resource type="Script" uid="uid://dlg23m28wbap6" path="res://actors/enemies/enemy_scale.gd" id="1_oyj02"]
 [ext_resource type="PackedScene" uid="uid://uicpnh4rn6ps" path="res://actors/damage/damagable.tscn" id="2_rxjc5"]
-[ext_resource type="Material" uid="uid://dv0177xqfognf" path="res://actors/enemies/resources/asteroid_beast_shader_material.tres" id="3_m0s23"]
+[ext_resource type="Script" uid="uid://dos03u2y4nj1m" path="res://actors/damage/damagable_stats.gd" id="3_fk8q5"]
+[ext_resource type="Material" uid="uid://lp2g72a775sk" path="res://actors/enemies/resources/asteroid_beast_armored_shader_material.tres" id="4_m0s23"]
+
+[sub_resource type="Resource" id="Resource_6nuo4"]
+script = ExtResource("3_fk8q5")
+max_health = 10.0
 
 [node name="EnemyScale" type="AnimatableBody2D"]
+material = ExtResource("4_m0s23")
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_oyj02")
 
-[node name="Damagable" parent="." instance=ExtResource("2_rxjc5")]
+[node name="Damagable" parent="." node_paths=PackedStringArray("actor") instance=ExtResource("2_rxjc5")]
+stats = SubResource("Resource_6nuo4")
+actor = NodePath("..")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-36, 12, 27, 13, 35, -181)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = ExtResource("3_m0s23")
+use_parent_material = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

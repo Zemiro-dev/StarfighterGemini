@@ -25,6 +25,7 @@ void fragment() {
 "
 
 [resource]
+resource_local_to_scene = true
 shader = SubResource("Shader_1jd2g")
 shader_parameter/gradient_texture_low = ExtResource("3_ct6kp")
 shader_parameter/gradient_texture_high = ExtResource("2_lev3i")

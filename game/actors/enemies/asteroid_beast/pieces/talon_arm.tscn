@@ -1,41 +1,113 @@
-[gd_scene load_steps=10 format=3 uid="uid://b58dppq2aevhp"]
+[gd_scene load_steps=21 format=3 uid="uid://b58dppq2aevhp"]
 
-[ext_resource type="PackedScene" uid="uid://cmkqxm1w5gv6i" path="res://actors/enemies/asteroid_beast/pieces/tendon_a.tscn" id="1_65a65"]
-[ext_resource type="PackedScene" uid="uid://de5u74c58dsy3" path="res://actors/enemies/asteroid_beast/pieces/tendon_b.tscn" id="2_mayl8"]
-[ext_resource type="PackedScene" uid="uid://cwxw6t0uxiyws" path="res://actors/enemies/asteroid_beast/pieces/scale_a.tscn" id="3_ibuir"]
-[ext_resource type="PackedScene" uid="uid://vewji0t3hiv4" path="res://actors/enemies/asteroid_beast/pieces/scale_b.tscn" id="4_xvf24"]
-[ext_resource type="PackedScene" uid="uid://cpuypuskmdewk" path="res://actors/enemies/asteroid_beast/pieces/fin_a.tscn" id="5_01sas"]
-[ext_resource type="PackedScene" uid="uid://bxlgjm67238be" path="res://actors/enemies/asteroid_beast/pieces/fin_b.tscn" id="6_i7f48"]
-[ext_resource type="PackedScene" uid="uid://cqd5es6ev36jv" path="res://actors/enemies/asteroid_beast/pieces/weakspot_a.tscn" id="7_82crf"]
+[ext_resource type="PackedScene" uid="uid://f0vi5s2bc4yb" path="res://actors/enemies/asteroid_beast/pieces/tendon_a.tscn" id="1_82crf"]
+[ext_resource type="PackedScene" uid="uid://ci82tyyg7bcoe" path="res://actors/enemies/asteroid_beast/pieces/tendon_b.tscn" id="3_a4v3c"]
+[ext_resource type="PackedScene" uid="uid://dwi4nhuwlt8wa" path="res://actors/enemies/asteroid_beast/pieces/fin_a.tscn" id="4_2ev52"]
+[ext_resource type="Shader" uid="uid://cs0xfte7rnnx8" path="res://shaders/gradient_swap_prog.gdshader" id="7_u538y"]
 [ext_resource type="PackedScene" uid="uid://biv5vf8tx7tsg" path="res://actors/enemies/asteroid_beast/pieces/scale_spike_a.tscn" id="8_2ev52"]
+[ext_resource type="Texture2D" uid="uid://crlic45tdcsjj" path="res://actors/enemies/resources/asteroid_beast_armored_gradient_high.tres" id="8_vsfkg"]
 [ext_resource type="PackedScene" uid="uid://y3vswpw4bs4j" path="res://actors/enemies/asteroid_beast/pieces/energy_talon_a.tscn" id="9_a4v3c"]
+[ext_resource type="Texture2D" uid="uid://bdir7wwni1etj" path="res://actors/enemies/resources/asteroid_beast_armored_gradient_low.tres" id="9_otoxr"]
+[ext_resource type="PackedScene" uid="uid://e457msyv31i5" path="res://actors/enemies/asteroid_beast/pieces/scale_b.tscn" id="10_3y1rb"]
+[ext_resource type="Material" uid="uid://mrmdmrmv1t5n" path="res://actors/enemies/resources/asteroid_beast_weakspot_shader_material.tres" id="10_whl4f"]
+[ext_resource type="PackedScene" uid="uid://7k517gedaxnw" path="res://actors/enemies/asteroid_beast/pieces/fin_b.tscn" id="11_a4v3c"]
+[ext_resource type="Texture2D" uid="uid://bbtxwoos1v1aq" path="res://assets/enemies/asteroid_beast/asteroid_beast_weakspot_a.png" id="11_p2g03"]
+[ext_resource type="PackedScene" uid="uid://cu2lk8vioiyao" path="res://actors/enemies/asteroid_beast/pieces/scale_a.tscn" id="14_i7f48"]
+[ext_resource type="Texture2D" uid="uid://c4orlwxdbnuai" path="res://actors/enemies/resources/asteroid_beast_gradient_high.tres" id="16_whl4f"]
+[ext_resource type="Texture2D" uid="uid://nd62n0wgrx1d" path="res://actors/enemies/resources/asteroid_beast_gradient_low.tres" id="17_p2g03"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ev52"]
+resource_local_to_scene = true
+shader = ExtResource("7_u538y")
+shader_parameter/gradient_texture_low = ExtResource("17_p2g03")
+shader_parameter/gradient_texture_high = ExtResource("16_whl4f")
+shader_parameter/progress = 0.2
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_df1f1"]
+resource_local_to_scene = true
+shader = ExtResource("7_u538y")
+shader_parameter/gradient_texture_low = ExtResource("9_otoxr")
+shader_parameter/gradient_texture_high = ExtResource("8_vsfkg")
+shader_parameter/progress = 0.2
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8e5d2"]
+resource_local_to_scene = true
+shader = ExtResource("7_u538y")
+shader_parameter/gradient_texture_low = ExtResource("9_otoxr")
+shader_parameter/gradient_texture_high = ExtResource("8_vsfkg")
+shader_parameter/progress = 0.2
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u538y"]
+resource_local_to_scene = true
+shader = ExtResource("7_u538y")
+shader_parameter/gradient_texture_low = ExtResource("9_otoxr")
+shader_parameter/gradient_texture_high = ExtResource("8_vsfkg")
+shader_parameter/progress = 0.2
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_07if4"]
+resource_local_to_scene = true
+shader = ExtResource("7_u538y")
+shader_parameter/gradient_texture_low = ExtResource("17_p2g03")
+shader_parameter/gradient_texture_high = ExtResource("16_whl4f")
+shader_parameter/progress = 0.2
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
 
 [node name="TalonArm" type="Node2D"]
 
-[node name="TendonA" parent="." instance=ExtResource("1_65a65")]
-position = Vector2(-53, 39.2261)
-rotation = -0.705612
+[node name="TendonA" parent="." instance=ExtResource("1_82crf")]
+position = Vector2(-62, 42)
+rotation = -0.67651
+scale = Vector2(1, 1)
 
-[node name="TendonB" parent="." instance=ExtResource("2_mayl8")]
-position = Vector2(-85, -34.7739)
+[node name="FinTendon" parent="." instance=ExtResource("3_a4v3c")]
+position = Vector2(-61, -32)
+rotation = -3.14159
 
-[node name="ScaleA" parent="." instance=ExtResource("3_ibuir")]
-position = Vector2(-64, 103.226)
-rotation = 0.876155
+[node name="FinA" parent="FinTendon" instance=ExtResource("4_2ev52")]
+material = SubResource("ShaderMaterial_2ev52")
+position = Vector2(47, 0)
+rotation = 3.14159
 
-[node name="ScaleB" parent="." instance=ExtResource("4_xvf24")]
-position = Vector2(1, 2.22614)
+[node name="ScaleA" parent="." instance=ExtResource("14_i7f48")]
+material = SubResource("ShaderMaterial_df1f1")
+position = Vector2(-63, 103)
+rotation = 0.872665
 
-[node name="FinA" parent="." instance=ExtResource("5_01sas")]
-position = Vector2(-112, -36.7739)
+[node name="ScaleB" parent="." instance=ExtResource("10_3y1rb")]
+material = SubResource("ShaderMaterial_8e5d2")
+position = Vector2(1, 2)
+rotation = 0.872665
 
-[node name="FinB" parent="." instance=ExtResource("6_i7f48")]
-position = Vector2(-202, 40.2261)
+[node name="FinB" parent="." instance=ExtResource("11_a4v3c")]
+material = SubResource("ShaderMaterial_u538y")
+position = Vector2(-190, 39)
 
-[node name="WeakspotA" parent="." instance=ExtResource("7_82crf")]
+[node name="WeakspotA" type="Sprite2D" parent="."]
+material = ExtResource("10_whl4f")
 position = Vector2(-21, -88.7739)
+texture = ExtResource("11_p2g03")
 
-[node name="EnemyScale" parent="." instance=ExtResource("8_2ev52")]
+[node name="ScaleSpikeA" parent="." instance=ExtResource("8_2ev52")]
+material = SubResource("ShaderMaterial_07if4")
 position = Vector2(-22, -84)
 
 [node name="EnergyTalonA" parent="." instance=ExtResource("9_a4v3c")]
