@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://c1211cel36anj" path="res://assets/enemies/asteroid_beast/asteroid_beast_tendon_b.png" id="2_utuyk"]
 
 [node name="TendonB" instance=ExtResource("1_pe7b8")]
-script = null
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(24, 0)

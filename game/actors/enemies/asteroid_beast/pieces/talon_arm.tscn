@@ -76,7 +76,6 @@ shader_parameter/frames = 256
 [node name="TendonA" parent="." instance=ExtResource("1_82crf")]
 position = Vector2(-62, 42)
 rotation = -0.67651
-scale = Vector2(1, 1)
 
 [node name="FinTendon" parent="." instance=ExtResource("3_a4v3c")]
 position = Vector2(-61, -32)
