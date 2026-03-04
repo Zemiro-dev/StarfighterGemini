@@ -7,6 +7,7 @@ class_name Projectile
 @export var stats: ProjectileStats
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 var velocity := Vector2.ZERO
+var live := true
 
 
 func _ready() -> void:
@@ -16,8 +17,9 @@ func _ready() -> void:
 
 
 func on_body_entered(body: Node2D) -> void:
-	var damage_dealt = GameActor.attack(body, stats.damage)
-	off()
+	if live:
+		var damage_dealt = GameActor.attack(body, stats.damage)
+		off()
 
 
 func set_is_available(new_value: bool):
@@ -30,14 +32,23 @@ func set_is_available(new_value: bool):
 
 func fire(_transform: Transform2D) -> void:
 	global_transform = _transform
+	on()
 	velocity = Vector2.from_angle(rotation) * 3000.0
-	lifetime.start()
-	animation_player.play("on")
 	reset_physics_interpolation()
 
 
-func off() -> void:
+func on() -> void:
+	live = true
 	velocity = Vector2.ZERO
+	collision_shape_2d.set_deferred('disabled', false)
+	animation_player.play("on")
+	lifetime.start()
+	
+
+func off() -> void:
+	live = false
+	velocity = Vector2.ZERO
+	collision_shape_2d.set_deferred('disabled', true)
 	animation_player.play("off")
 
 

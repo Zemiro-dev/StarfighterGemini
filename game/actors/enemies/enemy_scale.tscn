@@ -17,11 +17,13 @@ script = ExtResource("1_oyj02")
 
 [node name="Damagable" parent="." node_paths=PackedStringArray("actor") instance=ExtResource("2_rxjc5")]
 stats = SubResource("Resource_6nuo4")
+is_invincible = true
 actor = NodePath("..")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 use_parent_material = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

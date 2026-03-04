@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c61vc5kdnj011" path="res://actors/enemies/resources/asteroid_beast_weakspot_gradient_low.tres" id="3_rs0p0"]
 
 [resource]
+resource_local_to_scene = true
 shader = ExtResource("1_a0evt")
 shader_parameter/gradient_texture_low = ExtResource("3_rs0p0")
 shader_parameter/gradient_texture_high = ExtResource("2_d7hw4")

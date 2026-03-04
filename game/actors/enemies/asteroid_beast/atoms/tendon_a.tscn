@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://f0vi5s2bc4yb"]
 
-[ext_resource type="PackedScene" uid="uid://cbgpmlp4lgyo8" path="res://actors/enemies/asteroid_beast/pieces/tendon.tscn" id="1_44vpb"]
+[ext_resource type="PackedScene" uid="uid://cbgpmlp4lgyo8" path="res://actors/enemies/asteroid_beast/atoms/tendon.tscn" id="1_44vpb"]
 [ext_resource type="Texture2D" uid="uid://fku045dhle" path="res://assets/enemies/asteroid_beast/asteroid_beast_tendon_a.png" id="2_texx5"]
 
 [node name="TendonA" instance=ExtResource("1_44vpb")]

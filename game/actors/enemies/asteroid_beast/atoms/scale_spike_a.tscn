@@ -27,10 +27,11 @@ material = SubResource("ShaderMaterial_0wf4w")
 
 [node name="Damagable" parent="." index="0"]
 stats = SubResource("Resource_2n1oi")
+is_invincible = false
 
-[node name="CollisionPolygon2D" parent="." index="1"]
-polygon = PackedVector2Array(-36, 12, 27, 13, 35, -181)
-
-[node name="Sprite2D" parent="." index="2"]
+[node name="Sprite2D" parent="." index="1"]
 position = Vector2(0, -90)
 texture = ExtResource("2_s7cmk")
+
+[node name="CollisionPolygon2D" parent="." index="2"]
+polygon = PackedVector2Array(-36, 12, 27, 13, 35, -181, 0, -110, -22, -52)

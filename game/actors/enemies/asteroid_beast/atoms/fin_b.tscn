@@ -20,9 +20,9 @@ shader_parameter/frames = 256
 [node name="FinB" instance=ExtResource("1_bp27v")]
 material = SubResource("ShaderMaterial_gx2yn")
 
-[node name="Damagable" parent="." index="0"]
-is_invincible = true
-
-[node name="Sprite2D" parent="." index="2"]
+[node name="Sprite2D" parent="." index="1"]
 position = Vector2(-57, 0)
 texture = ExtResource("2_lrrvd")
+
+[node name="CollisionPolygon2D" parent="." index="2"]
+polygon = PackedVector2Array(-138, -28, 31, -28, 19, 28, -18, 28)

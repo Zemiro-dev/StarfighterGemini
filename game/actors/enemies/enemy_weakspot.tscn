@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://tbnef3j0ruvi"]
+
+[ext_resource type="Script" uid="uid://lvjma3tad2va" path="res://actors/enemies/enemy_weakspot.gd" id="1_bxuad"]
+[ext_resource type="Material" uid="uid://mrmdmrmv1t5n" path="res://actors/enemies/resources/asteroid_beast_weakspot_shader_material.tres" id="1_x1a08"]
+[ext_resource type="PackedScene" uid="uid://uicpnh4rn6ps" path="res://actors/damage/damagable.tscn" id="2_x1a08"]
+[ext_resource type="Script" uid="uid://dos03u2y4nj1m" path="res://actors/damage/damagable_stats.gd" id="3_h4fpe"]
+
+[sub_resource type="Resource" id="Resource_ymb3d"]
+script = ExtResource("3_h4fpe")
+max_health = 10.0
+
+[node name="EnemyWeakspot" type="AnimatableBody2D"]
+material = ExtResource("1_x1a08")
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_bxuad")
+
+[node name="Damagable" parent="." node_paths=PackedStringArray("actor") instance=ExtResource("2_x1a08")]
+stats = SubResource("Resource_ymb3d")
+actor = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
