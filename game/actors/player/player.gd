@@ -9,6 +9,8 @@ class_name Player
 
 @export var blast_pack: PackedScene = preload("res://actors/projectiles/projectile_blue_blast.tscn")
 
+var actor_type := GameActor.ActorType.PLAYER
+
 func _ready() -> void:
 	move_machine.actor = self
 	move_machine.on_state_change.connect(on_move_state_change)

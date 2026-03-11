@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6y6l1svjy0yh"]
+
+[ext_resource type="PackedScene" uid="uid://uicpnh4rn6ps" path="res://actors/damage/damagable.tscn" id="1_0mb2a"]
+[ext_resource type="Script" uid="uid://ds4s6023egyy4" path="res://actors/enemies/enemy_damaging_segment.gd" id="1_regeo"]
+
+[node name="EnemyDamagingSegment" type="AnimatableBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_regeo")
+
+[node name="Damagable" parent="." node_paths=PackedStringArray("actor") instance=ExtResource("1_0mb2a")]
+is_invincible = true
+actor = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

@@ -10,9 +10,7 @@ func get_actor_type(o: Object) -> ActorType:
 	return ActorType.UNKNOWN
 
 
-## Attempts to attack the object's damagable. Returns
-## the amount of damage done
-func attack(o: Object, damage: int) -> int:
+func get_damagable(o: Object) -> Object:
 	var damagable = o.get('damagable')
 	if !damagable:
 		if o is Node:
@@ -22,8 +20,22 @@ func attack(o: Object, damage: int) -> int:
 			for child in o.get_children():
 				if child is Damagable:
 					damagable =	child
+	return damagable
+	
+
+
+## Attempts to attack the object's damagable. Returns
+## the amount of damage done
+func attack(o: Object, damage: int) -> int:
+	var damagable = GameActor.get_damagable(o)
 			
 	if damagable is Object:
 		if damagable.has_method('take_damage'):
 			return damagable.take_damage(damage)
+	return 0
+
+
+func check_and_attack(attacker: Object, target: Object) -> int:
+	if attacker.has_method('attack'):
+		return attacker.attack(target)
 	return 0

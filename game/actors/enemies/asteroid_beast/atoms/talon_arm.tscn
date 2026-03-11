@@ -124,4 +124,4 @@ position = Vector2(-20, -89)
 scale = Vector2(1.21696, 1.21696)
 
 [node name="EnergyTalonA" parent="." instance=ExtResource("9_a4v3c")]
-position = Vector2(59, -36)
+position = Vector2(75, -62)

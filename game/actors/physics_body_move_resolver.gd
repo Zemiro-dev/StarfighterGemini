@@ -22,10 +22,17 @@ func resolve(request: MoveRequest, delta: float) -> Vector2:
 	if collision:
 			var collider: Object = collision.get_collider()
 			var collider_type = GameActor.get_actor_type(collider)
+			## Base Movement Effects
 			match (collider_type):
 				GameActor.ActorType.UNKNOWN, GameActor.ActorType.TERRAIN, GameActor.ActorType.ENEMY, GameActor.ActorType.DESTRUCTIBLE:
 					if collision.get_normal().dot(velocity) <= 0.:
 						velocity = velocity.bounce(collision.get_normal())
+			
+			## Damage and Additional Knockback 
+			match (collider_type):
+				GameActor.ActorType.ENEMY:
+					GameActor.check_and_attack(collider, request.body)
+					velocity += velocity.normalized() * 600.
 	if steering and steering.should_overspeed_break(velocity):
 		velocity = steering.overspeed_break(velocity, delta)
 	return velocity

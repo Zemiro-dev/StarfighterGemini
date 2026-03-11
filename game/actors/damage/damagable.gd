@@ -42,6 +42,7 @@ func take_damage(damage: int) -> int:
 	on_damage_taken.emit(abs(damage_taken))
 	on_health_changed.emit(health, stats.max_health)
 	if actor and health <= 0:
+		is_dead = true
 		on_death.emit(actor)
 	return damage_taken
 
