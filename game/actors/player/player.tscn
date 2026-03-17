@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://3p08pqbj3jx1"]
+[gd_scene load_steps=17 format=3 uid="uid://3p08pqbj3jx1"]
 
 [ext_resource type="Script" uid="uid://f4fh5oklml4n" path="res://actors/player/player.gd" id="1_bop6h"]
 [ext_resource type="PackedScene" uid="uid://uicpnh4rn6ps" path="res://actors/damage/damagable.tscn" id="2_7aotg"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://d17glutkysooc" path="res://actors/steering/steering.gd" id="3_lsln6"]
 [ext_resource type="Script" uid="uid://cgobkakxb2git" path="res://actors/steering/controller_steering.gd" id="4_hiosj"]
 [ext_resource type="Script" uid="uid://dno1a1koeexnq" path="res://actors/steering/steering_stats.gd" id="4_ssdk0"]
-[ext_resource type="Texture2D" uid="uid://xtisnn3t5jr2" path="res://assets/player/core.png" id="7_7aotg"]
 [ext_resource type="PackedScene" uid="uid://c4dfwdemcmkp3" path="res://actors/player/player_cannon.tscn" id="8_rt46e"]
 [ext_resource type="Texture2D" uid="uid://cdp7stnuo4kpn" path="res://assets/player/player_body_a.png" id="12_ssdk0"]
 
@@ -89,11 +88,8 @@ position = Vector2(32, -63)
 [node name="BottomCannon" parent="." instance=ExtResource("8_rt46e")]
 position = Vector2(32, 63)
 
-[node name="Core" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_12xki")
-texture = ExtResource("7_7aotg")
-
-[node name="BodyA" type="Sprite2D" parent="."]
+[node name="BodySprite" type="Sprite2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_12xki")
 position = Vector2(0, -15)
 texture = ExtResource("12_ssdk0")

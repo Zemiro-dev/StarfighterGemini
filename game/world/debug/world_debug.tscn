@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://da4ta4o721exf"]
+[gd_scene load_steps=113 format=3 uid="uid://da4ta4o721exf"]
 
 [ext_resource type="Script" uid="uid://dj8f28g3mmv8i" path="res://world/debug/world_debug.gd" id="1_0cob0"]
 [ext_resource type="Texture2D" uid="uid://bbq0js4b3j7xu" path="res://assets/shapes/circle_blue_2tone_large.png" id="1_44sa8"]
@@ -53,9 +53,11 @@
 [ext_resource type="PackedScene" uid="uid://bo6mjgja7p3k0" path="res://actors/enemies/asteroid_beast/atoms/laser_emitter.tscn" id="47_u1s7s"]
 [ext_resource type="Texture2D" uid="uid://bes71wkbxiil0" path="res://assets/enemies/asteroid_beast/asteroid_beast_scale_e.png" id="52_d5408"]
 [ext_resource type="Texture2D" uid="uid://c4orlwxdbnuai" path="res://actors/enemies/resources/asteroid_beast_gradient_high.tres" id="52_otf24"]
+[ext_resource type="Texture2D" uid="uid://dowd1254jxxg6" path="res://actors/enemies/resources/asteroid_beast_weakspot_gradient_high.tres" id="53_1g7u1"]
 [ext_resource type="Texture2D" uid="uid://cktauhtvmcr31" path="res://assets/enemies/asteroid_beast/asteroid_beast_laser_emitter_a.png" id="53_buayg"]
 [ext_resource type="Texture2D" uid="uid://nd62n0wgrx1d" path="res://actors/enemies/resources/asteroid_beast_gradient_low.tres" id="53_uibwa"]
-[ext_resource type="PackedScene" uid="uid://b58dppq2aevhp" path="res://actors/enemies/asteroid_beast/atoms/talon_arm.tscn" id="54_h8r0t"]
+[ext_resource type="Texture2D" uid="uid://c61vc5kdnj011" path="res://actors/enemies/resources/asteroid_beast_weakspot_gradient_low.tres" id="54_1aouo"]
+[ext_resource type="PackedScene" uid="uid://b58dppq2aevhp" path="res://actors/enemies/asteroid_beast/molecules/talon_arm.tscn" id="54_h8r0t"]
 [ext_resource type="Texture2D" uid="uid://dqufylk7anldw" path="res://assets/enemies/asteroid_beast/asteroid_beast_bolt_sheet_a.png" id="59_1g7u1"]
 [ext_resource type="PackedScene" uid="uid://3p08pqbj3jx1" path="res://actors/player/player.tscn" id="61_7to6k"]
 [ext_resource type="PackedScene" uid="uid://db3jamtupa1pe" path="res://world/world_environment_default.tscn" id="64_otf24"]
@@ -498,6 +500,39 @@ shader_parameter/gradient_texture_low = ExtResource("53_uibwa")
 shader_parameter/gradient_texture_high = ExtResource("52_otf24")
 shader_parameter/progress = 0.3
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7to6k"]
+resource_local_to_scene = true
+shader = ExtResource("40_uibwa")
+shader_parameter/gradient_texture_low = ExtResource("54_1aouo")
+shader_parameter/gradient_texture_high = ExtResource("53_1g7u1")
+shader_parameter/progress = 0.568
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otf24"]
+resource_local_to_scene = true
+shader = ExtResource("40_uibwa")
+shader_parameter/gradient_texture_low = ExtResource("54_1aouo")
+shader_parameter/gradient_texture_high = ExtResource("53_1g7u1")
+shader_parameter/progress = 0.568
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uibwa"]
+resource_local_to_scene = true
+shader = ExtResource("40_uibwa")
+shader_parameter/gradient_texture_low = ExtResource("54_1aouo")
+shader_parameter/gradient_texture_high = ExtResource("53_1g7u1")
+shader_parameter/progress = 0.568
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3coyj"]
 resource_local_to_scene = true
 shader = ExtResource("40_uibwa")
@@ -552,12 +587,67 @@ shader_parameter/gradient_texture_low = ExtResource("53_uibwa")
 shader_parameter/gradient_texture_high = ExtResource("52_otf24")
 shader_parameter/progress = 0.3
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fn7rg"]
+resource_local_to_scene = true
+shader = ExtResource("40_uibwa")
+shader_parameter/gradient_texture_low = ExtResource("54_1aouo")
+shader_parameter/gradient_texture_high = ExtResource("53_1g7u1")
+shader_parameter/progress = 0.568
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u7n2f"]
+resource_local_to_scene = true
+shader = ExtResource("40_uibwa")
+shader_parameter/gradient_texture_low = ExtResource("54_1aouo")
+shader_parameter/gradient_texture_high = ExtResource("53_1g7u1")
+shader_parameter/progress = 0.568
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_32kck"]
+resource_local_to_scene = true
+shader = ExtResource("40_uibwa")
+shader_parameter/gradient_texture_low = ExtResource("54_1aouo")
+shader_parameter/gradient_texture_high = ExtResource("53_1g7u1")
+shader_parameter/progress = 0.568
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_seypg"]
 resource_local_to_scene = true
 shader = SubResource("Shader_fn7rg")
 shader_parameter/gradient_texture_low = ExtResource("53_uibwa")
 shader_parameter/gradient_texture_high = ExtResource("52_otf24")
 shader_parameter/progress = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_buayg"]
+resource_local_to_scene = true
+shader = ExtResource("40_uibwa")
+shader_parameter/gradient_texture_low = ExtResource("54_1aouo")
+shader_parameter/gradient_texture_high = ExtResource("53_1g7u1")
+shader_parameter/progress = 0.568
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tatvv"]
+resource_local_to_scene = true
+shader = ExtResource("40_uibwa")
+shader_parameter/gradient_texture_low = ExtResource("54_1aouo")
+shader_parameter/gradient_texture_high = ExtResource("53_1g7u1")
+shader_parameter/progress = 0.568
+shader_parameter/use_distortion = false
+shader_parameter/strength = 0.0
+shader_parameter/fps = 0.0
+shader_parameter/frames = 256
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r0vbx"]
 shader = ExtResource("7_an6al")
@@ -788,6 +878,7 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_7to6k")
 
 [node name="StageBody" type="Node2D" parent="Stage/Actors/AsteroidBeast"]
+visible = false
 
 [node name="Bolts" type="Node2D" parent="Stage/Actors/AsteroidBeast/StageBody"]
 
@@ -1007,12 +1098,15 @@ position = Vector2(-19.9994, -91.0001)
 texture = ExtResource("46_h8mm7")
 
 [node name="LaserEmitter1" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper" instance=ExtResource("47_u1s7s")]
+material = SubResource("ShaderMaterial_7to6k")
 position = Vector2(133, 94)
 
 [node name="LaserEmitter2" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper" instance=ExtResource("47_u1s7s")]
+material = SubResource("ShaderMaterial_otf24")
 position = Vector2(5, 93)
 
 [node name="LaserEmitter3" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmUpper" instance=ExtResource("47_u1s7s")]
+material = SubResource("ShaderMaterial_uibwa")
 position = Vector2(-120, 94)
 
 [node name="ClawArmLower" type="Node2D" parent="Stage/Actors/AsteroidBeast/StageBody"]
@@ -1101,12 +1195,15 @@ position = Vector2(-14.9995, -80.0001)
 texture = ExtResource("46_h8mm7")
 
 [node name="LaserEmitter1" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower" instance=ExtResource("47_u1s7s")]
+material = SubResource("ShaderMaterial_fn7rg")
 position = Vector2(133, 94)
 
 [node name="LaserEmitter2" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower" instance=ExtResource("47_u1s7s")]
+material = SubResource("ShaderMaterial_u7n2f")
 position = Vector2(5, 93)
 
 [node name="LaserEmitter3" parent="Stage/Actors/AsteroidBeast/StageBody/ClawArmLower" instance=ExtResource("47_u1s7s")]
+material = SubResource("ShaderMaterial_32kck")
 position = Vector2(-120, 94)
 
 [node name="Body" type="Node2D" parent="Stage/Actors/AsteroidBeast/StageBody"]
@@ -1174,19 +1271,20 @@ rotation = -3.14159
 texture = ExtResource("53_buayg")
 
 [node name="LaserEmitter5" parent="Stage/Actors/AsteroidBeast/StageBody/Body" instance=ExtResource("47_u1s7s")]
+material = SubResource("ShaderMaterial_buayg")
 position = Vector2(68, -114)
 rotation = -3.14159
 
 [node name="LaserEmitter6" parent="Stage/Actors/AsteroidBeast/StageBody/Body" instance=ExtResource("47_u1s7s")]
+material = SubResource("ShaderMaterial_tatvv")
 position = Vector2(-58, -114)
 rotation = -3.14159
 
 [node name="TalonArm" parent="Stage/Actors/AsteroidBeast" instance=ExtResource("54_h8r0t")]
-position = Vector2(-330, 153)
-scale = Vector2(-1, 1)
+position = Vector2(620, 216)
 
 [node name="Player2" parent="Stage/Actors" instance=ExtResource("61_7to6k")]
-position = Vector2(209, 540)
+position = Vector2(1412, 898)
 
 [node name="UI" type="Node2D" parent="."]
 

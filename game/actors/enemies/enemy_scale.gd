@@ -11,7 +11,6 @@ class_name EnemyScale
 @export var armored_gradient_low: GradientTexture1D = preload("res://actors/enemies/resources/asteroid_beast_armored_gradient_low.tres")
 @export var armored_gradient_high: GradientTexture1D = preload("res://actors/enemies/resources/asteroid_beast_armored_gradient_high.tres")
 
-
 func _ready() -> void:
 	damagable.on_death.connect(die)
 	
@@ -46,3 +45,6 @@ func update_gradients(low: GradientTexture1D, high: GradientTexture1D) -> void:
 	if material is ShaderMaterial:
 		material.set_shader_parameter("gradient_texture_low", low);
 		material.set_shader_parameter("gradient_texture_high", high);
+
+func _physics_process(delta: float) -> void:
+	pass

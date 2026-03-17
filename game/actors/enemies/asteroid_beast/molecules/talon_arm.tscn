@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://b58dppq2aevhp"]
+[gd_scene load_steps=27 format=3 uid="uid://b58dppq2aevhp"]
 
 [ext_resource type="PackedScene" uid="uid://f0vi5s2bc4yb" path="res://actors/enemies/asteroid_beast/atoms/tendon_a.tscn" id="1_82crf"]
+[ext_resource type="Script" uid="uid://cc3qdvymp2w1e" path="res://actors/enemies/asteroid_beast/molecules/talon_arm.gd" id="1_gjlef"]
 [ext_resource type="PackedScene" uid="uid://ci82tyyg7bcoe" path="res://actors/enemies/asteroid_beast/atoms/tendon_b.tscn" id="3_a4v3c"]
 [ext_resource type="PackedScene" uid="uid://dwi4nhuwlt8wa" path="res://actors/enemies/asteroid_beast/atoms/fin_a.tscn" id="4_2ev52"]
 [ext_resource type="Shader" uid="uid://cs0xfte7rnnx8" path="res://shaders/gradient_swap_prog.gdshader" id="7_u538y"]
@@ -83,30 +84,86 @@ shader_parameter/strength = 0.0
 shader_parameter/fps = 0.0
 shader_parameter/frames = 256
 
+[sub_resource type="Animation" id="Animation_yxp02"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_hgngc"]
+resource_name = "test"
+length = 5.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ghppn"]
+_data = {
+&"RESET": SubResource("Animation_yxp02"),
+&"test": SubResource("Animation_hgngc")
+}
+
 [node name="TalonArm" type="Node2D"]
+script = ExtResource("1_gjlef")
 
 [node name="TendonA" parent="." instance=ExtResource("1_82crf")]
-position = Vector2(-62, 42)
-rotation = -0.67651
 
 [node name="FinTendon" parent="." instance=ExtResource("3_a4v3c")]
-position = Vector2(-61, -32)
-rotation = -3.14159
+position = Vector2(-62, -33)
+rotation = 3.14159
 
 [node name="FinA" parent="FinTendon" instance=ExtResource("4_2ev52")]
 material = SubResource("ShaderMaterial_2ev52")
-position = Vector2(47, -1.90735e-06)
+position = Vector2(44, 0.00019455)
 rotation = 3.14159
+
+[node name="FinARemoteTransform2D" type="RemoteTransform2D" parent="FinTendon"]
+position = Vector2(44, 0.000195471)
+rotation = 3.14159
+remote_path = NodePath("../FinA")
+
+[node name="FinTendonRemoteTransform2D" type="RemoteTransform2D" parent="."]
+position = Vector2(-62, -33)
+rotation = 3.14159
+remote_path = NodePath("../FinTendon")
 
 [node name="ScaleA" parent="." instance=ExtResource("14_i7f48")]
 material = SubResource("ShaderMaterial_df1f1")
 position = Vector2(-63, 103)
 rotation = 0.872665
 
+[node name="ScaleARemoteTransform2D" type="RemoteTransform2D" parent="."]
+position = Vector2(-63, 103)
+rotation = 0.872665
+remote_path = NodePath("../ScaleA")
+
 [node name="ScaleB" parent="." instance=ExtResource("10_3y1rb")]
 material = SubResource("ShaderMaterial_8e5d2")
-position = Vector2(1, 2)
 rotation = 0.872665
+
+[node name="ScaleBRemoteTransform2D" type="RemoteTransform2D" parent="."]
+rotation = 0.872665
+remote_path = NodePath("../ScaleB")
 
 [node name="FinB" parent="." instance=ExtResource("11_a4v3c")]
 material = SubResource("ShaderMaterial_u538y")
@@ -125,3 +182,11 @@ scale = Vector2(1.21696, 1.21696)
 
 [node name="EnergyTalonA" parent="." instance=ExtResource("9_a4v3c")]
 position = Vector2(75, -62)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+callback_mode_process = 0
+libraries = {
+&"": SubResource("AnimationLibrary_ghppn")
+}
+autoplay = "test"
+speed_scale = 0.1
