@@ -21,8 +21,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ev52"]
 resource_local_to_scene = true
 shader = ExtResource("7_u538y")
-shader_parameter/gradient_texture_low = ExtResource("17_p2g03")
-shader_parameter/gradient_texture_high = ExtResource("16_whl4f")
+shader_parameter/gradient_texture_low = ExtResource("9_otoxr")
+shader_parameter/gradient_texture_high = ExtResource("8_vsfkg")
 shader_parameter/progress = 0.2
 shader_parameter/use_distortion = false
 shader_parameter/strength = 0.0
@@ -127,6 +127,8 @@ _data = {
 script = ExtResource("1_gjlef")
 
 [node name="TendonA" parent="." instance=ExtResource("1_82crf")]
+position = Vector2(-22, 20)
+rotation = 2.47475
 
 [node name="FinTendon" parent="." instance=ExtResource("3_a4v3c")]
 position = Vector2(-62, -33)
@@ -137,33 +139,14 @@ material = SubResource("ShaderMaterial_2ev52")
 position = Vector2(44, 0.00019455)
 rotation = 3.14159
 
-[node name="FinARemoteTransform2D" type="RemoteTransform2D" parent="FinTendon"]
-position = Vector2(44, 0.000195471)
-rotation = 3.14159
-remote_path = NodePath("../FinA")
-
-[node name="FinTendonRemoteTransform2D" type="RemoteTransform2D" parent="."]
-position = Vector2(-62, -33)
-rotation = 3.14159
-remote_path = NodePath("../FinTendon")
-
 [node name="ScaleA" parent="." instance=ExtResource("14_i7f48")]
 material = SubResource("ShaderMaterial_df1f1")
 position = Vector2(-63, 103)
 rotation = 0.872665
 
-[node name="ScaleARemoteTransform2D" type="RemoteTransform2D" parent="."]
-position = Vector2(-63, 103)
-rotation = 0.872665
-remote_path = NodePath("../ScaleA")
-
 [node name="ScaleB" parent="." instance=ExtResource("10_3y1rb")]
 material = SubResource("ShaderMaterial_8e5d2")
 rotation = 0.872665
-
-[node name="ScaleBRemoteTransform2D" type="RemoteTransform2D" parent="."]
-rotation = 0.872665
-remote_path = NodePath("../ScaleB")
 
 [node name="FinB" parent="." instance=ExtResource("11_a4v3c")]
 material = SubResource("ShaderMaterial_u538y")
@@ -172,8 +155,6 @@ position = Vector2(-190, 39)
 [node name="WeakspotA2" parent="." instance=ExtResource("10_2hyoe")]
 material = SubResource("ShaderMaterial_yxp02")
 position = Vector2(-21, -89)
-collision_layer = 1
-collision_mask = 1
 
 [node name="ScaleSpikeA" parent="." instance=ExtResource("8_2ev52")]
 material = SubResource("ShaderMaterial_07if4")
@@ -181,7 +162,7 @@ position = Vector2(-20, -89)
 scale = Vector2(1.21696, 1.21696)
 
 [node name="EnergyTalonA" parent="." instance=ExtResource("9_a4v3c")]
-position = Vector2(75, -62)
+position = Vector2(67, -64)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 callback_mode_process = 0

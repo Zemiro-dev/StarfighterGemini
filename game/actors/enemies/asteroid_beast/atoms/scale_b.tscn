@@ -23,5 +23,5 @@ material = SubResource("ShaderMaterial_t7st0")
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_h47d2")
 
-[node name="CollisionPolygon2D" parent="." index="2"]
-polygon = PackedVector2Array(-34, -44, 58, -44, 82, -14, 34, 44, -57, 44, -82, 14)
+[node name="CollisionPolygon2D" parent="EnemyScaleBody" index="0"]
+polygon = PackedVector2Array(59, -46, 84, -14, 36, 45, -59, 45, -84, 14, -36, -45)

@@ -1,15 +1,16 @@
 @tool
-extends AnimatableBody2D
+extends Node2D
 class_name EnemyScale
 
-
-@onready var damagable: Damagable = $Damagable
-@onready var collision_polygon_2d: CollisionPolygon2D = $CollisionPolygon2D
+@onready var damagable: Damagable = $EnemyScaleBody/Damagable
+@onready var collision_polygon_2d: CollisionPolygon2D = $EnemyScaleBody/CollisionPolygon2D
 
 @export var gradient_low: GradientTexture1D = preload("res://actors/enemies/resources/asteroid_beast_gradient_low.tres")
 @export var gradient_high: GradientTexture1D = preload("res://actors/enemies/resources/asteroid_beast_gradient_high.tres")
 @export var armored_gradient_low: GradientTexture1D = preload("res://actors/enemies/resources/asteroid_beast_armored_gradient_low.tres")
 @export var armored_gradient_high: GradientTexture1D = preload("res://actors/enemies/resources/asteroid_beast_armored_gradient_high.tres")
+
+var actor_type := GameActor.ActorType.ENEMY
 
 func _ready() -> void:
 	damagable.on_death.connect(die)

@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://biv5vf8tx7tsg"]
+[gd_scene load_steps=7 format=3 uid="uid://biv5vf8tx7tsg"]
 
 [ext_resource type="PackedScene" uid="uid://u1ixb7camcwy" path="res://actors/enemies/enemy_scale.tscn" id="1_tvh72"]
-[ext_resource type="Script" uid="uid://dos03u2y4nj1m" path="res://actors/damage/damagable_stats.gd" id="2_gj0u6"]
 [ext_resource type="Shader" uid="uid://cs0xfte7rnnx8" path="res://shaders/gradient_swap_prog.gdshader" id="2_or1is"]
 [ext_resource type="Texture2D" uid="uid://bhbsb3ofrvc6a" path="res://assets/enemies/asteroid_beast/asteroid_beast_scale_spike_a.png" id="2_s7cmk"]
 [ext_resource type="Texture2D" uid="uid://c4orlwxdbnuai" path="res://actors/enemies/resources/asteroid_beast_gradient_high.tres" id="3_or1is"]
@@ -18,20 +17,15 @@ shader_parameter/strength = 0.0
 shader_parameter/fps = 0.0
 shader_parameter/frames = 256
 
-[sub_resource type="Resource" id="Resource_2n1oi"]
-script = ExtResource("2_gj0u6")
-max_health = 10.0
-
 [node name="ScaleSpikeA" instance=ExtResource("1_tvh72")]
 material = SubResource("ShaderMaterial_0wf4w")
 
-[node name="Damagable" parent="." index="0"]
-stats = SubResource("Resource_2n1oi")
+[node name="CollisionPolygon2D" parent="EnemyScaleBody" index="0"]
+polygon = PackedVector2Array(38, -195, 29, -108, 28, -51, 30, 14, -38, 15, -25, -54, -17, -58, 0, -111)
+
+[node name="Damagable" parent="EnemyScaleBody" index="1"]
 is_invincible = false
 
-[node name="Sprite2D" parent="." index="1"]
+[node name="Sprite2D" parent="." index="2"]
 position = Vector2(0, -90)
 texture = ExtResource("2_s7cmk")
-
-[node name="CollisionPolygon2D" parent="." index="2"]
-polygon = PackedVector2Array(-36, 12, 27, 13, 35, -181, 0, -110, -22, -52)

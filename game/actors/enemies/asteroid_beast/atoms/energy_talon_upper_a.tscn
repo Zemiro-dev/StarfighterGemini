@@ -7,9 +7,8 @@
 [node name="EnergyTalonUpperA" instance=ExtResource("1_os8o5")]
 material = ExtResource("2_82wr6")
 
-[node name="Sprite2D" parent="." index="1"]
-texture = ExtResource("3_2ll71")
-offset = Vector2(-4, -160)
+[node name="CollisionPolygon2D" parent="Body" index="1"]
+polygon = PackedVector2Array(-25, 159, 16, -182, 32, 196)
 
-[node name="CollisionPolygon2D" parent="." index="2"]
-polygon = PackedVector2Array(-31, 2, 27, 38, 12, -342)
+[node name="Sprite2D" parent="." index="2"]
+texture = ExtResource("3_2ll71")

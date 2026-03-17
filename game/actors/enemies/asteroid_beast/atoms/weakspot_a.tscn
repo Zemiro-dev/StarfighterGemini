@@ -20,8 +20,12 @@ shader_parameter/frames = 256
 [node name="WeakspotA" instance=ExtResource("1_dy6c0")]
 material = SubResource("ShaderMaterial_bgcmj")
 
-[node name="Sprite2D" parent="." index="1"]
-texture = ExtResource("5_ysipb")
+[node name="Damagable" parent="Body" index="0" node_paths=PackedStringArray("actor")]
+actor = NodePath("..")
 
-[node name="CollisionPolygon2D" parent="." index="2"]
-polygon = PackedVector2Array(-12, 9, -25, -2, -29, -18, -21, -37, 0, -46, 22, -35, 29, -17, 25, -2, 12, 9, 19, 31, 0, 42, -19, 31)
+[node name="CollisionPolygon2D" parent="Body" index="1"]
+visible = true
+polygon = PackedVector2Array(-15, 6, -27, -10, -26, -26, -16, -39, -1, -45, 15, -39, 25, -28, 26, -8, 15, 5, 11, 9, 21, 32, 10, 37, 9, 44, 1, 40, -8, 44, -10, 38, -22, 33, -11, 9)
+
+[node name="Sprite2D" parent="." index="2"]
+texture = ExtResource("5_ysipb")

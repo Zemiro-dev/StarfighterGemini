@@ -1,13 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://y3vswpw4bs4j"]
+[gd_scene load_steps=3 format=3 uid="uid://y3vswpw4bs4j"]
 
-[ext_resource type="Script" uid="uid://cfw3cw8qqyfsy" path="res://actors/enemies/asteroid_beast/molecules/energy_talon_a.gd" id="1_bl8g4"]
 [ext_resource type="PackedScene" uid="uid://cch16rccir8yt" path="res://actors/enemies/asteroid_beast/atoms/energy_talon_lower_a.tscn" id="1_wry5r"]
 [ext_resource type="PackedScene" uid="uid://c0lnkuko4c8pt" path="res://actors/enemies/asteroid_beast/atoms/energy_talon_upper_a.tscn" id="2_bl8g4"]
 
 [node name="EnergyTalonA" type="Node2D"]
-script = ExtResource("1_bl8g4")
 
 [node name="EnergyTalonUpperA" parent="." instance=ExtResource("2_bl8g4")]
-position = Vector2(19, -130)
+position = Vector2(17, -287)
 
 [node name="EnergyTalonLowerA" parent="." instance=ExtResource("1_wry5r")]

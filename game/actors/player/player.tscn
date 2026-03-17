@@ -53,7 +53,7 @@ shader_parameter/progress = 0.15
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lsln6"]
 radius = 22.0
-height = 98.0
+height = 144.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -89,12 +89,11 @@ position = Vector2(32, -63)
 position = Vector2(32, 63)
 
 [node name="BodySprite" type="Sprite2D" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_12xki")
 position = Vector2(0, -15)
 texture = ExtResource("12_ssdk0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(33, -6)
+position = Vector2(13, -7)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_lsln6")

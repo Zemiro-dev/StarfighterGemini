@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cu2lk8vioiyao"]
+[gd_scene load_steps=7 format=3 uid="uid://cu2lk8vioiyao"]
 
 [ext_resource type="PackedScene" uid="uid://u1ixb7camcwy" path="res://actors/enemies/enemy_scale.tscn" id="1_beulu"]
 [ext_resource type="Texture2D" uid="uid://bqvqp533lcb05" path="res://assets/enemies/asteroid_beast/asteroid_beast_scale_a.png" id="2_o41kn"]
-[ext_resource type="Script" uid="uid://dos03u2y4nj1m" path="res://actors/damage/damagable_stats.gd" id="2_plouy"]
 [ext_resource type="Texture2D" uid="uid://crlic45tdcsjj" path="res://actors/enemies/resources/asteroid_beast_armored_gradient_high.tres" id="3_5ntfl"]
 [ext_resource type="Shader" uid="uid://cs0xfte7rnnx8" path="res://shaders/gradient_swap_prog.gdshader" id="3_jueuq"]
 [ext_resource type="Texture2D" uid="uid://bdir7wwni1etj" path="res://actors/enemies/resources/asteroid_beast_armored_gradient_low.tres" id="4_jueuq"]
@@ -18,18 +17,11 @@ shader_parameter/strength = 0.0
 shader_parameter/fps = 0.0
 shader_parameter/frames = 256
 
-[sub_resource type="Resource" id="Resource_cyyj8"]
-script = ExtResource("2_plouy")
-max_health = 10.0
-
 [node name="ScaleA" instance=ExtResource("1_beulu")]
 material = SubResource("ShaderMaterial_5ntfl")
-
-[node name="Damagable" parent="." index="0"]
-stats = SubResource("Resource_cyyj8")
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_o41kn")
 
-[node name="CollisionPolygon2D" parent="." index="2"]
-polygon = PackedVector2Array(-119, 0, -79, -51, 79, -51, 119, 0, 78, 51, -78, 51)
+[node name="CollisionPolygon2D" parent="EnemyScaleBody" index="0"]
+polygon = PackedVector2Array(-120, -1, -79, -52, 79, -52, 121, 0, 79, 53, -81, 52)
