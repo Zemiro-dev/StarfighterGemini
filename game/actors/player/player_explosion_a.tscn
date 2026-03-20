@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://45p6je56ck3j"]
+
+[ext_resource type="Texture2D" uid="uid://d2meohaxtyk34" path="res://assets/player/player_explosion_a.png" id="1_2ugpd"]
+[ext_resource type="Material" uid="uid://bdtb0e652wfx3" path="res://actors/player/player_explosion_material_a.tres" id="2_djvr7"]
+
+[node name="PlayerExplosionA" type="GPUParticles2D"]
+amount = 25
+texture = ExtResource("1_2ugpd")
+lifetime = 0.8
+randomness = 0.43
+process_material = ExtResource("2_djvr7")

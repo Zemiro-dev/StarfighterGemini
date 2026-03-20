@@ -5,20 +5,30 @@ class_name Projectile
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @export var is_available := true: set = set_is_available
 @export var stats: ProjectileStats
+@export var explosion_scene: PackedScene = preload("res://actors/player/player_explosion_b.tscn")
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 var velocity := Vector2.ZERO
-var live := true
+var live := false
+var explosion: GPUParticles2D
 
 
 func _ready() -> void:
 	if !stats: stats = ProjectileStats.new()
 	body_entered.connect(on_body_entered)
 	lifetime.timeout.connect(off)
+	off() # start off
+	var explosion_instance = explosion_scene.instantiate()
+	if explosion_instance is GPUParticles2D:
+		explosion = explosion_instance
 
 
 func on_body_entered(body: Node2D) -> void:
 	if live:
 		var damage_dealt = GameActor.attack(body, stats.damage)
+		if explosion:
+			explosion.global_transform = global_transform
+			explosion.reset_physics_interpolation()
+			explosion.emitting = true
 		off()
 
 
@@ -43,6 +53,12 @@ func on() -> void:
 	collision_shape_2d.set_deferred('disabled', false)
 	animation_player.play("on")
 	lifetime.start()
+	if explosion:
+		if explosion.emitting:
+			explosion.emitting = false
+		if !explosion.is_inside_tree():
+			GlobalSignals.request_top_effect_spawn.emit(explosion)
+		
 	
 
 func off() -> void:
@@ -69,3 +85,9 @@ func _physics_process(delta: float) -> void:
 			global_position += velocity * delta
 		else:
 			global_position += velocity * delta * unsafe
+
+
+func _notification(what):
+	if what == NOTIFICATION_PREDELETE:
+		if explosion:
+			explosion.queue_free()

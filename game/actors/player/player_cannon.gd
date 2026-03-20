@@ -23,7 +23,12 @@ func fire(projectile_pool: NodePool) -> bool:
 		return false
 	
 	var projectiles := projectile_pool.get_nodes(ready_count)
+	if projectiles.size() <= 0:
+		return false
 	for projectile in projectiles:
 		if projectile is Projectile:
 			projectile.fire(global_transform)
+	if animation_player.is_playing():
+		animation_player.stop()
+	animation_player.play("fire")
 	return true

@@ -1,8 +1,9 @@
-[gd_scene load_steps=113 format=3 uid="uid://da4ta4o721exf"]
+[gd_scene load_steps=115 format=3 uid="uid://da4ta4o721exf"]
 
 [ext_resource type="Script" uid="uid://dj8f28g3mmv8i" path="res://world/debug/world_debug.gd" id="1_0cob0"]
 [ext_resource type="Texture2D" uid="uid://bbq0js4b3j7xu" path="res://assets/shapes/circle_blue_2tone_large.png" id="1_44sa8"]
 [ext_resource type="PackedScene" uid="uid://c2inv1wwwo464" path="res://world/backgrounds/debug_background.tscn" id="2_1aouo"]
+[ext_resource type="PackedScene" uid="uid://45p6je56ck3j" path="res://actors/player/player_explosion_a.tscn" id="2_7to6k"]
 [ext_resource type="Texture2D" uid="uid://dbxi47ukeatat" path="res://assets/shapes/circle_white_large.png" id="2_lqxvj"]
 [ext_resource type="Shader" uid="uid://cpxbvoj3jk5m8" path="res://shaders/robot_eye.gdshader" id="3_an6al"]
 [ext_resource type="Texture2D" uid="uid://dt55vtretkigv" path="res://assets/shapes/circle_blue_2tone_glass_large.png" id="3_lsr55"]
@@ -11,6 +12,7 @@
 [ext_resource type="Material" uid="uid://4rph6123p6uq" path="res://shaders/resources/wibbly_material.tres" id="4_eldjb"]
 [ext_resource type="Shader" uid="uid://d1qb4jskectyo" path="res://shaders/color_swap_prog.gdshader" id="7_an6al"]
 [ext_resource type="Texture2D" uid="uid://d3qvbvfka6f2f" path="res://assets/ui/health_bar.png" id="9_aq1p2"]
+[ext_resource type="Script" uid="uid://75uj63hlnfho" path="res://world/top_effects_root.gd" id="9_otf24"]
 [ext_resource type="PackedScene" uid="uid://bo20bbc3v4n5k" path="res://world/node_roots/projectiles_root.tscn" id="10_ns7c5"]
 [ext_resource type="Texture2D" uid="uid://beeeba5bogag7" path="res://assets/shapes/yellow_diamond_particle.png" id="10_r0vbx"]
 [ext_resource type="Texture2D" uid="uid://16wlwkn7g2xc" path="res://actors/player/resources/player_gradient_high.tres" id="12_iodkf"]
@@ -72,34 +74,6 @@ shader_parameter/swap_in_off = Color(0.431373, 0.145098, 0.580392, 1)
 shader_parameter/progress_style = 0
 shader_parameter/progress = 0.155
 shader_parameter/threshold = 0.1
-
-[sub_resource type="Gradient" id="Gradient_27gb1"]
-colors = PackedColorArray(1.518, 0.435, 0.141, 1, 1.5, 0.988, 0.192, 1)
-
-[sub_resource type="Gradient" id="Gradient_r0vbx"]
-colors = PackedColorArray(2.5, 2.5, 2.5, 1, 2, 2, 2, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_tqfwn"]
-gradient = SubResource("Gradient_r0vbx")
-use_hdr = true
-
-[sub_resource type="Curve" id="Curve_r0vbx"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.109415, 1), -0.311986, -0.311986, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_tqfwn"]
-curve = SubResource("Curve_r0vbx")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tqfwn"]
-lifetime_randomness = 0.5
-particle_flag_disable_z = true
-emission_shape_offset = Vector3(540, 0, 0)
-spread = 15.0
-initial_velocity_min = -600.0
-initial_velocity_max = -500.0
-gravity = Vector3(0, 0, 0)
-scale_curve = SubResource("CurveTexture_tqfwn")
-color_ramp = SubResource("GradientTexture1D_tqfwn")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aq1p2"]
 shader = ExtResource("3_an6al")
@@ -322,6 +296,34 @@ _data = {
 &"RESET": SubResource("Animation_fn7rg"),
 &"fire": SubResource("Animation_uibwa")
 }
+
+[sub_resource type="Gradient" id="Gradient_27gb1"]
+colors = PackedColorArray(1.518, 0.435, 0.141, 1, 1.5, 0.988, 0.192, 1)
+
+[sub_resource type="Gradient" id="Gradient_r0vbx"]
+colors = PackedColorArray(2.5, 2.5, 2.5, 1, 2, 2, 2, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tqfwn"]
+gradient = SubResource("Gradient_r0vbx")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_r0vbx"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.109415, 1), -0.311986, -0.311986, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_tqfwn"]
+curve = SubResource("Curve_r0vbx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tqfwn"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(540, 0, 0)
+spread = 15.0
+initial_velocity_min = -600.0
+initial_velocity_max = -500.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_tqfwn")
+color_ramp = SubResource("GradientTexture1D_tqfwn")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_sc1s7"]
 
@@ -702,29 +704,6 @@ texture = ExtResource("4_7wlep")
 material = ExtResource("4_eldjb")
 position = Vector2(-2546, 729)
 texture = ExtResource("4_7wlep")
-
-[node name="WeaponEffects" type="Node2D" parent="Stage"]
-visible = false
-position = Vector2(-1045, 198)
-
-[node name="Laser" type="Node2D" parent="Stage/WeaponEffects"]
-position = Vector2(100, 187)
-
-[node name="Line2D" type="Line2D" parent="Stage/WeaponEffects/Laser"]
-use_parent_material = true
-points = PackedVector2Array(0, 0, 500, 0)
-width = 20.0
-gradient = SubResource("Gradient_27gb1")
-begin_cap_mode = 2
-end_cap_mode = 2
-antialiased = true
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Stage/WeaponEffects/Laser"]
-amount = 32
-texture = ExtResource("10_r0vbx")
-lifetime = 0.5
-explosiveness = 0.1
-process_material = SubResource("ParticleProcessMaterial_tqfwn")
 
 [node name="ProjectilesRoot" parent="Stage" instance=ExtResource("10_ns7c5")]
 
@@ -1286,6 +1265,32 @@ position = Vector2(620, 216)
 [node name="Player2" parent="Stage/Actors" instance=ExtResource("61_7to6k")]
 position = Vector2(1412, 898)
 
+[node name="PlayerExplosionA" parent="Stage" instance=ExtResource("2_7to6k")]
+position = Vector2(782, 389)
+
+[node name="Laser" type="Node2D" parent="Stage"]
+position = Vector2(-945, 385)
+
+[node name="Line2D" type="Line2D" parent="Stage/Laser"]
+use_parent_material = true
+points = PackedVector2Array(0, 0, 500, 0)
+width = 20.0
+gradient = SubResource("Gradient_27gb1")
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Stage/Laser"]
+amount = 32
+texture = ExtResource("10_r0vbx")
+lifetime = 0.5
+explosiveness = 0.1
+process_material = SubResource("ParticleProcessMaterial_tqfwn")
+
+[node name="TopEffectsRoot" type="Node2D" parent="Stage"]
+position = Vector2(-1045, 198)
+script = ExtResource("9_otf24")
+
 [node name="UI" type="Node2D" parent="."]
 
 [node name="HealthBar" type="Sprite2D" parent="UI"]
@@ -1301,7 +1306,7 @@ offset_top = 27.0
 offset_right = 1889.0
 offset_bottom = 115.0
 theme_override_font_sizes/font_size = 64
-text = "FPS: 145.0"
+text = "FPS: 143.0"
 script = ExtResource("30_tj5ml")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("64_otf24")]

@@ -36,6 +36,7 @@ func get_nodes(amount: int) -> Array[Node]:
 		i = next_pool_index(i)
 	if available_nodes.size() < amount:
 		print("could not satisfy request")
+	last_used = next_last_used
 	return available_nodes
 
 

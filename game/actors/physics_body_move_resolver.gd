@@ -21,18 +21,22 @@ func resolve(request: MoveRequest, delta: float) -> Vector2:
 	var collision: KinematicCollision2D = body.move_and_collide(velocity * delta)
 	if collision:
 			var collider: Object = collision.get_collider()
+			var depth := collision.get_depth()
+			var remainder := collision.get_remainder()
 			var collider_type = GameActor.get_actor_type(collider)
+			var normal = collision.get_normal()
 			## Base Movement Effects
 			match (collider_type):
 				GameActor.ActorType.UNKNOWN, GameActor.ActorType.TERRAIN, GameActor.ActorType.ENEMY, GameActor.ActorType.DESTRUCTIBLE:
-					if collision.get_normal().dot(velocity) <= 0.:
-						velocity = velocity.bounce(collision.get_normal())
+					var nvdot := normal.dot(velocity.normalized())
+					if nvdot <= 0.:
+						velocity = velocity.bounce(normal)
 			
 			## Damage and Additional Knockback 
 			match (collider_type):
 				GameActor.ActorType.ENEMY:
-					GameActor.check_and_attack(collider, request.body)
-					velocity += velocity.normalized() * 600.
+					if GameActor.check_and_attack(collider, request.body) >= 0:
+						velocity += velocity.normalized() * 600.
 	if steering and steering.should_overspeed_break(velocity):
 		velocity = steering.overspeed_break(velocity, delta)
 	return velocity

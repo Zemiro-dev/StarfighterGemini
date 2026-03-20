@@ -24,6 +24,8 @@ func _physics_process(delta: float) -> void:
 	velocity = physics_body_move_resolver.resolve(move_machine.process(delta), delta)
 	if Input.is_action_pressed("fire"):
 		fire()
+	if Input.is_action_just_pressed("dev_a"):
+		controller.is_goal_locked = !controller.is_goal_locked
 
 
 func on_move_state_change(prev:PlayerMoveMachine.State,  next: PlayerMoveMachine.State): 
