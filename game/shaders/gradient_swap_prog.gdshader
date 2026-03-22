@@ -12,6 +12,14 @@ uniform float strength;
 uniform float fps;
 uniform int frames = 256;
 
+varying vec4 vertex_color; 
+
+void vertex() {
+	// this should be modulate * self_modulate, maybe other stuff, see link
+	// https://forum.godotengine.org/t/how-to-get-modulate-info-in-shader-canvas-item/100455/2
+	vertex_color = COLOR;
+}
+
 void fragment() {
 	vec2 uv = UV;
 
@@ -33,5 +41,5 @@ void fragment() {
 		),
 		texture_color.a
 	);
-	COLOR = hdrout(out_color);
+	COLOR = hdrout(out_color * vertex_color);
 }
