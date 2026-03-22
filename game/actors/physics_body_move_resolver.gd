@@ -55,6 +55,4 @@ func resolve(request: MoveRequest, delta: float) -> Vector2:
 	velocity = resolve_collisions(delta, velocity, request.body)
 	if steering and steering.should_overspeed_break(velocity):
 		velocity = steering.overspeed_break(velocity, delta)
-	#print('next velocity ', velocity)
-	#print('')
 	return velocity
