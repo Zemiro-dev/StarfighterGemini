@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bnsxf2wmnmjo5" path="res://actors/player/player_controller.gd" id="2_388e2"]
 [ext_resource type="Texture2D" uid="uid://16wlwkn7g2xc" path="res://actors/player/resources/player_gradient_high.tres" id="2_a744p"]
 [ext_resource type="Script" uid="uid://dqv8o16nxsy37" path="res://actors/player/player_move_machine.gd" id="2_k67x5"]
-[ext_resource type="PackedScene" uid="uid://wueoy70q46gt" path="res://actors/effects/player_damaged_tween.tscn" id="2_rt46e"]
+[ext_resource type="PackedScene" uid="uid://wueoy70q46gt" path="res://actors/player/player_damaged_tween.tscn" id="2_rt46e"]
 [ext_resource type="Script" uid="uid://3lg6lbyu7lu8" path="res://actors/physics_body_move_resolver.gd" id="3_7aotg"]
 [ext_resource type="Script" uid="uid://dos03u2y4nj1m" path="res://actors/damage/damagable_stats.gd" id="3_12xki"]
 [ext_resource type="Texture2D" uid="uid://c7dvlc535fux2" path="res://actors/player/resources/player_gradient_low.tres" id="3_388e2"]

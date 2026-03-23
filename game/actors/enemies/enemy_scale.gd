@@ -9,6 +9,7 @@ class_name EnemyScale
 @export var gradient_high: GradientTexture1D = preload("res://actors/enemies/resources/asteroid_beast_gradient_high.tres")
 @export var armored_gradient_low: GradientTexture1D = preload("res://actors/enemies/resources/asteroid_beast_armored_gradient_low.tres")
 @export var armored_gradient_high: GradientTexture1D = preload("res://actors/enemies/resources/asteroid_beast_armored_gradient_high.tres")
+@onready var enemy_scale_damaged_tween: EnemyScaleDamagedTween = $EnemyScaleDamagedTween
 
 var actor_type := GameActor.ActorType.ENEMY
 
@@ -22,7 +23,7 @@ func _ready() -> void:
 			to_unarmored()
 	armored_invincible_check.call(damagable.is_invincible)
 	damagable.on_invincibility_changed.connect(armored_invincible_check)
-	
+	enemy_scale_damaged_tween.node = self
 
 
 func die(actor: Node2D) -> void:
@@ -46,6 +47,7 @@ func update_gradients(low: GradientTexture1D, high: GradientTexture1D) -> void:
 	if material is ShaderMaterial:
 		material.set_shader_parameter("gradient_texture_low", low);
 		material.set_shader_parameter("gradient_texture_high", high);
+
 
 func _physics_process(delta: float) -> void:
 	pass

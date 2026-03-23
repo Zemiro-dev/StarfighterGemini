@@ -20,8 +20,8 @@ shader_parameter/frames = 256
 [node name="ScaleA" instance=ExtResource("1_beulu")]
 material = SubResource("ShaderMaterial_5ntfl")
 
-[node name="Sprite2D" parent="." index="1"]
-texture = ExtResource("2_o41kn")
-
 [node name="CollisionPolygon2D" parent="EnemyScaleBody" index="0"]
 polygon = PackedVector2Array(-120, -1, -79, -52, 79, -52, 121, 0, 79, 53, -81, 52)
+
+[node name="Sprite2D" parent="." index="2"]
+texture = ExtResource("2_o41kn")
