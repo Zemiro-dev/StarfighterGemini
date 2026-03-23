@@ -43,11 +43,11 @@ func attack(o: Object, damage: int) -> int:
 ## Checks if this actor can attack and if so applies an attack.
 ## If 0+ is returned an attack occured and the returned value is
 ## is the damage dealt. If -1 is returned no attack happened.
-func check_and_attack(attacker: Object, target: Object) -> int:
+func check_and_attack(attacker: Object, target: Object, position: Vector2 = Vector2.ZERO) -> int:
 	if attacker.has_method('attack'):
-		return attacker.attack(target)
+		return attacker.attack(target, position)
 	if attacker is Node:
 		var parent = attacker.get_parent()
 		if parent.has_method('attack'):
-			return parent.attack(target)
+			return parent.attack(target, position)
 	return -1

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdunfdk541uyx"]
+
+[ext_resource type="Texture2D" uid="uid://d2y6cb1e8kyll" path="res://assets/effects/energy_explosion_c.png" id="1_hdwri"]
+[ext_resource type="Material" uid="uid://c0tdmx22nu4mw" path="res://actors/effects/energy_explosion_c_material.tres" id="2_qe5ci"]
+
+[node name="EnergyExplosionC" type="GPUParticles2D"]
+modulate = Color(1.8, 1, 1, 1)
+emitting = false
+amount = 6
+texture = ExtResource("1_hdwri")
+lifetime = 0.15
+one_shot = true
+explosiveness = 1.0
+randomness = 0.43
+process_material = ExtResource("2_qe5ci")

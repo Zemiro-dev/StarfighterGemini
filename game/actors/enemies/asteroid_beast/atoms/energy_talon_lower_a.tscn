@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cch16rccir8yt"]
+[gd_scene load_steps=5 format=3 uid="uid://cch16rccir8yt"]
 
 [ext_resource type="PackedScene" uid="uid://c6y6l1svjy0yh" path="res://actors/enemies/enemy_damaging_segment.tscn" id="1_fqb4l"]
 [ext_resource type="Material" uid="uid://byx4eobrlkwum" path="res://actors/enemies/resources/asteroid_beast_energy_a_shader_material.tres" id="2_ogjif"]
+[ext_resource type="PackedScene" uid="uid://dshdwq66vc4pk" path="res://actors/player/player_explosion_b.tscn" id="3_ogjif"]
 [ext_resource type="Texture2D" uid="uid://cwpcljmd2jg6e" path="res://assets/enemies/asteroid_beast/asteroid_beast_energy_talon_lower.png" id="3_ta6os"]
 
 [node name="EnergyTalonLowerA" instance=ExtResource("1_fqb4l")]
 material = ExtResource("2_ogjif")
+attack_particles_scene = ExtResource("3_ogjif")
 
 [node name="CollisionPolygon2D" parent="Body" index="1"]
 polygon = PackedVector2Array(-39, -2, -7, -220, 58, -84, 20, 63)

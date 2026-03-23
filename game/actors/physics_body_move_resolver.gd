@@ -34,9 +34,8 @@ func resolve_collisions(delta: float, velocity: Vector2, body: PhysicsBody2D) ->
 			### Damage and Additional Knockback 
 			match (collider_type):
 				GameActor.ActorType.ENEMY:
-					if !has_been_attacked and GameActor.check_and_attack(collider, body) >= 0:
+					if !has_been_attacked and GameActor.check_and_attack(collider, body, collision.get_position()) >= 0:
 						next_velocity += next_velocity.normalized() * 2000.
-						print(next_velocity)
 						has_been_attacked = true
 		else:
 			break;

@@ -1,0 +1,31 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=5 format=3 uid="uid://c0tdmx22nu4mw"]
+
+[sub_resource type="Gradient" id="Gradient_rcgvj"]
+offsets = PackedFloat32Array(0, 0.0649038, 0.103365, 0.661058, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 10, 1, 1, 1, 4, 1, 1, 1, 1, 1, 0.0117647, 0.160784, 0.392157, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_olg8n"]
+gradient = SubResource("Gradient_rcgvj")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_dj51d"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.203349, 1), 0.0, 0.0, 0, 0, Vector2(0.526316, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.310704), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_vts11"]
+curve = SubResource("Curve_dj51d")
+
+[resource]
+particle_flag_disable_z = true
+radial_velocity_min = 64.0
+radial_velocity_max = 500.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_vts11")
+color_ramp = SubResource("GradientTexture1D_olg8n")
+turbulence_noise_strength = 11.85
+turbulence_noise_scale = 9.235
+turbulence_noise_speed_random = 4.0
+turbulence_influence_min = 0.206
+turbulence_influence_max = 0.206
+turbulence_initial_displacement_min = 58.1
+turbulence_initial_displacement_max = 58.1

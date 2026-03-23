@@ -3,15 +3,27 @@ extends Node2D
 class_name EnemyDamagingSegment
 @onready var damagable: Damagable = $Body/Damagable
 @onready var collision_polygon_2d: CollisionPolygon2D = $Body/CollisionPolygon2D
+var attack_particles_scene: PackedScene = preload("res://actors/effects/energy_explosion_c.tscn")
 
 var actor_type := GameActor.ActorType.ENEMY
+var attack_particles: GPUParticles2D
 
 
 func _ready() -> void:
 	damagable.on_death.connect(die)
+	if attack_particles_scene:
+		var attack_particles_instance = attack_particles_scene.instantiate()
+		if attack_particles_instance is GPUParticles2D:
+			attack_particles = attack_particles_instance
 	
 
-func attack(target: Object) -> int:
+func attack(target: Object, position: Vector2) -> int:
+	if attack_particles:
+		if !attack_particles.is_inside_tree():
+			GlobalSignals.request_top_effect_spawn.emit(attack_particles)
+		attack_particles.global_position = position
+		attack_particles.reset_physics_interpolation()
+		attack_particles.emitting = true
 	return GameActor.attack(target, 1)
 
 
