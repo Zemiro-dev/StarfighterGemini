@@ -48,6 +48,7 @@ func fire() -> void:
 
 
 func die(actor: Node2D) -> void:
+	controller.controllable = false
 	if animation_player.is_playing():
 		animation_player.stop()
 	animation_player.play('die')

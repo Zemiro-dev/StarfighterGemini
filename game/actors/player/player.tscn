@@ -19,7 +19,7 @@
 
 [sub_resource type="Resource" id="Resource_rt46e"]
 script = ExtResource("3_12xki")
-max_health = 100.0
+max_health = 2.0
 metadata/_custom_type_script = "uid://dos03u2y4nj1m"
 
 [sub_resource type="Resource" id="Resource_7aotg"]
