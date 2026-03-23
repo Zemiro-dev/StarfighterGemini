@@ -20,7 +20,7 @@ shader_parameter/frames = 256
 
 [sub_resource type="Resource" id="Resource_2opla"]
 script = ExtResource("5_7itay")
-max_health = 1000.0
+max_health = 10.0
 metadata/_custom_type_script = "uid://dos03u2y4nj1m"
 
 [node name="ScaleSpikeA" instance=ExtResource("1_tvh72")]
@@ -36,3 +36,11 @@ is_invincible = false
 [node name="Sprite2D" parent="." index="2"]
 position = Vector2(0, -90)
 texture = ExtResource("2_s7cmk")
+
+[node name="EnemyExplosionA" parent="." index="4"]
+position = Vector2(11, -72)
+rotation = 1.57079
+
+[node name="RemoteTransform2D2" parent="." index="6"]
+position = Vector2(11, -72)
+rotation = 1.57079

@@ -34,3 +34,9 @@ func die(actor: Node2D) -> void:
 func disable_collisions() -> void:
 	collision_polygon_2d.set_deferred("disabled", true)
 	queue_free()
+
+
+func _notification(what):
+	if what == NOTIFICATION_PREDELETE:
+		if attack_particles:
+			attack_particles.queue_free()

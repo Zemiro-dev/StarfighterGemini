@@ -7,6 +7,8 @@ signal request_hitstop(hitstop_time_ms: float)
 signal request_projectile_spawn(projectile: Node2D)
 signal request_top_effect_spawn(effect: Node2D)
 
+signal world_ready()
+
 signal request_collectible_spawn(position: Vector2, scene: PackedScene)
 signal request_sound_spawn(sound: AudioStreamPlayer2D)
 signal request_world_sound_spawn(source: Node2D, sound_scene: PackedScene)

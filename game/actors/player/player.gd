@@ -13,6 +13,8 @@ class_name Player
 @onready var player_damaged_tween: PlayerDamagedTween = $PlayerDamagedTween
 
 @export var blast_pack: PackedScene = preload("res://actors/projectiles/projectile_blue_blast.tscn")
+@onready var player_explosion: GPUParticles2D = $PlayerExplosionA
+
 
 var actor_type := GameActor.ActorType.PLAYER
 
@@ -25,6 +27,8 @@ func _ready() -> void:
 	blast_pool.spawn_signal = GlobalSignals.request_projectile_spawn
 	blast_pool.fill(blast_pack, 20)
 	player_damaged_tween.node = self
+	remove_child(player_explosion)
+	GlobalSignals.world_ready.connect(func(): GlobalSignals.request_top_effect_spawn.emit(player_explosion))
 
 
 func _physics_process(delta: float) -> void:
@@ -54,9 +58,18 @@ func die(actor: Node2D) -> void:
 	animation_player.play('die')
 
 
+func set_is_explosion_emitting(value: bool) -> void:
+	player_explosion.emitting = value
+
+
 func disable_collisions() -> void:
 	collision_shape_2d.set_deferred("disabled", true)
 
 
 func enable_collisions() -> void:
 	collision_shape_2d.set_deferred("disabled", false)
+	
+func _notification(what):
+	if what == NOTIFICATION_PREDELETE:
+		if player_explosion:
+			player_explosion.queue_free()

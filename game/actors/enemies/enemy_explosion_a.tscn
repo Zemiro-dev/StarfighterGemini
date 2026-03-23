@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://hq80lbiqvb7q"]
+
+[ext_resource type="Texture2D" uid="uid://c76nnbsbnw0np" path="res://assets/enemies/enemy_explosion_a.png" id="1_fclol"]
+[ext_resource type="Material" uid="uid://dvddn6hb34333" path="res://actors/enemies/enemy_explosion_a_material.tres" id="2_jri8x"]
+
+[node name="EnemyExplosionA" type="GPUParticles2D"]
+amount = 25
+texture = ExtResource("1_fclol")
+lifetime = 0.8
+randomness = 0.43
+process_material = ExtResource("2_jri8x")
