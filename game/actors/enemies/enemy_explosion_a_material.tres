@@ -17,8 +17,8 @@ curve = SubResource("Curve_uwnbo")
 
 [resource]
 particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(60, 30, 1)
+emission_shape = 1
+emission_sphere_radius = 70.0
 radial_velocity_min = 9.99998
 radial_velocity_max = 25.0
 gravity = Vector3(0, 0, 0)
