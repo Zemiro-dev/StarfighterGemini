@@ -16,7 +16,7 @@ signal on_invincibility_changed(is_invincible: bool)
 
 
 func _ready() -> void:
-	if !actor:
+	if !actor and actor is Node2D:
 		actor = get_parent()
 
 

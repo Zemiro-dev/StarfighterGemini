@@ -9,6 +9,8 @@ class_name Player
 @onready var damagable: Damagable = $Damagable
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var body_sprite: Sprite2D = $ShipPieces/BodySprite
+@onready var player_damaged_tween: PlayerDamagedTween = $PlayerDamagedTween
 
 @export var blast_pack: PackedScene = preload("res://actors/projectiles/projectile_blue_blast.tscn")
 
@@ -22,6 +24,7 @@ func _ready() -> void:
 	$ShipPieces/BottomCannon.controller = controller
 	blast_pool.spawn_signal = GlobalSignals.request_projectile_spawn
 	blast_pool.fill(blast_pack, 20)
+	player_damaged_tween.node = self
 
 
 func _physics_process(delta: float) -> void:
@@ -45,6 +48,8 @@ func fire() -> void:
 
 
 func die(actor: Node2D) -> void:
+	if animation_player.is_playing():
+		animation_player.stop()
 	animation_player.play('die')
 
 

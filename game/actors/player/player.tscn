@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://3p08pqbj3jx1"]
+[gd_scene load_steps=24 format=3 uid="uid://3p08pqbj3jx1"]
 
 [ext_resource type="Script" uid="uid://f4fh5oklml4n" path="res://actors/player/player.gd" id="1_bop6h"]
 [ext_resource type="PackedScene" uid="uid://uicpnh4rn6ps" path="res://actors/damage/damagable.tscn" id="2_7aotg"]
 [ext_resource type="Script" uid="uid://bnsxf2wmnmjo5" path="res://actors/player/player_controller.gd" id="2_388e2"]
 [ext_resource type="Texture2D" uid="uid://16wlwkn7g2xc" path="res://actors/player/resources/player_gradient_high.tres" id="2_a744p"]
 [ext_resource type="Script" uid="uid://dqv8o16nxsy37" path="res://actors/player/player_move_machine.gd" id="2_k67x5"]
+[ext_resource type="PackedScene" uid="uid://wueoy70q46gt" path="res://actors/effects/player_damaged_tween.tscn" id="2_rt46e"]
 [ext_resource type="Script" uid="uid://3lg6lbyu7lu8" path="res://actors/physics_body_move_resolver.gd" id="3_7aotg"]
 [ext_resource type="Script" uid="uid://dos03u2y4nj1m" path="res://actors/damage/damagable_stats.gd" id="3_12xki"]
 [ext_resource type="Texture2D" uid="uid://c7dvlc535fux2" path="res://actors/player/resources/player_gradient_low.tres" id="3_388e2"]
@@ -18,7 +19,7 @@
 
 [sub_resource type="Resource" id="Resource_rt46e"]
 script = ExtResource("3_12xki")
-max_health = 1.0
+max_health = 100.0
 metadata/_custom_type_script = "uid://dos03u2y4nj1m"
 
 [sub_resource type="Resource" id="Resource_7aotg"]
@@ -135,6 +136,8 @@ _data = {
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_bop6h")
+
+[node name="PlayerDamagedTween" parent="." instance=ExtResource("2_rt46e")]
 
 [node name="Damagable" parent="." node_paths=PackedStringArray("actor") instance=ExtResource("2_7aotg")]
 stats = SubResource("Resource_rt46e")
