@@ -25,9 +25,10 @@ func _ready() -> void:
 			to_unarmored()
 	armored_invincible_check.call(damagable.is_invincible)
 	damagable.on_invincibility_changed.connect(armored_invincible_check)
-	enemy_scale_damaged_tween.node = self
 	remove_child(enemy_explosion)
-	GlobalSignals.world_ready.connect(func(): GlobalSignals.request_top_effect_spawn.emit(enemy_explosion))
+	if !Engine.is_editor_hint():
+		enemy_scale_damaged_tween.node = self
+		GlobalSignals.world_ready.connect(func(): GlobalSignals.request_top_effect_spawn.emit(enemy_explosion))
 
 
 func die(actor: Node2D) -> void:
