@@ -21,8 +21,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ev52"]
 resource_local_to_scene = true
 shader = ExtResource("7_u538y")
-shader_parameter/gradient_texture_low = ExtResource("9_otoxr")
-shader_parameter/gradient_texture_high = ExtResource("8_vsfkg")
+shader_parameter/gradient_texture_low = ExtResource("17_p2g03")
+shader_parameter/gradient_texture_high = ExtResource("16_whl4f")
 shader_parameter/progress = 0.2
 shader_parameter/use_distortion = false
 shader_parameter/strength = 0.0
@@ -86,18 +86,6 @@ shader_parameter/frames = 256
 
 [sub_resource type="Animation" id="Animation_yxp02"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
 
 [sub_resource type="Animation" id="Animation_hgngc"]
 resource_name = "test"
@@ -126,42 +114,44 @@ _data = {
 [node name="TalonArm" type="Node2D"]
 script = ExtResource("1_gjlef")
 
-[node name="TendonA" parent="." instance=ExtResource("1_82crf")]
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="TendonA" parent="Pivot" instance=ExtResource("1_82crf")]
 position = Vector2(-22, 20)
 rotation = 2.47475
 
-[node name="FinTendon" parent="." instance=ExtResource("3_a4v3c")]
+[node name="FinTendon" parent="Pivot" instance=ExtResource("3_a4v3c")]
 position = Vector2(-62, -33)
 rotation = 3.14159
 
-[node name="FinA" parent="FinTendon" instance=ExtResource("4_2ev52")]
+[node name="FinA" parent="Pivot/FinTendon" instance=ExtResource("4_2ev52")]
 material = SubResource("ShaderMaterial_2ev52")
 position = Vector2(44, 0.00019455)
 rotation = 3.14159
 
-[node name="ScaleA" parent="." instance=ExtResource("14_i7f48")]
+[node name="ScaleA" parent="Pivot" instance=ExtResource("14_i7f48")]
 material = SubResource("ShaderMaterial_df1f1")
 position = Vector2(-63, 103)
 rotation = 0.872665
 
-[node name="ScaleB" parent="." instance=ExtResource("10_3y1rb")]
+[node name="ScaleB" parent="Pivot" instance=ExtResource("10_3y1rb")]
 material = SubResource("ShaderMaterial_8e5d2")
 rotation = 0.872665
 
-[node name="FinB" parent="." instance=ExtResource("11_a4v3c")]
+[node name="FinB" parent="Pivot" instance=ExtResource("11_a4v3c")]
 material = SubResource("ShaderMaterial_u538y")
 position = Vector2(-190, 39)
 
-[node name="WeakspotA2" parent="." instance=ExtResource("10_2hyoe")]
+[node name="WeakspotA2" parent="Pivot" instance=ExtResource("10_2hyoe")]
 material = SubResource("ShaderMaterial_yxp02")
 position = Vector2(-21, -89)
 
-[node name="ScaleSpikeA" parent="." instance=ExtResource("8_2ev52")]
+[node name="ScaleSpikeA" parent="Pivot" instance=ExtResource("8_2ev52")]
 material = SubResource("ShaderMaterial_07if4")
 position = Vector2(-20, -89)
 scale = Vector2(1.21696, 1.21696)
 
-[node name="EnergyTalonA" parent="." instance=ExtResource("9_a4v3c")]
+[node name="EnergyTalonA" parent="Pivot" instance=ExtResource("9_a4v3c")]
 position = Vector2(67, -64)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -2,6 +2,9 @@ extends Node
 class_name PhysicsBodyMoveResolver
 
 const MAX_COLLISIONS = 5
+var recent_knockbacks: Array[PhysicsBody2D] = []
+var knockback_cooldown_max := 0.1
+var knockback_cooldown_remaining := 0.0
 
 class MoveRequest extends Resource:
 	var body: PhysicsBody2D
@@ -35,7 +38,12 @@ func resolve_collisions(delta: float, velocity: Vector2, body: PhysicsBody2D) ->
 			match (collider_type):
 				GameActor.ActorType.ENEMY:
 					if !has_been_attacked and GameActor.check_and_attack(collider, body, collision.get_position()) >= 0:
-						next_velocity += next_velocity.normalized() * 2000.
+						if !recent_knockbacks.has(body):
+							next_velocity += next_velocity.normalized() * 2000.
+							recent_knockbacks.append(body)
+							if knockback_cooldown_remaining <= 0.0:
+								knockback_cooldown_remaining = knockback_cooldown_max
+						#print('knockback ', collider, ' ', next_velocity.length(),' ', Time.get_ticks_msec())
 						has_been_attacked = true
 		else:
 			break;
@@ -55,3 +63,10 @@ func resolve(request: MoveRequest, delta: float) -> Vector2:
 	if steering and steering.should_overspeed_break(velocity):
 		velocity = steering.overspeed_break(velocity, delta)
 	return velocity
+
+
+func _physics_process(delta: float) -> void:
+	if knockback_cooldown_remaining >= 0.0:
+		knockback_cooldown_remaining -= delta
+	if recent_knockbacks.size() > 0 and knockback_cooldown_remaining <= 0.0:
+		recent_knockbacks = []

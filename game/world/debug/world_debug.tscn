@@ -667,7 +667,6 @@ script = ExtResource("1_0cob0")
 [node name="Stage" type="Node2D" parent="."]
 
 [node name="DebugBackground" parent="Stage" instance=ExtResource("2_1aouo")]
-position = Vector2(-134, 3)
 
 [node name="NeonOrbs" type="Node2D" parent="Stage"]
 
@@ -1260,8 +1259,14 @@ position = Vector2(-58, -114)
 rotation = -3.14159
 
 [node name="TalonArm" parent="Stage/Actors/AsteroidBeast" instance=ExtResource("54_h8r0t")]
-position = Vector2(327, 290)
-scale = Vector2(-1, 1)
+position = Vector2(557, 392)
+rotation = -0.523598
+pivot_scale = Vector2(-1, 1)
+
+[node name="TalonArm2" parent="Stage/Actors/AsteroidBeast" instance=ExtResource("54_h8r0t")]
+position = Vector2(555, -375)
+rotation = 0.523598
+pivot_scale = Vector2(-1, -1)
 
 [node name="Player2" parent="Stage/Actors" instance=ExtResource("61_7to6k")]
 position = Vector2(728, 786)
@@ -1304,7 +1309,7 @@ offset_top = 27.0
 offset_right = 1889.0
 offset_bottom = 115.0
 theme_override_font_sizes/font_size = 64
-text = "FPS: 122.0"
+text = "FPS: 132.0"
 script = ExtResource("30_tj5ml")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("64_otf24")]
