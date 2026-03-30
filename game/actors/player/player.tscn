@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://3p08pqbj3jx1"]
+[gd_scene load_steps=28 format=3 uid="uid://3p08pqbj3jx1"]
 
 [ext_resource type="Script" uid="uid://f4fh5oklml4n" path="res://actors/player/player.gd" id="1_bop6h"]
 [ext_resource type="PackedScene" uid="uid://uicpnh4rn6ps" path="res://actors/damage/damagable.tscn" id="2_7aotg"]
@@ -16,6 +16,10 @@
 [ext_resource type="Shader" uid="uid://dao7s8gyvjj7j" path="res://shaders/player_shader.gdshader" id="10_k67x5"]
 [ext_resource type="Texture2D" uid="uid://cdp7stnuo4kpn" path="res://assets/player/player_body_a.png" id="12_ssdk0"]
 [ext_resource type="PackedScene" uid="uid://45p6je56ck3j" path="res://actors/player/player_explosion_a.tscn" id="13_7aotg"]
+[ext_resource type="AudioStream" uid="uid://dlpxa474i1ygj" path="res://assets/sounds/effects/thruster.wav" id="17_0wchr"]
+[ext_resource type="Script" uid="uid://dd3d2lwooly5b" path="res://actors/player/player_sounds_manager.gd" id="17_qrxv1"]
+[ext_resource type="Script" uid="uid://d31qlkkek2lr" path="res://audio/extended_audio_stream_player.gd" id="19_dqf5y"]
+[ext_resource type="AudioStream" uid="uid://bfhjakut0vpv" path="res://assets/sounds/effects/laser_pew.wav" id="20_otn2r"]
 
 [sub_resource type="Resource" id="Resource_rt46e"]
 script = ExtResource("3_12xki")
@@ -185,3 +189,38 @@ libraries = {
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
 remote_path = NodePath("../PlayerExplosionA")
+
+[node name="SoundsManager" type="Node" parent="." node_paths=PackedStringArray("player_move_machine")]
+script = ExtResource("17_qrxv1")
+player_move_machine = NodePath("../Machines/PlayerMoveMachine")
+
+[node name="ThrusterAudioStreamPlayer" type="AudioStreamPlayer" parent="SoundsManager"]
+stream = ExtResource("17_0wchr")
+volume_db = -16.0
+script = ExtResource("19_dqf5y")
+
+[node name="FirePlayers" type="Node" parent="SoundsManager"]
+
+[node name="FireAudioStreamPlayer" type="AudioStreamPlayer" parent="SoundsManager/FirePlayers"]
+stream = ExtResource("20_otn2r")
+volume_db = -20.0
+script = ExtResource("19_dqf5y")
+metadata/_custom_type_script = "uid://d31qlkkek2lr"
+
+[node name="FireAudioStreamPlayer2" type="AudioStreamPlayer" parent="SoundsManager/FirePlayers"]
+stream = ExtResource("20_otn2r")
+volume_db = -20.0
+script = ExtResource("19_dqf5y")
+metadata/_custom_type_script = "uid://d31qlkkek2lr"
+
+[node name="FireAudioStreamPlayer3" type="AudioStreamPlayer" parent="SoundsManager/FirePlayers"]
+stream = ExtResource("20_otn2r")
+volume_db = -20.0
+script = ExtResource("19_dqf5y")
+metadata/_custom_type_script = "uid://d31qlkkek2lr"
+
+[node name="FireAudioStreamPlayer4" type="AudioStreamPlayer" parent="SoundsManager/FirePlayers"]
+stream = ExtResource("20_otn2r")
+volume_db = -20.0
+script = ExtResource("19_dqf5y")
+metadata/_custom_type_script = "uid://d31qlkkek2lr"

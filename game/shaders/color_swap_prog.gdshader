@@ -18,7 +18,7 @@ void fragment() {
 				out_color = vec4(swap_in_on.rgb + (swap_in_on_add * swap_in_on_add_strength), swap_in_on.a);
 			} else {
 				out_color = swap_in_off;
-			}			
+			}
 		}
 	}
 	COLOR = out_color;

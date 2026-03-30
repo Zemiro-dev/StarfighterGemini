@@ -11,7 +11,7 @@ func _ready() -> void:
 	cannon_cooldown.stats = cannon_stats
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var target_direction = controller.get_target_direction().normalized()
 	if !target_direction.is_zero_approx():
 		rotation = target_direction.angle()

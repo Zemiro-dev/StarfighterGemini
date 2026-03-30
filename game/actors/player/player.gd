@@ -11,9 +11,12 @@ class_name Player
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var body_sprite: Sprite2D = $ShipPieces/BodySprite
 @onready var player_damaged_tween: PlayerDamagedTween = $PlayerDamagedTween
+@onready var sounds_manager: PlayerSoundsManager = $SoundsManager
+@onready var player_explosion: GPUParticles2D = $PlayerExplosionA
 
 @export var blast_pack: PackedScene = preload("res://actors/projectiles/projectile_blue_blast.tscn")
-@onready var player_explosion: GPUParticles2D = $PlayerExplosionA
+
+
 
 
 var actor_type := GameActor.ActorType.PLAYER
@@ -33,6 +36,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	velocity = physics_body_move_resolver.resolve(move_machine.process(delta), delta)
+
 	if Input.is_action_pressed("fire"):
 		fire()
 	if Input.is_action_just_pressed("dev_a"):
@@ -47,8 +51,11 @@ func on_move_state_change(prev:PlayerMoveMachine.State,  next: PlayerMoveMachine
 
 
 func fire() -> void:
-	$ShipPieces/TopCannon.fire(blast_pool)
-	$ShipPieces/BottomCannon.fire(blast_pool)
+	var attacks := []
+	attacks.append($ShipPieces/TopCannon.fire(blast_pool))
+	attacks.append($ShipPieces/BottomCannon.fire(blast_pool))
+	if attacks.any(func(value): return value):
+		sounds_manager.fire()
 
 
 func die(actor: Node2D) -> void:
