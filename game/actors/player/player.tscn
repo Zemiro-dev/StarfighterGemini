@@ -196,31 +196,31 @@ player_move_machine = NodePath("../Machines/PlayerMoveMachine")
 
 [node name="ThrusterAudioStreamPlayer" type="AudioStreamPlayer" parent="SoundsManager"]
 stream = ExtResource("17_0wchr")
-volume_db = -16.0
+volume_db = -25.0
 script = ExtResource("19_dqf5y")
 
 [node name="FirePlayers" type="Node" parent="SoundsManager"]
 
 [node name="FireAudioStreamPlayer" type="AudioStreamPlayer" parent="SoundsManager/FirePlayers"]
 stream = ExtResource("20_otn2r")
-volume_db = -20.0
+volume_db = -24.0
 script = ExtResource("19_dqf5y")
 metadata/_custom_type_script = "uid://d31qlkkek2lr"
 
 [node name="FireAudioStreamPlayer2" type="AudioStreamPlayer" parent="SoundsManager/FirePlayers"]
 stream = ExtResource("20_otn2r")
-volume_db = -20.0
+volume_db = -24.0
 script = ExtResource("19_dqf5y")
 metadata/_custom_type_script = "uid://d31qlkkek2lr"
 
 [node name="FireAudioStreamPlayer3" type="AudioStreamPlayer" parent="SoundsManager/FirePlayers"]
 stream = ExtResource("20_otn2r")
-volume_db = -20.0
+volume_db = -24.0
 script = ExtResource("19_dqf5y")
 metadata/_custom_type_script = "uid://d31qlkkek2lr"
 
 [node name="FireAudioStreamPlayer4" type="AudioStreamPlayer" parent="SoundsManager/FirePlayers"]
 stream = ExtResource("20_otn2r")
-volume_db = -20.0
+volume_db = -24.0
 script = ExtResource("19_dqf5y")
 metadata/_custom_type_script = "uid://d31qlkkek2lr"

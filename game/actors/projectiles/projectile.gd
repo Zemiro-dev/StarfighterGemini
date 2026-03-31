@@ -7,6 +7,8 @@ class_name Projectile
 @export var stats: ProjectileStats
 @export var explosion_scene: PackedScene = preload("res://actors/player/player_explosion_b.tscn")
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var explosion_audio_stream_player: ExtendedAudioStreamPlayer = $ExplosionAudioStreamPlayer
+
 var velocity := Vector2.ZERO
 var live := false
 var explosion: GPUParticles2D
@@ -29,6 +31,8 @@ func on_body_entered(body: Node2D) -> void:
 			explosion.global_transform = global_transform
 			explosion.reset_physics_interpolation()
 			explosion.emitting = true
+			if !explosion_audio_stream_player.playing:
+				explosion_audio_stream_player.play_at_random_pitch()
 		off()
 
 

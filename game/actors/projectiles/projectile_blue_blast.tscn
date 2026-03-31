@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxm6rsfyv88c8"]
+[gd_scene load_steps=10 format=3 uid="uid://cxm6rsfyv88c8"]
 
 [ext_resource type="Texture2D" uid="uid://dtl48lmbfluqp" path="res://assets/player/player_projectile_a.png" id="1_2rtyg"]
 [ext_resource type="Script" uid="uid://dpqm5pkbfj0ih" path="res://actors/projectiles/projectile.gd" id="1_st1m2"]
+[ext_resource type="AudioStream" uid="uid://bhwkyhw1mmevf" path="res://assets/sounds/effects/laser_detonation.wav" id="3_of74h"]
+[ext_resource type="Script" uid="uid://d31qlkkek2lr" path="res://audio/extended_audio_stream_player.gd" id="4_ua0pt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_st1m2"]
 radius = 7.0
@@ -179,6 +181,13 @@ texture = ExtResource("1_2rtyg")
 libraries = {
 &"": SubResource("AnimationLibrary_ua0pt")
 }
+
+[node name="ExplosionAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("3_of74h")
+volume_db = -25.0
+script = ExtResource("4_ua0pt")
+pitch_jitter = 0.15
 
 [node name="Lifetime" type="Timer" parent="."]
 wait_time = 0.5
