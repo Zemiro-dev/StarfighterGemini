@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://3p08pqbj3jx1"]
+[gd_scene load_steps=30 format=3 uid="uid://3p08pqbj3jx1"]
 
 [ext_resource type="Script" uid="uid://f4fh5oklml4n" path="res://actors/player/player.gd" id="1_bop6h"]
 [ext_resource type="PackedScene" uid="uid://uicpnh4rn6ps" path="res://actors/damage/damagable.tscn" id="2_7aotg"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://dd3d2lwooly5b" path="res://actors/player/player_sounds_manager.gd" id="17_qrxv1"]
 [ext_resource type="Script" uid="uid://d31qlkkek2lr" path="res://audio/extended_audio_stream_player.gd" id="19_dqf5y"]
 [ext_resource type="AudioStream" uid="uid://bfhjakut0vpv" path="res://assets/sounds/effects/laser_pew.wav" id="20_otn2r"]
+[ext_resource type="AudioStream" uid="uid://b80ixybvpstyd" path="res://assets/sounds/collisions/metal_collision.wav" id="21_ctwkf"]
 
 [sub_resource type="Resource" id="Resource_rt46e"]
 script = ExtResource("3_12xki")
@@ -129,6 +130,11 @@ _data = {
 &"die": SubResource("Animation_7aotg")
 }
 
+[sub_resource type="Curve" id="Curve_ctwkf"]
+_limits = [-60.0, 0.0, 0.0, 4000.0]
+_data = [Vector2(11.6959, -29.4994), 0.0, 0.0, 0, 0, Vector2(438.596, -3.90434), 0.0, 0.0, 0, 0, Vector2(4000, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 5
@@ -193,11 +199,13 @@ remote_path = NodePath("../PlayerExplosionA")
 [node name="SoundsManager" type="Node" parent="." node_paths=PackedStringArray("player_move_machine")]
 script = ExtResource("17_qrxv1")
 player_move_machine = NodePath("../Machines/PlayerMoveMachine")
+collision_volumn_curve = SubResource("Curve_ctwkf")
 
 [node name="ThrusterAudioStreamPlayer" type="AudioStreamPlayer" parent="SoundsManager"]
 stream = ExtResource("17_0wchr")
 volume_db = -25.0
 script = ExtResource("19_dqf5y")
+fade_time = 0.1
 
 [node name="FirePlayers" type="Node" parent="SoundsManager"]
 
@@ -224,3 +232,23 @@ stream = ExtResource("20_otn2r")
 volume_db = -24.0
 script = ExtResource("19_dqf5y")
 metadata/_custom_type_script = "uid://d31qlkkek2lr"
+
+[node name="CollisionPlayers" type="Node" parent="SoundsManager"]
+
+[node name="MetalPlayers" type="Node" parent="SoundsManager/CollisionPlayers"]
+
+[node name="MetalAudioStreamPlayer" type="AudioStreamPlayer" parent="SoundsManager/CollisionPlayers/MetalPlayers"]
+stream = ExtResource("21_ctwkf")
+script = ExtResource("19_dqf5y")
+
+[node name="MetalAudioStreamPlayer2" type="AudioStreamPlayer" parent="SoundsManager/CollisionPlayers/MetalPlayers"]
+stream = ExtResource("21_ctwkf")
+script = ExtResource("19_dqf5y")
+
+[node name="MetalAudioStreamPlayer3" type="AudioStreamPlayer" parent="SoundsManager/CollisionPlayers/MetalPlayers"]
+stream = ExtResource("21_ctwkf")
+script = ExtResource("19_dqf5y")
+
+[node name="MetalAudioStreamPlayer4" type="AudioStreamPlayer" parent="SoundsManager/CollisionPlayers/MetalPlayers"]
+stream = ExtResource("21_ctwkf")
+script = ExtResource("19_dqf5y")

@@ -1,6 +1,8 @@
 extends Node
 class_name PhysicsBodyMoveResolver
 
+signal collided_with(collider: Object, strength: float)
+
 const MAX_COLLISIONS = 5
 var recent_knockbacks: Array[PhysicsBody2D] = []
 var knockback_cooldown_max := 0.1
@@ -34,6 +36,8 @@ func resolve_collisions(delta: float, velocity: Vector2, body: PhysicsBody2D) ->
 				GameActor.ActorType.UNKNOWN, GameActor.ActorType.TERRAIN, GameActor.ActorType.ENEMY, GameActor.ActorType.DESTRUCTIBLE:
 					motion = remainder.bounce(normal)
 					next_velocity = next_velocity.bounce(normal)
+					var collision_strength = (velocity - next_velocity).length()
+					collided_with.emit(collider, collision_strength)
 			### Damage and Additional Knockback 
 			match (collider_type):
 				GameActor.ActorType.ENEMY:

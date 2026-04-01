@@ -2,17 +2,30 @@ extends Node
 
 enum ActorType { PLAYER, ENEMY, TERRAIN, DESTRUCTIBLE, BARRIER, UNKNOWN }
 
+enum ActorMaterial { METAL, ENERGY, UNKNOWN}
+
 func get_actor_type(o: Object) -> ActorType:
-	if o == null: return ActorType.UNKNOWN
-	var actor_type = o.get("actor_type")
-	if o is Node and actor_type == null:
+	var actor_type = _get_actor_property(o, 'actor_type')
+	if ActorType.values().has(actor_type):
+		return actor_type
+	return ActorType.UNKNOWN
+
+
+func get_actor_material(o: Object) -> ActorMaterial:
+	var actor_material = _get_actor_property(o, 'actor_material')
+	if ActorMaterial.values().has(actor_material):
+		return actor_material
+	return ActorMaterial.UNKNOWN
+
+
+func _get_actor_property(o: Object, prop_name: String) -> Variant:
+	if o == null: null
+	var property = o.get(prop_name)
+	if o is Node and property == null:
 		var parent = o.get_parent()
 		if parent:
-			actor_type = parent.get("actor_type")
-	if actor_type != null and ActorType.values().has(actor_type):
-		return actor_type
-		
-	return ActorType.UNKNOWN
+			property = parent.get(prop_name)
+	return property
 
 
 func get_damagable(o: Object) -> Object:

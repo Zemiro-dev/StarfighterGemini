@@ -16,9 +16,6 @@ class_name Player
 
 @export var blast_pack: PackedScene = preload("res://actors/projectiles/projectile_blue_blast.tscn")
 
-
-
-
 var actor_type := GameActor.ActorType.PLAYER
 
 func _ready() -> void:
@@ -32,6 +29,7 @@ func _ready() -> void:
 	player_damaged_tween.node = self
 	remove_child(player_explosion)
 	GlobalSignals.world_ready.connect(func(): GlobalSignals.request_top_effect_spawn.emit(player_explosion))
+	physics_body_move_resolver.collided_with.connect(sounds_manager.handle_collision)
 
 
 func _physics_process(delta: float) -> void:
@@ -75,7 +73,8 @@ func disable_collisions() -> void:
 
 func enable_collisions() -> void:
 	collision_shape_2d.set_deferred("disabled", false)
-	
+
+
 func _notification(what):
 	if what == NOTIFICATION_PREDELETE:
 		if player_explosion:
