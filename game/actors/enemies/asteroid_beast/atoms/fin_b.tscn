@@ -20,9 +20,9 @@ shader_parameter/frames = 256
 [node name="FinB" instance=ExtResource("1_bp27v")]
 material = SubResource("ShaderMaterial_gx2yn")
 
-[node name="Sprite2D" parent="." index="1"]
-position = Vector2(-57, 0)
-texture = ExtResource("2_lrrvd")
-
 [node name="CollisionPolygon2D" parent="EnemyScaleBody" index="0"]
 polygon = PackedVector2Array(-145, -29, 32, -29, 21, 29, -19, 30)
+
+[node name="Sprite2D" parent="." index="2"]
+position = Vector2(-57, 0)
+texture = ExtResource("2_lrrvd")

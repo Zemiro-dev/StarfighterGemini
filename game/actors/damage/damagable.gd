@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 	_update_timers(delta)
 
 
-func _update_timers(delta: float) -> void:
+func _update_timers(_delta: float) -> void:
 	pass
 
 

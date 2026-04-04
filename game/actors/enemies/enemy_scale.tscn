@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://u1ixb7camcwy"]
+[gd_scene load_steps=12 format=3 uid="uid://u1ixb7camcwy"]
 
 [ext_resource type="Script" uid="uid://dlg23m28wbap6" path="res://actors/enemies/enemy_scale.gd" id="1_oyj02"]
 [ext_resource type="PackedScene" uid="uid://uicpnh4rn6ps" path="res://actors/damage/damagable.tscn" id="2_rxjc5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://lp2g72a775sk" path="res://actors/enemies/resources/asteroid_beast_armored_shader_material.tres" id="4_m0s23"]
 [ext_resource type="Script" uid="uid://dpevg1011dnmh" path="res://actors/enemies/enemy_scale_damaged_tween.gd" id="5_fk8q5"]
 [ext_resource type="PackedScene" uid="uid://hq80lbiqvb7q" path="res://actors/enemies/enemy_explosion_a.tscn" id="6_6nuo4"]
+[ext_resource type="PackedScene" uid="uid://dxvgstibbarik" path="res://audio/death_explosion_crackle_player.tscn" id="7_g0rfe"]
 
 [sub_resource type="Resource" id="Resource_6nuo4"]
 script = ExtResource("3_fk8q5")
@@ -24,6 +25,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DeathExplosionCracklePlayer:crackling")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_fk8q5"]
@@ -57,6 +70,18 @@ tracks/1/keys = {
 "args": [false],
 "method": &"exploding"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DeathExplosionCracklePlayer:crackling")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g0rfe"]
@@ -101,3 +126,10 @@ libraries = {
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="."]
 remote_path = NodePath("../EnemyExplosionA")
+
+[node name="DeathExplosionCracklePlayer" parent="." instance=ExtResource("7_g0rfe")]
+volume_db = -24.0
+crackle_time = 0.6
+channel_count = 10
+cooldown = 0.05
+cooldown_max_delta = 0.05

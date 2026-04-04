@@ -19,7 +19,7 @@ func get_actor_material(o: Object) -> ActorMaterial:
 
 
 func _get_actor_property(o: Object, prop_name: String) -> Variant:
-	if o == null: null
+	if o == null: return null
 	var property = o.get(prop_name)
 	if o is Node and property == null:
 		var parent = o.get_parent()

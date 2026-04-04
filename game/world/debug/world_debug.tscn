@@ -1259,12 +1259,12 @@ position = Vector2(-58, -114)
 rotation = -3.14159
 
 [node name="TalonArm" parent="Stage/Actors/AsteroidBeast" instance=ExtResource("54_h8r0t")]
-position = Vector2(557, 392)
+position = Vector2(557, 489)
 rotation = -0.523598
 pivot_scale = Vector2(-1, 1)
 
 [node name="TalonArm2" parent="Stage/Actors/AsteroidBeast" instance=ExtResource("54_h8r0t")]
-position = Vector2(555, -375)
+position = Vector2(555, -481)
 rotation = 0.523598
 pivot_scale = Vector2(-1, -1)
 
@@ -1309,7 +1309,7 @@ offset_top = 27.0
 offset_right = 1889.0
 offset_bottom = 115.0
 theme_override_font_sizes/font_size = 64
-text = "FPS: 145.0"
+text = "FPS: 135.0"
 script = ExtResource("30_tj5ml")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("64_otf24")]

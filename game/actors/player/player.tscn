@@ -211,25 +211,25 @@ fade_time = 0.1
 
 [node name="FireAudioStreamPlayer" type="AudioStreamPlayer" parent="SoundsManager/FirePlayers"]
 stream = ExtResource("20_otn2r")
-volume_db = -24.0
+volume_db = -28.0
 script = ExtResource("19_dqf5y")
 metadata/_custom_type_script = "uid://d31qlkkek2lr"
 
 [node name="FireAudioStreamPlayer2" type="AudioStreamPlayer" parent="SoundsManager/FirePlayers"]
 stream = ExtResource("20_otn2r")
-volume_db = -24.0
+volume_db = -28.0
 script = ExtResource("19_dqf5y")
 metadata/_custom_type_script = "uid://d31qlkkek2lr"
 
 [node name="FireAudioStreamPlayer3" type="AudioStreamPlayer" parent="SoundsManager/FirePlayers"]
 stream = ExtResource("20_otn2r")
-volume_db = -24.0
+volume_db = -28.0
 script = ExtResource("19_dqf5y")
 metadata/_custom_type_script = "uid://d31qlkkek2lr"
 
 [node name="FireAudioStreamPlayer4" type="AudioStreamPlayer" parent="SoundsManager/FirePlayers"]
 stream = ExtResource("20_otn2r")
-volume_db = -24.0
+volume_db = -28.0
 script = ExtResource("19_dqf5y")
 metadata/_custom_type_script = "uid://d31qlkkek2lr"
 

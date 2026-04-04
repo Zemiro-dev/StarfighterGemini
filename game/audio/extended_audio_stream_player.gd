@@ -47,3 +47,7 @@ func fade_out() -> void:
 	_fade_tween.tween_property(self, "volume_db", min_volumn_db, remaining_fade_time)
 	_fade_tween.finished.connect(func(): stop())
 	_fade_tween.finished.connect(func(): fade_direction = 0)
+
+
+static func make_duplicate(original: ExtendedAudioStreamPlayer) -> ExtendedAudioStreamPlayer:
+	return original.duplicate()
