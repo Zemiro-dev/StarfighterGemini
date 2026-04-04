@@ -236,25 +236,25 @@ fade_time = 0.1
 
 [node name="FireAudioStreamPlayer" type="AudioStreamPlayer" parent="SoundsManager/FirePlayers"]
 stream = ExtResource("20_otn2r")
-volume_db = -28.0
+volume_db = -24.0
 script = ExtResource("19_dqf5y")
 metadata/_custom_type_script = "uid://d31qlkkek2lr"
 
 [node name="FireAudioStreamPlayer2" type="AudioStreamPlayer" parent="SoundsManager/FirePlayers"]
 stream = ExtResource("20_otn2r")
-volume_db = -28.0
+volume_db = -24.0
 script = ExtResource("19_dqf5y")
 metadata/_custom_type_script = "uid://d31qlkkek2lr"
 
 [node name="FireAudioStreamPlayer3" type="AudioStreamPlayer" parent="SoundsManager/FirePlayers"]
 stream = ExtResource("20_otn2r")
-volume_db = -28.0
+volume_db = -24.0
 script = ExtResource("19_dqf5y")
 metadata/_custom_type_script = "uid://d31qlkkek2lr"
 
 [node name="FireAudioStreamPlayer4" type="AudioStreamPlayer" parent="SoundsManager/FirePlayers"]
 stream = ExtResource("20_otn2r")
-volume_db = -28.0
+volume_db = -24.0
 script = ExtResource("19_dqf5y")
 metadata/_custom_type_script = "uid://d31qlkkek2lr"
 
@@ -279,7 +279,7 @@ stream = ExtResource("21_ctwkf")
 script = ExtResource("19_dqf5y")
 
 [node name="DeathExplosionCracklePlayer" parent="SoundsManager" instance=ExtResource("22_icg72")]
-volume_db = -8.0
-pitch_scale = 0.8
+volume_db = -12.0
+pitch_scale = 0.9
 crackle_time = 0.85
 channel_count = 10
