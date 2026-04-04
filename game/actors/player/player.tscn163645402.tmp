@@ -164,6 +164,7 @@ point_count = 3
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_bop6h")
+blast_pack = null
 
 [node name="PlayerDamagedTween" parent="." instance=ExtResource("2_rt46e")]
 
@@ -279,7 +280,6 @@ stream = ExtResource("21_ctwkf")
 script = ExtResource("19_dqf5y")
 
 [node name="DeathExplosionCracklePlayer" parent="SoundsManager" instance=ExtResource("22_icg72")]
-volume_db = -8.0
-pitch_scale = 0.8
-crackle_time = 0.85
-channel_count = 10
+crackle_time = 0.4
+cooldown = 0.01
+cooldown_max_delta = 0.01

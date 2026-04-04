@@ -116,6 +116,7 @@ func make_channel() -> ExtendedAudioStreamPlayer:
 	new_channel.stream = stream
 	new_channel.volume_db = volume_db
 	new_channel.pitch_jitter = pitch_jitter
+	new_channel.pitch_scale = pitch_scale
 	return new_channel
 
 

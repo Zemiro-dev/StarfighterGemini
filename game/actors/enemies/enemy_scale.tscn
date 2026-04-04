@@ -128,7 +128,7 @@ libraries = {
 remote_path = NodePath("../EnemyExplosionA")
 
 [node name="DeathExplosionCracklePlayer" parent="." instance=ExtResource("7_g0rfe")]
-volume_db = -24.0
+volume_db = -26.0
 crackle_time = 0.6
 channel_count = 10
 cooldown = 0.05
