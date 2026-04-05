@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://da4ta4o721exf"]
+[gd_scene load_steps=116 format=3 uid="uid://da4ta4o721exf"]
 
 [ext_resource type="Script" uid="uid://dj8f28g3mmv8i" path="res://world/debug/world_debug.gd" id="1_0cob0"]
 [ext_resource type="Texture2D" uid="uid://bbq0js4b3j7xu" path="res://assets/shapes/circle_blue_2tone_large.png" id="1_44sa8"]
@@ -60,6 +60,7 @@
 [ext_resource type="Texture2D" uid="uid://c61vc5kdnj011" path="res://actors/enemies/resources/asteroid_beast_weakspot_gradient_low.tres" id="54_1aouo"]
 [ext_resource type="PackedScene" uid="uid://b58dppq2aevhp" path="res://actors/enemies/asteroid_beast/molecules/talon_arm.tscn" id="54_h8r0t"]
 [ext_resource type="Texture2D" uid="uid://dqufylk7anldw" path="res://assets/enemies/asteroid_beast/asteroid_beast_bolt_sheet_a.png" id="59_1g7u1"]
+[ext_resource type="Script" uid="uid://wmxvmbd14f70" path="res://actors/enemies/asteroid_beast/talon_attack_patterns.gd" id="60_7to6k"]
 [ext_resource type="PackedScene" uid="uid://3p08pqbj3jx1" path="res://actors/player/player.tscn" id="61_7to6k"]
 [ext_resource type="PackedScene" uid="uid://db3jamtupa1pe" path="res://world/world_environment_default.tscn" id="64_otf24"]
 
@@ -650,6 +651,12 @@ shader_parameter/strength = 0.0
 shader_parameter/fps = 0.0
 shader_parameter/frames = 256
 
+[sub_resource type="Curve2D" id="Curve2D_otf24"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 141, 221, 0, 0, 0, 0, 1801, 923)
+}
+point_count = 2
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r0vbx"]
 shader = ExtResource("7_an6al")
 shader_parameter/swap_out = Color(0.87451, 0.160784, 0.207843, 1)
@@ -671,35 +678,42 @@ script = ExtResource("1_0cob0")
 [node name="NeonOrbs" type="Node2D" parent="Stage"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Stage/NeonOrbs"]
+visible = false
 position = Vector2(-2547, 339)
 texture = ExtResource("1_44sa8")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Stage/NeonOrbs"]
+visible = false
 modulate = Color(0, 0.376, 1.3, 1)
 position = Vector2(-2038, 339)
 texture = ExtResource("2_lqxvj")
 
 [node name="Sprite2D4" type="Sprite2D" parent="Stage/NeonOrbs"]
+visible = false
 modulate = Color(1.2, 1.2, 1.2, 1)
 position = Vector2(-1531, 325)
 texture = ExtResource("3_lsr55")
 
 [node name="Sprite2D7" type="Sprite2D" parent="Stage/NeonOrbs"]
+visible = false
 position = Vector2(-1427, 747)
 texture = ExtResource("4_7wlep")
 
 [node name="Sprite2D8" type="Sprite2D" parent="Stage/NeonOrbs"]
+visible = false
 material = SubResource("ShaderMaterial_3mc18")
 position = Vector2(-1045, 336)
 rotation = 1.57079
 texture = ExtResource("1_44sa8")
 
 [node name="Sprite2D6" type="Sprite2D" parent="Stage/NeonOrbs"]
+visible = false
 modulate = Color(1.2, 0.161, 0.208, 1)
 position = Vector2(-2047, 716)
 texture = ExtResource("4_7wlep")
 
 [node name="Sprite2D12" type="Sprite2D" parent="Stage/NeonOrbs"]
+visible = false
 material = ExtResource("4_eldjb")
 position = Vector2(-2546, 729)
 texture = ExtResource("4_7wlep")
@@ -736,52 +750,53 @@ texture = ExtResource("1_44sa8")
 
 [node name="Actors" type="Node2D" parent="Stage"]
 
-[node name="Player" type="Node2D" parent="Stage/Actors"]
-position = Vector2(-180, 215)
+[node name="PlayerOld" type="Node2D" parent="Stage/Actors"]
+visible = false
+position = Vector2(-1166, 22)
 
-[node name="TopCannon" type="Sprite2D" parent="Stage/Actors/Player"]
+[node name="TopCannon" type="Sprite2D" parent="Stage/Actors/PlayerOld"]
 material = SubResource("ShaderMaterial_6ptfx")
 position = Vector2(32, -63)
 texture = ExtResource("14_x6moa")
 
-[node name="CannonFlashTop" type="Sprite2D" parent="Stage/Actors/Player/TopCannon"]
+[node name="CannonFlashTop" type="Sprite2D" parent="Stage/Actors/PlayerOld/TopCannon"]
 modulate = Color(0, 1.3, 1.3, 1)
 self_modulate = Color(1, 1, 1, 0)
 show_behind_parent = true
 position = Vector2(25, 0)
 texture = ExtResource("16_7to6k")
 
-[node name="PlayerProjectileTop" type="Sprite2D" parent="Stage/Actors/Player/TopCannon"]
+[node name="PlayerProjectileTop" type="Sprite2D" parent="Stage/Actors/PlayerOld/TopCannon"]
 modulate = Color(0, 1.5, 1.5, 1)
 show_behind_parent = true
 position = Vector2(7, 0)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("17_otf24")
 
-[node name="Core" type="Sprite2D" parent="Stage/Actors/Player"]
+[node name="Core" type="Sprite2D" parent="Stage/Actors/PlayerOld"]
 material = SubResource("ShaderMaterial_x6moa")
 texture = ExtResource("12_lo56x")
 
-[node name="BottomCannon" type="Sprite2D" parent="Stage/Actors/Player"]
+[node name="BottomCannon" type="Sprite2D" parent="Stage/Actors/PlayerOld"]
 material = SubResource("ShaderMaterial_6ptfx")
 position = Vector2(32, 57)
 texture = ExtResource("14_x6moa")
 
-[node name="CannonFlashBottom" type="Sprite2D" parent="Stage/Actors/Player/BottomCannon"]
+[node name="CannonFlashBottom" type="Sprite2D" parent="Stage/Actors/PlayerOld/BottomCannon"]
 modulate = Color(0, 1.3, 1.3, 1)
 self_modulate = Color(1, 1, 1, 0)
 show_behind_parent = true
 position = Vector2(25, 0)
 texture = ExtResource("16_7to6k")
 
-[node name="PlayerProjectileBottom" type="Sprite2D" parent="Stage/Actors/Player/BottomCannon"]
+[node name="PlayerProjectileBottom" type="Sprite2D" parent="Stage/Actors/PlayerOld/BottomCannon"]
 modulate = Color(0, 1.5, 1.5, 1)
 show_behind_parent = true
 position = Vector2(7, 0)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("17_otf24")
 
-[node name="PlayerAnimationPlayer" type="AnimationPlayer" parent="Stage/Actors/Player"]
+[node name="PlayerAnimationPlayer" type="AnimationPlayer" parent="Stage/Actors/PlayerOld"]
 root_node = NodePath("../TopCannon")
 libraries = {
 &"": SubResource("AnimationLibrary_u7n2f")
@@ -845,6 +860,7 @@ texture = ExtResource("4_7wlep")
 [node name="SourceParts" type="Node2D" parent="Stage/Actors/AsteroidBeast"]
 
 [node name="Bolt" type="GPUParticles2D" parent="Stage/Actors/AsteroidBeast/SourceParts"]
+visible = false
 material = SubResource("CanvasItemMaterial_1aouo")
 position = Vector2(-2558, -638)
 amount = 4
@@ -1258,20 +1274,19 @@ material = SubResource("ShaderMaterial_tatvv")
 position = Vector2(-58, -114)
 rotation = -3.14159
 
-[node name="TalonArm" parent="Stage/Actors/AsteroidBeast" instance=ExtResource("54_h8r0t")]
-position = Vector2(557, 489)
-rotation = -0.523598
-pivot_scale = Vector2(-1, 1)
+[node name="TalonArm0" parent="Stage/Actors/AsteroidBeast" instance=ExtResource("54_h8r0t")]
+position = Vector2(841, 383)
+rotation = -2.74151
+scale = Vector2(1, -1)
 
-[node name="TalonArm2" parent="Stage/Actors/AsteroidBeast" instance=ExtResource("54_h8r0t")]
-position = Vector2(555, -481)
-rotation = 0.523598
-pivot_scale = Vector2(-1, -1)
+[node name="TalonArm1" parent="Stage/Actors/AsteroidBeast" instance=ExtResource("54_h8r0t")]
+position = Vector2(702, -9)
 
-[node name="Player2" parent="Stage/Actors" instance=ExtResource("61_7to6k")]
-position = Vector2(728, 786)
+[node name="PlayerMain" parent="Stage/Actors" instance=ExtResource("61_7to6k")]
+position = Vector2(130, 964)
 
 [node name="Laser" type="Node2D" parent="Stage"]
+visible = false
 position = Vector2(-945, 385)
 
 [node name="Line2D" type="Line2D" parent="Stage/Laser"]
@@ -1294,6 +1309,23 @@ process_material = SubResource("ParticleProcessMaterial_tqfwn")
 position = Vector2(-1045, 198)
 script = ExtResource("9_otf24")
 
+[node name="TalonAttackPatterns" type="Node2D" parent="Stage" node_paths=PackedStringArray("player", "talons")]
+script = ExtResource("60_7to6k")
+player = NodePath("../Actors/PlayerMain")
+talons = [NodePath("../Actors/AsteroidBeast/TalonArm0"), NodePath("../Actors/AsteroidBeast/TalonArm1")]
+
+[node name="ChargePath2D" type="Path2D" parent="Stage/TalonAttackPatterns"]
+curve = SubResource("Curve2D_otf24")
+
+[node name="ChargePathFollow2D" type="PathFollow2D" parent="Stage/TalonAttackPatterns/ChargePath2D"]
+position = Vector2(1801, 923)
+rotation = 0.400083
+progress = 1802.33
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Stage/TalonAttackPatterns/ChargePath2D/ChargePathFollow2D"]
+scale = Vector2(-1, 1)
+remote_path = NodePath("../../../../Actors/AsteroidBeast/TalonArm0")
+
 [node name="UI" type="Node2D" parent="."]
 
 [node name="HealthBar" type="Sprite2D" parent="UI"]
@@ -1309,7 +1341,7 @@ offset_top = 27.0
 offset_right = 1889.0
 offset_bottom = 115.0
 theme_override_font_sizes/font_size = 64
-text = "FPS: 145.0"
+text = "FPS: 133.0"
 script = ExtResource("30_tj5ml")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("64_otf24")]
