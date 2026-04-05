@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://3p08pqbj3jx1"]
+[gd_scene load_steps=34 format=3 uid="uid://3p08pqbj3jx1"]
 
 [ext_resource type="Script" uid="uid://f4fh5oklml4n" path="res://actors/player/player.gd" id="1_bop6h"]
 [ext_resource type="PackedScene" uid="uid://uicpnh4rn6ps" path="res://actors/damage/damagable.tscn" id="2_7aotg"]
@@ -14,8 +14,11 @@
 [ext_resource type="Script" uid="uid://dno1a1koeexnq" path="res://actors/steering/steering_stats.gd" id="4_ssdk0"]
 [ext_resource type="PackedScene" uid="uid://c4dfwdemcmkp3" path="res://actors/player/player_cannon.tscn" id="8_rt46e"]
 [ext_resource type="Shader" uid="uid://dao7s8gyvjj7j" path="res://shaders/player_shader.gdshader" id="10_k67x5"]
+[ext_resource type="PackedScene" uid="uid://db4rx2dk8oedg" path="res://actors/effects/ThrustEffectA.tscn" id="12_lj3dd"]
 [ext_resource type="Texture2D" uid="uid://cdp7stnuo4kpn" path="res://assets/player/player_body_a.png" id="12_ssdk0"]
+[ext_resource type="PackedScene" uid="uid://djju5jytlydf7" path="res://actors/effects/ThrustWaveA.tscn" id="12_yeioo"]
 [ext_resource type="PackedScene" uid="uid://45p6je56ck3j" path="res://actors/player/player_explosion_a.tscn" id="13_7aotg"]
+[ext_resource type="PackedScene" uid="uid://drd2i3vhhcu2l" path="res://actors/effects/ThrustEffectB.tscn" id="13_nsxbo"]
 [ext_resource type="AudioStream" uid="uid://dlpxa474i1ygj" path="res://assets/sounds/effects/thruster.wav" id="17_0wchr"]
 [ext_resource type="Script" uid="uid://dd3d2lwooly5b" path="res://actors/player/player_sounds_manager.gd" id="17_qrxv1"]
 [ext_resource type="Script" uid="uid://d31qlkkek2lr" path="res://audio/extended_audio_stream_player.gd" id="19_dqf5y"]
@@ -25,7 +28,7 @@
 
 [sub_resource type="Resource" id="Resource_rt46e"]
 script = ExtResource("3_12xki")
-max_health = 1.0
+max_health = 10.0
 metadata/_custom_type_script = "uid://dos03u2y4nj1m"
 
 [sub_resource type="Resource" id="Resource_7aotg"]
@@ -143,10 +146,10 @@ tracks/3/path = NodePath("SoundsManager/DeathExplosionCracklePlayer:crackling")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_12xki"]
@@ -194,23 +197,40 @@ controller = NodePath("../../Controller")
 
 [node name="TopCannon" parent="ShipPieces" instance=ExtResource("8_rt46e")]
 modulate = Color(1, 1, 1, 0.777)
-position = Vector2(32, -63)
+position = Vector2(-1, -63)
 
 [node name="BottomCannon" parent="ShipPieces" instance=ExtResource("8_rt46e")]
-position = Vector2(32, 63)
+position = Vector2(-1, 63)
 
-[node name="BodySprite" type="Sprite2D" parent="ShipPieces"]
+[node name="BodyPivot" type="Node2D" parent="ShipPieces"]
+
+[node name="DashWave" parent="ShipPieces/BodyPivot" instance=ExtResource("12_yeioo")]
+position = Vector2(-55, -11)
+
+[node name="LowThrust" parent="ShipPieces/BodyPivot" instance=ExtResource("12_lj3dd")]
+position = Vector2(-58, -11)
+rotation = -3.14159
+
+[node name="MidThrust" parent="ShipPieces/BodyPivot" instance=ExtResource("13_nsxbo")]
+rotation = 3.14159
+
+[node name="BodySprite" type="Sprite2D" parent="ShipPieces/BodyPivot"]
 material = SubResource("ShaderMaterial_12xki")
-position = Vector2(0, -15)
+position = Vector2(-32, -13)
 texture = ExtResource("12_ssdk0")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="ShipPieces/BodyPivot"]
+position = Vector2(-11, -6)
+rotation = 1.57079
+remote_path = NodePath("../../../CollisionShape2D")
 
 [node name="PlayerExplosionA" parent="." instance=ExtResource("13_7aotg")]
 emitting = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(13, -7)
-rotation = -1.57079
+position = Vector2(-11, -6)
+rotation = 1.57079
 shape = SubResource("CapsuleShape2D_lsln6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -281,5 +301,5 @@ script = ExtResource("19_dqf5y")
 [node name="DeathExplosionCracklePlayer" parent="SoundsManager" instance=ExtResource("22_icg72")]
 volume_db = -12.0
 pitch_scale = 0.9
-crackle_time = 0.85
+crackle_time = -1.0
 channel_count = 10

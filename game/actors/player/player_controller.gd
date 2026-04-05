@@ -15,7 +15,7 @@ func get_goal() -> Vector2:
 
 func dash_pressed() -> bool:
 	return Input.is_action_pressed("dash")
-	
+
 
 func set_is_goal_locked(new_value: bool) -> void:
 	if (new_value):

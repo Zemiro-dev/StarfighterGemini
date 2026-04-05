@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://db4rx2dk8oedg"]
+
+[ext_resource type="Texture2D" uid="uid://cnn7qo74v5q6" path="res://assets/effects/blue_thrust_triangle.png" id="1_8e4d2"]
+
+[sub_resource type="Gradient" id="Gradient_8e4d2"]
+colors = PackedColorArray(5, 5, 5, 1, 5, 5, 5, 0.52)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xh6jn"]
+gradient = SubResource("Gradient_8e4d2")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_8e4d2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xh6jn"]
+curve = SubResource("Curve_8e4d2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8e4d2"]
+particle_flag_disable_z = true
+spread = 20.0
+initial_velocity_min = 100.0
+initial_velocity_max = 125.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -150.0
+linear_accel_max = -2.23517e-06
+scale_curve = SubResource("CurveTexture_xh6jn")
+color_ramp = SubResource("GradientTexture1D_xh6jn")
+hue_variation_min = -2.23517e-08
+hue_variation_max = -2.23517e-08
+
+[node name="ThrustEffectA" type="GPUParticles2D"]
+emitting = false
+amount = 4
+texture = ExtResource("1_8e4d2")
+lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_8e4d2")

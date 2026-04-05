@@ -21,8 +21,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ev52"]
 resource_local_to_scene = true
 shader = ExtResource("7_u538y")
-shader_parameter/gradient_texture_low = ExtResource("17_p2g03")
-shader_parameter/gradient_texture_high = ExtResource("16_whl4f")
+shader_parameter/gradient_texture_low = ExtResource("9_otoxr")
+shader_parameter/gradient_texture_high = ExtResource("8_vsfkg")
 shader_parameter/progress = 0.2
 shader_parameter/use_distortion = false
 shader_parameter/strength = 0.0
@@ -54,8 +54,8 @@ shader_parameter/frames = 256
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u538y"]
 resource_local_to_scene = true
 shader = ExtResource("7_u538y")
-shader_parameter/gradient_texture_low = ExtResource("9_otoxr")
-shader_parameter/gradient_texture_high = ExtResource("8_vsfkg")
+shader_parameter/gradient_texture_low = ExtResource("17_p2g03")
+shader_parameter/gradient_texture_high = ExtResource("16_whl4f")
 shader_parameter/progress = 0.2
 shader_parameter/use_distortion = false
 shader_parameter/strength = 0.0

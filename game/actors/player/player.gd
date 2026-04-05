@@ -9,10 +9,14 @@ class_name Player
 @onready var damagable: Damagable = $Damagable
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var body_sprite: Sprite2D = $ShipPieces/BodySprite
+@onready var body_sprite: Sprite2D = $ShipPieces/BodyPivot/BodySprite
 @onready var player_damaged_tween: PlayerDamagedTween = $PlayerDamagedTween
 @onready var sounds_manager: PlayerSoundsManager = $SoundsManager
 @onready var player_explosion: GPUParticles2D = $PlayerExplosionA
+@onready var body_pivot: Node2D = $ShipPieces/BodyPivot
+@onready var low_thrust: GPUParticles2D = $ShipPieces/BodyPivot/LowThrust
+@onready var mid_thrust: GPUParticles2D = $ShipPieces/BodyPivot/MidThrust
+@onready var dash_wave: GPUParticles2D = $ShipPieces/BodyPivot/DashWave
 
 @export var blast_pack: PackedScene = preload("res://actors/projectiles/projectile_blue_blast.tscn")
 
@@ -34,6 +38,23 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	velocity = physics_body_move_resolver.resolve(move_machine.process(delta), delta)
+	
+	match(move_machine.state):
+		PlayerMoveMachine.State.IDLE:
+			low_thrust.emitting = false
+			mid_thrust.emitting = false
+		PlayerMoveMachine.State.STANDARD, PlayerMoveMachine.State.DASH:
+			low_thrust.emitting = true
+			if controller.get_goal().length() > .5:
+				mid_thrust.emitting = true
+			else:
+				mid_thrust.emitting = false
+	
+	if controller.get_goal().x > 0.0:
+		body_pivot.scale.x = 1.0
+	if controller.get_goal().x < 0.0:
+		body_pivot.scale.x = -1.0
+		
 
 	if Input.is_action_pressed("fire"):
 		fire()
@@ -44,6 +65,7 @@ func _physics_process(delta: float) -> void:
 func on_move_state_change(prev:PlayerMoveMachine.State,  next: PlayerMoveMachine.State): 
 	if next == PlayerMoveMachine.State.DASH:
 		controller.is_goal_locked = true
+		dash_wave.emitting = true
 	else:
 		controller.is_goal_locked = false
 

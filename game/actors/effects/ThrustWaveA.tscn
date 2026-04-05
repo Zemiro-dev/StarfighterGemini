@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://djju5jytlydf7"]
+
+[ext_resource type="Texture2D" uid="uid://b04x2iugwn3ak" path="res://assets/effects/blue_thrust_wave.png" id="1_iqrii"]
+
+[sub_resource type="Curve" id="Curve_lgaid"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.249158, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.276838), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_cwmsg"]
+curve = SubResource("Curve_lgaid")
+
+[sub_resource type="Curve" id="Curve_iqrii"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.254209, 0.562134), 0.0, 0.0, 0, 0, Vector2(1, 0.0208199), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_lgaid"]
+curve = SubResource("Curve_iqrii")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lgaid"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_lgaid")
+color = Color(1, 1.7, 1.7, 1)
+alpha_curve = SubResource("CurveTexture_cwmsg")
+
+[node name="ThrustWaveA" type="GPUParticles2D"]
+emitting = false
+amount = 4
+texture = ExtResource("1_iqrii")
+lifetime = 0.2
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_lgaid")

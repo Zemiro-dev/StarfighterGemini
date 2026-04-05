@@ -2,7 +2,7 @@ extends ExtendedAudioStreamPlayer
 class_name CrackleAudioStreamPlayer
 
 @export var crackling: bool = false : set = _set_crackling
-@export_range(0., 100., .01, "or_greater") var crackle_time: float = 5.0
+@export_range(-1., 100., .01, "or_greater") var crackle_time: float = 5.0
 @export var channel_count: int = 1 : set = _set_channel_count
 ## How much of the stream length should odd channels be offset
 @export_range(0., 1.0, .05) var odd_channel_offset: float = .5
@@ -26,7 +26,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	_update_timers(delta)
-	if remaining_crackle_time <= 0.0 and crackling:
+	if crackle_time > 0.0 and remaining_crackle_time <= 0.0 and crackling:
 		crackling = false
 	for i in range(cooldowns.size()):
 		if cooldowns[i] <= 0. and crackling:
@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _update_timers(delta: float) -> void:
-	if remaining_crackle_time > 0.0:
+	if remaining_crackle_time > 0.0 and crackle_time > 0.0:
 		remaining_crackle_time -= delta
 	for i in range(cooldowns.size()):
 		if audio_players.size() > i:
@@ -56,7 +56,8 @@ func _start_crackling() -> void:
 			cooldowns.append(_get_new_cooldown())
 		else:
 			cooldowns.append(_get_new_offset())
-	remaining_crackle_time = crackle_time
+	if crackle_time > 0.:
+		remaining_crackle_time = crackle_time
 
 
 func stop_crackling() -> void:
