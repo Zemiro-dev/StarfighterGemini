@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://da4ta4o721exf"]
+[gd_scene load_steps=118 format=3 uid="uid://da4ta4o721exf"]
 
 [ext_resource type="Script" uid="uid://dj8f28g3mmv8i" path="res://world/debug/world_debug.gd" id="1_0cob0"]
 [ext_resource type="Texture2D" uid="uid://bbq0js4b3j7xu" path="res://assets/shapes/circle_blue_2tone_large.png" id="1_44sa8"]
@@ -62,6 +62,7 @@
 [ext_resource type="Texture2D" uid="uid://dqufylk7anldw" path="res://assets/enemies/asteroid_beast/asteroid_beast_bolt_sheet_a.png" id="59_1g7u1"]
 [ext_resource type="Script" uid="uid://wmxvmbd14f70" path="res://actors/enemies/asteroid_beast/talon_attack_patterns.gd" id="60_7to6k"]
 [ext_resource type="PackedScene" uid="uid://3p08pqbj3jx1" path="res://actors/player/player.tscn" id="61_7to6k"]
+[ext_resource type="Script" uid="uid://10aualxooos3" path="res://actors/enemies/asteroid_beast/target_follow_pattern.gd" id="61_otf24"]
 [ext_resource type="PackedScene" uid="uid://db3jamtupa1pe" path="res://world/world_environment_default.tscn" id="64_otf24"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3mc18"]
@@ -653,9 +654,11 @@ shader_parameter/frames = 256
 
 [sub_resource type="Curve2D" id="Curve2D_otf24"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 141, 221, 0, 0, 0, 0, 1801, 923)
+"points": PackedVector2Array(0, 0, 0, 0, 141, 221, 0, 0, 0, 0, 1801, 923, 0, 0, 0, 0, 1687, 223, 0, 0, 0, 0, 43, 917, 0, 0, 0, 0, 141, 221)
 }
-point_count = 2
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_uibwa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r0vbx"]
 shader = ExtResource("7_an6al")
@@ -1275,12 +1278,10 @@ position = Vector2(-58, -114)
 rotation = -3.14159
 
 [node name="TalonArm0" parent="Stage/Actors/AsteroidBeast" instance=ExtResource("54_h8r0t")]
-position = Vector2(841, 383)
-rotation = -2.74151
-scale = Vector2(1, -1)
+position = Vector2(840.999, 383.002)
 
 [node name="TalonArm1" parent="Stage/Actors/AsteroidBeast" instance=ExtResource("54_h8r0t")]
-position = Vector2(702, -9)
+position = Vector2(-960, -540)
 
 [node name="PlayerMain" parent="Stage/Actors" instance=ExtResource("61_7to6k")]
 position = Vector2(130, 964)
@@ -1318,13 +1319,30 @@ talons = [NodePath("../Actors/AsteroidBeast/TalonArm0"), NodePath("../Actors/Ast
 curve = SubResource("Curve2D_otf24")
 
 [node name="ChargePathFollow2D" type="PathFollow2D" parent="Stage/TalonAttackPatterns/ChargePath2D"]
-position = Vector2(1801, 923)
+position = Vector2(1801, 923.002)
 rotation = 0.400083
 progress = 1802.33
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Stage/TalonAttackPatterns/ChargePath2D/ChargePathFollow2D"]
-scale = Vector2(-1, 1)
 remote_path = NodePath("../../../../Actors/AsteroidBeast/TalonArm0")
+update_rotation = false
+update_scale = false
+
+[node name="TargetFollowPattern" type="Node2D" parent="Stage/TalonAttackPatterns"]
+script = ExtResource("61_otf24")
+
+[node name="TargetFollowPath2D" type="Path2D" parent="Stage/TalonAttackPatterns/TargetFollowPattern"]
+curve = SubResource("Curve2D_uibwa")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Stage/TalonAttackPatterns/TargetFollowPattern/TargetFollowPath2D"]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Stage/TalonAttackPatterns/TargetFollowPattern/TargetFollowPath2D/PathFollow2D"]
+update_rotation = false
+update_scale = false
+
+[node name="PathUpdateCooldownTimer" type="Timer" parent="Stage/TalonAttackPatterns/TargetFollowPattern"]
+wait_time = 3.0
+one_shot = true
 
 [node name="UI" type="Node2D" parent="."]
 
@@ -1341,7 +1359,7 @@ offset_top = 27.0
 offset_right = 1889.0
 offset_bottom = 115.0
 theme_override_font_sizes/font_size = 64
-text = "FPS: 133.0"
+text = "FPS: 142.0"
 script = ExtResource("30_tj5ml")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("64_otf24")]
