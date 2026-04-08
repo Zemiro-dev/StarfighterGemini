@@ -33,7 +33,7 @@ func resolve_collisions(delta: float, velocity: Vector2, body: PhysicsBody2D) ->
 			
 			# Base Movement Effects
 			match (collider_type):
-				GameActor.ActorType.UNKNOWN, GameActor.ActorType.TERRAIN, GameActor.ActorType.ENEMY, GameActor.ActorType.DESTRUCTIBLE:
+				GameActor.ActorType.UNKNOWN, GameActor.ActorType.TERRAIN, GameActor.ActorType.ENEMY, GameActor.ActorType.DESTRUCTIBLE, GameActor.ActorType.BOUNDARY:
 					motion = remainder.bounce(normal)
 					next_velocity = next_velocity.bounce(normal)
 					var collision_strength = (velocity - next_velocity).length()
@@ -47,7 +47,6 @@ func resolve_collisions(delta: float, velocity: Vector2, body: PhysicsBody2D) ->
 							recent_knockbacks.append(body)
 							if knockback_cooldown_remaining <= 0.0:
 								knockback_cooldown_remaining = knockback_cooldown_max
-						#print('knockback ', collider, ' ', next_velocity.length(),' ', Time.get_ticks_msec())
 						has_been_attacked = true
 		else:
 			break;

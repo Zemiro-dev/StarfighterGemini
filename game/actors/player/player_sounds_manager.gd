@@ -60,7 +60,6 @@ func _handle_metal_collision(strength: float) -> void:
 					var collision_volumn_db := collision_volumn_curve.sample(
 						clamp(strength, collision_volumn_curve.min_domain, collision_volumn_curve.max_domain)
 					)
-					print(collision_volumn_db)
 					child.volume_db = collision_volumn_db
 				child.play_at_random_pitch()
 				metal_collision_cooldown = collision_cooldown_max

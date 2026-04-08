@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://da4ta4o721exf"]
+[gd_scene load_steps=123 format=3 uid="uid://da4ta4o721exf"]
 
 [ext_resource type="Script" uid="uid://dj8f28g3mmv8i" path="res://world/debug/world_debug.gd" id="1_0cob0"]
 [ext_resource type="Texture2D" uid="uid://bbq0js4b3j7xu" path="res://assets/shapes/circle_blue_2tone_large.png" id="1_44sa8"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://75uj63hlnfho" path="res://world/top_effects_root.gd" id="9_otf24"]
 [ext_resource type="PackedScene" uid="uid://bo20bbc3v4n5k" path="res://world/node_roots/projectiles_root.tscn" id="10_ns7c5"]
 [ext_resource type="Texture2D" uid="uid://beeeba5bogag7" path="res://assets/shapes/yellow_diamond_particle.png" id="10_r0vbx"]
+[ext_resource type="Script" uid="uid://nkwb5fjtdi1d" path="res://world/world_boundary.gd" id="12_fn7rg"]
 [ext_resource type="Texture2D" uid="uid://16wlwkn7g2xc" path="res://actors/player/resources/player_gradient_high.tres" id="12_iodkf"]
 [ext_resource type="Texture2D" uid="uid://xtisnn3t5jr2" path="res://assets/player/core.png" id="12_lo56x"]
 [ext_resource type="Texture2D" uid="uid://c7dvlc535fux2" path="res://actors/player/resources/player_gradient_low.tres" id="13_sxhbq"]
@@ -86,6 +87,14 @@ shader_parameter/swap_in_off = Color(0, 0.376471, 0.94902, 1)
 shader_parameter/progress_style = 0
 shader_parameter/progress = 0.595
 shader_parameter/threshold = 0.005
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_otf24"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uibwa"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fn7rg"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u7n2f"]
 
 [sub_resource type="Shader" id="Shader_1jd2g"]
 code = "shader_type canvas_item;
@@ -753,6 +762,44 @@ texture = ExtResource("1_44sa8")
 
 [node name="Actors" type="Node2D" parent="Stage"]
 
+[node name="BoundaryWalls" type="Node2D" parent="Stage/Actors"]
+
+[node name="TopStaticBody2D" type="StaticBody2D" parent="Stage/Actors/BoundaryWalls"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("12_fn7rg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Actors/BoundaryWalls/TopStaticBody2D"]
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_otf24")
+
+[node name="BottomStaticBody2D" type="StaticBody2D" parent="Stage/Actors/BoundaryWalls"]
+position = Vector2(1920, 1080)
+collision_layer = 8
+script = ExtResource("12_fn7rg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Actors/BoundaryWalls/BottomStaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_uibwa")
+
+[node name="LeftStaticBody2D" type="StaticBody2D" parent="Stage/Actors/BoundaryWalls"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("12_fn7rg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Actors/BoundaryWalls/LeftStaticBody2D"]
+rotation = 1.57079
+shape = SubResource("WorldBoundaryShape2D_fn7rg")
+
+[node name="RightStaticBody2D" type="StaticBody2D" parent="Stage/Actors/BoundaryWalls"]
+position = Vector2(1920, 1080)
+rotation = -1.57079
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("12_fn7rg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Actors/BoundaryWalls/RightStaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_u7n2f")
+
 [node name="PlayerOld" type="Node2D" parent="Stage/Actors"]
 visible = false
 position = Vector2(-1166, 22)
@@ -1330,6 +1377,8 @@ update_scale = false
 
 [node name="TargetFollowPattern" type="Node2D" parent="Stage/TalonAttackPatterns"]
 script = ExtResource("61_otf24")
+blocking_actors = Array[int]([3])
+blocking_mask = 8
 
 [node name="TargetFollowPath2D" type="Path2D" parent="Stage/TalonAttackPatterns/TargetFollowPattern"]
 curve = SubResource("Curve2D_uibwa")
@@ -1341,6 +1390,23 @@ update_rotation = false
 update_scale = false
 
 [node name="PathUpdateCooldownTimer" type="Timer" parent="Stage/TalonAttackPatterns/TargetFollowPattern"]
+one_shot = true
+
+[node name="TargetFollowPattern2" type="Node2D" parent="Stage/TalonAttackPatterns"]
+script = ExtResource("61_otf24")
+blocking_actors = Array[int]([3])
+blocking_mask = 8
+
+[node name="TargetFollowPath2D" type="Path2D" parent="Stage/TalonAttackPatterns/TargetFollowPattern2"]
+curve = SubResource("Curve2D_uibwa")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Stage/TalonAttackPatterns/TargetFollowPattern2/TargetFollowPath2D"]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Stage/TalonAttackPatterns/TargetFollowPattern2/TargetFollowPath2D/PathFollow2D"]
+update_rotation = false
+update_scale = false
+
+[node name="PathUpdateCooldownTimer" type="Timer" parent="Stage/TalonAttackPatterns/TargetFollowPattern2"]
 wait_time = 3.0
 one_shot = true
 
@@ -1359,7 +1425,7 @@ offset_top = 27.0
 offset_right = 1889.0
 offset_bottom = 115.0
 theme_override_font_sizes/font_size = 64
-text = "FPS: 142.0"
+text = "FPS: 123.0"
 script = ExtResource("30_tj5ml")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("64_otf24")]
