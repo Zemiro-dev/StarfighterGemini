@@ -47,7 +47,7 @@ func set_is_available(new_value: bool):
 func fire(_transform: Transform2D) -> void:
 	global_transform = _transform
 	on()
-	velocity = Vector2.from_angle(rotation) * 3000.0
+	velocity = Vector2.from_angle(rotation) * stats.muzzle_speed
 	reset_physics_interpolation()
 
 
