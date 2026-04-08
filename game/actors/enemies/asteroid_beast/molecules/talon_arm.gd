@@ -4,7 +4,7 @@ extends Node2D
 @onready var pivot: Node2D = $Pivot
 
 @export var pivot_scale: Vector2 = Vector2.ONE : set = _set_pivot_scale
-@export var min_delta_to_turn := 2.0
+@export var min_delta_to_turn := 20.0
 
 
 func _ready() -> void:
