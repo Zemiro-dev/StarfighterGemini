@@ -5,19 +5,19 @@
 [ext_resource type="Script" uid="uid://bnsxf2wmnmjo5" path="res://actors/player/player_controller.gd" id="2_388e2"]
 [ext_resource type="Texture2D" uid="uid://16wlwkn7g2xc" path="res://actors/player/resources/player_gradient_high.tres" id="2_a744p"]
 [ext_resource type="Script" uid="uid://dqv8o16nxsy37" path="res://actors/player/player_move_machine.gd" id="2_k67x5"]
-[ext_resource type="PackedScene" uid="uid://wueoy70q46gt" path="res://actors/player/player_damaged_tween.tscn" id="2_rt46e"]
+[ext_resource type="PackedScene" uid="uid://wueoy70q46gt" path="res://actors/player/tweens/player_damaged_tween.tscn" id="2_rt46e"]
 [ext_resource type="Script" uid="uid://3lg6lbyu7lu8" path="res://actors/physics_body_move_resolver.gd" id="3_7aotg"]
 [ext_resource type="Script" uid="uid://dos03u2y4nj1m" path="res://actors/damage/damagable_stats.gd" id="3_12xki"]
 [ext_resource type="Texture2D" uid="uid://c7dvlc535fux2" path="res://actors/player/resources/player_gradient_low.tres" id="3_388e2"]
 [ext_resource type="Script" uid="uid://d17glutkysooc" path="res://actors/steering/steering.gd" id="3_lsln6"]
 [ext_resource type="Script" uid="uid://cgobkakxb2git" path="res://actors/steering/controller_steering.gd" id="4_hiosj"]
 [ext_resource type="Script" uid="uid://dno1a1koeexnq" path="res://actors/steering/steering_stats.gd" id="4_ssdk0"]
-[ext_resource type="PackedScene" uid="uid://c4dfwdemcmkp3" path="res://actors/player/player_cannon.tscn" id="8_rt46e"]
 [ext_resource type="Shader" uid="uid://dao7s8gyvjj7j" path="res://shaders/player_shader.gdshader" id="10_k67x5"]
+[ext_resource type="PackedScene" uid="uid://cvwxj30vxp8o5" path="res://actors/player/components/player_cannon_ring.tscn" id="11_qct7d"]
 [ext_resource type="PackedScene" uid="uid://db4rx2dk8oedg" path="res://actors/effects/ThrustEffectA.tscn" id="12_lj3dd"]
 [ext_resource type="Texture2D" uid="uid://cdp7stnuo4kpn" path="res://assets/player/player_body_a.png" id="12_ssdk0"]
 [ext_resource type="PackedScene" uid="uid://djju5jytlydf7" path="res://actors/effects/ThrustWaveA.tscn" id="12_yeioo"]
-[ext_resource type="PackedScene" uid="uid://45p6je56ck3j" path="res://actors/player/player_explosion_a.tscn" id="13_7aotg"]
+[ext_resource type="PackedScene" uid="uid://45p6je56ck3j" path="res://actors/player/effects/player_explosion_a.tscn" id="13_7aotg"]
 [ext_resource type="PackedScene" uid="uid://drd2i3vhhcu2l" path="res://actors/effects/ThrustEffectB.tscn" id="13_nsxbo"]
 [ext_resource type="AudioStream" uid="uid://dlpxa474i1ygj" path="res://assets/sounds/effects/thruster.wav" id="17_0wchr"]
 [ext_resource type="Script" uid="uid://dd3d2lwooly5b" path="res://actors/player/player_sounds_manager.gd" id="17_qrxv1"]
@@ -195,13 +195,6 @@ controller = NodePath("../../Controller")
 
 [node name="ShipPieces" type="Node2D" parent="."]
 
-[node name="TopCannon" parent="ShipPieces" instance=ExtResource("8_rt46e")]
-modulate = Color(1, 1, 1, 0.777)
-position = Vector2(-1, -63)
-
-[node name="BottomCannon" parent="ShipPieces" instance=ExtResource("8_rt46e")]
-position = Vector2(-1, 63)
-
 [node name="BodyPivot" type="Node2D" parent="ShipPieces"]
 
 [node name="DashWave" parent="ShipPieces/BodyPivot" instance=ExtResource("12_yeioo")]
@@ -223,6 +216,10 @@ texture = ExtResource("12_ssdk0")
 position = Vector2(-11, -6)
 rotation = 1.57079
 remote_path = NodePath("../../../CollisionShape2D")
+
+[node name="PlayerCannonRing" parent="ShipPieces" instance=ExtResource("11_qct7d")]
+radius = 105.0
+target_mask = 4
 
 [node name="PlayerExplosionA" parent="." instance=ExtResource("13_7aotg")]
 emitting = false

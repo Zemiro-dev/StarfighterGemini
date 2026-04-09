@@ -2,9 +2,10 @@ extends Sprite2D
 class_name PlayerCannon
 
 @export var cannon_stats: CannonStats = CannonStats.new()
-@export var controller: PlayerController
+@export var heading: Vector2
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var cannon_cooldown: CannonCooldown = $CannonCooldown
+
 
 
 func _ready() -> void:
@@ -12,7 +13,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	var target_direction = controller.get_target_direction().normalized()
+	var target_direction = heading
 	if !target_direction.is_zero_approx():
 		rotation = target_direction.angle()
 

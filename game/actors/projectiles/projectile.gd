@@ -5,7 +5,7 @@ class_name Projectile
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @export var is_available := true: set = set_is_available
 @export var stats: ProjectileStats
-@export var explosion_scene: PackedScene = preload("res://actors/player/player_explosion_b.tscn")
+@export var explosion_scene: PackedScene = preload("res://actors/player/effects/player_explosion_b.tscn")
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var explosion_audio_stream_player: ExtendedAudioStreamPlayer = $ExplosionAudioStreamPlayer
 

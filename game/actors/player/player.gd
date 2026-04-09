@@ -5,7 +5,7 @@ class_name Player
 @onready var physics_body_move_resolver: PhysicsBodyMoveResolver = $PhysicsBodyMoveResolver
 @onready var steering: Steering = $Steering
 @onready var move_machine: PlayerMoveMachine = $Machines/PlayerMoveMachine
-@onready var blast_pool: NodePool = NodePool.new()
+@onready var projectile_pool: NodePool = NodePool.new()
 @onready var damagable: Damagable = $Damagable
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -17,8 +17,9 @@ class_name Player
 @onready var low_thrust: GPUParticles2D = $ShipPieces/BodyPivot/LowThrust
 @onready var mid_thrust: GPUParticles2D = $ShipPieces/BodyPivot/MidThrust
 @onready var dash_wave: GPUParticles2D = $ShipPieces/BodyPivot/DashWave
+@onready var player_cannon_ring: PlayerCannonRing = $ShipPieces/PlayerCannonRing
 
-@export var blast_pack: PackedScene = preload("res://actors/projectiles/projectile_blue_blast.tscn")
+@export var armed_projectile_pack: PackedScene = preload("res://actors/projectiles/projectile_blue_blast.tscn")
 
 var actor_type := GameActor.ActorType.PLAYER
 
@@ -26,14 +27,13 @@ func _ready() -> void:
 	move_machine.actor = self
 	move_machine.on_state_change.connect(on_move_state_change)
 	damagable.on_death.connect(die)
-	$ShipPieces/TopCannon.controller = controller
-	$ShipPieces/BottomCannon.controller = controller
-	blast_pool.spawn_signal = GlobalSignals.request_projectile_spawn
-	blast_pool.fill(blast_pack, 20)
+	projectile_pool.spawn_signal = GlobalSignals.request_projectile_spawn
+	projectile_pool.fill(armed_projectile_pack, 30)
 	player_damaged_tween.node = self
 	remove_child(player_explosion)
 	GlobalSignals.world_ready.connect(func(): GlobalSignals.request_top_effect_spawn.emit(player_explosion))
 	physics_body_move_resolver.collided_with.connect(sounds_manager.handle_collision)
+	player_cannon_ring.add_cannons(3)
 
 
 func _physics_process(delta: float) -> void:
@@ -55,6 +55,9 @@ func _physics_process(delta: float) -> void:
 	if controller.get_goal().x < 0.0:
 		body_pivot.scale.x = -1.0
 		
+	var target_direction := controller.get_target_direction()
+	if !target_direction.is_zero_approx():
+		player_cannon_ring.goal_heading = target_direction.normalized()
 
 	if Input.is_action_pressed("fire"):
 		fire()
@@ -71,10 +74,7 @@ func on_move_state_change(prev:PlayerMoveMachine.State,  next: PlayerMoveMachine
 
 
 func fire() -> void:
-	var attacks := []
-	attacks.append($ShipPieces/TopCannon.fire(blast_pool))
-	attacks.append($ShipPieces/BottomCannon.fire(blast_pool))
-	if attacks.any(func(value): return value):
+	if player_cannon_ring.fire(projectile_pool):
 		sounds_manager.fire()
 
 

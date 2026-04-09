@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dshdwq66vc4pk"]
 
 [ext_resource type="Texture2D" uid="uid://smhcd74mx35b" path="res://assets/player/player_explosion_b.png" id="1_k27tj"]
-[ext_resource type="Material" uid="uid://cjtt7cdywcnod" path="res://actors/player/player_explosion_b.tres" id="2_k27tj"]
+[ext_resource type="Material" uid="uid://cjtt7cdywcnod" path="res://actors/player/effects/player_explosion_b.tres" id="2_k27tj"]
 
 [node name="PlayerExplosionB" type="GPUParticles2D"]
 emitting = false
