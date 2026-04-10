@@ -74,6 +74,7 @@ func on_move_state_change(prev:PlayerMoveMachine.State,  next: PlayerMoveMachine
 
 
 func fire() -> void:
+	if damagable.is_dead: return
 	if player_cannon_ring.fire(projectile_pool):
 		sounds_manager.fire()
 

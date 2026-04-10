@@ -41,12 +41,14 @@ func resolve_collisions(delta: float, velocity: Vector2, body: PhysicsBody2D) ->
 			### Damage and Additional Knockback 
 			match (collider_type):
 				GameActor.ActorType.ENEMY:
-					if !has_been_attacked and GameActor.check_and_attack(collider, body, collision.get_position()) >= 0:
-						if !recent_knockbacks.has(body):
-							next_velocity += next_velocity.normalized() * 2000.
-							recent_knockbacks.append(body)
-							if knockback_cooldown_remaining <= 0.0:
-								knockback_cooldown_remaining = knockback_cooldown_max
+					if (!has_been_attacked and 
+						!recent_knockbacks.has(body) and 
+						GameActor.check_and_attack(collider, body, collision.get_position()) >= 0
+					):
+						next_velocity += next_velocity.normalized() * 2000.
+						recent_knockbacks.append(body)
+						if knockback_cooldown_remaining <= 0.0:
+							knockback_cooldown_remaining = knockback_cooldown_max
 						has_been_attacked = true
 		else:
 			break;

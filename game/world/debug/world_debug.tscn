@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=3 uid="uid://da4ta4o721exf"]
+[gd_scene load_steps=125 format=3 uid="uid://da4ta4o721exf"]
 
 [ext_resource type="Script" uid="uid://dj8f28g3mmv8i" path="res://world/debug/world_debug.gd" id="1_0cob0"]
 [ext_resource type="Texture2D" uid="uid://bbq0js4b3j7xu" path="res://assets/shapes/circle_blue_2tone_large.png" id="1_44sa8"]
@@ -64,7 +64,9 @@
 [ext_resource type="Script" uid="uid://wmxvmbd14f70" path="res://actors/enemies/asteroid_beast/talon_attack_patterns.gd" id="60_7to6k"]
 [ext_resource type="PackedScene" uid="uid://3p08pqbj3jx1" path="res://actors/player/player.tscn" id="61_7to6k"]
 [ext_resource type="Script" uid="uid://10aualxooos3" path="res://actors/enemies/asteroid_beast/target_follow_pattern.gd" id="61_otf24"]
+[ext_resource type="Script" uid="uid://brgybbfp6081y" path="res://actors/enemies/asteroid_beast/tremble_pattern.gd" id="63_fn7rg"]
 [ext_resource type="PackedScene" uid="uid://db3jamtupa1pe" path="res://world/world_environment_default.tscn" id="64_otf24"]
+[ext_resource type="Script" uid="uid://chr361g5brh60" path="res://actors/enemies/asteroid_beast/spin_pattern.gd" id="64_u7n2f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3mc18"]
 shader = ExtResource("7_an6al")
@@ -1328,7 +1330,8 @@ rotation = -3.14159
 position = Vector2(840.999, 383.002)
 
 [node name="TalonArm1" parent="Stage/Actors/AsteroidBeast" instance=ExtResource("54_h8r0t")]
-position = Vector2(-960, -540)
+position = Vector2(-69, -33)
+scale = Vector2(-1, 1)
 
 [node name="PlayerMain" parent="Stage/Actors" instance=ExtResource("61_7to6k")]
 position = Vector2(130, 964)
@@ -1371,7 +1374,6 @@ rotation = 0.400083
 progress = 1802.33
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Stage/TalonAttackPatterns/ChargePath2D/ChargePathFollow2D"]
-remote_path = NodePath("../../../../Actors/AsteroidBeast/TalonArm0")
 update_rotation = false
 update_scale = false
 
@@ -1409,6 +1411,19 @@ update_scale = false
 [node name="PathUpdateCooldownTimer" type="Timer" parent="Stage/TalonAttackPatterns/TargetFollowPattern2"]
 wait_time = 3.0
 one_shot = true
+
+[node name="TrembleAndSpin" type="Node2D" parent="Stage/TalonAttackPatterns"]
+
+[node name="TremblePattern" type="Node2D" parent="Stage/TalonAttackPatterns/TrembleAndSpin"]
+script = ExtResource("63_fn7rg")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Stage/TalonAttackPatterns/TrembleAndSpin/TremblePattern"]
+update_rotation = false
+update_scale = false
+
+[node name="SpinPattern" type="Node2D" parent="Stage/TalonAttackPatterns/TrembleAndSpin" node_paths=PackedStringArray("toy")]
+script = ExtResource("64_u7n2f")
+toy = NodePath("../../../Actors/AsteroidBeast/TalonArm1")
 
 [node name="UI" type="Node2D" parent="."]
 

@@ -5,6 +5,7 @@ extends Node2D
 
 @export var pivot_scale: Vector2 = Vector2.ONE : set = _set_pivot_scale
 @export var min_delta_to_turn := 20.0
+@export var can_turn := true : set = _set_can_turn
 
 
 func _ready() -> void:
@@ -12,14 +13,21 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	var position_delta = global_position - last_turn_position;
-	var heading = sign(position_delta)
-	if !is_zero_approx(heading.x) and abs(position_delta.x) >= min_delta_to_turn:
-		pivot_scale.x = heading.x
-		last_turn_position = global_position
+	if can_turn:
+		var position_delta = global_position - last_turn_position;
+		var heading = sign(position_delta)
+		if !is_zero_approx(heading.x) and abs(position_delta.x) >= min_delta_to_turn:
+			pivot_scale.x = heading.x
+			last_turn_position = global_position
 
 
 func  _set_pivot_scale(new_scale: Vector2):
 	pivot_scale = new_scale
 	if (pivot):
 		pivot.scale = pivot_scale
+
+
+func _set_can_turn(new_value: bool):
+	if !can_turn and new_value:
+		last_turn_position = global_position
+	can_turn = new_value

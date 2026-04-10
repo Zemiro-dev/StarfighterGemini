@@ -76,5 +76,5 @@ func _offset_from_boundaries(end: Vector2) -> Vector2:
 
 func _set_follower(new_follower: Node2D):
 	follower = new_follower
-	remote_transform_2d.remote_path = follower.get_path()
+	remote_transform_2d.remote_path = follower.get_path() if follower else ''
 	path_update_cooldown_timer.stop()
