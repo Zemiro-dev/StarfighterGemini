@@ -17,17 +17,17 @@ func _ready() -> void:
 			attack_particles = attack_particles_instance
 	
 
-func attack(target: Object, position: Vector2) -> int:
+func attack(target: Object, _position: Vector2) -> int:
 	if attack_particles:
 		if !attack_particles.is_inside_tree():
 			GlobalSignals.request_top_effect_spawn.emit(attack_particles)
-		attack_particles.global_position = position
+		attack_particles.global_position = _position
 		attack_particles.reset_physics_interpolation()
 		attack_particles.emitting = true
 	return GameActor.attack(target, 1)
 
 
-func die(actor: Node2D) -> void:
+func die(_actor: Node2D) -> void:
 	disable_collisions()
 
 

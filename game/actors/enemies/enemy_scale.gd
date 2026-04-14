@@ -31,7 +31,7 @@ func _ready() -> void:
 		GlobalSignals.world_ready.connect(func(): GlobalSignals.request_top_effect_spawn.emit(enemy_explosion))
 
 
-func die(actor: Node2D) -> void:
+func die(_actor: Node2D) -> void:
 	disable_collisions()
 	if animation_player.is_playing():
 		animation_player.stop()

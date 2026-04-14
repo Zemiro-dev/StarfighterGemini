@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 
 @onready var last_turn_position := global_position
@@ -12,7 +13,7 @@ func _ready() -> void:
 	_set_pivot_scale(pivot_scale)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if can_turn:
 		var position_delta = global_position - last_turn_position;
 		var heading = sign(position_delta)

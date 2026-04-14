@@ -1327,10 +1327,11 @@ position = Vector2(-58, -114)
 rotation = -3.14159
 
 [node name="TalonArm0" parent="Stage/Actors/AsteroidBeast" instance=ExtResource("54_h8r0t")]
-position = Vector2(840.999, 383.002)
+position = Vector2(-764, -190)
 
 [node name="TalonArm1" parent="Stage/Actors/AsteroidBeast" instance=ExtResource("54_h8r0t")]
 position = Vector2(-69, -33)
+rotation = -374.402
 scale = Vector2(-1, 1)
 
 [node name="PlayerMain" parent="Stage/Actors" instance=ExtResource("61_7to6k")]
@@ -1366,14 +1367,15 @@ player = NodePath("../Actors/PlayerMain")
 talons = [NodePath("../Actors/AsteroidBeast/TalonArm0"), NodePath("../Actors/AsteroidBeast/TalonArm1")]
 
 [node name="ChargePath2D" type="Path2D" parent="Stage/TalonAttackPatterns"]
+position = Vector2(55, 129)
 curve = SubResource("Curve2D_otf24")
 
 [node name="ChargePathFollow2D" type="PathFollow2D" parent="Stage/TalonAttackPatterns/ChargePath2D"]
-position = Vector2(1801, 923.002)
+position = Vector2(141, 221)
 rotation = 0.400083
-progress = 1802.33
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Stage/TalonAttackPatterns/ChargePath2D/ChargePathFollow2D"]
+remote_path = NodePath("../../../../Actors/AsteroidBeast/TalonArm0")
 update_rotation = false
 update_scale = false
 
@@ -1440,7 +1442,7 @@ offset_top = 27.0
 offset_right = 1889.0
 offset_bottom = 115.0
 theme_override_font_sizes/font_size = 64
-text = "FPS: 144.0"
+text = "FPS: 145.0"
 script = ExtResource("30_tj5ml")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("64_otf24")]

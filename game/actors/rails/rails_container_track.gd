@@ -1,0 +1,2 @@
+extends RailsTransformTrack
+class_name RailsContainerTrack

@@ -1,0 +1,38 @@
+extends Node
+class_name RailsTrack
+
+## Called when an individual track is finished
+signal track_finished()
+## Called when the track is no longer running
+signal finished()
+
+
+@export var is_one_shot := true
+var _node: Node2D
+
+
+func _ready() -> void:
+	track_finished.connect(_handle_track_finished)
+
+
+func _handle_track_finished() -> void:
+	if !is_one_shot:
+		start(_node)
+	else:
+		finished.emit()
+
+
+func start(node: Node2D) -> void:
+	_node = node
+
+
+func stop() -> void:
+	reset()
+
+func reset() -> void:
+	_node = null
+	
+
+
+func is_running() -> bool:
+	return false

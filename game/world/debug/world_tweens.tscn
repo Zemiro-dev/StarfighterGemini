@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://r4wsemvjtf2l"]
+
+[ext_resource type="Script" uid="uid://svlrmxegsnfy" path="res://world/debug/world_tweens.gd" id="1_k1xel"]
+[ext_resource type="Texture2D" uid="uid://d2meohaxtyk34" path="res://assets/player/player_explosion_a.png" id="2_7m2wq"]
+[ext_resource type="PackedScene" uid="uid://b58dppq2aevhp" path="res://actors/enemies/asteroid_beast/molecules/talon_arm.tscn" id="3_xwxn1"]
+[ext_resource type="Script" uid="uid://eooi8778c330" path="res://actors/rails/container_tracks/rails_sequence_track.gd" id="9_yfsm5"]
+[ext_resource type="Script" uid="uid://dked212ulfymv" path="res://actors/rails/rails_conductor.gd" id="11_yfsm5"]
+[ext_resource type="Script" uid="uid://dm4cht245wcyu" path="res://actors/rails/transform_tracks/rails_track_move.gd" id="12_evfw6"]
+[ext_resource type="Script" uid="uid://bfy07sbg7p0yw" path="res://actors/rails/transform_tracks/rails_track_spin.gd" id="13_pdc6l"]
+[ext_resource type="Script" uid="uid://rtiq0ip8htiu" path="res://actors/rails/transform_tracks/rails_track_tremble.gd" id="14_1favx"]
+
+[node name="WorldTweens" type="Node2D"]
+script = ExtResource("1_k1xel")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(937, 665)
+texture = ExtResource("2_7m2wq")
+
+[node name="TalonArm" parent="Sprite2D" instance=ExtResource("3_xwxn1")]
+show_behind_parent = true
+pivot_scale = Vector2(-1, 1)
+can_turn = false
+
+[node name="RailsConductor" type="Node" parent="."]
+script = ExtResource("11_yfsm5")
+metadata/_custom_type_script = "uid://dked212ulfymv"
+
+[node name="RailsSequenceTrack" type="Node" parent="RailsConductor"]
+script = ExtResource("9_yfsm5")
+is_one_shot = false
+metadata/_custom_type_script = "uid://eooi8778c330"
+
+[node name="RailsTrackMove" type="Node" parent="RailsConductor/RailsSequenceTrack"]
+script = ExtResource("12_evfw6")
+movement = Vector2(500, 0)
+reverse_on_track_finished = true
+duration = 0.5
+metadata/_custom_type_script = "uid://dm4cht245wcyu"
+
+[node name="RailsTrackTremble" type="Node" parent="RailsConductor/RailsSequenceTrack"]
+script = ExtResource("14_1favx")
+strength = Vector2(200, 200)
+duration = 0.5
+metadata/_custom_type_script = "uid://rtiq0ip8htiu"
+
+[node name="RailsTrackSpin" type="Node" parent="RailsConductor/RailsSequenceTrack"]
+script = ExtResource("13_pdc6l")
+spin_radians = 0.262
+duration = 1.0
+metadata/_custom_type_script = "uid://bfy07sbg7p0yw"
+
+[node name="RailsTrackSpin2" type="Node" parent="RailsConductor/RailsSequenceTrack"]
+script = ExtResource("13_pdc6l")
+spin_radians = -6.545
+duration = 1.0
+metadata/_custom_type_script = "uid://bfy07sbg7p0yw"
+
+[node name="RailsSequenceTrack" type="Node" parent="RailsConductor/RailsSequenceTrack"]
+script = ExtResource("9_yfsm5")
+metadata/_custom_type_script = "uid://eooi8778c330"
+
+[node name="RailsTrackMove" type="Node" parent="RailsConductor/RailsSequenceTrack/RailsSequenceTrack"]
+script = ExtResource("12_evfw6")
+movement = Vector2(0, -500)
+reverse_on_track_finished = true
+duration = 0.5
+metadata/_custom_type_script = "uid://dm4cht245wcyu"
+
+[node name="RailsTrackTremble" type="Node" parent="RailsConductor/RailsSequenceTrack/RailsSequenceTrack"]
+script = ExtResource("14_1favx")
+strength = Vector2(200, 200)
+duration = 0.5
+metadata/_custom_type_script = "uid://rtiq0ip8htiu"
+
+[node name="RailsTrackSpin" type="Node" parent="RailsConductor/RailsSequenceTrack/RailsSequenceTrack"]
+script = ExtResource("13_pdc6l")
+spin_radians = 0.262
+duration = 1.0
+metadata/_custom_type_script = "uid://bfy07sbg7p0yw"
+
+[node name="RailsTrackSpin2" type="Node" parent="RailsConductor/RailsSequenceTrack/RailsSequenceTrack"]
+script = ExtResource("13_pdc6l")
+spin_radians = -6.545
+duration = 1.0
+metadata/_custom_type_script = "uid://bfy07sbg7p0yw"

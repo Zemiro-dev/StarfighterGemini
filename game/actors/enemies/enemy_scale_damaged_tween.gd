@@ -37,14 +37,14 @@ func get_material():
 	return node.material
 
 
-func tween(node: EnemyScale, duration: float):
+func tween(_node: EnemyScale, duration: float):
 	if _tween != null:
 		_tween.kill()
 	
 	var material: Material = get_material()
 	if !material: return
 	
-	_tween = node.create_tween()
+	_tween = _node.create_tween()
 	var current_progress = material.get_shader_parameter('progress')
 	_tween.tween_method(
 		func(value): material.set_shader_parameter('progress', value),

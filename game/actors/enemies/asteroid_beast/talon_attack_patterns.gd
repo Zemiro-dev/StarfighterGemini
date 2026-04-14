@@ -22,11 +22,11 @@ func _ready() -> void:
 	#target_follow_pattern_2.target = player
 	#target_follow_pattern_2.follower = talons[0]
 	
-	#patrol_path(charge_path_follow_2d, 10.)
+	patrol_path(charge_path_follow_2d, 10.)
 	
-	talons[0].can_turn = false
-	tremble_pattern.trembler = talons[0]
-	tremble_pattern.tremble(1000., 200.)
+	#talons[0].can_turn = false
+	#tremble_pattern.trembler = talons[0]
+	#tremble_pattern.tremble(1000., 200.)
 	
 	talons[1].can_turn = false
 	spin_pattern.toy = talons[1]

@@ -8,7 +8,7 @@ func _ready() -> void:
 	damagable.on_death.connect(die)
 
 
-func die(actor: Node2D) -> void:
+func die(_actor: Node2D) -> void:
 	disable_collisions()
 
 
