@@ -18,8 +18,8 @@ func is_running() -> bool:
 	return _tween.is_running() if _tween else false
 
 
-func start(node: Node2D) -> void:
-	super(node)
+func start(node: Node2D, base_transform: Transform2D = Transform2D.IDENTITY) -> void:
+	super(node, base_transform)
 	if _tween:
 		_tween.kill()
 	_tween = create_tween()

@@ -69,8 +69,10 @@ func on_move_state_change(prev:PlayerMoveMachine.State,  next: PlayerMoveMachine
 	if next == PlayerMoveMachine.State.DASH:
 		controller.is_goal_locked = true
 		dash_wave.emitting = true
+		disable_collisions()
 	else:
 		controller.is_goal_locked = false
+		enable_collisions()
 
 
 func fire() -> void:
@@ -91,11 +93,13 @@ func set_is_explosion_emitting(value: bool) -> void:
 
 
 func disable_collisions() -> void:
-	collision_shape_2d.set_deferred("disabled", true)
+	if !collision_shape_2d.disabled:
+		collision_shape_2d.set_deferred("disabled", true)
 
 
 func enable_collisions() -> void:
-	collision_shape_2d.set_deferred("disabled", false)
+	if collision_shape_2d.disabled:
+		collision_shape_2d.set_deferred("disabled", false)
 
 
 func _notification(what):

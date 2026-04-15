@@ -21,7 +21,8 @@ func _set_state(new_state: State) -> void:
 ## Exit State Handlers
 	match (state):
 		State.DASH:
-			actor.steering.power_multiplier = 1.0
+			actor.steering.acceleration_multiplier = 1.0
+			actor.steering.speed_multiplier = 1.0
 		
 	match(new_state):
 		State.DASH, State.STANDARD:
@@ -29,7 +30,8 @@ func _set_state(new_state: State) -> void:
 
 	match(new_state):
 		State.DASH:
-			actor.steering.power_multiplier = actor.steering.steering_stats.dash_multiplier
+			actor.steering.acceleration_multiplier = actor.steering.steering_stats.dash_acceleration_multiplier
+			actor.steering.speed_multiplier = actor.steering.steering_stats.dash_speed_multiplier
 			remaining_dash_cooldown = actor.steering.steering_stats.dash_cooldown
 			remaining_dash_time = actor.steering.steering_stats.dash_duration
 		State.IDLE:

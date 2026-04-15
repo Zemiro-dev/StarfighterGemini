@@ -3,7 +3,8 @@ class_name Steering
 
 
 @export var steering_stats: SteeringStats
-@export var power_multiplier: float = 1.0
+@export var acceleration_multiplier: float = 1.0
+@export var speed_multiplier: float = 1.0
 var strategies: Array[SteeringStrategy]
 
 
@@ -54,11 +55,11 @@ func get_strategies() -> Array[SteeringStrategy]:
 
 
 func get_max_speed() -> float:
-	return steering_stats.base_max_speed * power_multiplier
+	return steering_stats.base_max_speed * speed_multiplier
 
 
 func get_max_acceleration() -> float:
-	return steering_stats.base_max_acceleration * power_multiplier
+	return steering_stats.base_max_acceleration * acceleration_multiplier
 
 
 func get_turn_around_multiplier() -> float:

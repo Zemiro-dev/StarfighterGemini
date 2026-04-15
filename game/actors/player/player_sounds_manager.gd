@@ -48,6 +48,8 @@ func handle_collision(collider: Object, strength: float) -> void:
 	match(actor_material):
 		GameActor.ActorMaterial.UNKNOWN, GameActor.ActorMaterial.METAL:
 			_handle_metal_collision(strength)
+		GameActor.ActorMaterial.ENERGY:
+			_handle_metal_collision(collision_volumn_curve.max_domain / 2.)
 
 
 func _handle_metal_collision(strength: float) -> void:

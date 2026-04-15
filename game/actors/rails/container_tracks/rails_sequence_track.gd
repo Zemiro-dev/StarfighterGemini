@@ -15,13 +15,12 @@ func _ready() -> void:
 func sample() -> Transform2D:
 	var xform = Transform2D()
 	for track in tracks:
-		if track is RailsTransformTrack:
-			xform *= track.sample()
+		xform = Rails.next_transform_from_track(track, xform)
 	return _xform * xform
 
 
-func start(node: Node2D) -> void:
-	super(node)
+func start(node: Node2D, base_transform: Transform2D = Transform2D.IDENTITY) -> void:
+	super(node, base_transform)
 	_is_running = true
 	if tracks.is_empty():
 		for child in get_children():
@@ -51,7 +50,7 @@ func is_running() -> bool:
 func _start_current_track() -> void:
 	current_track_index = ((current_track_index % tracks.size()) + tracks.size()) % tracks.size()
 	var track := tracks[current_track_index]
-	track.start(_node)
+	track.start(_node, _base_transform)
 	track.finished.connect(_handle_current_track_finished)
 
 

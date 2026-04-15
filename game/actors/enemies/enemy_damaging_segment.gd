@@ -7,6 +7,7 @@ var attack_particles_scene: PackedScene = preload("res://actors/effects/energy_e
 
 var actor_type := GameActor.ActorType.ENEMY
 var attack_particles: GPUParticles2D
+var actor_material := GameActor.ActorMaterial.ENERGY
 
 
 func _ready() -> void:

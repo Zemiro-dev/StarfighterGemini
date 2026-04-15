@@ -28,9 +28,9 @@ func _physics_process(delta: float) -> void:
 		)
 
 
-func start(node: Node2D) -> void:
+func start(node: Node2D, base_transform: Transform2D = Transform2D.IDENTITY) -> void:
 	remaining_duration = duration
-	super(node)
+	super(node, base_transform)
 
 
 func is_running() -> bool:

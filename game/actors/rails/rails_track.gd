@@ -9,6 +9,7 @@ signal finished()
 
 @export var is_one_shot := true
 var _node: Node2D
+var _base_transform: Transform2D
 
 
 func _ready() -> void:
@@ -22,8 +23,9 @@ func _handle_track_finished() -> void:
 		finished.emit()
 
 
-func start(node: Node2D) -> void:
+func start(node: Node2D, base_transform: Transform2D = Transform2D.IDENTITY) -> void:
 	_node = node
+	_base_transform = base_transform
 
 
 func stop() -> void:
@@ -31,6 +33,7 @@ func stop() -> void:
 
 func reset() -> void:
 	_node = null
+	_base_transform = Transform2D.IDENTITY
 	
 
 

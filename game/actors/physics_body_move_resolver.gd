@@ -7,6 +7,7 @@ const MAX_COLLISIONS = 5
 var recent_knockbacks: Array[PhysicsBody2D] = []
 var knockback_cooldown_max := 0.1
 var knockback_cooldown_remaining := 0.0
+var collision_force := 2000.0
 
 class MoveRequest extends Resource:
 	var body: PhysicsBody2D
@@ -45,7 +46,10 @@ func resolve_collisions(delta: float, velocity: Vector2, body: PhysicsBody2D) ->
 						!recent_knockbacks.has(body) and 
 						GameActor.check_and_attack(collider, body, collision.get_position()) >= 0
 					):
-						next_velocity += next_velocity.normalized() * 2000.
+						if next_velocity.is_zero_approx():
+							next_velocity += normal * collision_force
+						else:
+							next_velocity += next_velocity.normalized() * collision_force
 						recent_knockbacks.append(body)
 						if knockback_cooldown_remaining <= 0.0:
 							knockback_cooldown_remaining = knockback_cooldown_max
