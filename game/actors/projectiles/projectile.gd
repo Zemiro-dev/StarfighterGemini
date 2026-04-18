@@ -26,7 +26,7 @@ func _ready() -> void:
 
 func on_body_entered(body: Node2D) -> void:
 	if live:
-		var damage_dealt = GameActor.attack(body, stats.damage)
+		GameActor.attack(body, stats.damage)
 		if explosion:
 			explosion.global_transform = global_transform
 			explosion.reset_physics_interpolation()

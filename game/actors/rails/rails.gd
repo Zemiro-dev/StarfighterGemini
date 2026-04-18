@@ -6,5 +6,10 @@ static func next_transform_from_track(
 	prevTransform: Transform2D = Transform2D.IDENTITY
 ) -> Transform2D:
 	if track is RailsTransformTrack:
-		return prevTransform * track.sample()
+		match(track.combination_style):
+			RailsTrack.TransformCombinationStyle.DEFAULT:
+				return prevTransform * track.sample()
+			RailsTrack.TransformCombinationStyle.TRANSLATE_ONLY:
+				var t = track.sample()
+				return prevTransform.translated(t.origin)
 	return prevTransform

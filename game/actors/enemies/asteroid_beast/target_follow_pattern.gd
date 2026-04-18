@@ -64,6 +64,7 @@ func _offset_from_boundaries(end: Vector2) -> Vector2:
 		return Vector2.ZERO
 		
 	var offset := Vector2.ZERO
+	@warning_ignore("integer_division")
 	for i in range(results.size() / 2):
 		var a = results[i * 2]
 		var b = results[i * 2 + 1]
@@ -76,5 +77,5 @@ func _offset_from_boundaries(end: Vector2) -> Vector2:
 
 func _set_follower(new_follower: Node2D):
 	follower = new_follower
-	remote_transform_2d.remote_path = follower.get_path() if follower else ''
+	remote_transform_2d.remote_path = follower.get_path() if follower else NodePath('')
 	path_update_cooldown_timer.stop()

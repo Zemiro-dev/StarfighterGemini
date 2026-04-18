@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://b58dppq2aevhp"]
+[gd_scene load_steps=28 format=3 uid="uid://b58dppq2aevhp"]
 
 [ext_resource type="PackedScene" uid="uid://f0vi5s2bc4yb" path="res://actors/enemies/asteroid_beast/atoms/tendon_a.tscn" id="1_82crf"]
 [ext_resource type="Script" uid="uid://cc3qdvymp2w1e" path="res://actors/enemies/asteroid_beast/molecules/talon_arm.gd" id="1_gjlef"]
+[ext_resource type="Texture2D" uid="uid://cx0o2upxnvybs" path="res://assets/effects/pink_thrust_triangle.png" id="2_q6tsi"]
 [ext_resource type="PackedScene" uid="uid://ci82tyyg7bcoe" path="res://actors/enemies/asteroid_beast/atoms/tendon_b.tscn" id="3_a4v3c"]
 [ext_resource type="PackedScene" uid="uid://dwi4nhuwlt8wa" path="res://actors/enemies/asteroid_beast/atoms/fin_a.tscn" id="4_2ev52"]
 [ext_resource type="Shader" uid="uid://cs0xfte7rnnx8" path="res://shaders/gradient_swap_prog.gdshader" id="7_u538y"]
@@ -153,6 +154,9 @@ scale = Vector2(1.21696, 1.21696)
 
 [node name="EnergyTalonA" parent="Pivot" instance=ExtResource("9_a4v3c")]
 position = Vector2(67, -64)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_q6tsi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 callback_mode_process = 0

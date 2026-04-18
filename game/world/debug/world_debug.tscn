@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3 uid="uid://da4ta4o721exf"]
+[gd_scene load_steps=131 format=3 uid="uid://da4ta4o721exf"]
 
 [ext_resource type="Script" uid="uid://dj8f28g3mmv8i" path="res://world/debug/world_debug.gd" id="1_0cob0"]
 [ext_resource type="Texture2D" uid="uid://bbq0js4b3j7xu" path="res://assets/shapes/circle_blue_2tone_large.png" id="1_44sa8"]
@@ -71,6 +71,8 @@
 [ext_resource type="Script" uid="uid://dm4cht245wcyu" path="res://actors/rails/transform_tracks/rails_track_move.gd" id="64_rllla"]
 [ext_resource type="Script" uid="uid://rtiq0ip8htiu" path="res://actors/rails/transform_tracks/rails_track_tremble.gd" id="65_ovu4y"]
 [ext_resource type="Script" uid="uid://bfy07sbg7p0yw" path="res://actors/rails/transform_tracks/rails_track_spin.gd" id="66_p3a01"]
+[ext_resource type="Script" uid="uid://cd7wwbko8rpse" path="res://actors/rails/transform_tracks/rails_track_move_node.gd" id="68_5ixon"]
+[ext_resource type="Script" uid="uid://d1a2m3cfwp5u1" path="res://actors/rails/container_tracks/rails_parallel_track.gd" id="69_5ec0n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3mc18"]
 shader = ExtResource("7_an6al")
@@ -1372,6 +1374,183 @@ script = ExtResource("60_7to6k")
 player = NodePath("../Actors/PlayerMain")
 talons = [NodePath("../Actors/AsteroidBeast/TalonArm0"), NodePath("../Actors/AsteroidBeast/TalonArm1")]
 
+[node name="TalonBConductor" type="Node" parent="Stage/TalonAttackPatterns"]
+script = ExtResource("62_5ixon")
+metadata/_custom_type_script = "uid://dked212ulfymv"
+
+[node name="PTest" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor"]
+script = ExtResource("69_5ec0n")
+
+[node name="RailsSequenceTrack" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/PTest"]
+script = ExtResource("63_5ec0n")
+metadata/_custom_type_script = "uid://eooi8778c330"
+
+[node name="RailsTrackSpin" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/PTest/RailsSequenceTrack"]
+script = ExtResource("66_p3a01")
+spin_radians = 6.283
+transition_type = 0
+duration = 1.0
+metadata/_custom_type_script = "uid://bfy07sbg7p0yw"
+
+[node name="RailsTrackSpin2" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/PTest/RailsSequenceTrack"]
+script = ExtResource("66_p3a01")
+spin_radians = 6.283
+transition_type = 0
+duration = 1.0
+metadata/_custom_type_script = "uid://bfy07sbg7p0yw"
+
+[node name="RailsTrackSpin3" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/PTest/RailsSequenceTrack"]
+script = ExtResource("66_p3a01")
+spin_radians = 6.283
+transition_type = 0
+duration = 1.0
+metadata/_custom_type_script = "uid://bfy07sbg7p0yw"
+
+[node name="RailsTrackSpin4" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/PTest/RailsSequenceTrack"]
+script = ExtResource("66_p3a01")
+spin_radians = 6.283
+transition_type = 0
+duration = 1.0
+metadata/_custom_type_script = "uid://bfy07sbg7p0yw"
+
+[node name="RailsTrackSpin5" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/PTest/RailsSequenceTrack"]
+script = ExtResource("66_p3a01")
+spin_radians = 6.283
+transition_type = 0
+duration = 1.0
+metadata/_custom_type_script = "uid://bfy07sbg7p0yw"
+
+[node name="RailsMoveNodeTrack" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/PTest"]
+script = ExtResource("68_5ixon")
+speed = 200.0
+target_global_position = Vector2(1216, 796)
+
+[node name="TalonBCycle" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor"]
+script = ExtResource("63_5ec0n")
+is_one_shot = false
+metadata/_custom_type_script = "uid://eooi8778c330"
+
+[node name="WalkLeftFar" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle"]
+script = ExtResource("63_5ec0n")
+metadata/_custom_type_script = "uid://eooi8778c330"
+
+[node name="RailsTrackMoveLeft" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/WalkLeftFar"]
+script = ExtResource("64_rllla")
+movement = Vector2(-1000, 0)
+duration = 2.0
+metadata/_custom_type_script = "uid://dm4cht245wcyu"
+
+[node name="CWSpinAttack" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle"]
+script = ExtResource("63_5ec0n")
+metadata/_custom_type_script = "uid://eooi8778c330"
+
+[node name="RailsTrackDelay" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/CWSpinAttack"]
+script = ExtResource("64_55kvu")
+delay = 0.5
+metadata/_custom_type_script = "uid://dygyssigmr5tg"
+
+[node name="RailsTrackTremble" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/CWSpinAttack"]
+script = ExtResource("65_ovu4y")
+strength = Vector2(200, 200)
+duration = 0.5
+speed = 3.0
+metadata/_custom_type_script = "uid://rtiq0ip8htiu"
+
+[node name="SpinCW" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/CWSpinAttack"]
+script = ExtResource("63_5ec0n")
+metadata/_custom_type_script = "uid://eooi8778c330"
+
+[node name="CCWPrepSpin" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/CWSpinAttack/SpinCW"]
+script = ExtResource("66_p3a01")
+spin_radians = -0.262
+duration = 0.5
+metadata/_custom_type_script = "uid://bfy07sbg7p0yw"
+
+[node name="CWSpin" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/CWSpinAttack/SpinCW"]
+script = ExtResource("66_p3a01")
+spin_radians = 6.545
+duration = 0.5
+metadata/_custom_type_script = "uid://bfy07sbg7p0yw"
+
+[node name="RailsTrackDelay" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle"]
+script = ExtResource("64_55kvu")
+delay = 0.6
+metadata/_custom_type_script = "uid://dygyssigmr5tg"
+
+[node name="WalkRightFar" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle"]
+script = ExtResource("63_5ec0n")
+metadata/_custom_type_script = "uid://eooi8778c330"
+
+[node name="RailsTrackMoveRight" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/WalkRightFar"]
+script = ExtResource("64_rllla")
+movement = Vector2(1000, 0)
+duration = 1.0
+metadata/_custom_type_script = "uid://dm4cht245wcyu"
+
+[node name="CWSpinAttack2" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle"]
+script = ExtResource("63_5ec0n")
+metadata/_custom_type_script = "uid://eooi8778c330"
+
+[node name="RailsTrackDelay" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/CWSpinAttack2"]
+script = ExtResource("64_55kvu")
+delay = 0.5
+metadata/_custom_type_script = "uid://dygyssigmr5tg"
+
+[node name="RailsTrackTremble" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/CWSpinAttack2"]
+script = ExtResource("65_ovu4y")
+strength = Vector2(200, 200)
+duration = 0.5
+speed = 3.0
+metadata/_custom_type_script = "uid://rtiq0ip8htiu"
+
+[node name="SpinCW" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/CWSpinAttack2"]
+script = ExtResource("63_5ec0n")
+metadata/_custom_type_script = "uid://eooi8778c330"
+
+[node name="CCWPrepSpin" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/CWSpinAttack2/SpinCW"]
+script = ExtResource("66_p3a01")
+spin_radians = -0.262
+duration = 0.5
+metadata/_custom_type_script = "uid://bfy07sbg7p0yw"
+
+[node name="CWSpin" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/CWSpinAttack2/SpinCW"]
+script = ExtResource("66_p3a01")
+spin_radians = 6.545
+duration = 0.5
+metadata/_custom_type_script = "uid://bfy07sbg7p0yw"
+
+[node name="MoveTest" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor"]
+script = ExtResource("63_5ec0n")
+metadata/_custom_type_script = "uid://eooi8778c330"
+
+[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/MoveTest"]
+script = ExtResource("64_rllla")
+movement = Vector2(-400, 0)
+duration = 0.5
+metadata/_custom_type_script = "uid://dm4cht245wcyu"
+
+[node name="RailsMoveNodeTrack" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/MoveTest"]
+script = ExtResource("68_5ixon")
+speed = 300.0
+target_global_position = Vector2(1216, 796)
+
+[node name="RailsTrackMove2" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/MoveTest"]
+script = ExtResource("64_rllla")
+movement = Vector2(100, 0)
+duration = 0.5
+metadata/_custom_type_script = "uid://dm4cht245wcyu"
+
+[node name="RailsTrackSpin" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/MoveTest"]
+script = ExtResource("66_p3a01")
+spin_radians = 3.142
+duration = 0.1
+metadata/_custom_type_script = "uid://bfy07sbg7p0yw"
+
+[node name="RailsMoveNodeTrack2" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/MoveTest"]
+script = ExtResource("68_5ixon")
+speed = 300.0
+target_global_position = Vector2(1216, 796)
+
 [node name="TalonAConductor" type="Node" parent="Stage/TalonAttackPatterns"]
 script = ExtResource("62_5ixon")
 metadata/_custom_type_script = "uid://dked212ulfymv"
@@ -1481,104 +1660,6 @@ spin_radians = -6.545
 duration = 0.5
 metadata/_custom_type_script = "uid://bfy07sbg7p0yw"
 
-[node name="TalonBConductor" type="Node" parent="Stage/TalonAttackPatterns"]
-script = ExtResource("62_5ixon")
-metadata/_custom_type_script = "uid://dked212ulfymv"
-
-[node name="TalonBCycle" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor"]
-script = ExtResource("63_5ec0n")
-is_one_shot = false
-metadata/_custom_type_script = "uid://eooi8778c330"
-
-[node name="WalkLeftFar" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle"]
-script = ExtResource("63_5ec0n")
-metadata/_custom_type_script = "uid://eooi8778c330"
-
-[node name="RailsTrackMoveLeft" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/WalkLeftFar"]
-script = ExtResource("64_rllla")
-movement = Vector2(-1000, 0)
-duration = 2.0
-metadata/_custom_type_script = "uid://dm4cht245wcyu"
-
-[node name="CWSpinAttack" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle"]
-script = ExtResource("63_5ec0n")
-metadata/_custom_type_script = "uid://eooi8778c330"
-
-[node name="RailsTrackDelay" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/CWSpinAttack"]
-script = ExtResource("64_55kvu")
-delay = 0.5
-metadata/_custom_type_script = "uid://dygyssigmr5tg"
-
-[node name="RailsTrackTremble" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/CWSpinAttack"]
-script = ExtResource("65_ovu4y")
-strength = Vector2(200, 200)
-duration = 0.5
-speed = 3.0
-metadata/_custom_type_script = "uid://rtiq0ip8htiu"
-
-[node name="SpinCW" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/CWSpinAttack"]
-script = ExtResource("63_5ec0n")
-metadata/_custom_type_script = "uid://eooi8778c330"
-
-[node name="CCWPrepSpin" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/CWSpinAttack/SpinCW"]
-script = ExtResource("66_p3a01")
-spin_radians = -0.262
-duration = 0.5
-metadata/_custom_type_script = "uid://bfy07sbg7p0yw"
-
-[node name="CWSpin" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/CWSpinAttack/SpinCW"]
-script = ExtResource("66_p3a01")
-spin_radians = 6.545
-duration = 0.5
-metadata/_custom_type_script = "uid://bfy07sbg7p0yw"
-
-[node name="RailsTrackDelay" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle"]
-script = ExtResource("64_55kvu")
-delay = 0.6
-metadata/_custom_type_script = "uid://dygyssigmr5tg"
-
-[node name="WalkRightFar" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle"]
-script = ExtResource("63_5ec0n")
-metadata/_custom_type_script = "uid://eooi8778c330"
-
-[node name="RailsTrackMoveRight" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/WalkRightFar"]
-script = ExtResource("64_rllla")
-movement = Vector2(1000, 0)
-duration = 1.0
-metadata/_custom_type_script = "uid://dm4cht245wcyu"
-
-[node name="CWSpinAttack2" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle"]
-script = ExtResource("63_5ec0n")
-metadata/_custom_type_script = "uid://eooi8778c330"
-
-[node name="RailsTrackDelay" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/CWSpinAttack2"]
-script = ExtResource("64_55kvu")
-delay = 0.5
-metadata/_custom_type_script = "uid://dygyssigmr5tg"
-
-[node name="RailsTrackTremble" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/CWSpinAttack2"]
-script = ExtResource("65_ovu4y")
-strength = Vector2(200, 200)
-duration = 0.5
-speed = 3.0
-metadata/_custom_type_script = "uid://rtiq0ip8htiu"
-
-[node name="SpinCW" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/CWSpinAttack2"]
-script = ExtResource("63_5ec0n")
-metadata/_custom_type_script = "uid://eooi8778c330"
-
-[node name="CCWPrepSpin" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/CWSpinAttack2/SpinCW"]
-script = ExtResource("66_p3a01")
-spin_radians = -0.262
-duration = 0.5
-metadata/_custom_type_script = "uid://bfy07sbg7p0yw"
-
-[node name="CWSpin" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/TalonBCycle/CWSpinAttack2/SpinCW"]
-script = ExtResource("66_p3a01")
-spin_radians = 6.545
-duration = 0.5
-metadata/_custom_type_script = "uid://bfy07sbg7p0yw"
-
 [node name="ChargePath2D" type="Path2D" parent="Stage/TalonAttackPatterns"]
 visible = false
 position = Vector2(55, 129)
@@ -1644,10 +1725,11 @@ offset_top = 27.0
 offset_right = 1889.0
 offset_bottom = 115.0
 theme_override_font_sizes/font_size = 64
-text = "FPS: 125.0"
+text = "FPS: 127.0"
 script = ExtResource("30_tj5ml")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("64_otf24")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 2
 position = Vector2(960, 540)

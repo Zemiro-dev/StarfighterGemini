@@ -3,11 +3,11 @@ class_name WorldViewportContainer
 
 @onready var world_viewport: SubViewport = $WorldViewport
 
-@export var world_changer_path := "res://world/debug/world_changer.tscn"
+@export var start_up_path := "res://world/debug/world_changer.tscn"
 
 func _ready() -> void:
 	GlobalSignals.request_main_scene_change.connect(_handle_scene_change)
-	GlobalSignals.request_main_scene_change.emit(world_changer_path)
+	GlobalSignals.request_main_scene_change.emit(start_up_path)
 
 
 func _handle_scene_change(scene_path: String):

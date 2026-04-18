@@ -65,7 +65,7 @@ func _physics_process(delta: float) -> void:
 		controller.is_goal_locked = !controller.is_goal_locked
 
 
-func on_move_state_change(prev:PlayerMoveMachine.State,  next: PlayerMoveMachine.State): 
+func on_move_state_change(_prev:PlayerMoveMachine.State,  next: PlayerMoveMachine.State): 
 	if next == PlayerMoveMachine.State.DASH:
 		controller.is_goal_locked = true
 		dash_wave.emitting = true
@@ -81,7 +81,7 @@ func fire() -> void:
 		sounds_manager.fire()
 
 
-func die(actor: Node2D) -> void:
+func die(_actor: Node2D) -> void:
 	controller.controllable = false
 	if animation_player.is_playing():
 		animation_player.stop()

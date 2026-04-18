@@ -7,7 +7,7 @@ var current_timer: SceneTreeTimer
 
 func start(node: Node2D, base_transform: Transform2D = Transform2D.IDENTITY) -> void:
 	super(node, base_transform)
-	var current_timer := get_tree().create_timer(delay)
+	current_timer = get_tree().create_timer(delay)
 	await current_timer.timeout
 	## Makes sure we weren't stopped first
 	if current_timer:

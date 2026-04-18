@@ -14,10 +14,10 @@ class_name TalonAttackPatterns
 
 
 func _ready() -> void:
-	talon_a_conductor.drive(talons[0])
-	talon_a_conductor.start("TalonACycle")
+	#talon_a_conductor.drive(talons[0])
+	#talon_a_conductor.start("TalonACycle")
 	talon_b_conductor.drive(talons[1])
-	talon_b_conductor.start("TalonBCycle")
+	talon_b_conductor.start("PTest")
 	#target_follow_pattern.target_offset = Vector2.ZERO
 	#target_follow_pattern.target = player
 	#target_follow_pattern.follower = talons[1]
@@ -37,7 +37,7 @@ func _ready() -> void:
 	
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	pass
 
 

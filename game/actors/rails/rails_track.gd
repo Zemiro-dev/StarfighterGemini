@@ -6,13 +6,17 @@ signal track_finished()
 ## Called when the track is no longer running
 signal finished()
 
+enum TransformCombinationStyle { DEFAULT, TRANSLATE_ONLY}
+
 
 @export var is_one_shot := true
 var _node: Node2D
 var _base_transform: Transform2D
+var combination_style: TransformCombinationStyle = TransformCombinationStyle.DEFAULT
 
 
 func _ready() -> void:
+	stop()
 	track_finished.connect(_handle_track_finished)
 
 
@@ -30,6 +34,7 @@ func start(node: Node2D, base_transform: Transform2D = Transform2D.IDENTITY) -> 
 
 func stop() -> void:
 	reset()
+
 
 func reset() -> void:
 	_node = null

@@ -31,44 +31,44 @@ func _handle_damage(_dmg: int):
 	tween(node, .1)
 
 
-func tween(node: Player, duration: float):
+func tween(_node: Player, duration: float):
 	if _tween != null:
 		_tween.kill()
 	
-	_tween = node.create_tween()
-	var current_progress = node.body_sprite.material.get_shader_parameter('progress')
+	_tween = _node.create_tween()
+	var current_progress = _node.body_sprite.material.get_shader_parameter('progress')
 	_tween.tween_method(
-		func(value): node.body_sprite.material.set_shader_parameter('progress', value),
+		func(value): _node.body_sprite.material.set_shader_parameter('progress', value),
 		current_progress,
 		damage_progress,
 		duration / 4.
 	)
 	_tween.tween_method(
-		func(value): node.body_sprite.material.set_shader_parameter('progress', value),
+		func(value): _node.body_sprite.material.set_shader_parameter('progress', value),
 		damage_progress,
 		_inital_progress,
 		duration / 4.
 	)
 	_tween.tween_method(
-		func(value): node.body_sprite.material.set_shader_parameter('progress', value),
+		func(value): _node.body_sprite.material.set_shader_parameter('progress', value),
 		current_progress,
 		damage_progress,
 		duration / 4.
 	)
 	_tween.tween_method(
-		func(value): node.body_sprite.material.set_shader_parameter('progress', value),
+		func(value): _node.body_sprite.material.set_shader_parameter('progress', value),
 		damage_progress,
 		_inital_progress,
 		duration / 4.
 	)
 	_tween.tween_method(
-		func(value): node.body_sprite.material.set_shader_parameter('progress', value),
+		func(value): _node.body_sprite.material.set_shader_parameter('progress', value),
 		current_progress,
 		damage_progress,
 		duration / 4.
 	)
 	_tween.tween_method(
-		func(value): node.body_sprite.material.set_shader_parameter('progress', value),
+		func(value): _node.body_sprite.material.set_shader_parameter('progress', value),
 		damage_progress,
 		_inital_progress,
 		duration / 4.

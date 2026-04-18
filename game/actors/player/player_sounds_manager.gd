@@ -43,7 +43,7 @@ func fire() -> void:
 
 
 func handle_collision(collider: Object, strength: float) -> void:
-	var actor_type = GameActor.get_actor_type(collider)
+	#var actor_type = GameActor.get_actor_type(collider)
 	var actor_material = GameActor.get_actor_material(collider)
 	match(actor_material):
 		GameActor.ActorMaterial.UNKNOWN, GameActor.ActorMaterial.METAL:

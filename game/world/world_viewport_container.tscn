@@ -9,6 +9,7 @@ offset_right = 2176.0
 offset_bottom = 1336.0
 stretch = true
 script = ExtResource("1_06d7j")
+start_up_path = "res://world/debug/world_debug.tscn"
 
 [node name="WorldViewport" type="SubViewport" parent="."]
 own_world_3d = true
