@@ -1,6 +1,8 @@
+@tool
 extends RailsTransformTrack
 class_name RailsTrackRotateNode
 
+## Adding a marker 2d to this node will cause it to chase that position
 
 @export var rads_per_second: float = TAU
 @export var max_duration: float = 0.0

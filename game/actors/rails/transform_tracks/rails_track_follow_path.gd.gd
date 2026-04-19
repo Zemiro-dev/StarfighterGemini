@@ -1,0 +1,3 @@
+@tool
+extends RailsTransformTrack
+class_name RailsTrackFollowPath

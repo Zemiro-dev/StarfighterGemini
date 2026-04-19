@@ -1,3 +1,4 @@
+@tool
 extends Node
 class_name RailsTrack
 
@@ -10,7 +11,7 @@ enum TransformCombinationStyle { DEFAULT, MULT, TRANSLATE_ONLY, ROTATE_ONLY}
 
 
 @export var is_one_shot := true
-var _node: Node2D
+@export var _node: Node2D
 var _base_transform: Transform2D
 @export var combination_style: TransformCombinationStyle = TransformCombinationStyle.DEFAULT
 

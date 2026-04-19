@@ -1,3 +1,4 @@
+@tool
 extends RailsContainerTrack
 class_name RailsSequenceTrack
 
@@ -20,7 +21,8 @@ func _start_current_track() -> void:
 	current_track_index = ((current_track_index % tracks.size()) + tracks.size()) % tracks.size()
 	var track := tracks[current_track_index]
 	track.start(_node, _base_transform)
-	track.finished.connect(_handle_current_track_finished)
+	if !track.finished.is_connected(_handle_current_track_finished):
+		track.finished.connect(_handle_current_track_finished)
 
 
 func _handle_current_track_finished() -> void:

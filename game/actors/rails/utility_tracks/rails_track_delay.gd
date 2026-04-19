@@ -1,3 +1,4 @@
+@tool
 extends RailsTrack
 class_name RailsTrackDelay
 

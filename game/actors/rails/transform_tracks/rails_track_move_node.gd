@@ -1,3 +1,4 @@
+@tool
 extends RailsTransformTrack
 class_name RailsTrackMoveNode
 
@@ -63,6 +64,7 @@ func start(node: Node2D, base_transform: Transform2D = Transform2D.IDENTITY) -> 
 
 func reset() -> void:
 	super()
+	_check_marker()
 	remaining_duration = 0.0
 	_is_running = false
 	movement_transform = Transform2D.IDENTITY
@@ -70,3 +72,8 @@ func reset() -> void:
 
 func is_running() -> bool:
 	return _is_running
+
+
+func _check_marker() -> void:
+	if has_node('Marker2D'):
+		target_global_position = get_node('Marker2D').global_position

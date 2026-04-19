@@ -1,3 +1,4 @@
+@tool
 extends Node
 class_name RailsConductor
 
@@ -25,6 +26,15 @@ func start(track_name: String) -> RailsTrack:
 			child.start(node, base_transform)
 			return child
 	return null
+
+
+func stop() -> void:
+	for child in get_children():
+		if child is RailsTrack:
+			child.stop()
+	if node:
+		node.transform = base_transform
+	node = null
 
 
 func drive(node_to_drive: Node2D) -> void:

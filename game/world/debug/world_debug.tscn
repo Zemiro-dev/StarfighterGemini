@@ -1,4 +1,4 @@
-[gd_scene load_steps=132 format=3 uid="uid://da4ta4o721exf"]
+[gd_scene load_steps=134 format=3 uid="uid://da4ta4o721exf"]
 
 [ext_resource type="Script" uid="uid://dj8f28g3mmv8i" path="res://world/debug/world_debug.gd" id="1_0cob0"]
 [ext_resource type="Texture2D" uid="uid://bbq0js4b3j7xu" path="res://assets/shapes/circle_blue_2tone_large.png" id="1_44sa8"]
@@ -66,6 +66,7 @@
 [ext_resource type="Script" uid="uid://10aualxooos3" path="res://actors/enemies/asteroid_beast/target_follow_pattern.gd" id="61_otf24"]
 [ext_resource type="Script" uid="uid://dked212ulfymv" path="res://actors/rails/rails_conductor.gd" id="62_5ixon"]
 [ext_resource type="Script" uid="uid://eooi8778c330" path="res://actors/rails/container_tracks/rails_sequence_track.gd" id="63_5ec0n"]
+[ext_resource type="Script" uid="uid://e7tf53t8wesf" path="res://actors/rails/transform_tracks/rails_track_follow_path.gd.gd" id="63_ovu4y"]
 [ext_resource type="Script" uid="uid://dygyssigmr5tg" path="res://actors/rails/utility_tracks/rails_track_delay.gd" id="64_55kvu"]
 [ext_resource type="PackedScene" uid="uid://db3jamtupa1pe" path="res://world/world_environment_default.tscn" id="64_otf24"]
 [ext_resource type="Script" uid="uid://diytg8kv66j2a" path="res://actors/rails/transform_tracks/rails_track_rotate_node.gd" id="64_ovu4y"]
@@ -669,6 +670,8 @@ shader_parameter/use_distortion = false
 shader_parameter/strength = 0.0
 shader_parameter/fps = 0.0
 shader_parameter/frames = 256
+
+[sub_resource type="Curve2D" id="Curve2D_ovu4y"]
 
 [sub_resource type="Curve2D" id="Curve2D_otf24"]
 _data = {
@@ -1339,7 +1342,8 @@ pivot_scale = Vector2(-1, 1)
 can_turn = false
 
 [node name="TalonArm1" parent="Stage/Actors/AsteroidBeast" instance=ExtResource("54_h8r0t")]
-position = Vector2(575, -452)
+position = Vector2(581, -456)
+rotation = -0.000926574
 pivot_scale = Vector2(-1, -1)
 can_turn = false
 
@@ -1374,10 +1378,17 @@ script = ExtResource("9_otf24")
 script = ExtResource("60_7to6k")
 player = NodePath("../Actors/PlayerMain")
 talons = [NodePath("../Actors/AsteroidBeast/TalonArm0"), NodePath("../Actors/AsteroidBeast/TalonArm1")]
+moves = Array[String](["TalonACycle", "PTest2"])
 
 [node name="TalonBConductor" type="Node" parent="Stage/TalonAttackPatterns"]
 script = ExtResource("62_5ixon")
 metadata/_custom_type_script = "uid://dked212ulfymv"
+
+[node name="RailsTrackFollowPath" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor"]
+script = ExtResource("63_ovu4y")
+
+[node name="Path2D" type="Path2D" parent="Stage/TalonAttackPatterns/TalonBConductor/RailsTrackFollowPath"]
+curve = SubResource("Curve2D_ovu4y")
 
 [node name="PTest2" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor"]
 script = ExtResource("69_5ec0n")
@@ -1387,6 +1398,7 @@ metadata/_custom_type_script = "uid://d1a2m3cfwp5u1"
 script = ExtResource("64_ovu4y")
 rads_per_second = 0.049
 target_global_rotation = 3.142
+combination_style = 3
 metadata/_custom_type_script = "uid://diytg8kv66j2a"
 
 [node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/PTest2"]
@@ -1440,7 +1452,11 @@ metadata/_custom_type_script = "uid://bfy07sbg7p0yw"
 [node name="RailsMoveNodeTrack" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/PTest"]
 script = ExtResource("68_5ixon")
 speed = 200.0
-target_global_position = Vector2(1216, 796)
+target_global_position = Vector2(960, 540)
+combination_style = 2
+
+[node name="Marker2D" type="Marker2D" parent="Stage/TalonAttackPatterns/TalonBConductor/PTest/RailsMoveNodeTrack"]
+position = Vector2(960, 540)
 
 [node name="TalonBCycle" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor"]
 script = ExtResource("63_5ec0n")
@@ -1550,6 +1566,7 @@ metadata/_custom_type_script = "uid://dm4cht245wcyu"
 script = ExtResource("68_5ixon")
 speed = 300.0
 target_global_position = Vector2(1216, 796)
+combination_style = 2
 
 [node name="RailsTrackMove2" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/MoveTest"]
 script = ExtResource("64_rllla")
@@ -1567,6 +1584,7 @@ metadata/_custom_type_script = "uid://bfy07sbg7p0yw"
 script = ExtResource("68_5ixon")
 speed = 300.0
 target_global_position = Vector2(1216, 796)
+combination_style = 2
 
 [node name="TalonAConductor" type="Node" parent="Stage/TalonAttackPatterns"]
 script = ExtResource("62_5ixon")
@@ -1742,7 +1760,7 @@ offset_top = 27.0
 offset_right = 1889.0
 offset_bottom = 115.0
 theme_override_font_sizes/font_size = 64
-text = "FPS: 126.0"
+text = "FPS: 145.0"
 script = ExtResource("30_tj5ml")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("64_otf24")]
