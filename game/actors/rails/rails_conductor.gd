@@ -3,16 +3,13 @@ extends Node
 class_name RailsConductor
 
 @export var node: Node2D
-var base_transform: Transform2D
-
-
-func _ready() -> void:
-	if node:
-		reset()
+@export var base_transform: Transform2D = Transform2D.IDENTITY
+@export var update_base: bool = false: set = _set_update_base
+@export var is_running: bool = false
 
 
 func _physics_process(_delta: float) -> void:
-	if node:
+	if node and is_running:
 		var frame_transform = Transform2D(base_transform)
 		for child in get_children():
 			frame_transform = Rails.next_transform_from_track(child, frame_transform)
@@ -21,6 +18,7 @@ func _physics_process(_delta: float) -> void:
 
 func start(track_name: String) -> RailsTrack:
 	if has_node(track_name):
+		is_running = true
 		var child := get_node(track_name)
 		if child is RailsTrack:
 			child.start(node, base_transform)
@@ -29,28 +27,20 @@ func start(track_name: String) -> RailsTrack:
 
 
 func stop() -> void:
+	is_running = false
 	for child in get_children():
 		if child is RailsTrack:
 			child.stop()
 	if node:
 		node.transform = base_transform
-	node = null
-
-
-func drive(node_to_drive: Node2D) -> void:
-	node = node_to_drive
-	reset()
-
-
-func reset() -> void:
-	if !node: return
-	_reset_base_trasform()
-	for child in get_children():
-		if child is RailsTrack:
-			child.stop()
-			#child.start(node, base_transform)
 
 
 func _reset_base_trasform() -> void:
 	if node:
 		base_transform = node.transform
+	else:
+		base_transform = Transform2D.IDENTITY
+
+
+func _set_update_base(v: bool):
+	_reset_base_trasform()

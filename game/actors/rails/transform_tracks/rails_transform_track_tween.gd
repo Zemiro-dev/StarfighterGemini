@@ -4,7 +4,7 @@ class_name RailsTransformTrackTween
 
 
 @export var reverse_on_track_finished: bool = false
-@export var duration: float = 5.0
+@export var duration: float = 1.0
 var direction: int = 1
 
 var _tween: Tween

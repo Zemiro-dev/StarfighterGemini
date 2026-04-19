@@ -7,6 +7,7 @@ class_name RailsTrackMoveNode
 @export var max_duration: float = 0.0
 @export var target_global_position: Vector2 = Vector2.ZERO
 @export var target_radius: float = 1.0
+@export var marker: Marker2D
 var movement_transform := Transform2D()
 var remaining_duration := 0.0
 var _is_running := false
@@ -75,5 +76,5 @@ func is_running() -> bool:
 
 
 func _check_marker() -> void:
-	if has_node('Marker2D'):
-		target_global_position = get_node('Marker2D').global_position
+	if marker:
+		target_global_position = marker.global_position

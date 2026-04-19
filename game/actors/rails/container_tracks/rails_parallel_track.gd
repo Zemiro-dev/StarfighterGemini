@@ -27,7 +27,6 @@ func _start_all_tracks():
 	for i in range(tracks.size()):
 		var track := tracks[i]
 		track.start(_node, _base_transform)
-		print(subtrack_lambdas[i] == null)
 		if i >= subtrack_lambdas.size() or subtrack_lambdas[i].is_null() or !track.finished.is_connected(subtrack_lambdas[i]):
 			var handle_finished: Callable = func(): _handle_subtrack_finished(i)
 			track.finished.connect(handle_finished)

@@ -7,7 +7,7 @@ signal track_finished()
 ## Called when the track is no longer running
 signal finished()
 
-enum TransformCombinationStyle { DEFAULT, MULT, TRANSLATE_ONLY, ROTATE_ONLY}
+enum TransformCombinationStyle { DEFAULT, MULT, TRANSLATE_ONLY, ROTATE_ONLY }
 
 
 @export var is_one_shot := true

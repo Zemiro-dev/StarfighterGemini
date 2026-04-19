@@ -10,7 +10,6 @@ var conductors: Array[RailsConductor]
 
 
 @export var player: Player
-@export var talons: Array[Node2D] = []
 @export var moves: Array[String] = []
 
 @export var is_playing: bool = false : set = _set_is_playing
@@ -31,8 +30,6 @@ func _set_is_playing(v: bool):
 	for conductor in conductors:
 		conductor.stop()
 	if is_playing:
-		for i in range(conductors.size()):
-			conductors[i].drive(talons[i])
 		for i in range(moves.size()):
 			if !moves[i].is_empty():
 				if i < conductors.size():
