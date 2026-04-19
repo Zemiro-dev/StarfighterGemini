@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=3 uid="uid://da4ta4o721exf"]
+[gd_scene load_steps=132 format=3 uid="uid://da4ta4o721exf"]
 
 [ext_resource type="Script" uid="uid://dj8f28g3mmv8i" path="res://world/debug/world_debug.gd" id="1_0cob0"]
 [ext_resource type="Texture2D" uid="uid://bbq0js4b3j7xu" path="res://assets/shapes/circle_blue_2tone_large.png" id="1_44sa8"]
@@ -68,6 +68,7 @@
 [ext_resource type="Script" uid="uid://eooi8778c330" path="res://actors/rails/container_tracks/rails_sequence_track.gd" id="63_5ec0n"]
 [ext_resource type="Script" uid="uid://dygyssigmr5tg" path="res://actors/rails/utility_tracks/rails_track_delay.gd" id="64_55kvu"]
 [ext_resource type="PackedScene" uid="uid://db3jamtupa1pe" path="res://world/world_environment_default.tscn" id="64_otf24"]
+[ext_resource type="Script" uid="uid://diytg8kv66j2a" path="res://actors/rails/transform_tracks/rails_track_rotate_node.gd" id="64_ovu4y"]
 [ext_resource type="Script" uid="uid://dm4cht245wcyu" path="res://actors/rails/transform_tracks/rails_track_move.gd" id="64_rllla"]
 [ext_resource type="Script" uid="uid://rtiq0ip8htiu" path="res://actors/rails/transform_tracks/rails_track_tremble.gd" id="65_ovu4y"]
 [ext_resource type="Script" uid="uid://bfy07sbg7p0yw" path="res://actors/rails/transform_tracks/rails_track_spin.gd" id="66_p3a01"]
@@ -1378,6 +1379,22 @@ talons = [NodePath("../Actors/AsteroidBeast/TalonArm0"), NodePath("../Actors/Ast
 script = ExtResource("62_5ixon")
 metadata/_custom_type_script = "uid://dked212ulfymv"
 
+[node name="PTest2" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor"]
+script = ExtResource("69_5ec0n")
+metadata/_custom_type_script = "uid://d1a2m3cfwp5u1"
+
+[node name="RailsTrackRotateNode" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/PTest2"]
+script = ExtResource("64_ovu4y")
+rads_per_second = 0.049
+target_global_rotation = 3.142
+metadata/_custom_type_script = "uid://diytg8kv66j2a"
+
+[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/PTest2"]
+script = ExtResource("64_rllla")
+movement = Vector2(-1000, 0)
+combination_style = 2
+metadata/_custom_type_script = "uid://dm4cht245wcyu"
+
 [node name="PTest" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor"]
 script = ExtResource("69_5ec0n")
 
@@ -1725,7 +1742,7 @@ offset_top = 27.0
 offset_right = 1889.0
 offset_bottom = 115.0
 theme_override_font_sizes/font_size = 64
-text = "FPS: 127.0"
+text = "FPS: 126.0"
 script = ExtResource("30_tj5ml")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("64_otf24")]

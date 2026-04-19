@@ -1,11 +1,11 @@
 extends RailsTransformTrack
-class_name RailsTrackMoveNode
+class_name RailsTrackRotateNode
 
 
-@export var speed: float = 100.0
+@export var rads_per_second: float = TAU
 @export var max_duration: float = 0.0
-@export var target_global_position: Vector2 = Vector2.ZERO
-@export var target_radius: float = 1.0
+@export var target_global_rotation: float = 0.0
+@export var tolerance: float = TAU/2024
 var movement_transform := Transform2D()
 var remaining_duration := 0.0
 var _is_running := false
@@ -15,7 +15,7 @@ func _ready() -> void:
 	super()
 	finished.connect(func(): _is_running = false)
 	if combination_style == RailsTrack.TransformCombinationStyle.DEFAULT:
-		combination_style = RailsTrack.TransformCombinationStyle.TRANSLATE_ONLY
+		combination_style = RailsTrack.TransformCombinationStyle.ROTATE_ONLY
 
 
 func sample() -> Transform2D:
@@ -23,18 +23,18 @@ func sample() -> Transform2D:
 
 
 func _physics_process(delta: float) -> void:
-	if is_running() and _check_position():
-		var target_local_position := target_vector()
-		var gmotion := target_local_position.normalized() * speed * delta
-		if gmotion.length() > target_local_position.length():
-			gmotion = target_local_position
-		movement_transform = movement_transform.translated(gmotion)
+	if is_running() and _check_rotation():
+		var max_rotation = remaining_rotation()
+		var frame_rotation = sign(max_rotation) * rads_per_second * delta
+		if abs(frame_rotation) > abs(max_rotation):
+			frame_rotation = max_rotation
+		movement_transform = movement_transform.rotated(frame_rotation)
 		_update_timers(delta)
 		_check_timers(delta)
 
 
-func _check_position() -> bool:
-	if target_vector().length() <= target_radius:
+func _check_rotation() -> bool:
+	if abs(remaining_rotation()) <= tolerance:
 		track_finished.emit()
 		return false
 	return true
@@ -50,9 +50,12 @@ func _check_timers(_delta: float) -> void:
 		track_finished.emit()
 
 
-func target_vector() -> Vector2:
-	if !is_running() or !_node: return Vector2.ZERO
-	return target_global_position - _node.global_position
+func remaining_rotation() -> float:
+	return (
+		Vector2.from_angle(_node.global_rotation)
+		.angle_to(Vector2.from_angle(target_global_rotation))
+	)
+	
 
 
 func start(node: Node2D, base_transform: Transform2D = Transform2D.IDENTITY) -> void:

@@ -5,8 +5,8 @@ class_name TalonAttackPatterns
 @onready var charge_path_follow_2d: PathFollow2D = $ChargePath2D/ChargePathFollow2D
 @onready var target_follow_pattern: TargetFollowPattern = $TargetFollowPattern
 @onready var target_follow_pattern_2: TargetFollowPattern = $TargetFollowPattern2
-@onready var talon_a_conductor: RailsConductor = $TalonAConductor
-@onready var talon_b_conductor: RailsConductor = $TalonBConductor
+@onready var talon_0_conductor: RailsConductor = $TalonAConductor
+@onready var talon_1_conductor: RailsConductor = $TalonBConductor
 
 
 @export var player: Player
@@ -14,10 +14,10 @@ class_name TalonAttackPatterns
 
 
 func _ready() -> void:
-	#talon_a_conductor.drive(talons[0])
-	#talon_a_conductor.start("TalonACycle")
-	talon_b_conductor.drive(talons[1])
-	talon_b_conductor.start("PTest")
+	#talon_0_conductor.drive(talons[0])
+	#talon_0_conductor.start("TalonACycle")
+	talon_1_conductor.drive(talons[1])
+	talon_1_conductor.start("PTest2")
 	#target_follow_pattern.target_offset = Vector2.ZERO
 	#target_follow_pattern.target = player
 	#target_follow_pattern.follower = talons[1]
