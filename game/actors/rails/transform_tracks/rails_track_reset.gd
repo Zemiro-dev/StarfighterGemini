@@ -41,6 +41,7 @@ func reset() -> void:
 	super()
 	movement_transform = Transform2D.IDENTITY
 	progress = 0.0
+	_is_running = false
 
 
 func is_running() -> bool:

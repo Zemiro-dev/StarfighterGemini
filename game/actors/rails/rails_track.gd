@@ -12,8 +12,9 @@ enum TransformCombinationStyle { DEFAULT, MULT, TRANSLATE_ONLY, ROTATE_ONLY }
 
 @export var is_one_shot := true
 @export var _node: Node2D
-var _base_transform: Transform2D
+@export var should_container_skip := false
 @export var combination_style: TransformCombinationStyle = TransformCombinationStyle.DEFAULT
+@onready var _base_transform: Transform2D = Transform2D.IDENTITY
 
 
 func _ready() -> void:

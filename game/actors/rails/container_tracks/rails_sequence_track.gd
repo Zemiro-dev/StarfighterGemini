@@ -18,6 +18,7 @@ func reset() -> void:
 
 
 func _start_current_track() -> void:
+	if tracks.size() <= 0: return
 	current_track_index = ((current_track_index % tracks.size()) + tracks.size()) % tracks.size()
 	var track := tracks[current_track_index]
 	track.start(_node, _base_transform)
@@ -26,11 +27,12 @@ func _start_current_track() -> void:
 
 
 func _handle_current_track_finished() -> void:
-	var track := tracks[current_track_index]
-	if track.finished.is_connected(_handle_current_track_finished):
-		track.finished.disconnect(_handle_current_track_finished)
+	if tracks.size() > current_track_index:
+		var track := tracks[current_track_index]
+		if track.finished.is_connected(_handle_current_track_finished):
+			track.finished.disconnect(_handle_current_track_finished)
 	current_track_index += 1
-	if current_track_index == tracks.size():
+	if current_track_index >= tracks.size():
 		track_finished.emit()
 	else:
 		_start_current_track()

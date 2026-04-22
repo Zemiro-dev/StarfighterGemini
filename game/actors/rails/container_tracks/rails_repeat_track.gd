@@ -34,7 +34,8 @@ func _play_subtrack() -> void:
 		current_play_count += 1
 		var track = tracks[0]
 		track.start(_node, _base_transform)
-		track.finished.connect(_handle_subtrack_finished)
+		if !track.finished.is_connected(_handle_subtrack_finished):
+			track.finished.connect(_handle_subtrack_finished)
 	else:
 		finished.emit()
 

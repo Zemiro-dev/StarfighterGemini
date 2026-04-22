@@ -44,7 +44,8 @@ func _default_initialize_tracks() -> void:
 	if tracks.is_empty():
 		for child in get_children():
 			if child is RailsTrack:
-				tracks.append(child)
+				if !child.should_container_skip:
+					tracks.append(child)
 
 
 func is_running() -> bool:
