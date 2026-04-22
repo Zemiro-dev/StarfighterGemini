@@ -15,4 +15,6 @@ static func next_transform_from_track(
 				return prevTransform.translated(sample.origin)
 			RailsTrack.TransformCombinationStyle.ROTATE_ONLY:
 				return prevTransform.rotated(sample.get_rotation())
+			RailsTrack.TransformCombinationStyle.FLIP:
+				return prevTransform * sample
 	return prevTransform

@@ -11,7 +11,8 @@ func start(node: Node2D, base_transform: Transform2D = Transform2D.IDENTITY) -> 
 	super(node, base_transform)
 	_default_initialize_tracks()
 	_start_all_tracks()
-	
+
+
 func stop() -> void:
 	for i in range(tracks.size()):
 		var track := tracks[i]
