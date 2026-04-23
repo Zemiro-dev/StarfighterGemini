@@ -15,6 +15,14 @@ enum TransformCombinationStyle { DEFAULT, MULT, TRANSLATE_ONLY, ROTATE_ONLY, FLI
 @export var should_container_skip := false
 @export var combination_style: TransformCombinationStyle = TransformCombinationStyle.DEFAULT
 @onready var _base_transform: Transform2D = Transform2D.IDENTITY
+@export_tool_button("Rerun", "Reload") var rerun_action := _handle_rerun
+
+func _handle_rerun():
+	var node = _node
+	var base_transform = _base_transform
+	stop()
+	start(node, base_transform)
+
 
 
 func _ready() -> void:

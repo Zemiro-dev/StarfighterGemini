@@ -4,8 +4,9 @@ class_name RailsConductor
 
 @export var node: Node2D
 @export var base_transform: Transform2D = Transform2D.IDENTITY
-@export var update_base: bool = false: set = _set_update_base
 @export var is_running: bool = false
+
+@export_tool_button("Reset Base Transform", "Reload") var reset_action := _reset_base_trasform
 
 
 func _physics_process(_delta: float) -> void:
@@ -40,7 +41,3 @@ func _reset_base_trasform() -> void:
 		base_transform = node.transform
 	else:
 		base_transform = Transform2D.IDENTITY
-
-
-func _set_update_base(v: bool):
-	_reset_base_trasform()

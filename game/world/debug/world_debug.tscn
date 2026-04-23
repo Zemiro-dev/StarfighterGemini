@@ -1340,12 +1340,14 @@ position = Vector2(-58, -114)
 rotation = -3.14159
 
 [node name="TalonArmA" parent="Stage/Actors/AsteroidBeast" instance=ExtResource("54_h8r0t")]
-position = Vector2(581, -456)
+position = Vector2(-649, -456)
+rotation = 3.14159
+scale = Vector2(1, -1)
 pivot_scale = Vector2(-1, -1)
 can_turn = false
 
 [node name="TalonArmB" parent="Stage/Actors/AsteroidBeast" instance=ExtResource("54_h8r0t")]
-position = Vector2(651, 447)
+position = Vector2(-549, 447)
 pivot_scale = Vector2(-1, 1)
 can_turn = false
 
@@ -1380,6 +1382,7 @@ script = ExtResource("9_otf24")
 script = ExtResource("60_7to6k")
 player = NodePath("../Actors/PlayerMain")
 moves = Array[String](["AttackA", "AttackA"])
+is_playing = true
 
 [node name="Center" type="Marker2D" parent="Stage/TalonAttackPatterns"]
 position = Vector2(960, 540)
@@ -1388,55 +1391,107 @@ position = Vector2(960, 540)
 script = ExtResource("62_5ixon")
 node = NodePath("../../Actors/AsteroidBeast/TalonArmA")
 base_transform = Transform2D(1, 0, 0, 1, 581, -456)
+is_running = true
 metadata/_custom_type_script = "uid://dked212ulfymv"
 
-[node name="AttackA" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor"]
+[node name="AttackA" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor" node_paths=PackedStringArray("_node")]
 script = ExtResource("63_5ec0n")
+_node = NodePath("../../../Actors/AsteroidBeast/TalonArmA")
 metadata/_custom_type_script = "uid://eooi8778c330"
 
-[node name="Charge" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA"]
+[node name="Charge" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA" node_paths=PackedStringArray("_node")]
 script = ExtResource("63_5ec0n")
+_node = NodePath("../../../../Actors/AsteroidBeast/TalonArmA")
 metadata/_custom_type_script = "uid://eooi8778c330"
 
-[node name="StartUp" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/Charge"]
+[node name="StartUp" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/Charge" node_paths=PackedStringArray("_node")]
 script = ExtResource("69_5ec0n")
+_node = NodePath("../../../../../Actors/AsteroidBeast/TalonArmA")
 metadata/_custom_type_script = "uid://d1a2m3cfwp5u1"
 
-[node name="RailsTrackTremble" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/Charge/StartUp"]
+[node name="RailsTrackTremble" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/Charge/StartUp" node_paths=PackedStringArray("_node")]
 script = ExtResource("65_ovu4y")
 strength = Vector2(200, 0)
 duration = 1.0
+_node = NodePath("../../../../../../Actors/AsteroidBeast/TalonArmA")
 metadata/_custom_type_script = "uid://rtiq0ip8htiu"
 
-[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/Charge/StartUp"]
+[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/Charge/StartUp" node_paths=PackedStringArray("_node")]
 script = ExtResource("64_rllla")
 movement = Vector2(-100, 0)
+_node = NodePath("../../../../../../Actors/AsteroidBeast/TalonArmA")
 metadata/_custom_type_script = "uid://dm4cht245wcyu"
 
-[node name="Travel" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/Charge"]
+[node name="Travel" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/Charge" node_paths=PackedStringArray("_node")]
 script = ExtResource("69_5ec0n")
+_node = NodePath("../../../../../Actors/AsteroidBeast/TalonArmA")
 metadata/_custom_type_script = "uid://d1a2m3cfwp5u1"
 
-[node name="RailsTrackTremble" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/Charge/Travel"]
+[node name="RailsTrackTremble" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/Charge/Travel" node_paths=PackedStringArray("_node")]
 script = ExtResource("65_ovu4y")
 strength = Vector2(200, 200)
 duration = 0.5
 speed = 5.0
+_node = NodePath("../../../../../../Actors/AsteroidBeast/TalonArmA")
 metadata/_custom_type_script = "uid://rtiq0ip8htiu"
 
-[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/Charge/Travel"]
+[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/Charge/Travel" node_paths=PackedStringArray("_node")]
 script = ExtResource("64_rllla")
 movement = Vector2(-1100, 0)
 transition_type = 10
 duration = 0.5
+_node = NodePath("../../../../../../Actors/AsteroidBeast/TalonArmA")
 metadata/_custom_type_script = "uid://dm4cht245wcyu"
 
-[node name="WalkOff" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA"]
+[node name="SimpleIdle" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA" node_paths=PackedStringArray("_node")]
+script = ExtResource("73_20gwj")
+repeat_count = 20
+_node = NodePath("../../../../Actors/AsteroidBeast/TalonArmA")
+metadata/_custom_type_script = "uid://b3w1m2mrihun0"
+
+[node name="RailsParallelTrack" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/SimpleIdle" node_paths=PackedStringArray("_node")]
+script = ExtResource("69_5ec0n")
+_node = NodePath("../../../../../Actors/AsteroidBeast/TalonArmA")
+metadata/_custom_type_script = "uid://d1a2m3cfwp5u1"
+
+[node name="RailsSequenceTrack" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/SimpleIdle/RailsParallelTrack" node_paths=PackedStringArray("_node")]
 script = ExtResource("63_5ec0n")
+_node = NodePath("../../../../../../Actors/AsteroidBeast/TalonArmA")
 metadata/_custom_type_script = "uid://eooi8778c330"
 
-[node name="WalkUpLeft" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/WalkOff"]
+[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/SimpleIdle/RailsParallelTrack/RailsSequenceTrack" node_paths=PackedStringArray("_node")]
+script = ExtResource("64_rllla")
+movement = Vector2(0, 15)
+transition_type = 1
+ease_type = 1
+duration = 0.5
+_node = NodePath("../../../../../../../Actors/AsteroidBeast/TalonArmA")
+metadata/_custom_type_script = "uid://dm4cht245wcyu"
+
+[node name="RailsTrackMove2" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/SimpleIdle/RailsParallelTrack/RailsSequenceTrack" node_paths=PackedStringArray("_node")]
+script = ExtResource("64_rllla")
+movement = Vector2(0, -30)
+transition_type = 1
+_node = NodePath("../../../../../../../Actors/AsteroidBeast/TalonArmA")
+metadata/_custom_type_script = "uid://dm4cht245wcyu"
+
+[node name="RailsTrackMove3" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/SimpleIdle/RailsParallelTrack/RailsSequenceTrack" node_paths=PackedStringArray("_node")]
+script = ExtResource("64_rllla")
+movement = Vector2(0, 15)
+transition_type = 1
+ease_type = 0
+duration = 0.5
+_node = NodePath("../../../../../../../Actors/AsteroidBeast/TalonArmA")
+metadata/_custom_type_script = "uid://dm4cht245wcyu"
+
+[node name="WalkOff" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA" node_paths=PackedStringArray("_node")]
+script = ExtResource("63_5ec0n")
+_node = NodePath("../../../../Actors/AsteroidBeast/TalonArmA")
+metadata/_custom_type_script = "uid://eooi8778c330"
+
+[node name="WalkUpLeft" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/WalkOff" node_paths=PackedStringArray("_node")]
 script = ExtResource("69_5ec0n")
+_node = NodePath("../../../../../Actors/AsteroidBeast/TalonArmA")
 metadata/_custom_type_script = "uid://d1a2m3cfwp5u1"
 
 [node name="RailsTrackTremble" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/WalkOff/WalkUpLeft"]
@@ -1448,15 +1503,17 @@ is_one_shot = false
 should_container_skip = true
 metadata/_custom_type_script = "uid://rtiq0ip8htiu"
 
-[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/WalkOff/WalkUpLeft"]
+[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/WalkOff/WalkUpLeft" node_paths=PackedStringArray("_node")]
 script = ExtResource("64_rllla")
 movement = Vector2(-350, -200)
 transition_type = 1
 ease_type = 0
+_node = NodePath("../../../../../../Actors/AsteroidBeast/TalonArmA")
 metadata/_custom_type_script = "uid://dm4cht245wcyu"
 
-[node name="WalkLeft" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/WalkOff"]
+[node name="WalkLeft" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/WalkOff" node_paths=PackedStringArray("_node")]
 script = ExtResource("69_5ec0n")
+_node = NodePath("../../../../../Actors/AsteroidBeast/TalonArmA")
 metadata/_custom_type_script = "uid://d1a2m3cfwp5u1"
 
 [node name="RailsTrackTremble" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/WalkOff/WalkLeft"]
@@ -1468,38 +1525,70 @@ is_one_shot = false
 should_container_skip = true
 metadata/_custom_type_script = "uid://rtiq0ip8htiu"
 
-[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/WalkOff/WalkLeft"]
+[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/WalkOff/WalkLeft" node_paths=PackedStringArray("_node")]
 script = ExtResource("64_rllla")
 movement = Vector2(-400, 0)
 transition_type = 1
 ease_type = 1
+_node = NodePath("../../../../../../Actors/AsteroidBeast/TalonArmA")
 metadata/_custom_type_script = "uid://dm4cht245wcyu"
 
-[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/WalkOff"]
+[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/WalkOff" node_paths=PackedStringArray("_node")]
 script = ExtResource("64_rllla")
 movement = Vector2(0, 200)
 duration = 0.1
+_node = NodePath("../../../../../Actors/AsteroidBeast/TalonArmA")
+metadata/_custom_type_script = "uid://dm4cht245wcyu"
+
+[node name="RailsTrackFlip" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA" node_paths=PackedStringArray("_node")]
+script = ExtResource("67_3coyj")
+flip_x = true
+_node = NodePath("../../../../Actors/AsteroidBeast/TalonArmA")
+combination_style = 4
+metadata/_custom_type_script = "uid://ks8yypsby81w"
+
+[node name="WalkIn" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA" node_paths=PackedStringArray("_node")]
+script = ExtResource("63_5ec0n")
+_node = NodePath("../../../../Actors/AsteroidBeast/TalonArmA")
+metadata/_custom_type_script = "uid://eooi8778c330"
+
+[node name="RailsParallelTrack" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/WalkIn" node_paths=PackedStringArray("_node")]
+script = ExtResource("69_5ec0n")
+_node = NodePath("../../../../../Actors/AsteroidBeast/TalonArmA")
+metadata/_custom_type_script = "uid://d1a2m3cfwp5u1"
+
+[node name="RailsTrackTremble" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/WalkIn/RailsParallelTrack" node_paths=PackedStringArray("_node")]
+script = ExtResource("65_ovu4y")
+strength = Vector2(200, 200)
+duration = 2.0
+speed = 1.0
+_node = NodePath("../../../../../../Actors/AsteroidBeast/TalonArmA")
+metadata/_custom_type_script = "uid://rtiq0ip8htiu"
+
+[node name="RailsSequenceTrack" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/WalkIn/RailsParallelTrack" node_paths=PackedStringArray("_node")]
+script = ExtResource("63_5ec0n")
+_node = NodePath("../../../../../../Actors/AsteroidBeast/TalonArmA")
+metadata/_custom_type_script = "uid://eooi8778c330"
+
+[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/WalkIn/RailsParallelTrack/RailsSequenceTrack" node_paths=PackedStringArray("_node")]
+script = ExtResource("64_rllla")
+movement = Vector2(-320, 0)
+transition_type = 3
+ease_type = 1
+_node = NodePath("../../../../../../../Actors/AsteroidBeast/TalonArmA")
+metadata/_custom_type_script = "uid://dm4cht245wcyu"
+
+[node name="RailsTrackMove2" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/WalkIn/RailsParallelTrack/RailsSequenceTrack" node_paths=PackedStringArray("_node")]
+script = ExtResource("64_rllla")
+movement = Vector2(-400, 0)
+transition_type = 1
+_node = NodePath("../../../../../../../Actors/AsteroidBeast/TalonArmA")
 metadata/_custom_type_script = "uid://dm4cht245wcyu"
 
 [node name="ResetSequence" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA"]
 script = ExtResource("63_5ec0n")
+should_container_skip = true
 metadata/_custom_type_script = "uid://eooi8778c330"
-
-[node name="RailsTrackFlip" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/ResetSequence"]
-script = ExtResource("67_3coyj")
-flip_x = true
-combination_style = 4
-metadata/_custom_type_script = "uid://ks8yypsby81w"
-
-[node name="WalkIn" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/ResetSequence"]
-script = ExtResource("69_5ec0n")
-metadata/_custom_type_script = "uid://d1a2m3cfwp5u1"
-
-[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/ResetSequence/WalkIn"]
-script = ExtResource("64_rllla")
-movement = Vector2(-1950, 0)
-duration = 0.5
-metadata/_custom_type_script = "uid://dm4cht245wcyu"
 
 [node name="RailsTrackFlip2" type="Node" parent="Stage/TalonAttackPatterns/TalonAConductor/AttackA/ResetSequence"]
 script = ExtResource("67_3coyj")
@@ -1723,32 +1812,183 @@ combination_style = 2
 script = ExtResource("62_5ixon")
 node = NodePath("../../Actors/AsteroidBeast/TalonArmB")
 base_transform = Transform2D(1, 0, 0, 1, 651, 447)
+is_running = true
 metadata/_custom_type_script = "uid://dked212ulfymv"
 
-[node name="AttackA" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor"]
+[node name="Idle" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor"]
 script = ExtResource("63_5ec0n")
 metadata/_custom_type_script = "uid://eooi8778c330"
 
-[node name="RailsParallelTrack" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA"]
+[node name="RailsParallelTrack" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/Idle"]
 script = ExtResource("69_5ec0n")
 metadata/_custom_type_script = "uid://d1a2m3cfwp5u1"
 
-[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/RailsParallelTrack"]
+[node name="RailsRepeatTrack" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/Idle/RailsParallelTrack"]
+script = ExtResource("73_20gwj")
+repeat_count = 10
+metadata/_custom_type_script = "uid://b3w1m2mrihun0"
+
+[node name="RailsParallelTrack" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/Idle/RailsParallelTrack/RailsRepeatTrack"]
+script = ExtResource("69_5ec0n")
+metadata/_custom_type_script = "uid://d1a2m3cfwp5u1"
+
+[node name="RailsSequenceTrack" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/Idle/RailsParallelTrack/RailsRepeatTrack/RailsParallelTrack"]
+script = ExtResource("63_5ec0n")
+metadata/_custom_type_script = "uid://eooi8778c330"
+
+[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/Idle/RailsParallelTrack/RailsRepeatTrack/RailsParallelTrack/RailsSequenceTrack"]
+script = ExtResource("64_rllla")
+movement = Vector2(0, 15)
+transition_type = 1
+ease_type = 1
+duration = 0.5
+metadata/_custom_type_script = "uid://dm4cht245wcyu"
+
+[node name="RailsTrackMove2" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/Idle/RailsParallelTrack/RailsRepeatTrack/RailsParallelTrack/RailsSequenceTrack"]
+script = ExtResource("64_rllla")
+movement = Vector2(0, -30)
+transition_type = 1
+metadata/_custom_type_script = "uid://dm4cht245wcyu"
+
+[node name="RailsTrackMove3" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/Idle/RailsParallelTrack/RailsRepeatTrack/RailsParallelTrack/RailsSequenceTrack"]
+script = ExtResource("64_rllla")
+movement = Vector2(0, 15)
+transition_type = 1
+ease_type = 0
+duration = 0.5
+metadata/_custom_type_script = "uid://dm4cht245wcyu"
+
+[node name="ComboTremble" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/Idle/RailsParallelTrack"]
+script = ExtResource("69_5ec0n")
+should_container_skip = true
+metadata/_custom_type_script = "uid://d1a2m3cfwp5u1"
+
+[node name="RailsTrackTremble" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/Idle/RailsParallelTrack/ComboTremble"]
+script = ExtResource("65_ovu4y")
+strength = Vector2(50, 50)
+metadata/_custom_type_script = "uid://rtiq0ip8htiu"
+
+[node name="RailsTrackTremble2" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/Idle/RailsParallelTrack/ComboTremble"]
+script = ExtResource("65_ovu4y")
+strength = Vector2(50, 50)
+metadata/_custom_type_script = "uid://rtiq0ip8htiu"
+
+[node name="RailsTrackTremble3" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/Idle/RailsParallelTrack/ComboTremble"]
+script = ExtResource("65_ovu4y")
+strength = Vector2(50, 50)
+metadata/_custom_type_script = "uid://rtiq0ip8htiu"
+
+[node name="RailsTrackTremble4" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/Idle/RailsParallelTrack/ComboTremble"]
+script = ExtResource("65_ovu4y")
+strength = Vector2(50, 50)
+metadata/_custom_type_script = "uid://rtiq0ip8htiu"
+
+[node name="AttackA" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor" node_paths=PackedStringArray("_node")]
+script = ExtResource("63_5ec0n")
+_node = NodePath("../../../Actors/AsteroidBeast/TalonArmB")
+metadata/_custom_type_script = "uid://eooi8778c330"
+
+[node name="SimpleIdle" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA" node_paths=PackedStringArray("_node")]
+script = ExtResource("73_20gwj")
+repeat_count = 2
+_node = NodePath("../../../../Actors/AsteroidBeast/TalonArmB")
+metadata/_custom_type_script = "uid://b3w1m2mrihun0"
+
+[node name="RailsParallelTrack" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/SimpleIdle" node_paths=PackedStringArray("_node")]
+script = ExtResource("69_5ec0n")
+_node = NodePath("../../../../../Actors/AsteroidBeast/TalonArmB")
+metadata/_custom_type_script = "uid://d1a2m3cfwp5u1"
+
+[node name="RailsSequenceTrack" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/SimpleIdle/RailsParallelTrack" node_paths=PackedStringArray("_node")]
+script = ExtResource("63_5ec0n")
+_node = NodePath("../../../../../../Actors/AsteroidBeast/TalonArmB")
+metadata/_custom_type_script = "uid://eooi8778c330"
+
+[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/SimpleIdle/RailsParallelTrack/RailsSequenceTrack" node_paths=PackedStringArray("_node")]
+script = ExtResource("64_rllla")
+movement = Vector2(0, 15)
+transition_type = 1
+ease_type = 1
+duration = 0.5
+_node = NodePath("../../../../../../../Actors/AsteroidBeast/TalonArmB")
+metadata/_custom_type_script = "uid://dm4cht245wcyu"
+
+[node name="RailsTrackMove2" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/SimpleIdle/RailsParallelTrack/RailsSequenceTrack" node_paths=PackedStringArray("_node")]
+script = ExtResource("64_rllla")
+movement = Vector2(0, -30)
+transition_type = 1
+_node = NodePath("../../../../../../../Actors/AsteroidBeast/TalonArmB")
+metadata/_custom_type_script = "uid://dm4cht245wcyu"
+
+[node name="RailsTrackMove3" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/SimpleIdle/RailsParallelTrack/RailsSequenceTrack" node_paths=PackedStringArray("_node")]
+script = ExtResource("64_rllla")
+movement = Vector2(0, 15)
+transition_type = 1
+ease_type = 0
+duration = 0.5
+_node = NodePath("../../../../../../../Actors/AsteroidBeast/TalonArmB")
+metadata/_custom_type_script = "uid://dm4cht245wcyu"
+
+[node name="StartUp" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA" node_paths=PackedStringArray("_node")]
+script = ExtResource("69_5ec0n")
+_node = NodePath("../../../../Actors/AsteroidBeast/TalonArmB")
+metadata/_custom_type_script = "uid://d1a2m3cfwp5u1"
+
+[node name="RailsTrackTremble" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/StartUp" node_paths=PackedStringArray("_node")]
+script = ExtResource("65_ovu4y")
+strength = Vector2(200, 0)
+duration = 1.0
+_node = NodePath("../../../../../Actors/AsteroidBeast/TalonArmB")
+metadata/_custom_type_script = "uid://rtiq0ip8htiu"
+
+[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/StartUp" node_paths=PackedStringArray("_node")]
+script = ExtResource("64_rllla")
+movement = Vector2(-100, 0)
+_node = NodePath("../../../../../Actors/AsteroidBeast/TalonArmB")
+metadata/_custom_type_script = "uid://dm4cht245wcyu"
+
+[node name="RailsParallelTrack" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA" node_paths=PackedStringArray("_node")]
+script = ExtResource("69_5ec0n")
+_node = NodePath("../../../../Actors/AsteroidBeast/TalonArmB")
+metadata/_custom_type_script = "uid://d1a2m3cfwp5u1"
+
+[node name="RailsTrackTremble" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/RailsParallelTrack" node_paths=PackedStringArray("_node")]
+script = ExtResource("65_ovu4y")
+strength = Vector2(200, 200)
+_node = NodePath("../../../../../Actors/AsteroidBeast/TalonArmB")
+metadata/_custom_type_script = "uid://rtiq0ip8htiu"
+
+[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/RailsParallelTrack" node_paths=PackedStringArray("_node")]
+script = ExtResource("64_rllla")
+movement = Vector2(-1100, 0)
+duration = 5.0
+_node = NodePath("../../../../../Actors/AsteroidBeast/TalonArmB")
+metadata/_custom_type_script = "uid://dm4cht245wcyu"
+
+[node name="AttackB" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor"]
+script = ExtResource("63_5ec0n")
+metadata/_custom_type_script = "uid://eooi8778c330"
+
+[node name="RailsParallelTrack" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackB"]
+script = ExtResource("69_5ec0n")
+metadata/_custom_type_script = "uid://d1a2m3cfwp5u1"
+
+[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackB/RailsParallelTrack"]
 script = ExtResource("64_rllla")
 movement = Vector2(-1200, 0)
 transition_type = 1
 metadata/_custom_type_script = "uid://dm4cht245wcyu"
 
-[node name="RailsRepeatTrack" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/RailsParallelTrack"]
+[node name="RailsRepeatTrack" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackB/RailsParallelTrack"]
 script = ExtResource("73_20gwj")
 repeat_count = 2
 metadata/_custom_type_script = "uid://b3w1m2mrihun0"
 
-[node name="RailsSequenceTrack" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/RailsParallelTrack/RailsRepeatTrack"]
+[node name="RailsSequenceTrack" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackB/RailsParallelTrack/RailsRepeatTrack"]
 script = ExtResource("63_5ec0n")
 metadata/_custom_type_script = "uid://eooi8778c330"
 
-[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/RailsParallelTrack/RailsRepeatTrack/RailsSequenceTrack"]
+[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackB/RailsParallelTrack/RailsRepeatTrack/RailsSequenceTrack"]
 script = ExtResource("64_rllla")
 movement = Vector2(0, -250)
 transition_type = 1
@@ -1757,7 +1997,7 @@ reverse_on_track_finished = true
 duration = 0.25
 metadata/_custom_type_script = "uid://dm4cht245wcyu"
 
-[node name="RailsTrackMove2" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/RailsParallelTrack/RailsRepeatTrack/RailsSequenceTrack"]
+[node name="RailsTrackMove2" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackB/RailsParallelTrack/RailsRepeatTrack/RailsSequenceTrack"]
 script = ExtResource("64_rllla")
 movement = Vector2(0, 250)
 transition_type = 1
@@ -1766,15 +2006,15 @@ reverse_on_track_finished = true
 duration = 0.25
 metadata/_custom_type_script = "uid://dm4cht245wcyu"
 
-[node name="WalkOff" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA"]
+[node name="WalkOff" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackB"]
 script = ExtResource("63_5ec0n")
 metadata/_custom_type_script = "uid://eooi8778c330"
 
-[node name="WalkDownLeft" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/WalkOff"]
+[node name="WalkDownLeft" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackB/WalkOff"]
 script = ExtResource("69_5ec0n")
 metadata/_custom_type_script = "uid://d1a2m3cfwp5u1"
 
-[node name="RailsTrackTremble" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/WalkOff/WalkDownLeft"]
+[node name="RailsTrackTremble" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackB/WalkOff/WalkDownLeft"]
 script = ExtResource("65_ovu4y")
 strength = Vector2(200, 200)
 duration = 1.0
@@ -1783,18 +2023,18 @@ is_one_shot = false
 should_container_skip = true
 metadata/_custom_type_script = "uid://rtiq0ip8htiu"
 
-[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/WalkOff/WalkDownLeft"]
+[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackB/WalkOff/WalkDownLeft"]
 script = ExtResource("64_rllla")
 movement = Vector2(-350, 200)
 transition_type = 1
 ease_type = 0
 metadata/_custom_type_script = "uid://dm4cht245wcyu"
 
-[node name="WalkLeft" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/WalkOff"]
+[node name="WalkLeft" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackB/WalkOff"]
 script = ExtResource("69_5ec0n")
 metadata/_custom_type_script = "uid://d1a2m3cfwp5u1"
 
-[node name="RailsTrackTremble" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/WalkOff/WalkLeft"]
+[node name="RailsTrackTremble" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackB/WalkOff/WalkLeft"]
 script = ExtResource("65_ovu4y")
 strength = Vector2(200, 200)
 duration = 1.0
@@ -1803,51 +2043,51 @@ is_one_shot = false
 should_container_skip = true
 metadata/_custom_type_script = "uid://rtiq0ip8htiu"
 
-[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/WalkOff/WalkLeft"]
+[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackB/WalkOff/WalkLeft"]
 script = ExtResource("64_rllla")
 movement = Vector2(-400, 0)
 transition_type = 1
 ease_type = 1
 metadata/_custom_type_script = "uid://dm4cht245wcyu"
 
-[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/WalkOff"]
+[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackB/WalkOff"]
 script = ExtResource("64_rllla")
 movement = Vector2(0, -200)
 duration = 0.1
 metadata/_custom_type_script = "uid://dm4cht245wcyu"
 
-[node name="ResetSequence" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA"]
+[node name="ResetSequence" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackB"]
 script = ExtResource("63_5ec0n")
 metadata/_custom_type_script = "uid://eooi8778c330"
 
-[node name="RailsTrackFlip" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/ResetSequence"]
+[node name="RailsTrackFlip" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackB/ResetSequence"]
 script = ExtResource("67_3coyj")
 flip_x = true
 combination_style = 4
 metadata/_custom_type_script = "uid://ks8yypsby81w"
 
-[node name="WalkIn" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/ResetSequence"]
+[node name="WalkIn" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackB/ResetSequence"]
 script = ExtResource("69_5ec0n")
 metadata/_custom_type_script = "uid://d1a2m3cfwp5u1"
 
-[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/ResetSequence/WalkIn"]
+[node name="RailsTrackMove" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackB/ResetSequence/WalkIn"]
 script = ExtResource("64_rllla")
 movement = Vector2(-1950, 0)
 duration = 0.5
 metadata/_custom_type_script = "uid://dm4cht245wcyu"
 
-[node name="RailsTrackFlip2" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/ResetSequence"]
+[node name="RailsTrackFlip2" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackB/ResetSequence"]
 script = ExtResource("67_3coyj")
 flip_x = true
 combination_style = 4
 metadata/_custom_type_script = "uid://ks8yypsby81w"
 
-[node name="RailsTrackDelay" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/ResetSequence"]
+[node name="RailsTrackDelay" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackB/ResetSequence"]
 script = ExtResource("64_55kvu")
 delay = 0.05
 metadata/_custom_type_script = "uid://dygyssigmr5tg"
 
-[node name="RailsTrackReset" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackA/ResetSequence"]
+[node name="RailsTrackReset" type="Node" parent="Stage/TalonAttackPatterns/TalonBConductor/AttackB/ResetSequence"]
 script = ExtResource("72_p3a01")
 duration = 0.3
 metadata/_custom_type_script = "uid://crhgmfoiv2m31"

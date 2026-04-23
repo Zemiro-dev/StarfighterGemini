@@ -53,7 +53,8 @@ func is_running() -> bool:
 
 
 func _handle_track_finished() -> void:
-	previous_loops_transform = sample()
-	for track in tracks:
-		track.reset()
+	if !is_one_shot:
+		previous_loops_transform = sample()
+		for track in tracks:
+			track.reset()
 	super()
